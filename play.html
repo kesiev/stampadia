@@ -1,0 +1,48 @@
+<html><head>
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="style/style-play.css">
+	<script src="js/jspdf.umd.min.js"></script>
+  	<script src="js/svg2pdf.umd.min.js"></script>
+	<script src="js/svg.js"></script>
+	<script src="js/Seshat-normal.js"></script>
+	<script src="js/generator.js"></script>
+	<script src="js/core.js"></script>
+	<script src="js/player.js"></script>
+	<title>Chronicles of Stampadia - Play online</title>
+</head>
+<body onload="onl()">
+	<div id="header">
+		<a href='index.html' class="logo"></a><br>
+		<p>
+			Are you missing the stuff needed to play <a class=mark href='index.html'>Chronicles Of Stampadia?</a><br>
+			Read <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a> and play <a class=mark href='index.html'>today's page of the Chronicle of Stampadia</a> on your PC here!
+		</p>
+	</div>
+	<div id="table"></div>
+	<div id="guide">
+		<p>&#x270E; Draw on the sheet with left button, use the right button to erase.</p>
+		<p><div class="token-0 guidetoken"></div> Drag the <span class=mark>Hero Token</span> around the <span class=mark>Map</span> to mark where your hero is.</p>
+		<p><div class="token-1 guidetoken"></div> Drag the <span class=mark>Room Token</span> over the <span class=mark>Rooms Table</span> to mark your hero current room.</p>
+		<p><div class="token-2 guidetoken"></div> Drag the <span class=mark>Dices</span> over the <span class=mark>Hero and Enemy Sheets</span> and right click on them to roll.</p>
+	</div>
+	<div id="credits"></div>
+</body><script>
+
+function onl() {
+
+	var
+		core=new Core();
+
+	core.initialize(()=>{
+		
+		var player=new DungeonPlayer(core.generateAdventureDaily());
+		document.getElementById("credits").innerHTML=core.getWebFooter();
+		player.play(document.getElementById("table"));
+
+	});
+
+}
+
+</script>

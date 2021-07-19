@@ -1,0 +1,60 @@
+<html><head>
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+	<script src="js/jspdf.umd.min.js"></script>
+  	<script src="js/svg2pdf.umd.min.js"></script>
+	<script src="js/svg.js"></script>
+	<script src="js/Seshat-normal.js"></script>
+	<script src="js/generator.js"></script>
+	<script src="js/core.js"></script>
+	<script src="js/player.js"></script>
+	<title>Chronicles of Stampadia</title>
+</head>
+<body onload="onl()">
+	<div id="box">
+		<div class="header" id="adventureHeader"></div>
+		<div class="title download" id="adventureTitle"></div>
+		<div class="ruler"></div>
+		<div class="tips">
+				All you need to play is <span class=mark>2 dices</span>, <span class=mark>a pencil</span>, <span class=mark>an eraser</span>, <span class=mark>a small button</span>, <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a>, and print <span class=download id=downloadquest>today's page of the Chronicle of Stampadia</span>. Good luck!
+		</div>
+	</div>
+	<div id="credits"></div>
+</body><script>
+
+function onl() {
+
+	// TODO: manuale - descrivere condizioni e azioni
+
+	var core=new Core();
+
+	core.initialize(()=>{
+
+		var dungen=core.generateAdventureDaily();
+		dungen.prepare();
+
+		document.getElementById("adventureHeader").innerHTML=dungen.metadata.header.replace(/_+/,"<span class='you'>You</span>");
+		document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
+		document.getElementById("credits").innerHTML=core.getWebFooter()+" &dash; <a class=mark href='play.html'>No printer or tokens</a>?";
+		document.getElementById("box").className="show";
+
+		if (document.location.href.match(/\?show=1/)) dungen.showSVG();
+		else if (document.location.href.match(/\?play=1/)) {
+			var player=new DungeonPlayer(dungen);
+			player.play();
+		} else if (document.location.href.match(/\?debug=1/)) dungen.debug();
+		else {
+
+			var downloads=document.getElementsByClassName("download");
+
+			for (var i=0;i<downloads.length;i++)
+				downloads[i].onclick=()=>dungen.downloadPDF(dungen.coreMetadata.filename+".pdf");
+
+		}
+	});
+
+}
+
+</script>

@@ -1,0 +1,34 @@
+<html><head>
+	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+	<script src="js/jspdf.umd.min.js"></script>
+  	<script src="js/svg2pdf.umd.min.js"></script>
+	<script src="js/svg.js"></script>
+	<script src="js/Seshat-normal.js"></script>
+	<script src="js/generator.js"></script>
+	<script src="js/core.js"></script>
+</head>
+<body onload="onl()">	
+</body><script>
+
+function onl() {
+
+	var core=new Core();
+
+	core.initialize(()=>{
+
+		var dungen=core.generateAdventureDaily(-1,{
+			showFake:false,
+			dumpSentences:false,
+			flavorText:""
+		});
+		dungen.prepare();	
+		dungen.createSVG(svg=>{
+			dungen.showSVG();
+			dungen.debug();
+		});
+
+	});
+
+}
+
+</script>

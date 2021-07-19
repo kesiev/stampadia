@@ -1,0 +1,844 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="297mm"
+   height="210mm"
+   viewBox="0 0 297 210"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c8708, 2021-01-15)"
+   sodipodi:docname="model.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8.0000001"
+     inkscape:cx="58.18725"
+     inkscape:cy="124.8525"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     inkscape:window-width="1398"
+     inkscape:window-height="785"
+     inkscape:window-x="42"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     showguides="false" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="guides"
+     style="display:inline;opacity:0.357955"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#000000;stroke:none;stroke-width:0.15;paint-order:stroke markers fill"
+       id="rect10089"
+       width="297"
+       height="210"
+       x="0"
+       y="0" />
+    <rect
+       style="fill:#00ffff;stroke:none;stroke-width:0.15;paint-order:stroke markers fill"
+       id="rect10080"
+       width="290.85001"
+       height="203.85001"
+       x="3.075"
+       y="3.075" />
+    <g
+       id="g36809"
+       transform="translate(-4.0930169)">
+      <rect
+         style="fill:#ff0000;stroke:none;stroke-width:0.15;paint-order:stroke markers fill"
+         id="rect10082"
+         width="6"
+         height="225.4411"
+         x="189.24521"
+         y="-15.162614" />
+    </g>
+    <rect
+       style="fill:#ff0000;fill-opacity:0.703833;stroke:none;stroke-width:0.15;paint-order:stroke markers fill"
+       id="rect16295"
+       width="204.11597"
+       height="5.9999995"
+       x="191.28198"
+       y="157.94814" />
+    <rect
+       style="fill:#ff0000;stroke:none;stroke-width:0.15;paint-order:stroke markers fill"
+       id="rect16361"
+       width="6"
+       height="51.139183"
+       x="240.70441"
+       y="158.82378" />
+    <rect
+       style="display:inline;opacity:0.357955;fill:#ff0000;stroke:none;stroke-width:0.15;paint-order:stroke markers fill"
+       id="rect10082-1"
+       width="6"
+       height="225.4411"
+       x="-25.694511"
+       y="-34.474594"
+       transform="rotate(-90)" />
+  </g>
+  <g
+     inkscape:label="stencils"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <g
+       id="gridEnemy">
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="rect1584"
+         width="0.88867116"
+         height="2.1515198"
+         x="15.014532"
+         y="30.961107" />
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="rect1586"
+         width="0.88867116"
+         height="2.1515198"
+         x="19.551432"
+         y="30.961107" />
+      <circle
+         style="display:inline;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="circle1296"
+         cx="17.727318"
+         cy="34.255596"
+         r="3.148931" />
+      <circle
+         style="display:inline;fill:#ffffff;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="gridEnemyLevel"
+         cx="17.727318"
+         cy="34.255596"
+         r="1.1845" />
+    </g>
+    <g
+       id="gridStairs">
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="rect1324"
+         width="1.9500003"
+         height="5.8499999"
+         x="14.802318"
+         y="31.257818" />
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="rect1326"
+         width="2.95"
+         height="3.9000001"
+         x="15.752556"
+         y="33.207817" />
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="rect1328"
+         width="2.95"
+         height="1.95"
+         x="17.702557"
+         y="35.157818" />
+    </g>
+    <g
+       id="gridItem">
+      <rect
+         style="fill:#b3b3b3;stroke:none;stroke-width:0.25"
+         id="as"
+         width="4.75"
+         height="4.75"
+         x="15.352318"
+         y="31.807817" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="17.75433"
+         y="34.979176"
+         id="gridItemId"><tspan
+           sodipodi:role="line"
+           id="tspan16749-2"
+           x="17.75433"
+           y="34.979176"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+    </g>
+    <g
+       id="enemyTier">
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="enemyBox"
+         width="10.717296"
+         height="10.694746"
+         x="247.26561"
+         y="177.15059" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="252.69142"
+         y="183.36035"
+         id="enemySkillUp"><tspan
+           sodipodi:role="line"
+           id="tspan16303"
+           x="252.69142"
+           y="183.36035"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL1</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect16307"
+         width="10.717296"
+         height="10.694746"
+         x="247.26561"
+         y="187.84534" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="252.65517"
+         y="194.0551"
+         id="enemySkillDown"><tspan
+           sodipodi:role="line"
+           id="tspan16309"
+           x="252.65517"
+           y="194.0551"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL2</tspan></text>
+      <g
+         id="enemySymbol"
+         transform="translate(-3.6720677,0.52916667)">
+        <circle
+           style="display:inline;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           id="circle1631"
+           cx="256.2963"
+           cy="171.67905"
+           r="3.148931" />
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           id="rect1635"
+           width="0.88867116"
+           height="2.1515198"
+           x="253.58351"
+           y="168.38457" />
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           id="rect1637"
+           width="0.88867116"
+           height="2.1515198"
+           x="258.12042"
+           y="168.38457" />
+      </g>
+      <circle
+         style="fill:#ffffff;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+         id="enemyLevel"
+         cx="252.62422"
+         cy="172.13544"
+         r="1.1845" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="252.62047"
+         y="204.48405"
+         id="enemyXp"><tspan
+           sodipodi:role="line"
+           id="tspan16611-9"
+           x="252.62047"
+           y="204.48405"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">XP</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="252.6024"
+         y="166.48622"
+         id="enemyDefense"><tspan
+           sodipodi:role="line"
+           id="tspan16619-8"
+           x="252.6024"
+           y="166.48622"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">DEF</tspan></text>
+      <g
+         id="enemyOutline"
+         transform="translate(-3.6720677,0.52916667)">
+        <path
+           id="xxx"
+           style="display:inline;fill:none;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           d="m 253.50928,168.38455 v 1.69551 a 3.1489311,3.1489311 0 0 0 -0.43615,1.59886 3.1489311,3.1489311 0 0 0 3.14917,3.14917 3.1489311,3.1489311 0 0 0 3.14864,-3.14917 3.1489311,3.1489311 0 0 0 -0.43615,-1.59886 v -1.69551 h -0.88831 v 0.72812 a 3.1489311,3.1489311 0 0 0 -1.82418,-0.58239 3.1489311,3.1489311 0 0 0 -1.82418,0.58188 v -0.72761 z" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           x="256.22321"
+           y="172.32175"
+           id="text1006"><tspan
+             sodipodi:role="line"
+             id="tspan1004"
+             x="256.22321"
+             y="172.32175"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">ALL</tspan></text>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="191.85017"
+       y="204.48405"
+       id="text16613"><tspan
+         sodipodi:role="line"
+         id="tspan16611"
+         x="191.85017"
+         y="204.48405"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">XP</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="191.38409"
+       y="173.06425"
+       id="text16617"><tspan
+         sodipodi:role="line"
+         id="tspan16615"
+         x="191.38409"
+         y="173.06425"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">HP</tspan></text>
+    <g
+       id="heroTier">
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="heroBox"
+         width="10.717296"
+         height="10.694746"
+         x="196.7915"
+         y="177.15059" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="202.2173"
+         y="183.36035"
+         id="heroSkillUp"><tspan
+           sodipodi:role="line"
+           id="tspan16193"
+           x="202.2173"
+           y="183.36035"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL1</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect16199"
+         width="10.717296"
+         height="10.694746"
+         x="196.7915"
+         y="187.84534" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="202.18105"
+         y="194.0551"
+         id="heroSkillDown"><tspan
+           sodipodi:role="line"
+           id="tspan16201"
+           x="202.18105"
+           y="194.0551"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL2</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="heroXp"
+         width="2.1188188"
+         height="2.118819"
+         x="201.09073"
+         y="202.49583" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="202.1283"
+         y="166.48622"
+         id="heroDefense"><tspan
+           sodipodi:role="line"
+           id="tspan16619"
+           x="202.1283"
+           y="166.48622"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">DEF</tspan></text>
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="heroHp"
+         width="2.1188188"
+         height="2.118819"
+         x="201.09073"
+         y="171.07603" />
+    </g>
+    <g
+       id="roomData">
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect7923"
+         width="12.036639"
+         height="8.1206894"
+         x="199.4924"
+         y="3.1931129" />
+      <g
+         id="roomStarting"
+         style="display:inline"
+         transform="translate(193.41174,-16.246608)">
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           id="rect1324-2"
+           width="1.9500003"
+           height="5.8499999"
+           x="10.018762"
+           y="20.575066" />
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           id="rect1326-1"
+           width="2.95"
+           height="3.9000001"
+           x="10.969"
+           y="22.525064" />
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+           id="rect1328-6"
+           width="2.95"
+           height="1.95"
+           x="12.919"
+           y="24.475065" />
+      </g>
+      <rect
+         style="fill:#b3b3b3;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="roomHeight"
+         width="8.202198"
+         height="8.1450014"
+         x="191.29022"
+         y="3.1931129" />
+      <g
+         id="roomCoords"
+         transform="translate(-4.1076901)">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           x="207.62897"
+           y="9.9256239"
+           id="roomSize"><tspan
+             sodipodi:role="line"
+             id="tspan7915"
+             x="207.62897"
+             y="9.9256239"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">##x##</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           x="207.62897"
+           y="6.2633014"
+           id="roomPosition"><tspan
+             sodipodi:role="line"
+             id="tspan7919"
+             x="207.62897"
+             y="6.2633014"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">##,##</tspan></text>
+        <rect
+           style="fill:none;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
+           id="rect7925"
+           width="1.6995254"
+           height="1.687674"
+           x="205.32118"
+           y="4.6790504" />
+        <rect
+           style="fill:none;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           id="rect7927"
+           width="1.6995254"
+           height="1.687674"
+           x="205.395"
+           y="8.140193" />
+        <rect
+           style="fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+           id="rect7583"
+           width="0.72000003"
+           height="0.72000003"
+           x="205.32118"
+           y="4.6790504" />
+      </g>
+      <rect
+         style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.249999;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect15485"
+         width="82.290741"
+         height="8.1206894"
+         x="211.52904"
+         y="3.1931129" />
+      <g
+         id="g1047"
+         transform="translate(-3.6930949)">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           x="198.78973"
+           y="8.3698092"
+           id="roomId"><tspan
+             sodipodi:role="line"
+             id="tspan7889"
+             x="198.78973"
+             y="8.3698092"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">20</tspan></text>
+        <rect
+           style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="roomCheckbox"
+           width="2.1188188"
+           height="2.118819"
+           x="196.13205"
+           y="6.2062039" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="213.28682"
+         y="6.2076621"
+         id="roomLine1"><tspan
+           sodipodi:role="line"
+           id="tspan9577"
+           x="213.28682"
+           y="6.2076621"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="213.28682"
+         y="9.680934"
+         id="roomLine2"><tspan
+           sodipodi:role="line"
+           id="tspan15487"
+           x="213.28682"
+           y="9.680934"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 188.35784,3.086963 V 206.91304"
+       id="path16297" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 188.41538,160.882 H 293.90144"
+       id="path16299"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 243.67492,160.98116 v 45.98893"
+       id="path16372" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="8.3158512"
+       y="5.2294226"
+       id="adventureHeader"><tspan
+         sodipodi:role="line"
+         id="tspan7575"
+         x="8.3158512"
+         y="5.2294226"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">The legend of </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="8.3211432"
+       y="12.741782"
+       id="adventureTitle"><tspan
+         sodipodi:role="line"
+         id="tspan7579"
+         x="8.3211432"
+         y="12.741782"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">The legend of </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="17.754328"
+       y="34.979179"
+       id="gridNumber"><tspan
+         sodipodi:role="line"
+         id="tspan16749"
+         x="17.754328"
+         y="34.979179"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="17.995621"
+       y="27.988066"
+       id="gridCol"><tspan
+         sodipodi:role="line"
+         id="tspan16741"
+         x="17.995621"
+         y="27.988066"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="11.579646"
+       y="35.49913"
+       id="gridRow"><tspan
+         sodipodi:role="line"
+         id="tspan16745"
+         x="11.579646"
+         y="35.49913"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+    <rect
+       style="fill:none;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="gridGuide"
+       width="8.5780792"
+       height="8.5780802"
+       x="13.438278"
+       y="29.893784" />
+    <rect
+       style="fill:none;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:0.15, 0.45;stroke-dashoffset:0;stroke-opacity:1"
+       id="gridCell"
+       width="8.5780792"
+       height="8.5780802"
+       x="13.438276"
+       y="29.893784" />
+    <rect
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="startingRoom"
+       width="8.5780792"
+       height="8.5780802"
+       x="13.438278"
+       y="29.893784" />
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="doorUp"
+       width="2.6700983"
+       height="1.2517359"
+       x="16.392269"
+       y="29.25157" />
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="doorDown"
+       width="2.6700983"
+       height="1.2517359"
+       x="16.392269"
+       y="37.828945" />
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="doorRight"
+       width="1.2539999"
+       height="2.6700001"
+       x="21.439993"
+       y="32.847824" />
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="doorLeft"
+       width="1.2539999"
+       height="2.6700001"
+       x="12.788461"
+       y="32.847824" />
+    <g
+       id="serviceBox">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="121.66388"
+         y="7.0703306"
+         id="serviceName"><tspan
+           sodipodi:role="line"
+           id="tspan908"
+           x="121.66388"
+           y="7.0703306"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Service</tspan></text>
+      <rect
+         style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="serviceCheckbox"
+         width="2.1188188"
+         height="2.118819"
+         x="117.87331"
+         y="5.1485243" />
+    </g>
+    <rect
+       style="fill:#b3b3b3;stroke-width:0.25;stroke-dasharray:0.25, 0.25"
+       id="rect954"
+       width="176.92743"
+       height="4.2387276"
+       x="8.1851292"
+       y="15.445461" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="9.3287992"
+       y="18.247232"
+       id="text952"><tspan
+         sodipodi:role="line"
+         id="tspan950"
+         x="9.3287992"
+         y="18.247232"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (-1G per door crossed)</tspan></text>
+    <path
+       style="fill:none;stroke:#b3b3b3;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 116.20497,15.49328 v -2.109084 l 0.62012,-0.568441 -0.62012,-0.516764 V 8.8366697 L 116.72173,8.268229 116.20497,7.7514647 V 6.9763182 l 0.72347,-0.5684407 -0.72347,-0.7234701 V 3.2155865 h 68.11197 v 1.1769102 l -0.67179,0.5167643 0.67179,0.5167643 v 0.6717936 l -0.51676,0.5684407 0.51676,0.3100586 v 5.0126138 l -0.51676,0.72347 0.51676,0.516764 v 0.671794 l -0.55725,0.340799 0.55725,0.382671 v 1.161177"
+       id="path966"
+       sodipodi:nodetypes="ccccccccccccccccccccccccc" />
+    <path
+       style="fill:#b3b3b3;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 116.11899,4.0348958 -0.66146,0.033073 7.4e-4,1.685832 0.22248,0.5796628 -0.22325,0.5457026 v 0 l 0.0331,1.2236979 0.37536,0.3203937 -0.40844,0.2418459 0.16537,3.9687503 0.45805,0.254248 -0.55727,0.274919 -0.0331,2.480468 0.71436,-0.150209 4e-5,-2.109084 0.62008,-0.568441 -0.62012,-0.516764 4e-5,-3.4623213 0.51672,-0.5684409 -0.51676,-0.5167643 4e-5,-0.7751463 0.72343,-0.5684407 -0.72347,-0.7234703 z"
+       id="path868"
+       sodipodi:nodetypes="cccccccccccccccccccccccc" />
+    <circle
+       style="display:inline;fill:#ffffff;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="goldLeft"
+       cx="39.290623"
+       cy="17.564825"
+       r="1.1845" />
+    <circle
+       style="fill:#000000;stroke-width:0.999999"
+       id="path870"
+       cx="243.67516"
+       cy="160.94814"
+       r="0.5375948" />
+    <g
+       id="g5626"
+       transform="translate(11.409343)">
+      <rect
+         style="fill:#ffffff;stroke-width:1"
+         id="rect908"
+         width="13.602617"
+         height="2.8998742"
+         x="250.58931"
+         y="159.4982" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="250.94211"
+         y="161.60464"
+         id="enemyDefense-8"><tspan
+           sodipodi:role="line"
+           id="tspan16619-8-7"
+           x="250.94211"
+           y="161.60464"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Enemy Sheet</tspan></text>
+    </g>
+    <g
+       id="g5621"
+       transform="translate(-23.475122)">
+      <rect
+         style="fill:#ffffff;stroke-width:1"
+         id="rect906"
+         width="11.88013"
+         height="2.8998742"
+         x="233.5802"
+         y="159.35277" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="245.0419"
+         y="161.60464"
+         id="text904"><tspan
+           sodipodi:role="line"
+           id="tspan902"
+           x="245.0419"
+           y="161.60464"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Hero Sheet</tspan></text>
+    </g>
+    <circle
+       style="fill:#000000;stroke-width:0.999999"
+       id="circle3323"
+       cx="188.35799"
+       cy="160.94814"
+       r="0.5375948" />
+    <g
+       id="g37799"
+       transform="translate(0,-59.836591)">
+      <rect
+         style="fill:#ffffff;stroke-width:0.999999"
+         id="rect3325"
+         width="13.657472"
+         height="2.8998742"
+         x="-158.47729"
+         y="186.90805"
+         transform="rotate(-90)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="-157.8889"
+         y="189.25923"
+         id="text3329"
+         transform="rotate(-90)"><tspan
+           sodipodi:role="line"
+           id="tspan3327"
+           x="-157.8889"
+           y="189.25923"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Rooms Table</tspan></text>
+    </g>
+    <circle
+       style="fill:#000000;stroke-width:0.999999"
+       id="circle3331"
+       cx="188.35799"
+       cy="22.757284"
+       r="0.5375948" />
+    <g
+       id="g19936"
+       transform="translate(-3.6720677,-3.0096355)">
+      <rect
+         style="display:inline;fill:#ffffff;stroke-width:1"
+         id="rect3366"
+         width="10.740705"
+         height="2.8998742"
+         x="10.285355"
+         y="-193.61218"
+         transform="rotate(90)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="20.754295"
+         y="-191.52559"
+         id="text3370"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           id="tspan3368"
+           x="20.754295"
+           y="-191.52559"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Inventory</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 8.158692,22.757282 H 188.13943"
+       id="path19929"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g3364"
+       transform="rotate(-90,144.43908,70.458272)">
+      <rect
+         style="display:inline;fill:#ffffff;stroke-width:1"
+         id="rect3325-3"
+         width="5.8522635"
+         height="2.8998742"
+         x="19.73786"
+         y="-193.59001"
+         transform="rotate(90)" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         x="20.291265"
+         y="-191.23883"
+         id="text3329-6"
+         transform="rotate(90)"><tspan
+           sodipodi:role="line"
+           id="tspan3327-5"
+           x="20.291265"
+           y="-191.23883"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Map</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="13.136482"
+       y="204.46982"
+       id="footer"><tspan
+         sodipodi:role="line"
+         id="tspan37785"
+         x="13.136482"
+         y="204.46982"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Footer</tspan></text>
+  </g>
+</svg>
