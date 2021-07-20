@@ -16,7 +16,7 @@ The reign of Stampadia had thousands of years of history of dangerous places and
     <p><img src="markdown/sheet.png"></p>
 </div>
 
-We managed to find a damaged copy in an abandoned basement and it looks like that the book is imbued with some kind of magic: the reader can live every page of its story with just two dices, an eraser, and a small token! We’re trying to recover, translate and digitalize a new page of this book every day at [kesiev.com/stampadia](https://kesiev.com/stampadia). Go there, download the daily page, and bring back to life the story of a brave Stampadian!
+We managed to find a damaged copy in an abandoned basement and it looks like that the book is imbued with some kind of magic: the reader can live every page of its story with just two dice, an eraser, and a small token! We’re trying to recover, translate and digitalize a new page of this book every day at [kesiev.com/stampadia](https://kesiev.com/stampadia). Go there, download the daily page, and bring back to life the story of a brave Stampadian!
 
 ### Play online
 

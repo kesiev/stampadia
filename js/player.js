@@ -127,7 +127,7 @@ var DungeonPlayer=function(dungen) {
 				}
 			}
 
-			// Dices and tokens
+			// Dice and tokens
 
 			var
 				dragging=false,
