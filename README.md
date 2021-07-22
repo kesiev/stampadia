@@ -4,7 +4,7 @@
 
 ---
 
-<div align="center"><a href="https://www.kesiev.com/stampadia">Play today's adventure</a> | <a href="manuals/manual.pdf">Read the manual</a></div>
+<div align="center"><a href="https://www.kesiev.com/stampadia">Play today's adventure</a> | <a href="manuals/manual.pdf">Read the manual</a></div> | <a href="https://youtu.be/JlkrM9G8ccw">Watch Stampadia basics</a></div>
 
 ---
 

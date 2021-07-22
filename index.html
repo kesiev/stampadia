@@ -37,7 +37,10 @@ function onl() {
 
 		document.getElementById("adventureHeader").innerHTML=dungen.metadata.header.replace(/_+/,"<span class='you'>You</span>");
 		document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
-		document.getElementById("credits").innerHTML=core.getWebFooter()+" &dash; <a class=mark href='play.html'>No printer or tokens</a>?";
+		document.getElementById("credits").innerHTML=
+			core.getWebFooter()+
+			" &dash; <a class=mark href='https://youtu.be/JlkrM9G8ccw'>A video on Stampadia basics?</a>"+
+			" &dash; <a target=_blank class=mark href='play.html'>No printer or tokens?</a>";
 		document.getElementById("box").className="show";
 
 		if (document.location.href.match(/\?show=1/)) dungen.showSVG();
