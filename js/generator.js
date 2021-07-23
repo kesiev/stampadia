@@ -521,14 +521,14 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// TODO continua per un pò a distribuire le stanze
 		var valid=false;
 		shuffleArray(rooms);
-		for (var k=0;k<100;k++) {
+		for (var i=0;i<100;i++) {
 			var
 				minx=9999,
 				miny=9999,
 				maxx=0,
 				maxy=0,
 				angle=random(Math.PI*2);
-			for (var i=0;i<rooms.length;i++) {
+			for (i=0;i<rooms.length;i++) {
 				angle+=0.1+random(1);
 				var
 					ok=false,
