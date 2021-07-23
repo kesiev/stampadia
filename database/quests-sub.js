@@ -1,6 +1,6 @@
 function loadQuestsSub() {
 
-	return QUESTS_SUB=[
+	return [
 
 		// Kill 2 mini-boss and earn 2 XPs
 		{

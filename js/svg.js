@@ -38,15 +38,15 @@ function SVG(template) {
                 x:"x",
                 y:"y"
             }
-        }
+        },
         SIZEMUL={
             circle:{
                 width:2,
                 height:2
             }
-        }
+        },
         node = document.createElement("div"),
-        svg = "no";
+        _svg = "no";
 
     node.innerHTML = template.getSVG();
 
@@ -93,9 +93,9 @@ function SVG(template) {
 
     this.moveNodeAt = (node,x,y) => {
         var
-            orgx=this.getNum(node,"x");
-            orgy=this.getNum(node,"y");
-            dx=x-orgx;
+            orgx=this.getNum(node,"x"),
+            orgy=this.getNum(node,"y"),
+            dx=x-orgx,
             dy=y-orgy;
         this.setNum(node,"x",x);
         this.setNum(node,"y",y);
@@ -145,7 +145,7 @@ function SVG(template) {
             lines = ("" + text).split("\n"),
             tspan = subnode.querySelector("tspan"),
             style = tspan.getAttribute("style"),
-            height = subnode.offsetHeight,
+            _height = subnode.offsetHeight,
             x = this.getNum(tspan,"x"),
             y = this.getNum(tspan,"y");
         y -= (LH * (lines.length - 1)) / 2;
@@ -183,8 +183,8 @@ function SVG(template) {
 
         const svgElement = node.firstElementChild;
         svgElement.getBoundingClientRect();
-        const width = svgElement.width.baseVal.value;
-        const height = svgElement.height.baseVal.value;
+        const _width = svgElement.width.baseVal.value;
+        const _height = svgElement.height.baseVal.value;
 
         const doc = new jspdf.jsPDF({
             orientation: 'l',

@@ -44,7 +44,7 @@ var Core=function() {
 
 	function fillPlaceholders(model,seed) {
 		var
-			year=new Date().getFullYear();
+			year=new Date().getFullYear(),
 			strSeed=seed+"";
 
 		while (strSeed.length<PADSEED) strSeed="0"+strSeed;
@@ -69,10 +69,10 @@ var Core=function() {
 		} else {
 			if (DATABASES[pos]) {
 				var tag = document.createElement('script');
-			    tag.setAttribute("src",DATABASES[pos]+"?"+ts);
-			    tag.setAttribute("async", "false");
-			    tag.onload =(e)=>this.initialize(cb,pos+1,ts);
-			    document.head.firstElementChild.appendChild(tag);
+				tag.setAttribute("src",DATABASES[pos]+"?"+ts);
+				tag.setAttribute("async", "false");
+				tag.onload =(_e)=>this.initialize(cb,pos+1,ts);
+				document.head.firstElementChild.appendChild(tag);
 			} else {
 				// Load databases
 				QUESTS_SUB=loadQuestsSub();
@@ -97,10 +97,10 @@ var Core=function() {
 	}
 
 	this.generateAdventureDaily=function(daysdelta) {
+		daysdelta=daysdelta||0;
 		var
-			daysdelta=daysdelta||0,
 			date=new Date(),
-			seed=Math.floor(date.getTime()/86400000)+daysdelta;
+			seed=Math.floor(date.getTime()/86400000)+daysdelta,
 			generator=this.generateAdventureById(seed);
 
 		generator.coreMetadata={
@@ -129,12 +129,12 @@ var Core=function() {
 		// 1 room
 		var room=dunggen.addRoom(0,0,3,3,false,true);
 		room.addItem(1,1,{id:"stairs"});
-		for (var i=0;i<4;i++) { // 12 rooms
+		for (let i=0;i<4;i++) { // 12 rooms
 			dunggen.addRoom(0,0,4,4); // 4 empty
 			dunggen.addRoom(0,0,3,5); // 3 empty
 			dunggen.addRoom(0,0,5,3); // 3 empty
 		}
-		for (var i=0;i<3;i++) { // 6 random corridors
+		for (let i=0;i<3;i++) { // 6 random corridors
 			dunggen.addRoom(0,0,[2,3,4],1,true);
 			dunggen.addRoom(0,0,1,[2,3,4],true);
 		}

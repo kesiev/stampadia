@@ -28,8 +28,7 @@ var DungeonPlayer=function(dungen) {
 		var
 			offset=getOffset(0,0,sheet,node),
 			html=document.documentElement,
-			node=document.getElementById(id),
-			bounds=node.getBoundingClientRect(),
+			bounds=document.getElementById(id).getBoundingClientRect(),
 			dx=(token.offsetWidth-bounds.width)/2,
 			dy=(token.offsetHeight-bounds.height)/2;
 		token.style.left=(bounds.left+ window.pageXOffset-html.clientLeft-offset.left-dx)+"px";
@@ -102,7 +101,7 @@ var DungeonPlayer=function(dungen) {
 				}
 			}
 
-			document.onmouseup=function(e) {
+			document.onmouseup=function(_e) {
 				pen=0;
 				dragging=0;
 			}
@@ -129,9 +128,8 @@ var DungeonPlayer=function(dungen) {
 
 			// Dice and tokens
 
-			var
-				dragging=false,
-				tokens=[];
+			dragging=false;
+			var tokens=[];
 
 			for (var i=0;i<4;i++) {
 				var token=document.createElement("div");
