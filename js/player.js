@@ -101,7 +101,7 @@ var DungeonPlayer=function(dungen) {
 				}
 			}
 
-			document.onmouseup=function(_e) {
+			document.onmouseup=function() {
 				pen=0;
 				dragging=0;
 			}
@@ -128,7 +128,6 @@ var DungeonPlayer=function(dungen) {
 
 			// Dice and tokens
 
-			dragging=false;
 			var tokens=[];
 
 			for (var i=0;i<4;i++) {

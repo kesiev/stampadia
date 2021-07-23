@@ -356,7 +356,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=formatRandomizers(line);
 		
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
-			line=line.replace(placeholder.regex,function (_line,_match){
+			line=line.replace(placeholder.regex,function (){
 				var matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
@@ -386,7 +386,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=formatRandomizers(line);
 
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
-			line=line.replace(placeholder.regex,function (_line,_match){
+			line=line.replace(placeholder.regex,function (){
 				var matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
@@ -649,7 +649,6 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.getRoutes=function() {
 		var
-			_paths=[],
 			roomsIndex={},
 			routes=[];
 
@@ -746,7 +745,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		questsStructure.forEach(entry=>{
 			for (var i=0;i<entry.count;i++)
-				if (quest==this.addQuest(quests[entry.questType],addedQuests)) addedQuests.push(quest);
+				if (quest=this.addQuest(quests[entry.questType],addedQuests)) addedQuests.push(quest);
 		});
 	}
 
@@ -1264,7 +1263,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			this.prepare();
 
 			var template=new SVGTemplate("svg/model.svg?"+Math.random());
-			template.load(_xml=>{
+			template.load(()=>{
 				svg=new SVG(template);
 
 				// Draw & prepare empty grid
