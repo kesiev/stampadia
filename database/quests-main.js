@@ -261,5 +261,60 @@ function loadQuestsMain() {
 				}
 			]
 		},
+
+		// Return an item to NPC, unlock the boss and fight.
+		{
+			minRooms:4,
+			adventureTitle:[
+				"The Lost {documentName}",
+				"The {documentName}",
+				"The {explorerName}",
+				"The Missing {explorerName}",
+				"The {placeName} Mystery"
+			],
+			steps:[
+				{
+					id:"npcRoom",
+					atPercentage:10,
+					items:[{genericItem:"npc"}],
+					roomDescriptions:[
+						[
+							"{ifMoveOn:npc}{then}{explorerName}: 'I'm looking for the lost {documentName}! Please, help!'",
+							"{ifMoveOn:npc}{and}{ifRoomIsMarked:itemRoom}{then}'Oh, no! It says the {villainName} is hiding here!', {markRoom:npcRoom}"
+						]
+					]
+				},
+				{
+					id:"itemRoom",
+					atPercentage:60,
+					items:[{genericItem:"item"},{id:"enemy",level:1}],
+					roomDescriptions:[
+						[ "{ifMoveOn:item}{and}{ifRoomIsNotMarked:itemRoom}{then}You've found the {documentName}, {markRoom:itemRoom}, {markItem:item}" ]
+					]
+				},
+				{
+					id:"bossRoom",
+					atPercentage:100,
+					items:[{id:"enemy",level:3,isFinalBoss:true}],
+					roomDescriptions:[
+						[
+							"{ifRoomIsNotMarked:npcRoom}{then}{roomIsEmpty}, {stopReading}",
+							"{randomBossEntrance}, {markRoom:startingRoom}, {cantLeave}"
+						]
+					]
+				}
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"\"The {explorerName} disappeared days ago. We're worried...\"",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
+						]
+					]
+				}
+			]
+		},
 	]
 }

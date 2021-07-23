@@ -65,6 +65,20 @@ function loadPlaceholders() {
 			"Catacomb",
 			"Borough",
 			"Mill"
+		],
+		explorerName:[
+			"Archaeologist",
+			"Explorer",
+			"Spy",
+			"Hunter",
+			"Scholar",
+			"Detective"
+		],
+		documentName:[
+			"Scroll",
+			"Inscription",
+			"Document",
+			"Message"
 		]
 	};
 }
