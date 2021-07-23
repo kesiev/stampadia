@@ -45,8 +45,7 @@ function SVG(template) {
                 height:2
             }
         },
-        node = document.createElement("div"),
-        _svg = "no";
+        node = document.createElement("div");
 
     node.innerHTML = template.getSVG();
 
@@ -145,7 +144,6 @@ function SVG(template) {
             lines = ("" + text).split("\n"),
             tspan = subnode.querySelector("tspan"),
             style = tspan.getAttribute("style"),
-            _height = subnode.offsetHeight,
             x = this.getNum(tspan,"x"),
             y = this.getNum(tspan,"y");
         y -= (LH * (lines.length - 1)) / 2;
@@ -183,8 +181,6 @@ function SVG(template) {
 
         const svgElement = node.firstElementChild;
         svgElement.getBoundingClientRect();
-        const _width = svgElement.width.baseVal.value;
-        const _height = svgElement.height.baseVal.value;
 
         const doc = new jspdf.jsPDF({
             orientation: 'l',
