@@ -128,8 +128,8 @@ function loadQuestsMalus() {
 		// Random trap room
 		{
 			steps:[{id:"trap",atPercentage:100,roomDescriptions:[
-				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDice}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
-				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDice}{range:1-2} {loseHp:2}, {range:3-6} {nothing}" ]
+				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDie}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
+				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDie}{range:1-2} {loseHp:2}, {range:3-6} {nothing}" ]
 			]}]
 		},
 	];
