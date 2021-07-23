@@ -1,4 +1,5 @@
-var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
+
+const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	const
 		ROOMPLACEHOLDERS=[
@@ -32,8 +33,8 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			}
 		];
 
-	var
-		originalSeed=seed=seed||Math.random(),
+	const originalSeed=seed=seed||Math.random();
+	let
 		hero,
 		heroModel,
 		heroModels,
@@ -134,9 +135,9 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	function shuffleArray(arr) {
-		for (var i=0;i<10;i++)
-			for (var fid=0;fid<arr.length;fid++) {
-				var
+		for (let i=0;i<10;i++)
+			for (let fid=0;fid<arr.length;fid++) {
+				const
 					tid=getRandomId(arr),
 					from=arr[fid];
 				arr[fid]=arr[tid];
@@ -153,7 +154,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	function setCheckBox(svg,checkbox,number) {
-		var
+		const
 			x=svg.getNum(checkbox,"x"),
 			y=svg.getNum(checkbox,"y"),
 			width=svg.getNum(checkbox,"width"),
@@ -286,10 +287,10 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		if (!path) path=[];
 		path.push(room.id);
 		if (room.isStartingRoom) return path; else {
-			var subpaths=[];
+			const subpaths=[];
 			room.exits.forEach(exit=>{
 				if (path.indexOf(exit.toRoom.id)==-1) {
-					var shortest=shortestPath(exit.toRoom,clone(path));
+					const shortest=shortestPath(exit.toRoom,clone(path));
 					if (shortest) subpaths.push(shortest);
 				}
 			});
@@ -300,7 +301,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	function formatRandomizers(line) {
 		return line.replace(/\{([^}]*)\}/g,(m,match)=>{
-			var
+			const
 				randomizerIds=match.split("+"),
 				randomizerPool=[];
 
@@ -309,9 +310,9 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			});
 
 			if (randomizerPool.length) {
-				var randomizerId=getRandom(randomizerPool);
+				const randomizerId=getRandom(randomizerPool);
 				if (randomizers[randomizerId].length==0) randomizers[randomizerId]=clone(originalRandomizers[randomizerId]);
-				var randomizerIndex=getRandomId(randomizers[randomizerId]),
+				const randomizerIndex=getRandomId(randomizers[randomizerId]),
 					randomizer=randomizers[randomizerId][randomizerIndex];
 				randomizers[randomizerId].splice(randomizerIndex,1);
 				return randomizer;
@@ -343,7 +344,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
 		line=line.replace(/\{payGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
 
-		for (var k in globalPlaceholders)
+		for (const k in globalPlaceholders)
 			line=line.replaceAll("{"+k+"}",globalPlaceholders[k]);
 
 		return line;
@@ -351,13 +352,13 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	function formatFakeDescriptionLine(line) {
 
-		var placeholders={roomIds:{},itemIds:{}};
+		const placeholders={roomIds:{},itemIds:{}};
 
 		line=formatRandomizers(line);
 		
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
-				var matches=arguments;
+				const matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
 						case "room":{
@@ -387,7 +388,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
-				var matches=arguments;
+				const matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
 						case "room":{
@@ -419,7 +420,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	// Rooms
 
-	var Room=function(x,y,width,height,isCorridor,isStartingRoom) {
+	const Room=function(x,y,width,height,isCorridor,isStartingRoom) {
 		this.x=x;
 		this.y=y;
 		this.width=width;
@@ -432,7 +433,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		this.description=[];
 
 		this.addItem=function(x,y,item) {
-			var id=x+","+y;
+			const id=x+","+y;
 			if (this.occupiedSpaces[id]) {
 				if ((item.id!="entrance")||(this.occupiedSpaces[id].id!="entrance"))
 					console.warn("Conflicting space in room",this," @",x,",",y,"want place",item,"but there is",this.occupiedSpaces[id]);
@@ -449,10 +450,10 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		}
 
 		this.getFreeSpaces=function() {
-			var list=[];
-			for (var y=0;y<this.height;y++)
-				for (var x=0;x<this.width;x++) {
-					var id=x+","+y;
+			const list=[];
+			for (let y=0;y<this.height;y++)
+				for (let x=0;x<this.width;x++) {
+					const id=x+","+y;
 					if (!this.occupiedSpaces[id]) list.push({x:x,y:y});
 				}
 			return list;
@@ -479,7 +480,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		}
 
 		this.removeRooms=function(rooms) {
-			var newExits=[];
+			const newExits=[];
 			this.exits.forEach(exit=>{
 				if (rooms.indexOf(exit.toRoom)==-1) newExits.push(exit);
 			})
@@ -507,7 +508,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	this.addRoom=function(x,y,width,height,isCorridor,isStartingRoom) {
-		var room=new Room(
+		const room=new Room(
 			solveRoomTemplateArgument(x),
 			solveRoomTemplateArgument(y),
 			solveRoomTemplateArgument(width),
@@ -519,18 +520,20 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.scatterRooms=function() {
 		// TODO continua per un pò a distribuire le stanze
-		var valid=false;
+		let valid=false;
 		shuffleArray(rooms);
-		for (var i=0;i<100;i++) {
-			var
-				minx=9999,
-				miny=9999,
+		let minx, miny;
+		let w, h;
+		for (let i=0;i<100;i++) {
+			minx=9999;
+			miny=9999;
+			let
 				maxx=0,
 				maxy=0,
 				angle=random(Math.PI*2);
 			for (i=0;i<rooms.length;i++) {
 				angle+=0.1+random(1);
-				var
+				let
 					ok=false,
 					room=rooms[i],
 					dx=Math.sin(angle),
@@ -542,7 +545,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 				while (!ok) {
 					ok=true;
-					for (var j=0;j<i;j++)
+					for (let j=0;j<i;j++)
 						if (roomsCollide(room,rooms[j])) {
 							ok=false;
 							break;
@@ -565,9 +568,8 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				if (room.x+room.width>maxx) maxx=room.x+room.width;
 				if (room.y+room.height>maxy) maxy=room.y+room.height;
 			}
-			var
-				w=maxx-minx,
-				h=maxy-miny;
+			w=maxx-minx;
+			h=maxy-miny;
 			valid=((w<=mapwidth)&&(h<=mapheight));
 			if (valid) break;				
 		}
@@ -584,25 +586,25 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	this.assignIdRooms=function() {
-		var ids=[];
+		const ids=[];
 
-		for (var i=0;i<roomIds;i++) ids.push(i);
+		for (let i=0;i<roomIds;i++) ids.push(i);
 		shuffleArray(ids);
 
 		rooms.forEach((room,index)=>room.setId(ids[index]));
 	}
 
 	this.prepareExits=function() {
-		var
+		const
 			exits={},
 			newRooms=[];
 		rooms.forEach(room=>{
 			// Detect doors
-			for (var x=room.x;x<room.x+room.width;x++)
-				for (var y=room.y;y<room.y+room.height;y++) {
+			for (let x=room.x;x<room.x+room.width;x++)
+				for (let y=room.y;y<room.y+room.height;y++) {
 					rooms.forEach(roomto=>{
 						if (room!==roomto) {
-							var exitid=Math.min(room.id,roomto.id)+"-"+Math.max(room.id,roomto.id);
+							const exitid=Math.min(room.id,roomto.id)+"-"+Math.max(room.id,roomto.id);
 							if (!exits[exitid]) exits[exitid]=[];
 							if (inRoom(x-1,y,roomto)) exits[exitid].push({from:{room:room,x:x,y:y},to:{room:roomto,x:x-1,y:y},sides:["left","right"]});
 							if (inRoom(x+1,y,roomto)) exits[exitid].push({from:{room:room,x:x,y:y},to:{room:roomto,x:x+1,y:y},sides:["right","left"]});
@@ -612,9 +614,9 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					})
 				}
 		});
-		for (var k in exits) {
+		for (const k in exits) {
 			if (exits[k].length) {
-				var exit=getRandom(exits[k]);
+				const exit=getRandom(exits[k]);
 				exit.from.room.addExit(exit.to.x,exit.to.y,exit.sides[0],exit.to.room);
 				exit.to.room.addExit(exit.from.x,exit.from.y,exit.sides[1],exit.from.room);
 			}
@@ -630,10 +632,10 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	this.optimizeIds=function() {
-		var min=10000;
+		let min=10000;
 		allRooms.forEach(room=>{
 			room.exits.forEach(exit=>{
-				var number=getCellValue(exit.x,exit.y,exit.toRoom);
+				const number=getCellValue(exit.x,exit.y,exit.toRoom);
 				if (number<min) min=number;
 			});
 		});
@@ -648,7 +650,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Quests
 
 	this.getRoutes=function() {
-		var
+		const
 			roomsIndex={},
 			routes=[];
 
@@ -660,11 +662,11 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		})
 		rooms.forEach(room=>{
 			if (!room.isStartingRoom) {
-				var
+				const
 					path=shortestPath(room),
 					route=[];
 				path.forEach(roomid=>{
-					var indexnode=roomsIndex[roomid];
+					const indexnode=roomsIndex[roomid];
 					if (
 						!indexnode.room.isStartingRoom&&
 						indexnode.freeSpaces.length
@@ -679,7 +681,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.getQuestSubroute=function(route,quest) {
 		// Decide rooms
-		var
+		let
 			ok=true,
 			routeCopy=[],
 			questSubroute=[],
@@ -691,7 +693,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			route.forEach(room=>routeCopy.push(room));
 
 			quest.steps.forEach(step=>{
-				var subroute=[];
+				const subroute=[];
 				// Filter suitable rooms
 				routeCopy.forEach(room=>{
 					if (
@@ -701,7 +703,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					) subroute.push(room);
 				});
 				if (subroute.length) {
-					var pos=Math.floor((1-(step.atPercentage/100))*subroute.length);
+					const pos=Math.floor((1-(step.atPercentage/100))*subroute.length);
 					questSubroute.push(subroute[pos]);
 					routeCopy.splice(routeCopy.indexOf(subroute[pos]),1);				
 				} else ok=false;
@@ -713,15 +715,15 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.addQuest=function(set,excludeQuests) {
 
-		var
+		const
 			quests=[],
 			routes=this.getRoutes();
 
 		set.forEach(quest=>{
 			if (excludeQuests.indexOf(quest)==-1) {
-				var subroutes=[];
+				const subroutes=[];
 				routes.forEach(route=>{
-					var subroute=this.getQuestSubroute(route,quest);
+					const subroute=this.getQuestSubroute(route,quest);
 					if (subroute) subroutes.push(subroute);
 				})
 				if (subroutes.length) quests.push({subroutes:subroutes,quest:quest});
@@ -729,7 +731,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		})
 
 		if (quests.length) {
-			var
+			const
 				quest=getRandom(quests),
 				subroute=getRandom(quest.subroutes);
 			this.applyQuest(subroute,quest.quest);
@@ -739,18 +741,18 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.addQuests=function() {
 
-		var
+		let
 			quest,
 			addedQuests=[];
 
 		questsStructure.forEach(entry=>{
-			for (var i=0;i<entry.count;i++)
+			for (let i=0;i<entry.count;i++)
 				if (quest=this.addQuest(quests[entry.questType],addedQuests)) addedQuests.push(quest);
 		});
 	}
 
 	this.applyQuest=function(subroute,quest) {
-		var
+		const
 			placeholders={
 				roomIds:{},
 				itemIds:{}
@@ -766,13 +768,12 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		// Add items and prepare item labels
 		quest.steps.forEach((step,index)=>{
-			var
-				room=subroute[index],
-				genericItemId=0;
+			const room=subroute[index];
+			let genericItemId=0;
 			room.room.isBusy=true;
 			if (step.items)
 				step.items.forEach(item=>{
-					var freeSpace=getRandomId(room.freeSpaces),
+					const freeSpace=getRandomId(room.freeSpaces),
 						pos=room.freeSpaces.splice(freeSpace,1)[0];
 					if (item.genericItem) {
 						genericItemId++;
@@ -785,7 +786,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// Add room labels
 		quest.steps.forEach((step,index)=>{
 			if (step.roomDescriptions) {
-				var
+				const
 					roomDescription=getRandom(step.roomDescriptions),
 					room=subroute[index].room;
 				roomDescription.forEach(line=>{
@@ -797,7 +798,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// Add extra room labels
 		if (quest.otherDescriptions)
 			quest.otherDescriptions.forEach(line=>{
-				var
+				const
 					roomDescription=getRandom(line.roomDescriptions),
 					room=placeholders.roomIds[line.at];
 				roomDescription.forEach(line=>{
@@ -812,7 +813,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Flavor text
 
 	this.addFlavorTexts=function() {
-		var flavors=clone(flavorTexts);
+		const flavors=clone(flavorTexts);
 		allRooms.forEach(room=>{
 			if (room.description.length<2)
 				if (room.isCorridor) {
@@ -836,14 +837,14 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Obfuscation
 
 	this.addNoise=function() {
-		var
+		const
 			itemsPlaces=[],
 			itemPlacesIndex={},
 			fakeEntrancesIndex={},
 			fakeDoorsPool=[];
 
 		function addFakeEntrance(x,y) {
-			var id=x+","+y;
+			const id=x+","+y;
 			if (!fakeEntrancesIndex[id]) {
 				noise.push({id:"fakeEntrance",x:x,y:y});
 				if (itemPlacesIndex[id]) {
@@ -854,10 +855,10 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			}
 		}
 
-		for (var y=0;y<mapheight;y++)
-			for (var x=0;x<mapheight;x++) {
-				var
-					cell={x:x,y:y},
+		for (let y=0;y<mapheight;y++)
+			for (let x=0;x<mapheight;x++) {
+				const cell={x:x,y:y};
+				let
 					insideRoom=false,
 					onRoomBorderLeft=false,
 					onRoomBorderTop=false;
@@ -877,7 +878,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// Randomly add doors
 		for (let i=0;i<20;i++)
 			if (fakeDoorsPool.length) {
-				var doorIndex=getRandomId(fakeDoorsPool),
+				const doorIndex=getRandomId(fakeDoorsPool),
 					door=fakeDoorsPool[doorIndex];
 				fakeDoorsPool.splice(doorIndex,1);
 				noise.push(door);
@@ -888,7 +889,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// Randomly add items
 		for (let i=0;i<20;i++)
 			if (itemsPlaces.length) {
-				var positionIndex=getRandomId(itemsPlaces),
+				const positionIndex=getRandomId(itemsPlaces),
 					position=itemsPlaces[positionIndex];
 				itemsPlaces.splice(positionIndex,1);
 				switch (getRandom(["fakeEnemy","fakeGenericItem"])) {
@@ -907,10 +908,10 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	this.addFakeRooms=function() {
-		var
+		const
 			fakeDescriptions=[];
 
-		for (var k in quests) {
+		for (const k in quests) {
 			quests[k].forEach(quest=>{
 				quest.steps.forEach(step=>{
 					step.roomDescriptions.forEach(description=>{
@@ -929,7 +930,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		fakeRooms.forEach(room=>{
 			room.makeFake();
-			var description=getRandom(fakeDescriptions);
+			const description=getRandom(fakeDescriptions);
 			description.forEach(line=>{
 				room.description.push((debug&&debug.showFake?"[FAKE] ":"")+formatFakeDescriptionLine(line))
 			})
@@ -954,7 +955,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Hero
 
 	this.generateHero=function() {
-		var			
+		let			
 			dungeonXp=0,
 			dungeonEnemies=0;
 			
@@ -978,7 +979,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			})
 		});
 
-		var maxHp=dungeonEnemies*damageRatio;
+		const maxHp=dungeonEnemies*damageRatio;
 
 		// Generate skills
 		heroModel.skills.forEach((skill,index)=>{
@@ -998,7 +999,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Global placeholders
 
 	this.prepareGlobalPlaceholders=function() {
-		for (var k in placeholderModels)
+		for (const k in placeholderModels)
 			globalPlaceholders[k]=getRandom(placeholderModels[k]);
 	}
 
@@ -1049,23 +1050,23 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Renderers
 
 	this.debug=function() {
-		var
+		const
 			CELLSIZE=30,
 			HCELLSIZE=CELLSIZE/2,
 			canvas=document.createElement("canvas"),
-			div=document.createElement("div"),
-			table="<table border=1>";
+			div=document.createElement("div");
+		let table="<table border=1>";
 
 		canvas.style.border="2px solid #ccc";
 		canvas.width=mapwidth*CELLSIZE;
 		canvas.height=mapheight*CELLSIZE;
 
-		var ctx=canvas.getContext("2d");
+		const ctx=canvas.getContext("2d");
 
 		this.prepare();
 
 		noise.forEach(item=>{
-			var
+			const
 				x=item.x,
 				y=item.y,
 				px=x*CELLSIZE,
@@ -1093,7 +1094,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		});
 
 		noise.forEach(item=>{
-			var
+			const
 				x=item.x,
 				y=item.y,
 				px=x*CELLSIZE,
@@ -1134,7 +1135,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			
 			table+="<td>";
 			room.exits.forEach(exit=>{
-				var
+				const
 					px=exit.x*CELLSIZE,
 					py=exit.y*CELLSIZE;
 				table+="@"+exit.x+","+exit.y+" door "+getCellValue(exit.x,exit.y,exit.toRoom)+" &raquo; room "+exit.toRoom.id+"<br>";
@@ -1165,7 +1166,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			table+="</tr>";
 
 			room.items.forEach(item=>{
-				var
+				const
 					x=room.x+item.x,
 					y=room.y+item.y,
 					px=x*CELLSIZE,
@@ -1230,13 +1231,13 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			document.write("<body>");
 
 			// Print
-			var div=document.createElement("div");
+			const div=document.createElement("div");
 			div.style.display="inline-block";
 			div.innerHTML=svg.getSVG();
 			document.body.appendChild(div);
 
 			// Buttons
-			var btn=document.createElement("input");
+			let btn=document.createElement("input");
 			btn.type="button";
 			btn.value="Download PDF";
 			btn.onclick=()=>{
@@ -1262,18 +1263,18 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 			this.prepare();
 
-			var template=new SVGTemplate("svg/model.svg?"+Math.random());
+			const template=new SVGTemplate("svg/model.svg?"+Math.random());
 			template.load(()=>{
 				svg=new SVG(template);
 
 				// Draw & prepare empty grid
-				var
+				const
 					grid=[],
 					cell=svg.getById("gridCell"),
 					cellWidth=svg.getNum(cell,"width"),
 					cellHeight=svg.getNum(cell,"height");
 				for (let y=0;y<mapheight;y++) {
-					var gridrow=[];
+					const gridrow=[];
 					grid.push(gridrow);
 					for (let x=0;x<mapwidth;x++) {
 						gridrow.push(0);
@@ -1291,7 +1292,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 						svg.cloneNodeBy("gridGuide",0,x*cellWidth,y*cellHeight,cellWidth*mapGuidesEvery,cellHeight*mapGuidesEvery);
 
 				// Render rooms
-				var
+				const
 					roomDataHeight=svg.getNum(svg.getById("roomHeight"),"height"),
 					renderedDoors={};
 				rooms.forEach((room,index)=>{
@@ -1300,7 +1301,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					if (room.isStartingRoom)
 						svg.cloneNodeBy("startingRoom",0,room.x*cellWidth,room.y*cellHeight,cellWidth*room.width,cellHeight*room.height);
 					room.exits.forEach(exit=>{
-						var id=getDoorId(exit);
+						const id=getDoorId(exit);
 						if (!renderedDoors[id]) {
 							renderedDoors[id]=1;
 							switch (exit.side) {
@@ -1326,7 +1327,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 					// Render room items
 					room.items.forEach(item=>{
-						var
+						const
 							x=item.x+room.x,
 							y=item.y+room.y,
 							px=x*cellWidth,
@@ -1338,12 +1339,12 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 								break;
 							}
 							case "enemy":{
-								var enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
+								const enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
 								setCheckBox(svg,svg.getById("gridEnemyLevel",enemy),item.level);
 								break;
 							}
 							case "genericItem":{
-								var genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
+								const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
 								svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
 								break;
 							}
@@ -1355,7 +1356,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					});
 
 					// Render rooms list
-					var roomData=svg.cloneNodeBy("roomData",0,0,roomDataHeight*index);
+					const roomData=svg.cloneNodeBy("roomData",0,0,roomDataHeight*index);
 					if (room.isStartingRoom) {
 						svg.delete(svg.getById("roomCoords",roomData),roomData);
 						svg.setId(svg.getById("roomHeight",roomData),"list-stairs");
@@ -1370,9 +1371,9 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				});
 
 				// Render hero
-				var tierWidth=svg.getNum(svg.getById("heroBox"),"width");
+				let tierWidth=svg.getNum(svg.getById("heroBox"),"width");
 				hero.skills.forEach((tier,index)=>{
-					var skillTier=svg.cloneNodeBy("heroTier",0,tierWidth*index,0);
+					const skillTier=svg.cloneNodeBy("heroTier",0,tierWidth*index,0);
 					svg.setText(svg.getById("heroSkillUp",skillTier),tier.skills[0]||"");
 					svg.setText(svg.getById("heroSkillDown",skillTier),tier.skills[1]||"");
 					svg.setText(svg.getById("heroDefense",skillTier),hero.defense[index]?"+"+hero.defense[index]+" DEF":"-");
@@ -1383,7 +1384,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				// Render enemies
 				tierWidth=svg.getNum(svg.getById("enemyBox"),"width");
 				enemies.forEach((enemy,index)=>{
-					var skillTier=svg.cloneNodeBy("enemyTier",0,tierWidth*index,0);
+					const skillTier=svg.cloneNodeBy("enemyTier",0,tierWidth*index,0);
 					if (index==0) svg.delete(svg.getById("enemySymbol",skillTier));
 					else svg.delete(svg.getById("enemyOutline",skillTier));
 					svg.setText(svg.getById("enemySkillUp",skillTier),enemy.skills[0]||"");
@@ -1395,7 +1396,7 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 				// Render noise
 				noise.forEach(item=>{
-					var
+					const
 						x=item.x,
 						y=item.y,
 						px=x*cellWidth,
@@ -1406,12 +1407,12 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 							break;
 						}
 						case "fakeEnemy":{
-							var enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
+							const enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
 							setCheckBox(svg,svg.getById("gridEnemyLevel",enemy),item.level);
 							break;
 						}
 						case "fakeGenericItem":{
-							var genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
+							const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
 							svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
 							break;
 						}
@@ -1427,14 +1428,14 @@ var DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				});
 
 				// Render gold
-				var goldSize=svg.getNum(svg.getById("goldLeft"),"width")+0.55;
-				for (var i=0;i<gold;i++)
+				const goldSize=svg.getNum(svg.getById("goldLeft"),"width")+0.55;
+				for (let i=0;i<gold;i++)
 					svg.cloneNodeBy("goldLeft",0,goldSize*i,0);
 
 				// Render services
-				var serviceHeight=svg.getNum(svg.getById("serviceCheckbox"),"width")+1.2;
+				const serviceHeight=svg.getNum(svg.getById("serviceCheckbox"),"width")+1.2;
 				services.forEach((service,index)=>{
-					var line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight);
+					const line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight);
 					svg.setText(svg.getById("serviceName",line),service);
 				});
 

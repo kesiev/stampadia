@@ -7,7 +7,7 @@ function loadQuestsBonus() {
 			{cost:5,effect:"{gainXp:1}"},
 		];
 
-	var SHOP=[];
+	const SHOP=[];
 
 	SHOPITEMS.forEach(item=>{
 		SHOP.push([ "{ifMoveOn:item}{and}{payGold:"+item.cost+"}{then}{randomShopKeeper}, "+item.effect+", {markItem:item}"]);

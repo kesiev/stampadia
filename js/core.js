@@ -1,5 +1,5 @@
 
-var Core=function() {
+const Core=function() {
 
 	const
 		DATABASES=[
@@ -27,7 +27,7 @@ var Core=function() {
 		WEBFOOTER='Best on Firefox/Chrome &dash; <a class=mark href="index.html">{projectName}</a> v{version} &dash; &copy; {rangeYear} by KesieV &dash; Sources at <a class=mark href="https://{sourcesPage}">{sourcesPage}</a>';
 
 	// Databases
-	var
+	let
 		QUESTS_SUB,
 		RANDOMIZERS,
 		ENEMYMODELS,
@@ -43,13 +43,12 @@ var Core=function() {
 		initialize;
 
 	function fillPlaceholders(model,seed) {
-		var
-			year=new Date().getFullYear(),
-			strSeed=seed+"";
+		const year=new Date().getFullYear();
+		let strSeed=seed+"";
 
 		while (strSeed.length<PADSEED) strSeed="0"+strSeed;
 
-		for (var k in METADATA)
+		for (const k in METADATA)
 			model=model.replaceAll("{"+k+"}",METADATA[k]);
 		model=model.replaceAll("{seed}",strSeed);
 		if (year==METADATA.year)
@@ -68,7 +67,7 @@ var Core=function() {
 			}
 		} else {
 			if (DATABASES[pos]) {
-				var tag = document.createElement('script');
+				const tag = document.createElement('script');
 				tag.setAttribute("src",DATABASES[pos]+"?"+ts);
 				tag.setAttribute("async", "false");
 				tag.onload =(_e)=>this.initialize(cb,pos+1,ts);
@@ -98,7 +97,7 @@ var Core=function() {
 
 	this.generateAdventureDaily=function(daysdelta) {
 		daysdelta=daysdelta||0;
-		var
+		const
 			date=new Date(),
 			seed=Math.floor(date.getTime()/86400000)+daysdelta,
 			generator=this.generateAdventureById(seed);
@@ -112,22 +111,20 @@ var Core=function() {
 
 	this.generateAdventureById=function(seed,debug) {
 
-		var
-			footer,
-			maxSeed=Math.pow(10,PADSEED);
+		const maxSeed=Math.pow(10,PADSEED);
 
 		seed=seed||Math.floor(Math.random()*maxSeed);
 
 		// Prepare footer
-		footer=fillPlaceholders(PRINTFOOTER,seed);
+		let footer=fillPlaceholders(PRINTFOOTER,seed);
 
 		// Set dungeon size
-		var dunggen=new DungeonGenerator(20,20,seed,debug);
+		const dunggen=new DungeonGenerator(20,20,seed,debug);
 
 		// Set rooms
 
 		// 1 room
-		var room=dunggen.addRoom(0,0,3,3,false,true);
+		const room=dunggen.addRoom(0,0,3,3,false,true);
 		room.addItem(1,1,{id:"stairs"});
 		for (let i=0;i<4;i++) { // 12 rooms
 			dunggen.addRoom(0,0,4,4); // 4 empty

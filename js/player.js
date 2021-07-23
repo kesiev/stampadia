@@ -1,4 +1,4 @@
-var DungeonPlayer=function(dungen) {
+const DungeonPlayer=function(dungen) {
 
 	const
 		TOKENSIZE=25,
@@ -25,7 +25,7 @@ var DungeonPlayer=function(dungen) {
 	}
 
 	function moveTokenOver(token,id,node,sheet) {
-		var
+		const
 			offset=getOffset(0,0,sheet,node),
 			html=document.documentElement,
 			bounds=document.getElementById(id).getBoundingClientRect(),
@@ -40,7 +40,7 @@ var DungeonPlayer=function(dungen) {
 		dungen.createSVG(svg=>{
 
 			// Sheet
-			var
+			const
 				sheet=document.createElement("div");
 
 			sheet.className="sheet";
@@ -49,14 +49,15 @@ var DungeonPlayer=function(dungen) {
 			node.appendChild(sheet);
 
 			// Blackboard
-			var
-				pen=0,
-				dragging=0,
+			const
 				canvas=document.createElement("canvas"),
-				x1,y1,
 				context=canvas.getContext("2d"),
 				sheetWidth=sheet.offsetWidth,
 				sheetHeight=sheet.offsetHeight;
+			let 
+				pen=0,
+				dragging=0,
+				x1,y1;
 
 			canvas.style.position="absolute";
 			canvas.style.left=0;
@@ -67,17 +68,17 @@ var DungeonPlayer=function(dungen) {
 			sheet.appendChild(canvas);
 
 			function line(x1,y1,x2,y2,ink) {
-				var
+				let
 					dx=(x2-x1),
-					dy=(y2-y1),
-					DELTA=Math.max(Math.abs(dx),Math.abs(dy));
+					dy=(y2-y1);
+				const DELTA=Math.max(Math.abs(dx),Math.abs(dy));
 				
 				dx/=DELTA;
 				dy/=DELTA;
 
 				context.globalCompositeOperation = ink.composition;
 				context.fillStyle = ink.color;
-				for (var i=0;i<DELTA;i++) {
+				for (let i=0;i<DELTA;i++) {
 					context.beginPath();
 					context.arc(x1, y1, ink.width, 0, 2 * Math.PI, false);
 					context.fill();
@@ -128,10 +129,10 @@ var DungeonPlayer=function(dungen) {
 
 			// Dice and tokens
 
-			var tokens=[];
+			const tokens=[];
 
-			for (var i=0;i<4;i++) {
-				var token=document.createElement("div");
+			for (let i=0;i<4;i++) {
+				const token=document.createElement("div");
 				tokens.push(token);
 				token.className="token token-"+i;
 				token.style.width=TOKENSIZE+"px"
@@ -167,8 +168,8 @@ var DungeonPlayer=function(dungen) {
 			}
 			document.onmousemove=function(e) {
 				if (dragging&&((e.target==canvas)||(e.target==dragging))) {
-					var
-						offset=getOffset(e.offsetX,e.offsetY,e.target,dragging.parentNode),
+					const offset=getOffset(e.offsetX,e.offsetY,e.target,dragging.parentNode);
+					let
 						px=offset.left-dragging._dx,
 						py=offset.top-dragging._dy;
 
