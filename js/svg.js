@@ -1,10 +1,10 @@
 function SVGTemplate(file) {
 
-    var
+    let
         template;
 
     this.load = (cb) => {
-        var xmlhttp = new XMLHttpRequest();
+        const xmlhttp = new XMLHttpRequest();
         if (cb)
             xmlhttp.onreadystatechange = function() {
                 if (xmlhttp.readyState == 4)
@@ -24,7 +24,7 @@ function SVGTemplate(file) {
 
 function SVG(template) {
 
-    var
+    const
         SIZEMAP={
             circle:{
                 width:"r",
@@ -70,10 +70,10 @@ function SVG(template) {
     this.setClassName = (node,className) => node.setAttribute("class",className);
 
     this.cloneNodeBy = (id,newid,x,y,w,h) => {
-        var org;
+        let org;
         if (typeof id == "string") org=this.getById(id);
         else org=id;
-        var copy=this.copyNode(org);
+        const copy=this.copyNode(org);
         if (newid) this.setId(copy,newid);
         this.moveNodeAt(copy,this.getNum(org,"x")+x,this.getNum(org,"y")+y);
         if (w!==undefined) this.resizeNode(copy,w,h);
@@ -82,7 +82,7 @@ function SVG(template) {
     }
 
     this.copyNode = (node) => {
-        var copy = this.createNode(node.tagName);
+        const copy = this.createNode(node.tagName);
         ["x","y","width","height","style","cx","cy","r","d","class"].forEach(attr=>{
             if (node.getAttribute(attr)) copy.setAttribute(attr,node.getAttribute(attr));
         });       
@@ -91,7 +91,7 @@ function SVG(template) {
     }
 
     this.moveNodeAt = (node,x,y) => {
-        var
+        const
             orgx=this.getNum(node,"x"),
             orgy=this.getNum(node,"y"),
             dx=x-orgx,
@@ -103,7 +103,7 @@ function SVG(template) {
             node.querySelectorAll("rect"),
             node.querySelectorAll("circle")
         ].forEach(nodes=>{
-            for (var i=0;i<nodes.length;i++) {
+            for (let i=0;i<nodes.length;i++) {
                 this.setNum(nodes[i],"x",this.getNum(nodes[i],"x")+dx);
                 this.setNum(nodes[i],"y",this.getNum(nodes[i],"y")+dy);     
             }
@@ -128,7 +128,7 @@ function SVG(template) {
     }
 
     this.deleteById = (id) => {
-        var subnode = this.getById(id);
+        let subnode = this.getById(id);
         if (!subnode) subnode = node.querySelector("[inkscape\\:label=\"" + id + "\"]");
         if (subnode) this.delete(subnode);
     }
@@ -139,17 +139,17 @@ function SVG(template) {
     }
 
     this.setText = (subnode, text) => {
-        var
+        const
             LH = 3.5,
             lines = ("" + text).split("\n"),
             tspan = subnode.querySelector("tspan"),
             style = tspan.getAttribute("style"),
-            x = this.getNum(tspan,"x"),
-            y = this.getNum(tspan,"y");
+            x = this.getNum(tspan,"x");
+        let y = this.getNum(tspan,"y");
         y -= (LH * (lines.length - 1)) / 2;
         subnode.innerHTML = "";
         lines.forEach(line => {
-            var span = this.createNode("tspan");
+            const span = this.createNode("tspan");
             this.setAttributeNumber(span, "x", x);
             this.setAttributeNumber(span, "y", y);
             span.setAttribute("style", style);
@@ -161,13 +161,13 @@ function SVG(template) {
     }
 
     this.download = (filename) => {
-        var a = document.createElement("a");
+        const a = document.createElement("a");
         document.body.appendChild(a);
         a.style.display = "none";
-        var blob = new Blob([this.getSVG()], {
+        const blob = new Blob([this.getSVG()], {
             type: "image/svg+xml"
         });
-        var url = window.URL.createObjectURL(blob);
+        const url = window.URL.createObjectURL(blob);
         a.href = url;
         a.download = filename;
         a.click();
