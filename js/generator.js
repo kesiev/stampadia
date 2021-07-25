@@ -746,9 +746,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			addedQuests=[];
 
 		questsStructure.forEach(entry=>{
-			for (let i=0;i<entry.count;i++)
-				if (quest=this.addQuest(quests[entry.questType],addedQuests)) addedQuests.push(quest);
+			for (let i=0;i<entry.count;i++) {
+				quest=this.addQuest(quests[entry.questType],addedQuests);
+				if (quest) addedQuests.push(quest);
+			}
 		});
+
 	}
 
 	this.applyQuest=function(subroute,quest) {
