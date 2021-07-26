@@ -1,3 +1,5 @@
+/* exported loadQuestsBonus loadQuestsMalus */
+
 function loadQuestsBonus() {
 
 	const

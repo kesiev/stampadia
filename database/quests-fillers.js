@@ -1,3 +1,4 @@
+/* exported loadQuestsEasyFillers loadQuestsMediumFillers loadQuestsHardFillers */
 
 function loadQuestsEasyFillers() {
 	return [

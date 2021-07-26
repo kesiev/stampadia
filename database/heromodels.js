@@ -1,3 +1,5 @@
+/* exported loadHeroModels */
+
 function loadHeroModels() {
 	return [
 		{

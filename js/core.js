@@ -1,3 +1,5 @@
+/* globals DungeonGenerator loadQuestsSub loadRandomizers loadEnemyModels loadFlavorTexts loadHeroModels loadPlaceholders loadQuestsBonus loadQuestsMalus loadQuestsEasyFillers loadQuestsMediumFillers loadQuestsHardFillers loadQuestsMain */
+/* exported Core */
 
 const Core=function() {
 

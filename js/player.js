@@ -1,3 +1,5 @@
+/* exported DungeonPlayer */
+
 const DungeonPlayer=function(dungen) {
 
 	const

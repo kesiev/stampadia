@@ -1,3 +1,6 @@
+/* globals jspdf */
+/* exported SVGTemplate SVG */
+
 function SVGTemplate(file) {
 
     let

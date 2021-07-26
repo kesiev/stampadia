@@ -1,0 +1,22 @@
+{
+  "name": "stampadia",
+  "version": "1.0.0",
+  "description": "<div align=\"center\"><p><img src=\"markdown/logo-outline.png\"></p></div><div align=\"center\" style=\"font-weight:bold\">A print-and-play roguelike with a new adventure every day!</div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kesiev/stampadia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kesiev/stampadia/issues"
+  },
+  "homepage": "https://github.com/kesiev/stampadia#readme",
+  "devDependencies": {
+    "eslint": "^7.31.0"
+  }
+}

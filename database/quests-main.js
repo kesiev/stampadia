@@ -1,3 +1,5 @@
+/* exported loadQuestsMain */
+
 function loadQuestsMain() {
 	return [
 
