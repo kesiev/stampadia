@@ -1,0 +1,128 @@
+BODY {
+	font-family: seshatregular;
+	background-color:#000;
+	color:#ccc;
+	margin: 0;
+	padding: 0;
+}
+
+#body {
+	text-align:center;
+	margin:20px 0;
+}
+
+.logo {
+	width:200px;
+	height:100px;
+	display: inline-block;
+	background-image: url(logo.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#credits {
+	padding:10px;
+	text-align: center;
+}
+
+.mark, H1 {
+	color:#fff;
+}
+
+.divider {
+	padding:0;
+	margin:40px 0;
+	height:20px;
+	background-image: url(divider.png);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.block {	
+	margin: auto;
+	width:40%;
+}
+
+.block .image {
+	margin-bottom:20px;
+}
+
+.block .preview {
+	display: inline-block;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.block .preview.manual {
+	height:150px;
+	width:100px;
+	background-image: url(manual.png);
+}
+
+.block .preview.videotutorial {
+	width:200px;
+	height:100px;
+	background-image: url(videotutorial.png);
+}
+
+.faqs {
+	background-color: #fff;
+	color:#000;
+	text-align: left;
+	border:1px solid #ccc;
+	box-shadow: 2px 2px 0px #ccc;
+	width:60%;
+	margin: auto;
+	padding: 20px;
+}
+
+.faqs .q {
+	font-weight: bold;
+	margin:10px 0;
+}
+
+.faqs .a A {
+	color:#00f;
+}
+
+@media (max-width: 600px) {
+
+	.faqs {
+		width:100%;
+		border:0;
+		box-shadow: none;
+		padding:4%;
+		width: 85%;
+
+	}
+
+	.block {
+		width: 90%;
+	}
+
+	.logo {
+		width:80%;
+	}
+
+	.divider {
+		height: 10px;
+	}
+
+	.title {
+		font-size: 30px;
+	}
+
+	#credits {
+		font-size: 10px;
+		line-height: 12px;
+	}
+
+	.block .preview.manual,
+	.block .preview.videotutorial {
+		width:80%;
+		height:100px;
+	}
+}
