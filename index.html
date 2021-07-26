@@ -18,15 +18,13 @@
 		<div class="title download" id="adventureTitle"></div>
 		<div class="ruler"></div>
 		<div class="tips">
-				All you need to play is <span class=mark>2 dice</span>, <span class=mark>a pencil</span>, <span class=mark>an eraser</span>, <span class=mark>a small button</span>, <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a>, and print <span class=download id=downloadquest>today's page of the Chronicle of Stampadia</span>. Good luck!
+				All you need to play is <span class=mark>2 dice</span>, <span class=mark>a pencil</span>, <span class=mark>an eraser</span>, <span class=mark>a small button</span>, <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a>, and print <span class=download id=downloadquest>today's page of the Chronicles of Stampadia</span>. Good luck!
 		</div>
 	</div>
 	<div id="credits"></div>
 </body><script>
 
 function onl() {
-
-	// TODO: manuale - descrivere condizioni e azioni
 
 	var core=new Core();
 
@@ -39,7 +37,7 @@ function onl() {
 		document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
 		document.getElementById("credits").innerHTML=
 			core.getWebFooter()+
-			" &dash; <a class=mark href='https://youtu.be/JlkrM9G8ccw'>A video on Stampadia basics?</a>"+
+			" &dash; <a class=mark href='learn.html'>Learn how to play</a>"+
 			" &dash; <a class=mark href='https://discord.gg/EDYP2N4RMn'>Chat on Discord</a>"+
 			" &dash; <a target=_blank class=mark href='play.html'>No printer or tokens?</a>";
 		document.getElementById("box").className="show";
