@@ -12,6 +12,14 @@ function loadRandomizers() {
 			"\"The best of the {placeName} for you!\"",
 			"\"You take. Me thanks.\""
 		],
+		randomGambler:[
+			"\"Feeling lucky, huh?\"",
+			"\"Wanna play a little game?\"",
+			"\"It looks like you like playing games, huh? Come here!\"",
+			"\"Do you want to play with me?\"",
+			"\"Let's bet, kid.\"",
+			"\"I've a little game for you!\""
+		],
 		randomTeleportation:[
 			"You disappear",
 			"You vanish into thin air",

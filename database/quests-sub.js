@@ -128,6 +128,42 @@ function loadQuestsSub() {
 					]
 				}
 			]
+		},
+
+		// The Gambler: bet Gold, roll a die and you may win more gold.
+		{
+			minRooms:3,
+			steps:[
+				{
+					id:"keyRoom",
+					atPercentage:100,
+					items:[{genericItem:"gambler"}],
+					roomDescriptions:[
+						[ 
+							"Gambler: {randomGambler}",
+							"{ifMoveOn:gambler}{and}{payGold:3}{then}{markItem:gambler}, {rollDie}{range:1-4} {nothing}, {range:5-6} {gainGold:6}"
+						]
+					]
+				}
+			]
+		},
+
+		// The Bloody Gambler: bet HP, roll a die and you may win more HP.
+		{
+			minRooms:3,
+			steps:[
+				{
+					id:"keyRoom",
+					atPercentage:100,
+					items:[{genericItem:"gambler"}],
+					roomDescriptions:[
+						[ 
+							"Bloody Gambler: {randomGambler}",
+							"{ifMoveOn:gambler}{and}{loseHp:1}{then}{markItem:gambler}, {rollDie}{range:1-3} {nothing}, {range:4-6} {gainHp:2}"
+						]
+					]
+				}
+			]
 		}
 	]
 
