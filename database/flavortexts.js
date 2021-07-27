@@ -18,6 +18,7 @@ function loadFlavorTexts() {
 			"Ink stains trickle down the stairs.",
 			"Green grass pops out between the floor tiles.",
 			"The wooden door closes behind you.",
+			"Pieces of glass, soaked by black ink, are scattered along dark corridor.",
 		],
 		rooms:[
 			"A dim light is filtering through the curtains.",
@@ -46,6 +47,8 @@ function loadFlavorTexts() {
 			"Rivolets of a thick black fluid gush from the wall of the romboid room.",
 			"A maze of mirrors hides the way out. Your trembling legs start moving...",
 			"Heap of bones lie tidy in the vault corners, attended by peaceful statues.",
+			"Amazing sea-green luminescences reflect in the almost dry pond of the cave.",
+			"Something in the room appears so familiar to you... A thrill crosses your skin.",
 		]
 	};
 }
