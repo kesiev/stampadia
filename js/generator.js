@@ -325,18 +325,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	function formatGlobalPlaceholders(line) {		
 		line=line.replaceAll("{hide}","^*v");
 		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
-		line=line.replaceAll("{ifLastEnemyKilled}","Last enemy killed");
 		line=line.replaceAll("{ifEnterRoom}","Enter room");
 		line=line.replaceAll("{ifMoveOnStairs}","Move on stairs");
 		line=line.replaceAll("{then}"," &raquo; ");
-		line=line.replaceAll("{newRule}"," &brvbar; ");
+		line=line.replaceAll("{newRule}"," | ");
 		line=line.replaceAll("{and}"," &amp; ");
 		line=line.replaceAll("{or}"," or ");
 		line=line.replaceAll("{stopReading}","stop reading");
-		line=line.replaceAll("{cantLeave}","can't leave");
+		line=line.replaceAll("{noEscape}","no escape");
 		line=line.replaceAll("{rollDie}","roll a die: ");
 		line=line.replaceAll("{nothing}","nothing happens");
-		line=line.replaceAll("{roomIsEmpty}","the room is empty");
+		line=line.replaceAll("{ifNoFoes}","no foes");
+		line=line.replaceAll("{roomIsEmpty}","room is empty");
 		line=line.replaceAll("{nameLine}","_____________________________");
 		line=line.replaceAll("{heroClass}",heroModel.heroClass);
 

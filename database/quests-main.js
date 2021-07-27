@@ -32,7 +32,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifRoomIsNotMarked:keyRoom}{then}{roomIsEmpty}, {stopReading}",
-							"{randomBossEntrance}, {markRoom:startingRoom}, {cantLeave}"
+							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 						]
 					]
 				}
@@ -73,7 +73,7 @@ function loadQuestsMain() {
 					atPercentage:100,
 					items:[{id:"enemy",level:3,isFinalBoss:true}],
 					roomDescriptions:[
-						[ "\"The {goodGuyName} will die... and you with him!\", {markRoom:startingRoom}, {cantLeave}" ]
+						[ "\"The {goodGuyName} will die... and you with him!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
 					]
 				}
 			],
@@ -110,7 +110,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"\"We will stop you at any cost!\"",
-							"{ifLastEnemyKilled}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
+							"{ifNoFoes}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
 						]
 					]
 				},
@@ -121,7 +121,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifRoomIsNotMarked:enemy1room}{then}You feel watched, {roomIsEmpty}, {stopReading}",
-							"{ifLastEnemyKilled}{then}\"Wrong move, bwahahah!\", {markRoom:enemy2room}"
+							"{ifNoFoes}{then}\"Wrong move, bwahahah!\", {markRoom:enemy2room}"
 						]
 					]
 				},
@@ -132,7 +132,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifRoomIsNotMarked:enemy2room}{then}{roomIsEmpty}, {stopReading}",
-							"\"You're wasting time. The {placeName} is mine!\", {markRoom:startingRoom}, {cantLeave}"
+							"\"You're wasting time. The {placeName} is mine!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 						]
 					]
 				}
@@ -173,7 +173,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"A sorcerer is holding a ritual.",
-							"{roomIsEmpty}{then}{hide}The ritual was interrupted,{markRoom:spellRoom}"
+							"{ifNoFoes}{then}{hide}The ritual was interrupted,{markRoom:spellRoom}"
 						]
 					]
 				},
@@ -183,7 +183,7 @@ function loadQuestsMain() {
 					items:[{id:"enemy",level:3,isFinalBoss:true}],
 					roomDescriptions:[
 						[
-							"\"I'm the {goodGuyName}... I can't control... Help me, {heroClass}!\", {markRoom:startingRoom}, {cantLeave}"
+							"\"I'm the {goodGuyName}... I can't control... Help me, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 						]
 					]
 				}
@@ -246,7 +246,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifRoomIsNotMarked:keyRoom1}{or}{ifRoomIsNotMarked:keyRoom2}{or}{ifRoomIsNotMarked:keyRoom3}{then}{roomIsEmpty}, {stopReading}",
-							"{randomBossEntrance}, {markRoom:startingRoom}, {cantLeave}"
+							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 						]
 					]
 				}
@@ -301,7 +301,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifRoomIsNotMarked:npcRoom}{then}{roomIsEmpty}, {stopReading}",
-							"{randomBossEntrance}, {markRoom:startingRoom}, {cantLeave}"
+							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 						]
 					]
 				}

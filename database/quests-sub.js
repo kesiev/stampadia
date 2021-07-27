@@ -14,8 +14,8 @@ function loadQuestsSub() {
 					items:[{id:"enemy",level:2}],
 					roomDescriptions:[
 						[									
-							"\"We are the Guardian Twins. We cannot let you pass.\", {markRoom:guardian1}, {cantLeave}",
-							"{ifLastEnemyKilled}{and}{markRoom:guardian2}{then}{gainXp:2}"
+							"\"We are the Guardian Twins. We cannot let you pass.\", {markRoom:guardian1}, {noEscape}",
+							"{ifNoFoes}{and}{markRoom:guardian2}{then}{gainXp:2}"
 						]
 					]
 				},
@@ -25,8 +25,8 @@ function loadQuestsSub() {
 					items:[{id:"enemy",level:2}],
 					roomDescriptions:[
 						[									
-							"\"We are the Guardian Twins. We cannot let you pass.\", {markRoom:guardian2}, {cantLeave}",
-							"{ifLastEnemyKilled}{and}{ifRoomIsMarked:guardian1}{then}{gainXp:2}"
+							"\"We are the Guardian Twins. We cannot let you pass.\", {markRoom:guardian2}, {noEscape}",
+							"{ifNoFoes}{and}{ifRoomIsMarked:guardian1}{then}{gainXp:2}"
 						]
 					]
 				}
