@@ -323,6 +323,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	function formatGlobalPlaceholders(line) {		
+		line=line.replaceAll("{hide}","^*v");
 		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
 		line=line.replaceAll("{ifLastEnemyKilled}","Last enemy killed");
 		line=line.replaceAll("{ifEnterRoom}","Enter room");
@@ -342,6 +343,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
 		line=line.replace(/\{gainXp:([0-9]+)\}/g,(m,num)=>"+"+num+"XP");
 		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
+		line=line.replace(/\{hpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
 		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
 		line=line.replace(/\{payGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
@@ -1337,6 +1339,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 							y=item.y+room.y,
 							px=x*cellWidth,
 							py=y*cellHeight;
+
 						item=item.item;
 						switch (item.id) {
 							case "entrance":{
@@ -1361,7 +1364,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					});
 
 					// Render rooms list
-					const roomData=svg.cloneNodeBy("roomData",0,0,roomDataHeight*index);
+					let
+						boxY=roomDataHeight*index,
+						lineParts;
+					const roomData=svg.cloneNodeBy("roomData",0,0,boxY);
 					if (room.isStartingRoom) {
 						svg.delete(svg.getById("roomCoords",roomData),roomData);
 						svg.setId(svg.getById("roomHeight",roomData),"list-stairs");
@@ -1370,9 +1376,22 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 						svg.setText(svg.getById("roomPosition",roomData),(room.x+1)+","+(room.y+1));
 						svg.setText(svg.getById("roomSize",roomData),room.width+"x"+room.height);
 					}
-					svg.setText(svg.getById("roomId",roomData),room.id);				
-					svg.setText(svg.getById("roomLine1",roomData),room.description[0]||"");
-					svg.setText(svg.getById("roomLine2",roomData),room.description[1]||"");
+					svg.setText(svg.getById("roomId",roomData),room.id);
+
+					if (room.description[0]) {
+						lineParts=room.description[0].split("^*v");
+						svg.setText(svg.getById("roomLine1",roomData),lineParts[0]||"");
+						if (lineParts[1])
+							svg.setText(svg.cloneNodeBy("roomLine1UpsideDown",0,0,-boxY),lineParts[1]);
+					} else svg.delete(svg.getById("roomLine1",roomData));
+
+					if (room.description[1]) {
+						lineParts=room.description[1].split("^*v");
+						svg.setText(svg.getById("roomLine2",roomData),lineParts[0]||"");
+						if (lineParts[1])
+							svg.setText(svg.cloneNodeBy("roomLine2UpsideDown",0,0,-boxY),lineParts[1]);
+					} else svg.delete(svg.getById("roomLine2",roomData));
+
 				});
 
 				// Render hero
@@ -1471,6 +1490,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				svg.deleteById("gridItem");
 				svg.deleteById("gridGuide");
 				svg.deleteById("guides");
+				svg.deleteById("roomLine1UpsideDown");
+				svg.deleteById("roomLine2UpsideDown");
 
 				cb(svg);
 

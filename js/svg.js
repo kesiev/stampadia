@@ -86,7 +86,7 @@ function SVG(template) {
 
     this.copyNode = (node) => {
         const copy = this.createNode(node.tagName);
-        ["x","y","width","height","style","cx","cy","r","d","class"].forEach(attr=>{
+        ["x","y","width","height","style","cx","cy","r","d","class","transform"].forEach(attr=>{
             if (node.getAttribute(attr)) copy.setAttribute(attr,node.getAttribute(attr));
         });       
         copy.innerHTML=node.innerHTML;

@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="8.0000001"
-     inkscape:cx="58.18725"
-     inkscape:cy="124.8525"
+     inkscape:zoom="2"
+     inkscape:cx="952.1421"
+     inkscape:cy="73.535689"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -840,5 +840,29 @@
          x="13.136482"
          y="204.46982"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Footer</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="-292.19608"
+       y="-4.9749269"
+       id="roomLine1UpsideDown"
+       transform="scale(-1)"><tspan
+         sodipodi:role="line"
+         id="tspan328"
+         x="-292.19608"
+         y="-4.9749269"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="-292.19608"
+       y="-8.4481983"
+       id="roomLine2UpsideDown"
+       transform="scale(-1)"><tspan
+         sodipodi:role="line"
+         id="tspan332"
+         x="-292.19608"
+         y="-8.4481983"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
   </g>
 </svg>
