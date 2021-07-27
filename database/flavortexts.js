@@ -1,3 +1,5 @@
+/* exported loadFlavorTexts */
+
 function loadFlavorTexts() {
 	return {
 		corridors:[

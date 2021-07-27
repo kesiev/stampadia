@@ -1,3 +1,5 @@
+/* exported loadPlaceholders */
+
 function loadPlaceholders() {
 	return {
 		adventureHeader:[

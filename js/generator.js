@@ -1,3 +1,5 @@
+/* globals SVGTemplate SVG */
+/* exported DungeonGenerator */
 
 const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 

@@ -1,3 +1,5 @@
+/* exported loadRandomizers */
+
 function loadRandomizers() {
 	return {
 

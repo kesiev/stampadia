@@ -1,3 +1,5 @@
+/* exported loadQuestsSub */
+
 function loadQuestsSub() {
 
 	return [

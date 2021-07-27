@@ -1,3 +1,5 @@
+/* exported loadEnemyModels */
+
 function loadEnemyModels() {
 	return [
 		// Level 0
