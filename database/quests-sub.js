@@ -42,7 +42,7 @@ function loadQuestsSub() {
 					atPercentage:60,
 					items:[{genericItem:"switch"}],
 					roomDescriptions:[
-						["{ifMoveOn:switch}{and}{ifRoomIsNotMarked:room1}{then}You drink from {randomGoodFountain+randomBadFountain}, {markRoom:room1}, {markRoom:room2}"]
+						["{ifMoveOn:switch}{and}{ifRoomIsNotMarked:room1}{then}You drink{hide}from {randomGoodFountain+randomBadFountain}, {markRoom:room1}, {markRoom:room2}"]
 					]
 				},
 				{
@@ -50,7 +50,7 @@ function loadQuestsSub() {
 					atPercentage:100,
 					items:[{genericItem:"switch"}],
 					roomDescriptions:[
-						["{ifMoveOn:switch}{and}{ifRoomIsNotMarked:room2}{then}You drink from {randomGoodFountain+randomBadFountain}, {markRoom:room2}, {markRoom:room1}"]
+						["{ifMoveOn:switch}{and}{ifRoomIsNotMarked:room2}{then}You drink{hide}from {randomGoodFountain+randomBadFountain}, {markRoom:room2}, {markRoom:room1}"]
 					]
 				}
 			]
@@ -65,14 +65,14 @@ function loadQuestsSub() {
 					atPercentage:60,
 					items:[{genericItem:"switch"}],
 					roomDescriptions:[
-						[ "{ifMoveOn:switch}{then}{randomMysteryHappens}, {markRoom:switchRoom}, {markItem:switch}" ]
+						[ "{ifMoveOn:switch}{then}{randomMysteryHappens}{hide}{markRoom:switchRoom}, {markItem:switch}" ]
 					]
 				},
 				{
 					id:"switchEffect",
 					atPercentage:100,
 					roomDescriptions:[
-						[ "{ifRoomIsMarked:switchRoom}{and}{ifRoomIsNotMarked:switchEffect}{then}{randomGoodRoomEffect+randomBadRoomEffect}, {markRoom:switchEffect}" ]
+						[ "{ifRoomIsMarked:switchRoom}{and}{ifRoomIsNotMarked:switchEffect}{then}{hide}{randomGoodRoomEffect+randomBadRoomEffect}, {markRoom:switchEffect}" ]
 					]
 				}
 			]
@@ -95,7 +95,7 @@ function loadQuestsSub() {
 					atPercentage:1,
 					items:[{genericItem:"chest"}],
 					roomDescriptions:[
-						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{and}{ifRoomIsNotMarked:chestRoom1}{then}You found {randomGoodLoot+randomBadLoot}, {markRoom:chestRoom1}, {markRoom:chestRoom2}"]
+						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{and}{ifRoomIsNotMarked:chestRoom1}{then}You found{hide}{randomGoodLoot+randomBadLoot}, {markRoom:chestRoom1}, {markRoom:chestRoom2}"]
 					]
 				},
 				{
@@ -103,7 +103,7 @@ function loadQuestsSub() {
 					atPercentage:100,
 					items:[{genericItem:"chest"}],
 					roomDescriptions:[
-						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{and}{ifRoomIsNotMarked:chestRoom2}{then}You found {randomGoodLoot+randomBadLoot}, {markRoom:chestRoom1}, {markRoom:chestRoom2}"]
+						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{and}{ifRoomIsNotMarked:chestRoom2}{then}You found{hide}{randomGoodLoot+randomBadLoot}, {markRoom:chestRoom1}, {markRoom:chestRoom2}"]
 					]
 				}
 			]
@@ -126,7 +126,7 @@ function loadQuestsSub() {
 					atPercentage:1,
 					items:[{genericItem:"chest"}],
 					roomDescriptions:[
-						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{then}You found {randomGoodLoot}, {markItem:chest}"]
+						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{then}You found{hide}{randomGoodLoot}, {markItem:chest}"]
 					]
 				}
 			]

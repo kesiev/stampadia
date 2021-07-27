@@ -44,6 +44,13 @@ function loadRandomizers() {
 			"a copper key",
 			"a wooden key"
 		],
+		randomSaint:[
+			"\"Let me help you.\"",
+			"\"You need assistance. Here.\"",
+			"\"May the Gods be with you.\"",
+			"\"Come here. Take this.\"",
+			"\"I bless you.\""
+		],
 		randomBossEntrance:[
 			"\"How you DARE to challenge the {villainName}! Now, die!\"",
 			"\"You will die by the hand of the great {villainName}!\"",
@@ -59,7 +66,7 @@ function loadRandomizers() {
 		// Loot
 		randomGoodLoot:[
 			"an Heart Shard, {gainHp:1}",
-			"an Star Pin, {gainXp:1}",
+			"a Star Pin, {gainXp:1}",
 			"a bag of gold, {gainGold:3}",
 		],
 		randomBadLoot:[

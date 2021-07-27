@@ -21,7 +21,7 @@ function loadQuestsBonus() {
 		{
 			minRooms:2,
 			steps:[{id:"spawn",atPercentage:100,roomDescriptions:[
-				[ "{ifMoveOn:item}{then}You found {randomGoodLoot}, {markItem:item}" ]
+				[ "{ifMoveOn:item}{then}{hide}You found {randomGoodLoot}, {markItem:item}" ]
 			],items:[{genericItem:"item"}]}]
 		},
 
@@ -75,10 +75,10 @@ function loadQuestsBonus() {
 			minRooms:4,
 			steps:[
 				{id:"roomA",atPercentage:1,roomDescriptions:[
-					[ "{ifMoveOn:item1}{then}{randomTeleportation}, {teleportToRoom:roomB}" ]
+					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{teleportToRoom:roomB}" ]
 				],items:[{genericItem:"item1"}]},
 				{id:"roomB",atPercentage:100,roomDescriptions:[
-					[ "{ifMoveOn:item2}{then}{randomTeleportation}, {teleportToRoom:roomA}" ]
+					[ "{ifMoveOn:item2}{then}{randomTeleportation}{hide}{teleportToRoom:roomA}" ]
 				],items:[{genericItem:"item2"}]}
 			]
 		},
@@ -88,6 +88,16 @@ function loadQuestsBonus() {
 			minRooms:2,
 			steps:[{id:"spawn",atPercentage:100,roomDescriptions:SHOP
 			,items:[{genericItem:"item"}]}]
+		},
+
+		// Saint
+		{
+			minRooms:4,
+			steps:[
+				{id:"roomA",atPercentage:1,roomDescriptions:[
+					[ "{ifMoveOn:saint}{and}{hpLeft=:0}{then}Saint: {randomSaint}, {gainHp:2}, {markItem:saint}" ]
+				],items:[{genericItem:"saint"}]}
+			]
 		},
 	];
 }
@@ -99,14 +109,14 @@ function loadQuestsMalus() {
 		// Switch trap room
 		{
 			steps:[{id:"trap",atPercentage:100,items:[{genericItem:"switch"}],roomDescriptions:[
-				[ "{ifMoveOn:switch}{then}{randomTrap}, {loseHp:1}, {markItem:switch}" ]
+				[ "{ifMoveOn:switch}{then}{hide}{randomTrap}, {loseHp:1}, {markItem:switch}" ]
 			]}]
 		},
 
 		// Teleport to starting room
 		{
 			steps:[{id:"trap",atPercentage:100,roomDescriptions:[
-				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {teleportToStartingRoom}" ]
+				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {teleportToStartingRoom}" ]
 			]}]
 		},
 
@@ -115,7 +125,7 @@ function loadQuestsMalus() {
 			minRooms:4,
 			steps:[
 				{id:"switch",atPercentage:51,roomDescriptions:[
-					[ "{ifMoveOn:item1}{then}{randomTeleportation}, {markItem:item1}, {teleportToRoom:trap}" ]
+					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{markItem:item1}, {teleportToRoom:trap}" ]
 				],items:[{genericItem:"item1"}]},
 				{id:"trap",atPercentage:100,roomDescriptions:[
 					[ "\"You fell in my trap!\"" ],
@@ -130,8 +140,8 @@ function loadQuestsMalus() {
 		// Random trap room
 		{
 			steps:[{id:"trap",atPercentage:100,roomDescriptions:[
-				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDie}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
-				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDie}{range:1-2} {loseHp:2}, {range:3-6} {nothing}" ]
+				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {rollDie}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
+				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {rollDie}{range:1-2} {loseHp:2}, {range:3-6} {nothing}" ]
 			]}]
 		},
 	];

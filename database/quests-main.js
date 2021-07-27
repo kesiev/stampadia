@@ -173,7 +173,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"A sorcerer is holding a ritual.",
-							"{roomIsEmpty}{then}The ritual was interrupted,{markRoom:spellRoom}"
+							"{roomIsEmpty}{then}{hide}The ritual was interrupted,{markRoom:spellRoom}"
 						]
 					]
 				},
@@ -193,8 +193,8 @@ function loadQuestsMain() {
 					at:"startingRoom",
 					roomDescriptions:[
 						[
-							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:spellRoom}{then}{winningScene}",
-							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}You succeeded, but sacrified the {goodGuyName}'s life.",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:spellRoom}{then}You did it!, {stopReading}",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{hide}...but sacrified the {goodGuyName}'s life.",
 						]
 					]
 				}
@@ -282,7 +282,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifMoveOn:npc}{then}{explorerName}: 'I'm looking for the lost {documentName}! Please, help!'",
-							"{ifMoveOn:npc}{and}{ifRoomIsMarked:itemRoom}{then}'Oh, no! It says the {villainName} is hiding here!', {markRoom:npcRoom}"
+							"{ifMoveOn:npc}{and}{ifRoomIsMarked:itemRoom}{then}{hide}'Oh, no! It says the {villainName} is hiding here!', {markRoom:npcRoom}"
 						]
 					]
 				},
