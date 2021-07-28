@@ -19,7 +19,9 @@ A daily print-and-play roguelike adventure you can play offline.
   - Challenge: How we can make the sheets larger?
   - Challenge: How we can make the sheets taller?
   - Suggestion: Export the an adventure sheet using `debug.html` and prototype alternate sheets on Inkscape
-
+- [ ] New classes
+  - [ ] Wizard - Fewer hit points, but start with a ranged attack (ATK -2, RNG 3).
+  - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
 ### In progress
 
 - [ ] _N/A_
