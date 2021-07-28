@@ -173,7 +173,7 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"A sorcerer is holding a ritual.",
-							"{ifNoFoes}{then}{hide}The ritual was interrupted,{markRoom:spellRoom}"
+							"{ifNoFoes}{then}{hide}The ritual has been interrupted, {markRoom:spellRoom}"
 						]
 					]
 				},
@@ -183,7 +183,7 @@ function loadQuestsMain() {
 					items:[{id:"enemy",level:3,isFinalBoss:true}],
 					roomDescriptions:[
 						[
-							"\"I'm the {goodGuyName}... I can't control... Help me, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							"\"I'm the {goodGuyName}. Can't control... Help, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 						]
 					]
 				}
@@ -193,8 +193,8 @@ function loadQuestsMain() {
 					at:"startingRoom",
 					roomDescriptions:[
 						[
-							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:spellRoom}{then}You did it!, {stopReading}",
-							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{hide}...but sacrified the {goodGuyName}'s life.",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:spellRoom}{then}You did it!{hide}{stopReading}",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}You did it!{hide}but sacrified the {goodGuyName}'s life.",
 						]
 					]
 				}
