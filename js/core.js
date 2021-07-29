@@ -141,16 +141,8 @@ const Core=function() {
 		// Set rooms base ID
 		dunggen.setRoomIds(30);
 		
-		// Set game progression ratios
-		dunggen.setXpRamp([0,0.15,0.35,0.5]);
-		dunggen.setHpRamp([0.5,0.15,0.25,0.1]);
-		dunggen.setDamageRatio(0.5);
-
 		// Set starting equimpent
 		dunggen.setGold(50);
-		dunggen.setServices([
-			"Resurrection (-5G, restore all HP, move back to the stairs)"
-		]);
 
 		// Set databases
 		dunggen.setQuestsStructure([

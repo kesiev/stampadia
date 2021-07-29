@@ -10,7 +10,55 @@ function loadHeroModels() {
 				["Gain HP\n-5","ATK -3\nRNG 1"],
 				["ATK\nRNG 2","Move"]
 			],
-			defense:[1,1,1,1]
+			defense:[1,1,1,1],
+			xpRamp:[
+				{
+					value:0
+				},{
+					xpGroup:"low",
+					round:"floor",
+					percentage:0.95
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.35
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.65
+				}
+			],
+			
+			//Original XP ramp:
+			/*
+			xpRamp:[
+				{
+					value:0
+				},{
+					xpGroup:"all",
+					round:"ceil",
+					percentage:0.15
+				},{
+					xpGroup:"all",
+					round:"ceil",
+					percentage:0.35
+				},{
+					xpGroup:"all",
+					round:"ceil",
+					percentage:0.5
+				}
+			],
+			*/
+			
+			hpRamp:[0.5,0.15,0.25,0.1],
+			damageRatio:0.5,
+			equipment:[
+				{
+					id:"heroItem",
+					label:"Resurrection",
+					action:"{heroDied}{and}{payGold:5}{then}{gainFullHp}, {moveOnStairs}"
+				}
+			]
 		}
 	];
 }

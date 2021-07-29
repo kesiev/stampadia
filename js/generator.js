@@ -50,9 +50,6 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		footer="",
 		adventureTitle="",
 		services=[],
-		xpRamp=[],
-		hpRamp=[],
-		damageRatio=0,
 		roomIds=0,
 		mapGuidesEvery=0,
 		fakeRooms=[],
@@ -67,9 +64,6 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.prepared=false;
 
-	this.setXpRamp=(xprampdata)=>xpRamp=xprampdata;
-	this.setHpRamp=(hprampdata)=>hpRamp=hprampdata;
-	this.setDamageRatio=(damageratiodata)=>damageRatio=damageratiodata;
 	this.setRoomIds=(roomidsdata)=>roomIds=roomidsdata;
 	this.setMapGuidesEvery=(mapguideseverydata)=>mapGuidesEvery=mapguideseverydata;
 	this.setHeroModels=(herodata)=>heroModels=herodata;
@@ -78,7 +72,6 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.setFlavorTexts=(flavortextdata)=>flavorTexts=flavortextdata;
 	this.setPlaceholderModels=(placeholdersdata)=>placeholderModels=placeholdersdata;
 	this.setGold=(amount)=>gold=amount;
-	this.setServices=(servicesdata)=>services=servicesdata;
 	this.setQuestsStructure=(questsstructuredata)=>questsStructure=questsstructuredata;
 	this.setFooter=(footerdata)=>footer=footerdata;
 	this.setRandomizers=(randomizersdata)=>{
@@ -325,8 +318,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	function formatGlobalPlaceholders(line) {		
 		line=line.replaceAll("{hide}","^*v");
 		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
-		line=line.replaceAll("{ifEnterRoom}","Enter room");
-		line=line.replaceAll("{ifMoveOnStairs}","Move on stairs");
+		line=line.replaceAll("{ifEnterRoom}","enter room");
+		line=line.replaceAll("{ifMoveOnStairs}","move on stairs");
+		line=line.replaceAll("{moveOnStairs}","move on stairs");
 		line=line.replaceAll("{then}"," &raquo; ");
 		line=line.replaceAll("{newRule}"," | ");
 		line=line.replaceAll("{and}"," &amp; ");
@@ -337,16 +331,24 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{nothing}","nothing happens");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{roomIsEmpty}","room is empty");
+		line=line.replaceAll("{heroDied}","hero died");
 		line=line.replaceAll("{nameLine}","_____________________________");
 		line=line.replaceAll("{heroClass}",heroModel.heroClass);
+		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
 
 		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
 		line=line.replace(/\{gainXp:([0-9]+)\}/g,(m,num)=>"+"+num+"XP");
+		line=line.replace(/\{loseXp:([0-9]+)\}/g,(m,num)=>"-"+num+"XP");
 		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
 		line=line.replace(/\{hpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
 		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
+
 		line=line.replace(/\{payGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
+		line=line.replace(/\{payXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
+		line=line.replace(/\{payHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
+
+		line=line.replace(/\{loseEquip:([^)]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
 
 		for (const k in globalPlaceholders)
 			line=line.replaceAll("{"+k+"}",globalPlaceholders[k]);
@@ -414,6 +416,11 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		return line;
 	}
 
+	function solvePlaceholder(placeholder) {
+		if (placeholder.text) return placeholder.text;
+		if (placeholder.fakeLine) return formatFakeDescriptionLine(placeholder.fakeLine);
+		else return formatDescriptionLine(placeholder.line,placeholder.placeholders);
+	}
 	
 	function solveRoomTemplateArgument(argument) {
 		if (Array.isArray(argument))
@@ -797,7 +804,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					roomDescription=getRandom(step.roomDescriptions),
 					room=subroute[index].room;
 				roomDescription.forEach(line=>{
-					room.description.push(formatDescriptionLine(line,placeholders));
+					room.description.push({
+						line:line,
+						placeholders:placeholders
+					});
 				});
 			}
 		});
@@ -809,7 +819,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					roomDescription=getRandom(line.roomDescriptions),
 					room=placeholders.roomIds[line.at];
 				roomDescription.forEach(line=>{
-					room.description.push(formatDescriptionLine(line,placeholders));
+					room.description.push({
+						line:line,
+						placeholders:placeholders
+					});
 				})
 			})
 
@@ -829,14 +842,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 							line=flavors.corridors[lineId];
 						if (debug&&debug.flavorText) line=debug.flavorText;
 						flavors.corridors.splice(lineId,1);
-						room.description.unshift(line);
+						room.description.unshift({
+							text:line
+						});
 					}
 				} else if (flavors.rooms.length) {
 					let lineId=getRandomId(flavors.rooms),
 						line=flavors.rooms[lineId];
 					if (debug&&debug.flavorText) line=debug.flavorText;
 					flavors.rooms.splice(lineId,1);
-					room.description.unshift(line);
+					room.description.unshift({
+						text:line
+					});
 				}
 		})
 	}
@@ -939,7 +956,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			room.makeFake();
 			const description=getRandom(fakeDescriptions);
 			description.forEach(line=>{
-				room.description.push((debug&&debug.showFake?"[FAKE] ":"")+formatFakeDescriptionLine(line))
+				room.description.push({
+					fakeLine:(debug&&debug.showFake?"[FAKE] ":"")+line
+				});
 			})
 			rooms.push(room);
 		})
@@ -962,11 +981,15 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	// Hero
 
 	this.generateHero=function() {
-		let			
-			dungeonXp=0,
-			dungeonEnemies=0;
+		let	dungeonEnemies=0;
+		const dungeonXp={
+			low:0,
+			high:0,
+			all:0
+		};
 			
 		hero={
+			maxHp:0,
 			model:heroModel,
 			skills:[],
 			defense:[]
@@ -978,25 +1001,55 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					dungeonEnemies++;
 					// Calculate dungeon XPs (except final boss, if any)
 					if (!item.item.isFinalBoss) {
-						dungeonXp+=enemies[0].gainXp;
-						if (item.item.level>0)
-							dungeonXp+=enemies[item.item.level].gainXp;
+						const xp=enemies[0].gainXp+enemies[item.item.level].gainXp;
+						dungeonXp.all+=xp;
+						switch (item.item.level) {
+							case 0:{
+								dungeonXp.low+=xp;
+								break;
+							}
+							default:{
+								dungeonXp.high+=xp;
+							}
+						}							
 					}
 				}
 			})
 		});
 
-		const maxHp=dungeonEnemies*damageRatio;
+		const maxHp=dungeonEnemies*heroModel.damageRatio;
 
 		// Generate skills
 		heroModel.skills.forEach((skill,index)=>{
-			hero.defense.push(heroModel.defense[index]),
+			const levelHp=Math.ceil(heroModel.hpRamp[index]*maxHp);
+			let xp=0;
+			if (heroModel.xpRamp[index].value!==undefined) xp=heroModel.xpRamp[index].value;
+			else xp=dungeonXp[heroModel.xpRamp[index].xpGroup]*heroModel.xpRamp[index].percentage;
+			switch (heroModel.xpRamp[index].round) {
+				case "floor":{ xp=Math.floor(xp)||1; break; }
+				default:{ xp=Math.ceil(xp); }
+			}
+			hero.defense.push(heroModel.defense[index]);
 			hero.skills.push({
-				xp:Math.ceil(xpRamp[index]*dungeonXp),
-				hp:Math.ceil(hpRamp[index]*maxHp),
+				xp:xp,
+				hp:levelHp,
 				skills:skill
-			})
+			});
+			hero.maxHp+=levelHp;
 		});
+
+		// Add equipment
+		heroModel.equipment.forEach(equip=>{
+			services.push({
+				id:equip.id,
+				label:equip.label,
+				action:equip.action
+			});
+
+			// Register item placeholder
+			globalPlaceholders["equip-"+equip.id]=equip.label;
+		});
+
 	}
 
 	this.selectHeroModel=function() {
@@ -1015,9 +1068,24 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.setupMetadata=function() {
 		this.metadata={
 			seed:originalSeed,
-			title:formatDescriptionLine(adventureTitle),
-			header:formatDescriptionLine(globalPlaceholders.adventureHeader)
+			title:{line:adventureTitle},
+			header:{line:globalPlaceholders.adventureHeader}
 		}
+	}
+
+	// Placeholders
+
+	this.solvePlaceholders=function() {
+
+		// Solve room descriptions
+		rooms.forEach(room=>{
+			room.description=room.description.map(descriptionLine=>solvePlaceholder(descriptionLine))
+		});
+
+		// Solve metadata
+		this.metadata.title=solvePlaceholder(this.metadata.title);
+		this.metadata.header=solvePlaceholder(this.metadata.header);
+
 	}
 
 	// Initializer
@@ -1051,6 +1119,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 			// Setup metadata
 			this.setupMetadata();
+
+			// Solve placeholders
+			this.solvePlaceholders();
+
 		}
 	}
 
@@ -1460,7 +1532,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				const serviceHeight=svg.getNum(svg.getById("serviceCheckbox"),"width")+1.2;
 				services.forEach((service,index)=>{
 					const line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight);
-					svg.setText(svg.getById("serviceName",line),service);
+					svg.setText(svg.getById("serviceName",line),service.label+" ("+formatDescriptionLine(service.action)+")");
 				});
 
 				// Render adventure metadata
