@@ -23,17 +23,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="952.1421"
-     inkscape:cy="73.535689"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="173.78188"
+     inkscape:cy="137.60431"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
      inkscape:window-width="1398"
      inkscape:window-height="785"
-     inkscape:window-x="42"
-     inkscape:window-y="23"
+     inkscape:window-x="76"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      showguides="false" />
   <metadata
@@ -673,7 +673,7 @@
          id="tspan950"
          x="9.3287992"
          y="18.247232"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (-1G per door crossed)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (cross door » pay 1G)</tspan></text>
     <path
        style="fill:none;stroke:#b3b3b3;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 116.20497,15.49328 v -2.109084 l 0.62012,-0.568441 -0.62012,-0.516764 V 8.8366697 L 116.72173,8.268229 116.20497,7.7514647 V 6.9763182 l 0.72347,-0.5684407 -0.72347,-0.7234701 V 3.2155865 h 68.11197 v 1.1769102 l -0.67179,0.5167643 0.67179,0.5167643 v 0.6717936 l -0.51676,0.5684407 0.51676,0.3100586 v 5.0126138 l -0.51676,0.72347 0.51676,0.516764 v 0.671794 l -0.55725,0.340799 0.55725,0.382671 v 1.161177"
