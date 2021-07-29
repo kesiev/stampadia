@@ -166,7 +166,22 @@ function loadQuestsSub() {
 					]
 				}
 			]
-		}
+		},
+
+		// The Altar: Sacrify important resources for other advantages.
+		{
+			minRooms:2,
+			steps:[
+				{
+					id:"keyRoom",
+					atPercentage:100,
+					items:[{genericItem:"altar"}],
+					roomDescriptions:[
+						[ "{ifMoveOn:altar}{and}{randomHighCost}{then}Altar: {randomAltar}, {randomHighPrize}, {markItem:altar}" ],
+					]
+				}
+			]
+		},
 	]
 
 }

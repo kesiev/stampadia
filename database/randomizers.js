@@ -51,6 +51,12 @@ function loadRandomizers() {
 			"\"Come here. Take this.\"",
 			"\"I bless you.\""
 		],
+		randomAltar:[
+			"\"Bow down.\"",
+			"\"Pray the gods.\"",
+			"\"Sacrifice.\"",
+			"\"...\""
+		],
 		randomBossEntrance:[
 			"\"How you DARE to challenge the {villainName}! Now, die!\"",
 			"\"You will die by the hand of the great {villainName}!\"",
@@ -72,6 +78,15 @@ function loadRandomizers() {
 		randomBadLoot:[
 			"nothing",
 			"a Mimic, {loseHp:1}"
+		],
+		randomHighCost:[
+			"{payHp:2}",
+			"{payXp:3}",
+			"{loseEquip:equip-heroItem}"
+		],
+		randomHighPrize:[
+			"{gainGold:5}",
+			"{gainFullHp}"
 		],
 
 		// Fountains
