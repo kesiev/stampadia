@@ -17,25 +17,27 @@ function loadQuestsMain() {
 				"The Lost {placeName}"
 			],
 			steps:[
-				{
-					id:"keyRoom",
-					atPercentage:50,
-					items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
-					roomDescriptions:[
-						[ "{ifMoveOn:bossKey}{then}You got the {bossKey}, {markRoom:keyRoom}, {markItem:bossKey}" ]
-					]
-				},
-				{
-					id:"bossRoom",
-					atPercentage:100,
-					items:[{id:"enemy",level:3,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"{ifRoomIsNotMarked:keyRoom}{then}{roomIsEmpty}, {stopReading}",
-							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+				[
+					{
+						id:"keyRoom",
+						atPercentage:50,
+						items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:bossKey}{then}You got the {bossKey}, {markRoom:keyRoom}, {markItem:bossKey}" ]
 						]
-					]
-				}
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:keyRoom}{then}{roomIsEmpty}, {stopReading}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
 			],
 			otherDescriptions:[
 				{
@@ -68,14 +70,16 @@ function loadQuestsMain() {
 
 			],
 			steps:[
-				{
-					id:"bossRoom",
-					atPercentage:100,
-					items:[{id:"enemy",level:3,isFinalBoss:true}],
-					roomDescriptions:[
-						[ "\"The {goodGuyName} will die... and you with him!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
-					]
-				}
+				[
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[ "\"The {goodGuyName} will die... and you with him!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
+						]
+					}
+				]
 			],
 			otherDescriptions:[
 				{
@@ -103,39 +107,41 @@ function loadQuestsMain() {
 				"The {heroClass}'s Harvest",
 			],
 			steps:[
-				{
-					id:"enemy1room",
-					atPercentage:20,
-					items:[{id:"enemy",level:0,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"\"We will stop you at any cost!\"",
-							"{ifNoFoes}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
+				[
+					{
+						id:"enemy1room",
+						atPercentage:20,
+						items:[{id:"enemy",level:0,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"\"We will stop you at any cost!\"",
+								"{ifNoFoes}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
+							]
 						]
-					]
-				},
-				{
-					id:"enemy2room",
-					atPercentage:100,
-					items:[{id:"enemy",level:1,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"{ifRoomIsNotMarked:enemy1room}{then}You feel watched, {roomIsEmpty}, {stopReading}",
-							"{ifNoFoes}{then}\"Wrong move, bwahahah!\", {markRoom:enemy2room}"
+					},
+					{
+						id:"enemy2room",
+						atPercentage:100,
+						items:[{id:"enemy",level:1,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:enemy1room}{then}You feel watched, {roomIsEmpty}, {stopReading}",
+								"{ifNoFoes}{then}\"Wrong move, bwahahah!\", {markRoom:enemy2room}"
+							]
 						]
-					]
-				},
-				{
-					id:"enemy3room",
-					atPercentage:40,
-					items:[{id:"enemy",level:3,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"{ifRoomIsNotMarked:enemy2room}{then}{roomIsEmpty}, {stopReading}",
-							"\"You're wasting time. The {placeName} is mine!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+					},
+					{
+						id:"enemy3room",
+						atPercentage:40,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:enemy2room}{then}{roomIsEmpty}, {stopReading}",
+								"\"You're wasting time. The {placeName} is mine!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
 						]
-					]
-				}
+					}
+				]
 			],
 			otherDescriptions:[
 				{
@@ -166,27 +172,29 @@ function loadQuestsMain() {
 				"The {villainName}'s Ritual",				
 			],
 			steps:[
-				{
-					id:"spellRoom",
-					atPercentage:55,
-					items:[{id:"enemy",level:1}],
-					roomDescriptions:[
-						[
-							"A sorcerer is holding a ritual.",
-							"{ifNoFoes}{then}{hide}The ritual has been interrupted, {markRoom:spellRoom}"
+				[
+					{
+						id:"spellRoom",
+						atPercentage:55,
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"A sorcerer is holding a ritual.",
+								"{ifNoFoes}{then}{hide}The ritual has been interrupted, {markRoom:spellRoom}"
+							]
 						]
-					]
-				},
-				{
-					id:"bossRoom",
-					atPercentage:100,
-					items:[{id:"enemy",level:3,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"\"I'm the {goodGuyName}. Can't control... Help, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"\"I'm the {goodGuyName}. Can't control... Help, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
 						]
-					]
-				}
+					}
+				]
 			],
 			otherDescriptions:[
 				{
@@ -215,41 +223,43 @@ function loadQuestsMain() {
 				"The {heroClass}'s {bossKey}",
 			],
 			steps:[
-				{
-					id:"keyRoom1",
-					atPercentage:1,
-					items:[{genericItem:"bossKey"}],
-					roomDescriptions:[
-						[ "{ifMoveOn:bossKey}{then}You got a {bossKey} part, {markRoom:keyRoom1}, {markItem:bossKey}" ]
-					]
-				},
-				{
-					id:"keyRoom2",
-					atPercentage:25,
-					items:[{genericItem:"bossKey"},{id:"enemy",level:0}],
-					roomDescriptions:[
-						[ "{ifMoveOn:bossKey}{then}You got a {bossKey} part, {markRoom:keyRoom2}, {markItem:bossKey}" ]
-					]
-				},
-				{
-					id:"keyRoom3",
-					atPercentage:60,
-					items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
-					roomDescriptions:[
-						[ "{ifMoveOn:bossKey}{then}You got a {bossKey} part, {markRoom:keyRoom3}, {markItem:bossKey}" ]
-					]
-				},
-				{
-					id:"bossRoom",
-					atPercentage:100,
-					items:[{id:"enemy",level:3,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"{ifRoomIsNotMarked:keyRoom1}{or}{ifRoomIsNotMarked:keyRoom2}{or}{ifRoomIsNotMarked:keyRoom3}{then}{roomIsEmpty}, {stopReading}",
-							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+				[
+					{
+						id:"keyRoom1",
+						atPercentage:1,
+						items:[{genericItem:"bossKey"}],
+						roomDescriptions:[
+							[ "{ifMoveOn:bossKey}{then}You got a {bossKey} part, {markRoom:keyRoom1}, {markItem:bossKey}" ]
 						]
-					]
-				}
+					},
+					{
+						id:"keyRoom2",
+						atPercentage:25,
+						items:[{genericItem:"bossKey"},{id:"enemy",level:0}],
+						roomDescriptions:[
+							[ "{ifMoveOn:bossKey}{then}You got a {bossKey} part, {markRoom:keyRoom2}, {markItem:bossKey}" ]
+						]
+					},
+					{
+						id:"keyRoom3",
+						atPercentage:60,
+						items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:bossKey}{then}You got a {bossKey} part, {markRoom:keyRoom3}, {markItem:bossKey}" ]
+						]
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:keyRoom1}{or}{ifRoomIsNotMarked:keyRoom2}{or}{ifRoomIsNotMarked:keyRoom3}{then}{roomIsEmpty}, {stopReading}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
 			],
 			otherDescriptions:[
 				{
@@ -275,36 +285,38 @@ function loadQuestsMain() {
 				"The {placeName} Mystery"
 			],
 			steps:[
-				{
-					id:"npcRoom",
-					atPercentage:10,
-					items:[{genericItem:"npc"}],
-					roomDescriptions:[
-						[
-							"{ifMoveOn:npc}{then}{explorerName}: 'I'm looking for the lost {documentName}! Please, help!'",
-							"{ifMoveOn:npc}{and}{ifRoomIsMarked:itemRoom}{then}{hide}'Oh, no! It says the {villainName} is hiding here!', {markRoom:npcRoom}"
+				[
+					{
+						id:"npcRoom",
+						atPercentage:10,
+						items:[{genericItem:"npc"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:npc}{then}{explorerName}: 'I'm looking for the lost {documentName}! Please, help!'",
+								"{ifMoveOn:npc}{and}{ifRoomIsMarked:itemRoom}{then}{hide}'Oh, no! It says the {villainName} is hiding here!', {markRoom:npcRoom}"
+							]
 						]
-					]
-				},
-				{
-					id:"itemRoom",
-					atPercentage:60,
-					items:[{genericItem:"item"},{id:"enemy",level:1}],
-					roomDescriptions:[
-						[ "{ifMoveOn:item}{and}{ifRoomIsNotMarked:itemRoom}{then}You've found the {documentName}, {markRoom:itemRoom}, {markItem:item}" ]
-					]
-				},
-				{
-					id:"bossRoom",
-					atPercentage:100,
-					items:[{id:"enemy",level:3,isFinalBoss:true}],
-					roomDescriptions:[
-						[
-							"{ifRoomIsNotMarked:npcRoom}{then}{roomIsEmpty}, {stopReading}",
-							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+					},
+					{
+						id:"itemRoom",
+						atPercentage:60,
+						items:[{genericItem:"item"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:item}{and}{ifRoomIsNotMarked:itemRoom}{then}You've found the {documentName}, {markRoom:itemRoom}, {markItem:item}" ]
 						]
-					]
-				}
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:npcRoom}{then}{roomIsEmpty}, {stopReading}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
 			],
 			otherDescriptions:[
 				{

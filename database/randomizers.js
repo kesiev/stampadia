@@ -68,8 +68,35 @@ function loadRandomizers() {
 			"\"The {goodGuyName} will regret sending you here!\"",
 			"\"A {heroClass} this time... very well! Bring it on!\""
 		],
+		randomSphinxAnswerAccept:[
+			"\"That's your answer.\"",
+			"\"...\"",
+			"\"Very well.\"",
+			"\"Interesting.\"",
+			"\"Is that true?\"",
+			"\"We'll see.\""
+		],
+		randomSphinxOk:[
+			"\"...pleases me.\"",
+			"\"...is the truth.\"",
+			"\"...is the right one.\""
+		],
+		randomSphinxKo:[
+			"\"...is disappointing.\"",
+			"\"...condamned you.\"",
+			"\"...is illogic.\""
+		],
 
 		// Loot
+		randomGoodReward:[
+			"{gainHp:1}",
+			"{gainXp:1}",
+			"{gainGold:3}",
+		],
+		randomBadReward:[
+			"nothing",
+			"{loseHp:1}"
+		],
 		randomGoodLoot:[
 			"an Heart Shard, {gainHp:1}",
 			"a Star Pin, {gainXp:1}",

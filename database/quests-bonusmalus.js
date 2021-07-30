@@ -20,15 +20,15 @@ function loadQuestsBonus() {
 		// Bonus item
 		{
 			minRooms:2,
-			steps:[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
 				[ "{ifMoveOn:item}{then}{hide}You found {randomGoodLoot}, {markItem:item}" ]
-			],items:[{genericItem:"item"}]}]
+			],items:[{genericItem:"item"}]}]]
 		},
 
 		// Lore NPCs
 		{
 			minRooms:2,
-			steps:[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
 
 				// The Travellers, who has interesting unanswered questions about Stampadia...
 				[ "{ifMoveOn:item}{then}Traveller: \"Are the wall of this dungeon moving?\"" ],
@@ -67,37 +67,39 @@ function loadQuestsBonus() {
 				[ "{ifMoveOn:item}{then}Sergio: \"Is this really the best possible world?\""],
 				[ "{ifMoveOn:item}{then}Sergio: \"Dignity, of course. And some good self-irony.\""],
 
-			],items:[{genericItem:"item"}]}]
+			],items:[{genericItem:"item"}]}]]
 		},
 
 		// Teleport shortcut
 		{
 			minRooms:4,
-			steps:[
+			steps:[[
 				{id:"roomA",atPercentage:1,roomDescriptions:[
 					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{teleportToRoom:roomB}" ]
 				],items:[{genericItem:"item1"}]},
 				{id:"roomB",atPercentage:100,roomDescriptions:[
 					[ "{ifMoveOn:item2}{then}{randomTeleportation}{hide}{teleportToRoom:roomA}" ]
 				],items:[{genericItem:"item2"}]}
-			]
+			]]
 		},
 
 		// Shop
 		{
 			minRooms:2,
-			steps:[{id:"spawn",atPercentage:100,roomDescriptions:SHOP
-			,items:[{genericItem:"item"}]}]
+			steps:[[
+				{id:"spawn",atPercentage:100,roomDescriptions:SHOP
+				,items:[{genericItem:"item"}]}
+			]]
 		},
 
 		// Saint
 		{
 			minRooms:4,
-			steps:[
+			steps:[[
 				{id:"roomA",atPercentage:1,roomDescriptions:[
 					[ "{ifMoveOn:saint}{and}{hpLeft=:0}{then}Saint: {randomSaint}, {gainHp:2}, {markItem:saint}" ]
 				],items:[{genericItem:"saint"}]}
-			]
+			]]
 		},
 	];
 }
@@ -108,22 +110,22 @@ function loadQuestsMalus() {
 
 		// Switch trap room
 		{
-			steps:[{id:"trap",atPercentage:100,items:[{genericItem:"switch"}],roomDescriptions:[
+			steps:[[{id:"trap",atPercentage:100,items:[{genericItem:"switch"}],roomDescriptions:[
 				[ "{ifMoveOn:switch}{then}{hide}{randomTrap}, {loseHp:1}, {markItem:switch}" ]
-			]}]
+			]}]]
 		},
 
 		// Teleport to starting room
 		{
-			steps:[{id:"trap",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {teleportToStartingRoom}" ]
-			]}]
+			]}]]
 		},
 
 		// Teleport to enemy
 		{
 			minRooms:4,
-			steps:[
+			steps:[[
 				{id:"switch",atPercentage:51,roomDescriptions:[
 					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{markItem:item1}, {teleportToRoom:trap}" ]
 				],items:[{genericItem:"item1"}]},
@@ -134,15 +136,15 @@ function loadQuestsMalus() {
 					[ "\"Well well... What we have here?\"" ],
 					[ "\"Food... appeared...\"" ],
 				],items:[{id:"enemy",level:2}]}
-			]
+			]]
 		},
 		
 		// Random trap room
 		{
-			steps:[{id:"trap",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {rollDie}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {rollDie}{range:1-2} {loseHp:2}, {range:3-6} {nothing}" ]
-			]}]
+			]}]]
 		},
 	];
 
