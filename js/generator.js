@@ -53,17 +53,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		roomIds=0,
 		mapGuidesEvery=0,
 		fakeRooms=[],
-		_fakeDoors=[],
 		rooms=[],
 		allRooms=[],
 		flavorTexts,
 		quests,
 		placeholderModels,
 		enemyModels,
+		truthMap,
 		svg;
 
 	this.prepared=false;
 
+	this.setTruthMap=(truthmapdata)=>truthMap=truthmapdata;
 	this.setRoomIds=(roomidsdata)=>roomIds=roomidsdata;
 	this.setMapGuidesEvery=(mapguideseverydata)=>mapGuidesEvery=mapguideseverydata;
 	this.setHeroModels=(herodata)=>heroModels=herodata;
@@ -76,7 +77,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.setFooter=(footerdata)=>footer=footerdata;
 	this.setRandomizers=(randomizersdata)=>{
 		originalRandomizers=clone(randomizersdata);
-		randomizers=randomizersdata;
+		randomizers={};
 	}
 
 	function random(max) {
@@ -301,12 +302,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				randomizerPool=[];
 
 			randomizerIds.forEach(id=>{
-				if (randomizers[id]) randomizerPool.push(id)
+				if (originalRandomizers[id]) randomizerPool.push(id)
 			});
 
 			if (randomizerPool.length) {
 				const randomizerId=getRandom(randomizerPool);
-				if (randomizers[randomizerId].length==0) randomizers[randomizerId]=clone(originalRandomizers[randomizerId]);
+				if (!randomizers[randomizerId]||(randomizers[randomizerId].length==0)) randomizers[randomizerId]=clone(originalRandomizers[randomizerId]);
 				const randomizerIndex=getRandomId(randomizers[randomizerId]),
 					randomizer=randomizers[randomizerId][randomizerIndex];
 				randomizers[randomizerId].splice(randomizerIndex,1);
@@ -434,6 +435,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	const Room=function(x,y,width,height,isCorridor,isStartingRoom) {
 		this.x=x;
 		this.y=y;
+		this.isFake=false;
 		this.width=width;
 		this.height=height;
 		this.isCorridor=!!isCorridor;
@@ -505,6 +507,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		}
 
 		this.makeFake=function() {
+			this.isFake=true;
 			this.exits=[];
 			this.occupiedSpaces={};
 			this.items=[];
@@ -690,20 +693,20 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		return routes;
 	}
 
-	this.getQuestSubroute=function(route,quest) {
+	this.getQuestSubroute=function(route,quest,steps) {
 		// Decide rooms
 		let
 			ok=true,
 			routeCopy=[],
 			questSubroute=[],
-			minRooms=quest.minRooms||quest.steps.length;
+			minRooms=quest.minRooms||steps.length;
 
 		if (route.length<minRooms) return false;
 		else {
 
 			route.forEach(room=>routeCopy.push(room));
 
-			quest.steps.forEach(step=>{
+			steps.forEach(step=>{
 				const subroute=[];
 				// Filter suitable rooms
 				routeCopy.forEach(room=>{
@@ -731,21 +734,25 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			routes=this.getRoutes();
 
 		set.forEach(quest=>{
+			const questVersions=[];
 			if (excludeQuests.indexOf(quest)==-1) {
-				const subroutes=[];
-				routes.forEach(route=>{
-					const subroute=this.getQuestSubroute(route,quest);
-					if (subroute) subroutes.push(subroute);
+				quest.steps.forEach(steps=>{
+					const subroutes=[];
+					routes.forEach(route=>{
+						const subroute=this.getQuestSubroute(route,quest,steps);
+						if (subroute) subroutes.push(subroute);
+					})
+					if (subroutes.length) questVersions.push({subroutes:subroutes,quest:quest,steps:steps});
 				})
-				if (subroutes.length) quests.push({subroutes:subroutes,quest:quest});
-			}
+				if (questVersions.length) quests.push(getRandom(questVersions));
+			};
 		})
 
 		if (quests.length) {
 			const
 				quest=getRandom(quests),
 				subroute=getRandom(quest.subroutes);
-			this.applyQuest(subroute,quest.quest);
+			this.applyQuest(subroute,quest.quest,quest.steps);
 			return quest.quest;
 		} else return false;
 	}
@@ -765,7 +772,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	}
 
-	this.applyQuest=function(subroute,quest) {
+	this.applyQuest=function(subroute,quest,steps) {
 		const
 			placeholders={
 				roomIds:{},
@@ -773,7 +780,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			};
 
 		// Prepare room labels
-		quest.steps.forEach((step,index)=>placeholders.roomIds[step.id]=subroute[index].room);
+		steps.forEach((step,index)=>placeholders.roomIds[step.id]=subroute[index].room);
 
 		rooms.forEach(room=>{
 			placeholders.roomIds["id-"+room.id]=room;
@@ -781,7 +788,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		});
 
 		// Add items and prepare item labels
-		quest.steps.forEach((step,index)=>{
+		steps.forEach((step,index)=>{
 			const room=subroute[index];
 			let genericItemId=0;
 			room.room.isBusy=true;
@@ -798,7 +805,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		});
 
 		// Add room labels
-		quest.steps.forEach((step,index)=>{
+		steps.forEach((step,index)=>{
 			if (step.roomDescriptions) {
 				const
 					roomDescription=getRandom(step.roomDescriptions),
@@ -809,6 +816,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 						placeholders:placeholders
 					});
 				});
+				if (step.shuffleRoomDescriptions) shuffleArray(room.description);
 			}
 		});
 
@@ -937,7 +945,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		for (const k in quests) {
 			quests[k].forEach(quest=>{
-				quest.steps.forEach(step=>{
+				let steps=getRandom(quest.steps);
+				steps.forEach(step=>{
 					step.roomDescriptions.forEach(description=>{
 						fakeDescriptions.push(description);	
 					})
@@ -973,7 +982,16 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				level:id,
 				gainXp:id||1,
 				defense:id||1,
-				skills:getRandom(model.skills)
+				skills:getRandom(model.skills),
+				truth:{
+					eyes:id,
+					horns:2,
+					foes:1,
+					level1:id==0?1:0,
+					level2:id==1?1:0,
+					level3:id==2?1:0,
+					level4:id==3?1:0,
+				}
 			})
 		});
 	}
@@ -1088,6 +1106,74 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	}
 
+	// Truth/Lies
+
+	function formatTruth(value,map) {
+		let model;
+		if (!value) model=map.zero;
+		else if (value==1) model=map.singular;
+		else model=map.plural;
+		return model.replaceAll("{value}",value);
+	}
+
+	this.generateTruthLies=function() {
+		const
+			truthCounter={
+				fakeRooms:0,
+				rooms:0,
+				ones:0
+			},
+			truth=[],
+			lies=[];
+
+		// Truth about the enemies and the rooms
+		rooms.forEach(room=>{
+			if (room.isFake) truthCounter.fakeRooms++;
+			else {
+				truthCounter.rooms++;
+				room.items.forEach(item=>{
+					switch (item.item.id) {
+						case "enemy":{
+							for (const k in enemies[item.item.level].truth) {
+								if (!truthCounter[k]) truthCounter[k]=0;
+								truthCounter[k]+=enemies[item.item.level].truth[k];
+							}
+							break;
+						}
+						case "genericItem":{
+							if (item.item.itemId==1) truthCounter.ones++;
+							break;
+						}
+					}
+				});
+			}
+		});
+
+		// Generate truth/lies
+		truthMap.forEach((map)=>{
+			const subLies=[];
+			let
+				trueValue=truthCounter[map.id],
+				num=truthCounter[map.id]+map.lie.range[0],
+				limit=truthCounter[map.id]+map.lie.range[1];
+			truth.push(formatTruth(trueValue,map));
+			if ((map.lie.max!==undefined)&&(limit>map.lie.max)) limit=map.lie.max;
+			if ((map.lie.min!==undefined)&&(num<map.lie.min)) num=map.lie.min;
+			while (num<=limit) {
+				if (num!=trueValue)
+					subLies.push(formatTruth(num,map));
+				num+=(map.lie.step||1);
+			}
+			if (subLies.length) lies.push(getRandom(subLies));
+		});
+
+		// Inject truth/lies in randomizers
+
+		originalRandomizers.truth=clone(truth);
+		originalRandomizers.lie=clone(lies);
+
+	}
+
 	// Initializer
 
 	this.prepare=function() {
@@ -1119,6 +1205,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 			// Setup metadata
 			this.setupMetadata();
+
+			// Generate dungeon stats
+			this.generateTruthLies();
 
 			// Solve placeholders
 			this.solvePlaceholders();

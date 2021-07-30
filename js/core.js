@@ -13,7 +13,8 @@ const Core=function() {
 			"database/quests-bonusmalus.js",
 			"database/quests-fillers.js",
 			"database/quests-main.js",
-			"database/quests-sub.js"
+			"database/quests-sub.js",
+			"database/truthMap.js",
 		],
 		PADSEED=10,
 		METADATA={
@@ -42,6 +43,7 @@ const Core=function() {
 		QUESTS_MEDIUMFILLERS,
 		QUESTS_HARDFILLERS,
 		QUESTS_MAIN,
+		TRUTHMAP,
 		initialize;
 
 	function fillPlaceholders(model,seed) {
@@ -88,6 +90,7 @@ const Core=function() {
 				QUESTS_MEDIUMFILLERS=loadQuestsMediumFillers();
 				QUESTS_HARDFILLERS=loadQuestsHardFillers();
 				QUESTS_MAIN=loadQuestsMain();
+				TRUTHMAP=loadTruthMap();
 				cb();
 			}
 		}
@@ -159,6 +162,7 @@ const Core=function() {
 		dunggen.setHeroModels(HEROMODELS);
 		dunggen.setEnemyModels(ENEMYMODELS);
 		dunggen.setFlavorTexts(FLAVORTEXTS)
+		dunggen.setTruthMap(TRUTHMAP);
 		dunggen.setQuests(
 			{
 				main:QUESTS_MAIN,
