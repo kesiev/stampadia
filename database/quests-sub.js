@@ -4,7 +4,7 @@ function loadQuestsSub() {
 
 	return [
 
-		// Kill 2 mini-boss and earn 2 XPs
+		// The Guardians: kill 2 mini-boss and earn 2 XPs
 		{
 			minRooms:3,
 			steps:[
@@ -35,7 +35,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// Fountains: decide between two bonuses
+		// The fountains: decide between two bonuses
 		{
 			minRooms:3,
 			steps:[
@@ -60,7 +60,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// Walk on a cell and enable another room effect.
+		// The linked rooms: walk on a cell and enable another room effect.
 		{
 			minRooms:3,
 			steps:[
@@ -84,7 +84,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// Found the key and open one of two random chests.
+		// The key and the chests: find the key and open one of two random chests.
 		{
 			minRooms:3,
 			steps:[
@@ -117,7 +117,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// Found the key and open one good chest.
+		// The key and the chest: find the key and open one good chest.
 		{
 			minRooms:3,
 			steps:[
@@ -253,6 +253,37 @@ function loadQuestsSub() {
 								"{ifMoveOn:statue}{and}\"{truth}\"{then}Sphinx: {randomSphinxAnswerAccept}, {markRoom:questionRoom}, {markItem:statue}",
 								"{ifMoveOn:statue}{and}\"{lie}\"{then}Sphinx: {randomSphinxAnswerAccept}, {markRoom:answerRoom}, {markItem:statue}",
 							],
+						]
+					}
+				]
+			]
+		},
+
+		// The Murderer: avenge the dead body or steal its gold?
+		{
+			minRooms:3,
+			steps:[
+				[
+					{
+						id:"corpseRoom",
+						atPercentage:10,
+						items:[{genericItem:"corpse"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:corpse}{and}\"I'll avenge this {victimName} death!\"{then}{markRoom:killerRoom}, {markItem:corpse}",
+								"{ifMoveOn:corpse}{and}\"This dead {victimName} won't need this...\"{then}{randomGold}, {markItem:corpse}"
+							]
+						]
+					},
+					{
+						id:"killerRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{randomMurderer}",
+								"{ifKilledLastFoe}{and}{ifRoomIsMarked:killerRoom}{then}{hide}You avenged the {victimName}, {randomGoodReward}, {markRoom:killerRoom}"
+							]
 						]
 					}
 				]

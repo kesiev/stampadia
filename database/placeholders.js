@@ -81,6 +81,15 @@ function loadPlaceholders() {
 			"Inscription",
 			"Document",
 			"Message"
+		],
+		victimName:[
+			"Kid",
+			"Adventurer",
+			"Girl",
+			"Boy",
+			"Man",
+			"Woman",
+			"Elder"
 		]
 	};
 }

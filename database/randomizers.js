@@ -86,8 +86,18 @@ function loadRandomizers() {
 			"\"...condamned you.\"",
 			"\"...is illogic.\""
 		],
+		randomMurderer:[
+			"\"That {victimName} was a too easy fight... Hey, YOU!\"",
+			"\"That {victimName} taste was so good...\"",
+			"\"Hey {heroClass}! Are you here for that {victimName}?\"",
+			"\"I wonder why the {villainName} wanted that {victimName} dead... What?\""
+		],
 
 		// Loot
+		randomGold:[
+			"{gainGold:1}",
+			"{gainGold:2}"
+		],
 		randomGoodReward:[
 			"{gainHp:1}",
 			"{gainXp:1}",
