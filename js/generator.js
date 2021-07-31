@@ -331,6 +331,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{rollDie}","roll a die: ");
 		line=line.replaceAll("{nothing}","nothing happens");
 		line=line.replaceAll("{ifNoFoes}","no foes");
+		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");
 		line=line.replaceAll("{roomIsEmpty}","room is empty");
 		line=line.replaceAll("{heroDied}","hero died");
 		line=line.replaceAll("{nameLine}","_____________________________");
