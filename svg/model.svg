@@ -23,16 +23,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="173.78188"
-     inkscape:cy="137.60431"
+     inkscape:zoom="16"
+     inkscape:cx="155.74371"
+     inkscape:cy="70.672532"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
-     inkscape:window-width="1398"
-     inkscape:window-height="785"
-     inkscape:window-x="76"
+     inkscape:window-width="1474"
+     inkscape:window-height="772"
+     inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
      showguides="false" />
@@ -685,12 +685,6 @@
        id="path868"
        sodipodi:nodetypes="cccccccccccccccccccccccc" />
     <circle
-       style="display:inline;fill:#ffffff;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
-       id="goldLeft"
-       cx="39.290623"
-       cy="17.564825"
-       r="1.1845" />
-    <circle
        style="fill:#000000;stroke-width:0.999999"
        id="path870"
        cx="243.67516"
@@ -864,5 +858,17 @@
          x="-292.19608"
          y="-8.4481983"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+    <circle
+       style="display:inline;fill:#ffffff;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="goldLeft"
+       cx="39.290623"
+       cy="17.564825"
+       r="1.1845" />
+    <circle
+       style="display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       id="goldLeftMark"
+       cx="39.290623"
+       cy="17.564825"
+       r="1.1845" />
   </g>
 </svg>

@@ -1614,9 +1614,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				});
 
 				// Render gold
-				const goldSize=svg.getNum(svg.getById("goldLeft"),"width")+0.55;
-				for (let i=0;i<gold;i++)
-					svg.cloneNodeBy("goldLeft",0,goldSize*i,0);
+				const goldSize=svg.getNum(svg.getById("goldLeft"),"width")+0.56;
+				for (let i=0;i<gold;i++) {
+					svg.cloneNodeBy((gold-i)%10?"goldLeft":"goldLeftMark",0,goldSize*i,0);
+				}
 
 				// Render services
 				const serviceHeight=svg.getNum(svg.getById("serviceCheckbox"),"width")+1.2;
@@ -1635,6 +1636,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				// Delete stencils
 				svg.deleteById("serviceBox");
 				svg.deleteById("goldLeft");
+				svg.deleteById("goldLeftMark");
 				svg.deleteById("heroTier");
 				svg.deleteById("enemyTier");
 				svg.deleteById("gridCol");
