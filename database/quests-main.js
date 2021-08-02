@@ -54,7 +54,7 @@ function loadQuestsMain() {
 
 		// Beat the boss.
 		{
-			minRooms:2,
+			minRooms:4,
 			adventureTitle:[
 				"The End Of The {villainName}",
 				"The {villainName}'s Bounty",
@@ -96,7 +96,7 @@ function loadQuestsMain() {
 		
 		// Beat the gang.
 		{
-			minRooms:2,
+			minRooms:3,
 			adventureTitle:[
 				"The {placeName}'s {villainName} Gang",
 				"The {goodGuyName} Deception",
@@ -324,6 +324,56 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"\"The {explorerName} disappeared days ago. We're worried...\"",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
+						]
+					]
+				}
+			]
+		},
+
+		// Fight the boss, free the kidnapped, return it.
+		{
+			minRooms:3,
+			adventureTitle:[
+				"The Kidnapped {goodGuyRelativeName}",
+				"The {goodGuyName}'s {goodGuyRelativeName}",
+				"The Broken {goodGuyName}",
+				"The {goodGuyName}'s Tears",
+				"The Imprisoned {goodGuyRelativeName}",
+				"The {heroClass}'s Rescue"
+			],
+			steps:[
+				[
+					{
+						id:"goodguyroom",
+						atPercentage:20,
+						items:[{genericItem:"goodguy"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:goodguy}{then}{goodGuyName}: {randomSaveRelativeRequest}",
+								"{ifMoveOn:goodguy}{and}{ifRoomIsMarked:goodguyroom}{then}{goodGuyName}: {randomThankYou}, {markRoom:startingRoom}, {markItem:goodguy}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						atPercentage:40,
+						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						roomDescriptions:[
+							[
+								"{randomBossRevenge}, {noEscape}",
+								"{ifNoFoes}{then}{hide}You rescued the {goodGuyName}'s {goodGuyRelativeName}, {markRoom:goodguyroom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"\"The {goodGuyName} ran to the {placeName} alone... Why?\"",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
 						]
 					]

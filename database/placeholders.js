@@ -39,6 +39,13 @@ function loadPlaceholders() {
 			"Queen",
 			"Old Sage"
 		],
+		goodGuyRelativeName:[
+			"Friend",
+			"Wife",
+			"Son",
+			"Child",
+			"Lover",
+		],
 		bossKey:[
 			"Skull Key",
 			"Bloody Key",

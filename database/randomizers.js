@@ -68,6 +68,25 @@ function loadRandomizers() {
 			"\"The {goodGuyName} will regret sending you here!\"",
 			"\"A {heroClass} this time... very well! Bring it on!\""
 		],
+		randomBossRevenge:[
+			"\"That's the right price for the {goodGuyName}'s indolence!\"",
+			"\"A simple {heroClass} can't save the {goodGuyName}'s {goodGuyRelativeName} life!\"",
+			"{goodGuyName}'s {goodGuyRelativeName}: \"Please, help me!\"",
+			"{goodGuyName}'s {goodGuyRelativeName}: \"The {villainName} kidnapped me! Help!\"",
+			"\"The {goodGuyName}'s {goodGuyRelativeName} life is mine!\"",
+			"\"The {goodGuyName} will never see the {goodGuyRelativeName} again!\"",
+			"\"The {goodGuyName}'s {goodGuyRelativeName} will be my reward!\"",
+		],
+		randomSaveRelativeRequest:[
+			"\"The {villainName} kidnapped my {goodGuyRelativeName}... Help!\"",
+			"\"My {goodGuyRelativeName} is in danger... Please, help me!\"",
+			"\"Please, save my {goodGuyRelativeName}!\"",
+		],
+		randomThankYou:[
+			"\"Thank you!\"",
+			"\"You have my thanks!\"",
+			"\"I owe you. Thanks!\"",
+		],
 		randomSphinxAnswerAccept:[
 			"\"That's your answer.\"",
 			"\"...\"",
