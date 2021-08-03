@@ -30,7 +30,6 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
 - [ ] New quests
   - [ ] Cursed rooms - Help me, or else...
-  - [ ] Bartender
   - [ ] Time bomb
   - [ ] More smaller quests
   - [ ] Pair/odd in Sphinx
