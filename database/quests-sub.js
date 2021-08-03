@@ -289,6 +289,60 @@ function loadQuestsSub() {
 				]
 			]
 		},
+
+		// The Barman: pay for health or a short mission
+		{
+			minRooms:2,
+			steps:[
+				[
+					{
+						id:"barmanRoom",
+						atPercentage:10,
+						items:[{genericItem:"barman"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:barman}{and}{payGold:1}{then}Barman: \"Well...\"{hide}\"Someone is hiding here...\", {markRoom:missionRoom}, {markItem:barman}",
+								"{ifMoveOn:barman}{and}{payGold:3}{then}Barman: {randomShopKeeper}, {gainHp:1}, {markItem:barman}"
+							]
+						]
+					},
+					{
+						id:"missionRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifEnterRoom}{and}{ifRoomIsNotMarked:missionRoom}{then}{roomIsEmpty}, {stopReading}",
+								"{randomHiddenFoe}"
+							]
+						]
+					}
+				],
+				[
+					{
+						id:"barmanRoom",
+						atPercentage:10,
+						items:[{genericItem:"barman"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:barman}{and}{payGold:1}{then}Barman: \"Well...\"{hide}\"Something is hiding here...\", {markRoom:missionRoom}, {markItem:barman}",
+								"{ifMoveOn:barman}{and}{payGold:3}{then}Barman: {randomShopKeeper}, {gainHp:1}, {markItem:barman}"
+							]
+						]
+					},
+					{
+						id:"missionRoom",
+						atPercentage:100,
+						items:[{genericItem:"item"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:item}{and}{ifRoomIsMarked:missionRoom}{then}You found{hide}{randomGoodLoot+randomBadLoot}, {markItem:item}"
+							]
+						]
+					}
+				]
+			]
+		},
 	]
 
 }

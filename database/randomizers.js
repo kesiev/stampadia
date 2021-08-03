@@ -111,6 +111,13 @@ function loadRandomizers() {
 			"\"Hey {heroClass}! Are you here for that {victimName}?\"",
 			"\"I wonder why the {villainName} wanted that {victimName} dead... What?\""
 		],
+		randomHiddenFoe:[
+			"\"Damn {heroClass}! How did you manage to find me?!\"",
+			"\"It was the best hiding place in the {placeName}!\"",
+			"\"So you came, at last.\"",
+			"\"Did the {goodGuyName} tell you where I was? Damn!\"",
+			"\"Finding me will be your worst mistake.\""
+		],
 
 		// Loot
 		randomGold:[
