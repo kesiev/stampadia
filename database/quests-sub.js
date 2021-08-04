@@ -4,7 +4,7 @@ function loadQuestsSub() {
 
 	return [
 
-		// The Guardians: kill 2 mini-boss and earn 2 XPs
+		// [CODEC-Events] Subquest - The Guardians: Kill 2 mini-boss and earn bonus XPs.
 		{
 			minRooms:3,
 			steps:[
@@ -35,7 +35,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The fountains: decide between two bonuses
+		// [CODEC-Events] Subquest - The Fountains: Decide between two effects.
 		{
 			minRooms:3,
 			steps:[
@@ -60,7 +60,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The linked rooms: walk on a cell and enable another room effect.
+		// [CODEC-Events] Subquest - The Linked Rooms: Walk on a cell and enable another room effect.
 		{
 			minRooms:3,
 			steps:[
@@ -84,7 +84,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The key and the chests: find the key and open one of two random chests.
+		// [CODEC-Events] Subquest - The Key And The Chests: Find the key and open one of two random chests.
 		{
 			minRooms:3,
 			steps:[
@@ -117,7 +117,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The key and the chest: find the key and open one good chest.
+		// [CODEC-Events] Subquest - The Key And The Chest (good): Find the key and open one good chest.
 		{
 			minRooms:3,
 			steps:[
@@ -142,7 +142,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The Gambler: bet Gold, roll a die and you may win more gold.
+		// [CODEC-Events] Subquest - The Gambler: Bet Gold, roll a die and you may win more gold.
 		{
 			minRooms:3,
 			steps:[
@@ -162,7 +162,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The Bloody Gambler: bet HP, roll a die and you may win more HP.
+		// [CODEC-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.
 		{
 			minRooms:3,
 			steps:[
@@ -182,7 +182,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The Altar: Sacrify important resources for other advantages.
+		// [CODEC-Events] Subquest - The Altar: Sacrify important resources for other advantages.
 		{
 			minRooms:2,
 			steps:[
@@ -199,7 +199,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The Sphynx: Give the right answer, meet the Sphynx and get your reward.
+		// [CODEC-Events] Subquest - The Sphynx: Give the right answer, meet the Sphynx and get your reward.
 		{
 			minRooms:3,
 			steps:[
@@ -259,7 +259,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The Murderer: avenge the dead body or steal its gold?
+		// [CODEC-Events] Subquest - The Murderer: Avenge the dead body or steal its gold?
 		{
 			minRooms:3,
 			steps:[
@@ -290,7 +290,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// The Barman: pay for health or a short mission
+		// [CODEC-Events] Subquest - The Barman: Pay gold for health or a short mission.
 		{
 			minRooms:2,
 			steps:[

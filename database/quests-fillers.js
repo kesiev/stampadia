@@ -3,7 +3,7 @@
 function loadQuestsEasyFillers() {
 	return [
 
-		// Two level 0 enemies
+		// [CODEC-Events] Filler (easy) - The Pair: Two level 0 enemies.
 		{
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
 				[ "\"Y...you shall not pass!\"" ],
@@ -13,7 +13,7 @@ function loadQuestsEasyFillers() {
 			],items:[{id:"enemy",level:0},{id:"enemy",level:0}]}]]
 		},
 
-		// One level 1 enemy
+		// [CODEC-Events] Filler (easy) - The One: One level 1 enemy.
 		{
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
 				[ "\"Hey you! Stop there!\"" ],
@@ -28,7 +28,7 @@ function loadQuestsEasyFillers() {
 function loadQuestsMediumFillers() {
 	return [
 
-		// Two level 1 enemies
+		// [CODEC-Events] Filler (medium) - The Pair: Two level 1 enemies.
 		{
 			minRooms:2,
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
@@ -38,7 +38,7 @@ function loadQuestsMediumFillers() {
 			],items:[{id:"enemy",level:1},{id:"enemy",level:1}]}]]
 		},
 
-		// One level 2 enemy
+		// [CODEC-Events] Filler (medium) - The One: One level 2 enemy.
 		{
 			minRooms:2,
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
@@ -53,7 +53,7 @@ function loadQuestsMediumFillers() {
 function loadQuestsHardFillers() {
 	return [
 
-		// Two level 2 enemies
+		// [CODEC-Events] Filler (hard) - The Pair: Two level 2 enemies.
 		{
 			minRooms:2,
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
@@ -63,7 +63,7 @@ function loadQuestsHardFillers() {
 			],items:[{id:"enemy",level:2},{id:"enemy",level:2}]}]]
 		},
 		
-		// One Level 3 enemy
+		// [CODEC-Events] Filler (hard) - The One: One Level 3 enemy.
 		{
 			minRooms:2,
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[

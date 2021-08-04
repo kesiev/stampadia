@@ -118,7 +118,15 @@ function loadRandomizers() {
 			"\"Did the {goodGuyName} tell you where I was? Damn!\"",
 			"\"Finding me will be your worst mistake.\""
 		],
-
+		randomEnemyChallenge:[
+			"\"You will never leave the {placeName} alive, {heroClass}!\"",
+			"\"Stop right there!\"",
+			"\"Now is your turn to die, {heroClass}!\"",
+			"\"You will pay for this!\"",
+			"\"I'll avenge the {villainName}!\"",
+			"\"Where are you going, {heroClass}?\"",
+		],
+		
 		// Loot
 		randomGold:[
 			"{gainGold:1}",
@@ -134,12 +142,16 @@ function loadRandomizers() {
 			"{loseHp:1}"
 		],
 		randomGoodLoot:[
+			// [CODEC-Stuff] Item - The Heart Shard: Gain 1 HP.
 			"an Heart Shard, {gainHp:1}",
+			// [CODEC-Stuff] Item - The Star Pin: Gain 1 XP.
 			"a Star Pin, {gainXp:1}",
+			// [CODEC-Stuff] Item - The Bag Of Gold: Gain 3 gold.
 			"a bag of gold, {gainGold:3}",
 		],
 		randomBadLoot:[
 			"nothing",
+			// [CODEC-Stuff] Trap - The Mimic: Lose 1 HP.
 			"a Mimic, {loseHp:1}"
 		],
 		randomHighCost:[
@@ -154,19 +166,25 @@ function loadRandomizers() {
 
 		// Fountains
 		randomGoodFountain:[
+			// [CODEC-Stuff] Fountain - The Clean Fountain: Gain 1 HP.
 			"a clean fountain, {gainHp:1}",
+			// [CODEC-Stuff] Fountain - The Fresh Fountain: Gain 2 HP.
 			"a fresh fountain, {gainHp:2}",
 		],
 		randomBadFountain:[
+			// [CODEC-Stuff] Fountain - The Muddy Fountain: Lose 1 HP.
 			"a muddy fountain, {loseHp:1}",
+			// [CODEC-Stuff] Fountain - The Black Fountain: Lose 2 HP.
 			"a black fountain, {loseHp:2}",
 		],
 
 		// Room effects
 		randomGoodRoomEffect:[
+			// [CODEC-Stuff] Special room - The Blessed Room: Gain 1 HP.
 			"This room is blessed, {gainHp:1}"
 		],
 		randomBadRoomEffect:[
+			// [CODEC-Stuff] Special room - The Poisonous Room: Lose 1 HP.
 			"Poisonous gas fills the room, {loseHp:1}"
 		]
 	}

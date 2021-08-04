@@ -2,6 +2,7 @@
 
 function loadHeroModels() {
 	return [
+		// [CODEC-Events] Hero class - The Warrior: A balanced fighter. It's equipped with a sword and a small flask of cure.
 		{
 			heroClass:"Warrior",
 			skills:[

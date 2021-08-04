@@ -3,7 +3,7 @@
 function loadQuestsMain() {
 	return [
 
-		// Find the key and beat the boss.
+		// [CODEC-Events] Main quest - The Missing Key: Find the key and beat the boss.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -29,7 +29,7 @@ function loadQuestsMain() {
 					{
 						id:"bossRoom",
 						atPercentage:100,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:keyRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -52,7 +52,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// Beat the boss.
+		// [CODEC-Events] Main quest - The Boss Battle: Beat the boss.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -74,7 +74,7 @@ function loadQuestsMain() {
 					{
 						id:"bossRoom",
 						atPercentage:100,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[ "\"The {goodGuyName} will die... and you with him!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
 						]
@@ -94,7 +94,7 @@ function loadQuestsMain() {
 			]
 		},
 		
-		// Beat the gang.
+		// [CODEC-Events] Main quest - The Gang: beat a sequence of enemies.
 		{
 			minRooms:3,
 			adventureTitle:[
@@ -111,7 +111,7 @@ function loadQuestsMain() {
 					{
 						id:"enemy1room",
 						atPercentage:20,
-						items:[{id:"enemy",level:0,isFinalBoss:true}],
+						items:[{id:"enemy",level:0,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"\"We will stop you at any cost!\"",
@@ -122,7 +122,7 @@ function loadQuestsMain() {
 					{
 						id:"enemy2room",
 						atPercentage:100,
-						items:[{id:"enemy",level:1,isFinalBoss:true}],
+						items:[{id:"enemy",level:1,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:enemy1room}{then}You feel watched, {roomIsEmpty}, {stopReading}",
@@ -133,7 +133,7 @@ function loadQuestsMain() {
 					{
 						id:"enemy3room",
 						atPercentage:40,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:enemy2room}{then}{roomIsEmpty}, {stopReading}",
@@ -156,7 +156,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// Break the spell and kill the bad guy.
+		// [CODEC-Events] Main quest - The Curse: Break the spell and kill the bad guy.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -187,7 +187,7 @@ function loadQuestsMain() {
 					{
 						id:"bossRoom",
 						atPercentage:100,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"\"I'm the {goodGuyName}. Can't control... Help, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
@@ -209,7 +209,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// Find the keys and beat the boss.
+		// [CODEC-Events] Main quest - The Broken Key: Collect the key parts and beat the boss.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -251,7 +251,7 @@ function loadQuestsMain() {
 					{
 						id:"bossRoom",
 						atPercentage:100,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:keyRoom1}{or}{ifRoomIsNotMarked:keyRoom2}{or}{ifRoomIsNotMarked:keyRoom3}{then}{roomIsEmpty}, {stopReading}",
@@ -274,7 +274,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// Return an item to NPC, unlock the boss and fight.
+		// [CODEC-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -308,7 +308,7 @@ function loadQuestsMain() {
 					{
 						id:"bossRoom",
 						atPercentage:100,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:npcRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -331,7 +331,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// Fight the boss, free the kidnapped, return it.
+		// [CODEC-Events] Main quest - The Kidnapping: Fight the boss, free the kidnapped, and return it.
 		{
 			minRooms:3,
 			adventureTitle:[
@@ -358,7 +358,7 @@ function loadQuestsMain() {
 					{
 						id:"bossRoom",
 						atPercentage:40,
-						items:[{id:"enemy",level:3,isFinalBoss:true}],
+						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
 								"{randomBossRevenge}, {noEscape}",
