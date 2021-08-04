@@ -1019,7 +1019,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				if (item.item.id=="enemy") {
 					dungeonEnemies++;
 					// Calculate dungeon XPs (except final boss, if any)
-					if (!item.item.isFinalBoss) {
+					if (!item.item.ignoreXp) {
 						const xp=enemies[0].gainXp+enemies[item.item.level].gainXp;
 						dungeonXp.all+=xp;
 						switch (item.item.level) {
