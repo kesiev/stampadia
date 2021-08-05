@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codec contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (35 items)
+## Events (36 items)
 
 - Bonus
   - **The NPC**: Learn about the Stampadia lore by Stampadians.
@@ -10,6 +10,9 @@
   - **The Saint**: They will help you when you're in danger.
   - **The Shop**: Pay gold for useful items.
   - **The Teleports**: Teleport from a room to another.
+- Elemental Chest
+  - **Flaming Chest**: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
+  - **Rock Chest**: Find the 2 Green Leaves and open the Rock Chest (contains Taunt).
 - Filler (easy)
   - **The One**: One level 1 enemy.
   - **The Pair**: Two level 0 enemies.
@@ -19,8 +22,6 @@
 - Filler (medium)
   - **The One**: One level 2 enemy.
   - **The Pair**: Two level 1 enemies.
-- Hero class
-  - **The Warrior**: A balanced fighter. It's equipped with a sword and a small flask of cure.
 - Main quest
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
@@ -48,8 +49,17 @@
   - **The Murderer**: Avenge the dead body or steal its gold?
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
 
-## Stuff (10 items)
+## Heroes (1 items)
 
+- Class
+  - **The Warrior**: A balanced fighter. It's equipped with a sword, a small flask of cure, and a Resurrection item.
+
+## Stuff (13 items)
+
+- Equipment
+  - **Rage**: Sacrifice XPs to strike a critical hit.
+  - **Resurrection**: Pay gold to resurrect once.
+  - **Taunt**: Sacrifice XPs to weaken an enemy attack.
 - Fountain
   - **The Black Fountain**: Lose 2 HP.
   - **The Clean Fountain**: Gain 1 HP.
