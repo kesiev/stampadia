@@ -2,7 +2,7 @@
 
 function loadHeroModels() {
 	return [
-		// [CODEC-Events] Hero class - The Warrior: A balanced fighter. It's equipped with a sword and a small flask of cure.
+		// [CODEC-Heroes] Class - The Warrior: A balanced fighter. It's equipped with a sword, a small flask of cure, and a Resurrection item.
 		{
 			heroClass:"Warrior",
 			skills:[
@@ -55,9 +55,9 @@ function loadHeroModels() {
 			damageRatio:0.5,
 			equipment:[
 				{
-					id:"heroItem",
-					label:"Resurrection",
-					action:"{heroDied}{and}{payGold:5}{then}{gainFullHp}, {moveOnStairs}"
+					placeholder:"heroItem",
+					id:"resurrection",
+					isAvailable:true
 				}
 			]
 		}

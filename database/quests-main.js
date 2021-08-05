@@ -176,7 +176,7 @@ function loadQuestsMain() {
 					{
 						id:"spellRoom",
 						atPercentage:55,
-						items:[{id:"enemy",level:1}],
+						items:[{id:"enemy",level:1}],						
 						roomDescriptions:[
 							[
 								"A sorcerer is holding a ritual.",

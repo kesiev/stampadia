@@ -157,7 +157,7 @@ function loadRandomizers() {
 		randomHighCost:[
 			"{payHp:2}",
 			"{payXp:3}",
-			"{loseEquip:equip-heroItem}"
+			"{payEquip:equip-heroItem}"
 		],
 		randomHighPrize:[
 			"{gainGold:5}",

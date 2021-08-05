@@ -23,18 +23,18 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="16"
-     inkscape:cx="155.74371"
-     inkscape:cy="70.672532"
+     inkscape:zoom="9.1747284"
+     inkscape:cx="699.78985"
+     inkscape:cy="30.600878"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="true"
-     inkscape:window-width="1474"
+     inkscape:window-width="1440"
      inkscape:window-height="772"
      inkscape:window-x="0"
      inkscape:window-y="25"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      showguides="false" />
   <metadata
      id="metadata5">
@@ -636,7 +636,8 @@
        x="12.788461"
        y="32.847824" />
     <g
-       id="serviceBox">
+       id="serviceBox"
+       transform="translate(0.52916663,-0.14419135)">
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
@@ -675,8 +676,8 @@
          y="18.247232"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (cross door » pay 1G)</tspan></text>
     <path
-       style="fill:none;stroke:#b3b3b3;stroke-width:0.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 116.20497,15.49328 v -2.109084 l 0.62012,-0.568441 -0.62012,-0.516764 V 8.8366697 L 116.72173,8.268229 116.20497,7.7514647 V 6.9763182 l 0.72347,-0.5684407 -0.72347,-0.7234701 V 3.2155865 h 68.11197 v 1.1769102 l -0.67179,0.5167643 0.67179,0.5167643 v 0.6717936 l -0.51676,0.5684407 0.51676,0.3100586 v 5.0126138 l -0.51676,0.72347 0.51676,0.516764 v 0.671794 l -0.55725,0.340799 0.55725,0.382671 v 1.161177"
+       style="fill:none;stroke:#b3b3b3;stroke-width:0.251203;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 116.20575,15.492869 v -2.108941 l 0.62615,-0.568403 -0.62615,-0.516728 V 8.8367106 l 0.52178,-0.5684021 -0.52178,-0.5167292 V 6.9764855 l 0.7305,-0.5684021 -0.7305,-0.7234209 V 3.2160093 h 68.77369 v 1.1768302 l -0.67832,0.5167292 0.67832,0.5167292 v 0.671748 l -0.52178,0.568402 0.52178,0.3100376 v 5.0122735 l -0.52178,0.723421 0.52178,0.516728 v 0.671749 l -0.56266,0.340776 0.56266,0.382645 v 1.161098"
        id="path966"
        sodipodi:nodetypes="ccccccccccccccccccccccccc" />
     <path

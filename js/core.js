@@ -15,6 +15,7 @@ const Core=function() {
 			"database/quests-main.js",
 			"database/quests-sub.js",
 			"database/truthMap.js",
+			"database/equipment.js",
 		],
 		PADSEED=10,
 		METADATA={
@@ -44,6 +45,7 @@ const Core=function() {
 		QUESTS_HARDFILLERS,
 		QUESTS_MAIN,
 		TRUTHMAP,
+		EQUIPMENT,
 		initialize;
 
 	function fillPlaceholders(model,seed) {
@@ -91,6 +93,7 @@ const Core=function() {
 				QUESTS_HARDFILLERS=loadQuestsHardFillers();
 				QUESTS_MAIN=loadQuestsMain();
 				TRUTHMAP=loadTruthMap();
+				EQUIPMENT=loadEquipment();
 				cb();
 			}
 		}
@@ -163,6 +166,7 @@ const Core=function() {
 		dunggen.setEnemyModels(ENEMYMODELS);
 		dunggen.setFlavorTexts(FLAVORTEXTS)
 		dunggen.setTruthMap(TRUTHMAP);
+		dunggen.setEquipment(EQUIPMENT);
 		dunggen.setQuests(
 			{
 				main:QUESTS_MAIN,

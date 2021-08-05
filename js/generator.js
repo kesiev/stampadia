@@ -4,6 +4,8 @@
 const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	const
+		MAX_EQUIPMENT=3,
+		MAX_DESCRIPTION=2,
 		ROOMPLACEHOLDERS=[
 			{
 				regex:/{roomId:([^}]*)}/g,
@@ -42,6 +44,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		heroModels,
 		originalRandomizers,
 		randomizers,
+		equipment,
 		enemies=[],		
 		noise=[],
 		questsStructure=[],
@@ -64,6 +67,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.prepared=false;
 
+	this.setEquipment=(equipmentdata)=>equipment=equipmentdata;
 	this.setTruthMap=(truthmapdata)=>truthMap=truthmapdata;
 	this.setRoomIds=(roomidsdata)=>roomIds=roomidsdata;
 	this.setMapGuidesEvery=(mapguideseverydata)=>mapGuidesEvery=mapguideseverydata;
@@ -336,6 +340,11 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{heroDied}","hero died");
 		line=line.replaceAll("{nameLine}","_____________________________");
 		line=line.replaceAll("{heroClass}",heroModel.heroClass);
+		line=line.replaceAll("{roomIsEmpty}","room is empty");
+
+		line=line.replaceAll("{afterEnemyRollInFight}","enemy turn dice roll");
+		line=line.replaceAll("{afterHeroRollInFight}","hero turn dice roll");
+
 		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
 
 		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
@@ -350,7 +359,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{payXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
 		line=line.replace(/\{payHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
 
-		line=line.replace(/\{loseEquip:([^)]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
+		line=line.replace(/\{setDieTo:([0-9]+)\}/g,(m,num)=>"set one die to "+num);
 
 		for (const k in globalPlaceholders)
 			line=line.replaceAll("{"+k+"}",globalPlaceholders[k]);
@@ -363,6 +372,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		const placeholders={roomIds:{},itemIds:{}};
 
 		line=formatRandomizers(line);
+
+		[
+			{regex:/\{payEquip:([^}]+)\}/g,verb:"pay"},
+			{regex:/\{loseEquip:([^}]+)\}/g,verb:"lose"},
+			{regex:/\{getEquip:([^}]+)\}/g,verb:"get"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				let equipment=globalPlaceholders[id];
+				if (!equipment) equipment=getRandom(services).equipment.label;
+				return entry.verb+" "+equipment;
+			});
+		})
 		
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
@@ -393,6 +414,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	function formatDescriptionLine(line,placeholders) {
 
 		line=formatRandomizers(line);
+
+		line=line.replace(/\{payEquip:([^}]+)\}/g,(m,id)=>"pay "+globalPlaceholders[id]);
+		line=line.replace(/\{loseEquip:([^}]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
+		line=line.replace(/\{getEquip:([^}]+)\}/g,(m,id)=>"get "+globalPlaceholders[id]);
 
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
@@ -429,6 +454,43 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			return argument[getRandomId(argument)];
 		else
 			return argument;
+	}
+
+	// Equipment management
+	function addEquipment(list,equipment,isavailable,placeholder,placeholders) {
+		list.push({
+			id:equipment.id,
+			isAvailable:!!isavailable,
+			equipment:equipment
+		});
+		if (placeholders) {
+			// Register item placeholder
+			placeholders["equip-"+placeholder]=equipment.label;
+			placeholders["equip-"+equipment.id]=equipment.label;
+		}
+	}
+
+	function pickEquipment(equipment,list,id) {
+		let ret;
+		if ((equipment.length<MAX_EQUIPMENT)&&list.length)
+			for (var i=0;i<list.length;i++)
+				if (list[i].id==id) {
+					ret=list[i];
+					list.splice(i,1);
+					return ret;
+				}
+		return false;
+	}
+
+	function pickRandomEquipment(equipment,list) {
+		let ret;
+		if ((equipment.length<MAX_EQUIPMENT)&&list.length) {
+			let i=getRandomId(list);
+			ret=list[i];
+			list.splice(i,1);
+			return ret;
+		}
+		return false;
 	}
 
 	// Rooms
@@ -705,17 +767,38 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		if (route.length<minRooms) return false;
 		else {
 
+			const
+				tempServices=clone(services),
+				tempEquipment=clone(equipment);
+
 			route.forEach(room=>routeCopy.push(room));
 
 			steps.forEach(step=>{
 				const subroute=[];
 				// Filter suitable rooms
 				routeCopy.forEach(room=>{
-					if (
-						!room.room.isBusy&&
-						(!step.items||(room.freeSpaces.length>=step.items.length))&&
-						(!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<3))
-					) subroute.push(room);
+					let suitable=true;
+
+					// Room must be not busy
+					suitable&=!room.room.isBusy;
+
+					// Room must fit the required amount of items
+					suitable&=!step.items||(room.freeSpaces.length>=step.items.length);
+
+					// TODO prima crea l'eroe e poi assegna gli oggetti. Occhio a resurrectionz
+
+					// Room must fit the required amount of description
+					suitable&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
+
+					// Room must fit the required equipment
+					if (step.equipment)
+						step.equipment.forEach(equip=>{
+							let neededEquipment=pickEquipment(tempServices,tempEquipment,equip.id);
+							if (neededEquipment) addEquipment(tempServices,neededEquipment);
+							else suitable=false;
+						});
+
+					if (suitable) subroute.push(room);
 				});
 				if (subroute.length) {
 					const pos=Math.floor((1-(step.atPercentage/100))*subroute.length);
@@ -805,7 +888,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				});
 		});
 
-		// Add room labels
+		// Add room labels and required items
 		steps.forEach((step,index)=>{
 			if (step.roomDescriptions) {
 				const
@@ -818,6 +901,13 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					});
 				});
 				if (step.shuffleRoomDescriptions) shuffleArray(room.description);
+				if (step.equipment) {
+					step.equipment.forEach(equip=>{
+						let neededEquipment=pickEquipment(services,equipment,equip.id);
+						if (neededEquipment) addEquipment(services,neededEquipment,equip.isAvailable,equip.placeholder,globalPlaceholders);
+						else console.warn("Can't find quest equipment",step);						
+					});
+				}
 			}
 		});
 
@@ -833,7 +923,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 						placeholders:placeholders
 					});
 				})
-			})
+			});
 
 		// Set adventure metadata
 		if (quest.adventureTitle) adventureTitle=getRandom(quest.adventureTitle);
@@ -844,7 +934,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.addFlavorTexts=function() {
 		const flavors=clone(flavorTexts);
 		allRooms.forEach(room=>{
-			if (room.description.length<2)
+			if (room.description.length<MAX_DESCRIPTION)
 				if (room.isCorridor) {
 					if (flavors.corridors.length) {
 						let lineId=getRandomId(flavors.corridors),
@@ -865,6 +955,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					});
 				}
 		})
+	}
+
+	// Equipment
+
+	this.sortEquipment=function() {
+		services.sort((a,b)=>{
+			if (a.isAvailable&&!b.isAvailable) return -1; else
+			if (!a.isAvailable&&b.isAvailable) return 1; else
+			if (a.equipment.label<b.equipment.label) return -1; else
+			if (a.equipment.label>b.equipment.label) return 1; else
+			return 0;
+		});
 	}
 
 	// Obfuscation
@@ -937,6 +1039,13 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				}
 			}
 
+		// Randomly add equipment
+		while (services.length<MAX_EQUIPMENT) {
+			let neededEquipment=pickRandomEquipment(services,equipment);
+			if (neededEquipment) addEquipment(services,neededEquipment);
+			else break;
+		}
+
 
 	}
 
@@ -954,13 +1063,6 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				})
 			})
 		}
-
-		if (debug&&debug.dumpSentences)
-			fakeDescriptions.forEach(lines=>{
-				lines.forEach(line=>{
-					console.warn(formatFakeDescriptionLine(line))
-				})
-			});
 
 		fakeRooms.forEach(room=>{
 			room.makeFake();
@@ -1057,22 +1159,17 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			hero.maxHp+=levelHp;
 		});
 
-		// Add equipment
-		heroModel.equipment.forEach(equip=>{
-			services.push({
-				id:equip.id,
-				label:equip.label,
-				action:equip.action
-			});
-
-			// Register item placeholder
-			globalPlaceholders["equip-"+equip.id]=equip.label;
-		});
-
 	}
 
 	this.selectHeroModel=function() {
 		heroModel=getRandom(heroModels);
+
+		// Add equipment
+		heroModel.equipment.forEach(equip=>{
+			let neededEquipment=pickEquipment(services,equipment,equip.id);
+			if (neededEquipment) addEquipment(services,neededEquipment,equip.isAvailable,equip.placeholder,globalPlaceholders);
+			else console.warn("Can't find hero equipment",equip);
+		});
 	}
 
 	// Global placeholders
@@ -1203,12 +1300,29 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			this.addFakeRooms();
 			this.addFlavorTexts();
 			this.sortRooms();
+			this.sortEquipment();
 
 			// Setup metadata
 			this.setupMetadata();
 
 			// Generate dungeon stats
 			this.generateTruthLies();
+
+			// Debug
+			if (debug&&debug.dumpSentences)
+				for (const k in quests) {
+					quests[k].forEach(quest=>{
+						quest.steps.forEach(steps=>{
+							steps.forEach(step=>{
+								step.roomDescriptions.forEach(description=>{
+									description.forEach(line=>{
+										console.warn(formatFakeDescriptionLine(line));	
+									})
+								})
+							})
+						})
+					})
+				}
 
 			// Solve placeholders
 			this.solvePlaceholders();
@@ -1623,7 +1737,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				const serviceHeight=svg.getNum(svg.getById("serviceCheckbox"),"width")+1.2;
 				services.forEach((service,index)=>{
 					const line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight);
-					svg.setText(svg.getById("serviceName",line),service.label+" ("+formatDescriptionLine(service.action)+")");
+					svg.setText(svg.getById("serviceName",line),service.equipment.label+" ("+formatDescriptionLine(service.equipment.action)+")");
+					if (!service.isAvailable) svg.delete(svg.getById("serviceCheckbox",line));
 				});
 
 				// Render adventure metadata

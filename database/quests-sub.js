@@ -161,6 +161,68 @@ function loadQuestsSub() {
 				]
 			]
 		},
+		
+		{
+			minRooms:3,
+			steps:[
+				// [CODEC-Events] Elemental Chest - Flaming Chest: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
+				[
+					{
+						id:"keyRoom1",
+						atPercentage:20,
+						items:[{genericItem:"key"},{id:"enemy",level:0}],
+						roomDescriptions:[
+							[ "{ifMoveOn:key}{then}You found a Water Droplet, {markRoom:keyRoom1}, {markItem:key}" ]
+						]
+					},
+					{
+						id:"keyRoom2",
+						atPercentage:60,
+						items:[{genericItem:"key"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:key}{then}You found a Water Droplet, {markRoom:keyRoom2}, {markItem:key}" ]
+						]
+					},
+					{
+						id:"chestRoom",
+						atPercentage:100,
+						items:[{genericItem:"chest"}],
+						equipment:[{id:"rage"}],
+						roomDescriptions:[
+							["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom1}{and}{ifRoomIsMarked:keyRoom2}{then}You opened the Flaming Chest...{hide}{getEquip:equip-rage}, {markItem:chest}"]
+						]
+					}
+				],
+				// [CODEC-Events] Elemental Chest - Rock Chest: Find the 2 Green Leaves and open the Rock Chest (contains Taunt).
+				[
+					{
+						id:"keyRoom1",
+						atPercentage:20,
+						items:[{genericItem:"key"},{id:"enemy",level:0}],
+						roomDescriptions:[
+							[ "{ifMoveOn:key}{then}You found a Green Leaf, {markRoom:keyRoom1}, {markItem:key}" ]
+						]
+					},
+					{
+						id:"keyRoom2",
+						atPercentage:60,
+						items:[{genericItem:"key"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:key}{then}You found a Green Leaf, {markRoom:keyRoom2}, {markItem:key}" ]
+						]
+					},
+					{
+						id:"chestRoom",
+						atPercentage:100,
+						items:[{genericItem:"chest"}],
+						equipment:[{id:"taunt"}],
+						roomDescriptions:[
+							["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom1}{and}{ifRoomIsMarked:keyRoom2}{then}You opened the Rock Chest...{hide}{getEquip:equip-taunt}, {markItem:chest}"]
+						]
+					}
+				]
+			]
+		},
 
 		// [CODEC-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.
 		{
