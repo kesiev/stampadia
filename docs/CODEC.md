@@ -2,9 +2,10 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codec contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (36 items)
+## Events (38 items)
 
 - Bonus
+  - **The Magic Tree**: It grows a healing fruit after some time.
   - **The NPC**: Learn about the Stampadia lore by Stampadians.
   - **The Random Item**: A random bonus item.
   - **The Saint**: They will help you when you're in danger.
@@ -36,6 +37,7 @@
   - **The Random Trap**: Dodge a trap rolling a die.
   - **The Switch Trap**: Step on a trap to get injured.
   - **The Teleport Trap**: It will teleport you to a room with an enemy.
+  - **The Timed Traps**: Defuse it with the right timing or it will trigger!
 - Subquest
   - **The Altar**: Sacrify important resources for other advantages.
   - **The Barman**: Pay gold for health or a short mission.
