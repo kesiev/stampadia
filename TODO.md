@@ -29,11 +29,11 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Wizard - Fewer hit points, but start with a ranged attack (ATK -2, RNG 3).
   - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
 - [ ] New quests
-  - [ ] Cursed rooms - Help me, or else...
-  - [ ] Time bomb
-  - [ ] More smaller quests
+  - [ ] The Witch - Help me, or else...
+- [ ] Improve quests
   - [ ] Pair/odd in Sphinx
   - [ ] Quest ID in Sphinx (pair/odd)
+  - [ ] More smaller quests
 
 ### In progress
 
@@ -42,3 +42,7 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Done
 
 - [x] Simplify the condition in `generator.js`
+- [x] New quests
+  - [x] The Time Bomb - Reach the room in time
+  - [x] The Barman
+  - [x] One Last Fight - The enemy spawn only on your way back  
