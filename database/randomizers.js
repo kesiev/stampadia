@@ -126,6 +126,12 @@ function loadRandomizers() {
 			"\"I'll avenge the {villainName}!\"",
 			"\"Where are you going, {heroClass}?\"",
 		],
+		randomMagicTree:[
+			"A tree is growing visibly in the middle of the room.",
+			"There is a magic tree, growing at an unnatural speed.",
+			"The branches of the tree sway as if they were alive.",
+			"The Fruit of the tree pulsates with a dim light."
+		],
 		
 		// Loot
 		randomGold:[
@@ -139,7 +145,8 @@ function loadRandomizers() {
 		],
 		randomBadReward:[
 			"nothing",
-			"{loseHp:1}"
+			"{loseHp:1}",
+			"{loseGold:3}"
 		],
 		randomGoodLoot:[
 			// [CODEC-Stuff] Item - The Heart Shard: Gain 1 HP.

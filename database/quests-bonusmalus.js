@@ -101,6 +101,30 @@ function loadQuestsBonus() {
 				],items:[{genericItem:"saint"}]}
 			]]
 		},
+
+		// [CODEC-Events] Bonus - The Magic Tree: It grows a healing fruit after some time.
+		{
+			minRooms:2,
+			steps:[
+				[
+					{id:"roomA",atPercentage:100,roomDescriptions:[
+						[
+							"{randomMagicTree}",
+							"{ifMoveOn:tree}{and}{ifGoldLeft<half}{then}You pick a Fruit, {randomGoodReward}, {markItem:tree}"
+						]
+					],items:[{genericItem:"tree"}]}
+				],
+				[
+					{id:"roomA",atPercentage:100,roomDescriptions:[
+						[
+							"{randomMagicTree}",
+							"{ifMoveOn:tree}{and}{ifGoldLeft>half}{then}You pick a Fruit, {randomGoodReward}, {markItem:tree}"
+						]
+					],items:[{genericItem:"tree"}]}
+				],
+			]
+		},
+
 	];
 }
 
@@ -118,7 +142,7 @@ function loadQuestsMalus() {
 		// [CODEC-Events] Malus - The Loop Rooms: It will teleport you to the starting room.
 		{
 			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
-				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {teleportToStartingRoom}" ]
+				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {teleportToStartingRoom}" ]
 			]}]]
 		},
 
@@ -155,7 +179,30 @@ function loadQuestsMalus() {
 					"{randomEnemyChallenge}"
 				]
 			]}]]
-		}
+		},
+
+		// [CODEC-Events] Malus - The Timed Traps: Defuse it with the right timing or it will trigger!
+		{
+			minRooms:2,
+			steps:[
+				[
+					{id:"roomA",atPercentage:100,roomDescriptions:[
+						[
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap is triggered, {randomBadReward}, {markRoom:roomA}",
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}The trap clicks, {markRoom:roomA}"
+						]
+					]}
+				],
+				[
+					{id:"roomA",atPercentage:100,roomDescriptions:[
+						[
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}The trap is triggered, {randomBadReward}, {markRoom:roomA}",
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap clicks, {markRoom:roomA}"
+						]
+					]}
+				]
+			]
+		},
 	];
 
 }
