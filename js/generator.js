@@ -352,8 +352,11 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{loseXp:([0-9]+)\}/g,(m,num)=>"-"+num+"XP");
 		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
 		line=line.replace(/\{hpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
+		line=line.replace(/\{ifGoldLeft<half}/g,(m,num)=>"G left <"+Math.floor(gold/2));
+		line=line.replace(/\{ifGoldLeft>half}/g,(m,num)=>"G left >"+Math.floor(gold/2));
 		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
+		line=line.replace(/\{loseGold:([0-9]+)\}/g,(m,num)=>"-"+num+"G");
 
 		line=line.replace(/\{payGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
 		line=line.replace(/\{payXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
