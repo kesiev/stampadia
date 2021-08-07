@@ -4,7 +4,7 @@ function loadQuestsSub() {
 
 	return [
 
-		// [CODEC-Events] Subquest - The Guardians: Kill 2 mini-boss and earn bonus XPs.
+		// [CODEX-Events] Subquest - The Guardians: Kill 2 mini-boss and earn bonus XPs.
 		{
 			minRooms:3,
 			steps:[
@@ -35,7 +35,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Fountains: Decide between two effects.
+		// [CODEX-Events] Subquest - The Fountains: Decide between two effects.
 		{
 			minRooms:3,
 			steps:[
@@ -60,7 +60,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Linked Rooms: Walk on a cell and enable another room effect.
+		// [CODEX-Events] Subquest - The Linked Rooms: Walk on a cell and enable another room effect.
 		{
 			minRooms:3,
 			steps:[
@@ -84,7 +84,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Key And The Chests: Find the key and open one of two random chests.
+		// [CODEX-Events] Subquest - The Key And The Chests: Find the key and open one of two random chests.
 		{
 			minRooms:3,
 			steps:[
@@ -117,7 +117,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Key And The Chest (good): Find the key and open one good chest.
+		// [CODEX-Events] Subquest - The Key And The Chest (good): Find the key and open one good chest.
 		{
 			minRooms:3,
 			steps:[
@@ -142,7 +142,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Gambler: Bet Gold, roll a die and you may win more gold.
+		// [CODEX-Events] Subquest - The Gambler: Bet Gold, roll a die and you may win more gold.
 		{
 			minRooms:3,
 			steps:[
@@ -165,7 +165,7 @@ function loadQuestsSub() {
 		{
 			minRooms:3,
 			steps:[
-				// [CODEC-Events] Elemental Chest - Flaming Chest: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
+				// [CODEX-Events] Elemental Chest - Flaming Chest: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
 				[
 					{
 						id:"keyRoom1",
@@ -193,7 +193,7 @@ function loadQuestsSub() {
 						]
 					}
 				],
-				// [CODEC-Events] Elemental Chest - Rock Chest: Find the 2 Green Leaves and open the Rock Chest (contains Taunt).
+				// [CODEX-Events] Elemental Chest - Rock Chest: Find the 2 Green Leaves and open the Rock Chest (contains Taunt).
 				[
 					{
 						id:"keyRoom1",
@@ -224,7 +224,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.
+		// [CODEX-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.
 		{
 			minRooms:3,
 			steps:[
@@ -244,7 +244,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Altar: Sacrify important resources for other advantages.
+		// [CODEX-Events] Subquest - The Altar: Sacrify important resources for other advantages.
 		{
 			minRooms:2,
 			steps:[
@@ -261,7 +261,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Sphynx: Give the right answer, meet the Sphynx and get your reward.
+		// [CODEX-Events] Subquest - The Sphynx: Give the right answer, meet the Sphynx and get your reward.
 		{
 			minRooms:3,
 			steps:[
@@ -321,7 +321,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Murderer: Avenge the dead body or steal its gold?
+		// [CODEX-Events] Subquest - The Murderer: Avenge the dead body or steal its gold?
 		{
 			minRooms:3,
 			steps:[
@@ -352,7 +352,7 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEC-Events] Subquest - The Barman: Pay gold for health or a short mission.
+		// [CODEX-Events] Subquest - The Barman: Pay gold for health or a short mission.
 		{
 			minRooms:2,
 			steps:[

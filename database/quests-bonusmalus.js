@@ -17,7 +17,7 @@ function loadQuestsBonus() {
 
 	return [
 
-		// [CODEC-Events] Bonus - The Random Item: A random bonus item.
+		// [CODEX-Events] Bonus - The Random Item: A random bonus item.
 		{
 			minRooms:2,
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
@@ -25,7 +25,7 @@ function loadQuestsBonus() {
 			],items:[{genericItem:"item"}]}]]
 		},
 
-		// [CODEC-Events] Bonus - The NPC: Learn about the Stampadia lore by Stampadians.
+		// [CODEX-Events] Bonus - The NPC: Learn about the Stampadia lore by Stampadians.
 		{
 			minRooms:2,
 			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
@@ -70,7 +70,7 @@ function loadQuestsBonus() {
 			],items:[{genericItem:"item"}]}]]
 		},
 
-		// [CODEC-Events] Bonus - The Teleports: Teleport from a room to another.
+		// [CODEX-Events] Bonus - The Teleports: Teleport from a room to another.
 		{
 			minRooms:4,
 			steps:[[
@@ -83,7 +83,7 @@ function loadQuestsBonus() {
 			]]
 		},
 
-		// [CODEC-Events] Bonus - The Shop: Pay gold for useful items.
+		// [CODEX-Events] Bonus - The Shop: Pay gold for useful items.
 		{
 			minRooms:2,
 			steps:[[
@@ -92,7 +92,7 @@ function loadQuestsBonus() {
 			]]
 		},
 
-		// [CODEC-Events] Bonus - The Saint: They will help you when you're in danger.
+		// [CODEX-Events] Bonus - The Saint: They will help you when you're in danger.
 		{
 			minRooms:4,
 			steps:[[
@@ -102,7 +102,7 @@ function loadQuestsBonus() {
 			]]
 		},
 
-		// [CODEC-Events] Bonus - The Magic Tree: It grows a healing fruit after some time.
+		// [CODEX-Events] Bonus - The Magic Tree: It grows a healing fruit after some time.
 		{
 			minRooms:2,
 			steps:[
@@ -132,21 +132,21 @@ function loadQuestsMalus() {
 
 	return [
 
-		// [CODEC-Events] Malus - The Switch Trap: Step on a trap to get injured.
+		// [CODEX-Events] Malus - The Switch Trap: Step on a trap to get injured.
 		{
 			steps:[[{id:"trap",atPercentage:100,items:[{genericItem:"switch"}],roomDescriptions:[
 				[ "{ifMoveOn:switch}{then}{hide}{randomTrap}, {loseHp:1}, {markItem:switch}" ]
 			]}]]
 		},
 
-		// [CODEC-Events] Malus - The Loop Rooms: It will teleport you to the starting room.
+		// [CODEX-Events] Malus - The Loop Rooms: It will teleport you to the starting room.
 		{
 			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {teleportToStartingRoom}" ]
 			]}]]
 		},
 
-		// [CODEC-Events] Malus - The Teleport Trap: It will teleport you to a room with an enemy.
+		// [CODEX-Events] Malus - The Teleport Trap: It will teleport you to a room with an enemy.
 		{
 			minRooms:4,
 			steps:[[
@@ -163,7 +163,7 @@ function loadQuestsMalus() {
 			]]
 		},
 		
-		// [CODEC-Events] Malus - The Random Trap: Dodge a trap rolling a die.
+		// [CODEX-Events] Malus - The Random Trap: Dodge a trap rolling a die.
 		{
 			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{hide}{markRoom:trap}, {rollDie}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
@@ -171,7 +171,7 @@ function loadQuestsMalus() {
 			]}]]
 		},
 
-		// [CODEC-Events] Malus - The Last Fight: An enemy will challenge you on your way back.
+		// [CODEX-Events] Malus - The Last Fight: An enemy will challenge you on your way back.
 		{
 			steps:[[{id:"enemy",atPercentage:50,items:[{id:"enemy",level:2,ignoreXp:true}],roomDescriptions:[
 				[
@@ -181,7 +181,7 @@ function loadQuestsMalus() {
 			]}]]
 		},
 
-		// [CODEC-Events] Malus - The Timed Traps: Defuse it with the right timing or it will trigger!
+		// [CODEX-Events] Malus - The Timed Traps: Defuse it with the right timing or it will trigger!
 		{
 			minRooms:2,
 			steps:[

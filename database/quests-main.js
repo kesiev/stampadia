@@ -3,7 +3,7 @@
 function loadQuestsMain() {
 	return [
 
-		// [CODEC-Events] Main quest - The Missing Key: Find the key and beat the boss.
+		// [CODEX-Events] Main quest - The Missing Key: Find the key and beat the boss.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -52,7 +52,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEC-Events] Main quest - The Boss Battle: Beat the boss.
+		// [CODEX-Events] Main quest - The Boss Battle: Beat the boss.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -94,7 +94,7 @@ function loadQuestsMain() {
 			]
 		},
 		
-		// [CODEC-Events] Main quest - The Gang: beat a sequence of enemies.
+		// [CODEX-Events] Main quest - The Gang: beat a sequence of enemies.
 		{
 			minRooms:3,
 			adventureTitle:[
@@ -156,7 +156,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEC-Events] Main quest - The Curse: Break the spell and kill the bad guy.
+		// [CODEX-Events] Main quest - The Curse: Break the spell and kill the bad guy.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -209,7 +209,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEC-Events] Main quest - The Broken Key: Collect the key parts and beat the boss.
+		// [CODEX-Events] Main quest - The Broken Key: Collect the key parts and beat the boss.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -274,7 +274,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEC-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.
+		// [CODEX-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.
 		{
 			minRooms:4,
 			adventureTitle:[
@@ -331,7 +331,7 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEC-Events] Main quest - The Kidnapping: Fight the boss, free the kidnapped, and return it.
+		// [CODEX-Events] Main quest - The Kidnapping: Fight the boss, free the kidnapped, and return it.
 		{
 			minRooms:3,
 			adventureTitle:[

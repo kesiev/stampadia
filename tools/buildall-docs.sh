@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "- Building codec"
-bash build-codec.sh > ../docs/CODEC.md
+echo "- Building codex"
+bash build-codex.sh > ../docs/CODEX.md
 
 echo "Done."
