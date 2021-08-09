@@ -51,14 +51,16 @@
   - **The Murderer**: Avenge the dead body or steal its gold?
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
 
-## Heroes (1 items)
+## Heroes (2 items)
 
 - Class
-  - **The Warrior**: A balanced fighter. It's equipped with a sword, a small flask of cure, and a Resurrection item.
+  - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
+  - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (13 items)
+## Stuff (14 items)
 
 - Equipment
+  - **Fireball**: Inflict 2 damage.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
   - **Taunt**: Sacrifice XPs to weaken an enemy attack.
