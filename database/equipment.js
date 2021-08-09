@@ -8,6 +8,12 @@ function loadEquipment() {
 			label:"Resurrection",
 			action:"{heroDied}{and}{payGold:5}{then}{gainFullHp}, {moveOnStairs}"
 		},
+		// [CODEX-Stuff] Equipment - Fireball: Inflict 2 damage.
+		{
+			id:"fireball",
+			label:"Fireball",
+			action:"{afterHeroRollInFight}{then}{enemyLoseHp:1}"
+		},
 		// [CODEX-Stuff] Equipment - Taunt: Sacrifice XPs to weaken an enemy attack.
 		{
 			id:"taunt",
