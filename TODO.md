@@ -26,10 +26,11 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] New classes
-  - [ ] Wizard - Fewer hit points, but start with a ranged attack (ATK -2, RNG 3).
   - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
 - [ ] New quests
   - [ ] The Witch - Help me, or else...
+  - [ ] Challenge - Items with a challenge
+  - [ ] Exchange xp/hp
 - [ ] Improve quests
   - [ ] Pair/odd in Sphinx
   - [ ] Quest ID in Sphinx (pair/odd)
