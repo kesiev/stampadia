@@ -12,7 +12,7 @@ function loadEquipment() {
 		{
 			id:"fireball",
 			label:"Fireball",
-			action:"{afterHeroRollInFight}{then}{enemyLoseHp:1}"
+			action:"{afterHeroRollInFight}{then}{fightingEnemyLoseHp:1}"
 		},
 		// [CODEX-Stuff] Equipment - Taunt: Sacrifice XPs to weaken an enemy attack.
 		{
