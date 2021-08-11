@@ -11,9 +11,6 @@
   - **The Saint**: They will help you when you're in danger.
   - **The Shop**: Pay gold for useful items.
   - **The Teleports**: Teleport from a room to another.
-- Elemental Chest
-  - **Flaming Chest**: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
-  - **Rock Chest**: Find the 2 Green Leaves and open the Rock Chest (contains Taunt).
 - Filler (easy)
   - **The One**: One level 1 enemy.
   - **The Pair**: Two level 0 enemies.
@@ -42,6 +39,7 @@
   - **The Altar**: Sacrify important resources for other advantages.
   - **The Barman**: Pay gold for health or a short mission.
   - **The Bloody Gambler**: Bet HP, roll a die and you may win more HP.
+  - **The Elemental Chest**: Find the 2 elemental keys and open a chest containing equipment.
   - **The Fountains**: Decide between two effects.
   - **The Gambler**: Bet Gold, roll a die and you may win more gold.
   - **The Guardians**: Kill 2 mini-boss and earn bonus XPs.
@@ -50,6 +48,7 @@
   - **The Linked Rooms**: Walk on a cell and enable another room effect.
   - **The Murderer**: Avenge the dead body or steal its gold?
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
+  - **The Trainer**: Face his test and earn gold.
 
 ## Heroes (2 items)
 
@@ -57,12 +56,14 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (14 items)
+## Stuff (19 items)
 
 - Equipment
+  - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Fireball**: Inflict 2 damage.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
+  - **Tactic**: Sacrifice XPs to strike a two strong hits.
   - **Taunt**: Sacrifice XPs to weaken an enemy attack.
 - Fountain
   - **The Black Fountain**: Lose 2 HP.
@@ -76,5 +77,9 @@
 - Special room
   - **The Blessed Room**: Gain 1 HP.
   - **The Poisonous Room**: Lose 1 HP.
+- Test
+  - **Bravery**: Skip a turn for gold.
+  - **Calm**: Discard a rolled 6 for gold.
+  - **Mercy**: Turn an enemy rolled 1 to a 6 for gold.
 - Trap
   - **The Mimic**: Lose 1 HP.

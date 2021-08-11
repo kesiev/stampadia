@@ -44,7 +44,7 @@ function loadEquipment() {
 			label:"Test: Bravery",
 			action:"{ifBeforeHeroRollInFight}{and}{pass}{then}{gainGold:6}"
 		},
-		// [CODEX-Stuff] Test - Mercy: Turn an enemy rolled 1 to a 6.
+		// [CODEX-Stuff] Test - Mercy: Turn an enemy rolled 1 to a 6 for gold.
 		{
 			id:"testMercy",
 			label:"Test: Mercy",

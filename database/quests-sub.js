@@ -165,7 +165,7 @@ function loadQuestsSub() {
 		{
 			minRooms:3,
 			steps:[
-				// [CODEX-Events] Elemental Chest - Flaming Chest: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
+				// [CODEX-Events] Subquest - The Elemental Chest: Find the 2 elemental keys and open a chest containing equipment.
 				{key:"Water Droplet",name:"Flaming Chest",content:"rage"},
 				{key:"Cloud Curl",name:"Rock Chest",content:"taunt"},
 				{key:"Bright Spark",name:"Windy Chest",content:"dash"},
