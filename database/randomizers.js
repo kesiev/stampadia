@@ -58,7 +58,7 @@ function loadRandomizers() {
 			"\"...\""
 		],
 		randomBossEntrance:[
-			"\"How you DARE to challenge the {villainName}! Now, die!\"",
+			"\"How you dare to face the {villainName}! Now, die!\"",
 			"\"You will die by the hand of the great {villainName}!\"",
 			"\"This {placeName} will be your tomb, {heroClass}!\"",
 			"\"This {placeName} will be the last thing you'll see!\"",
@@ -162,8 +162,8 @@ function loadRandomizers() {
 			"a Mimic, {loseHp:1}"
 		],
 		randomHighCost:[
-			"{payHp:2}",
-			"{payXp:3}",
+			"{ifPayHp:2}",
+			"{ifPayXp:3}",
 			"{payEquip:equip-heroItem}"
 		],
 		randomHighPrize:[

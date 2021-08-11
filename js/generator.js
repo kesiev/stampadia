@@ -322,50 +322,82 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	function formatGlobalPlaceholders(line) {		
 		line=line.replaceAll("{hide}","^*v");
-		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
-		line=line.replaceAll("{ifEnterRoom}","enter room");
-		line=line.replaceAll("{ifMoveOnStairs}","move on stairs");
-		line=line.replaceAll("{moveOnStairs}","move on stairs");
-		line=line.replaceAll("{then}"," &raquo; ");
+		line=line.replaceAll("{nameLine}","_____________________________");
+		line=line.replaceAll("{heroClass}",heroModel.heroClass);
+
+		// Logic
 		line=line.replaceAll("{newRule}"," | ");
 		line=line.replaceAll("{and}"," &amp; ");
 		line=line.replaceAll("{or}"," or ");
-		line=line.replaceAll("{stopReading}","stop reading");
-		line=line.replaceAll("{noEscape}","no escape");
+		line=line.replaceAll("{then}"," &raquo; ");
+
+		// Special - Actions
 		line=line.replaceAll("{rollDie}","roll a die: ");
 		line=line.replaceAll("{nothing}","nothing happens");
+		line=line.replaceAll("{stopReading}","stop reading");
+
+		// Special - Conditions TODO
+		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
+
+		// Hero state - Conditions
+		line=line.replaceAll("{ifHeroDied}","hero died");
+
+		// Fight turn - Conditions
+		line=line.replaceAll("{ifAfterEnemyRollInFight}","enemy turn roll");
+		line=line.replaceAll("{ifAfterHeroRollInFight}","hero turn roll");
+		line=line.replaceAll("{ifBeforeHeroRollInFight}","before hero turn roll");
+
+		// Fight turn - Actions
+		line=line.replaceAll("{pass}","pass");
+		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP to a fighting enemy");
+		
+		// Room - Conditions
+		line=line.replaceAll("{ifEnterRoom}","enter room");
+		line=line.replaceAll("{ifMoveOnStairs}","move on stairs");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");
-		line=line.replaceAll("{roomIsEmpty}","room is empty");
-		line=line.replaceAll("{heroDied}","hero died");
-		line=line.replaceAll("{nameLine}","_____________________________");
-		line=line.replaceAll("{heroClass}",heroModel.heroClass);
-		line=line.replaceAll("{roomIsEmpty}","room is empty");
 
-		line=line.replaceAll("{afterEnemyRollInFight}","enemy turn dice roll");
-		line=line.replaceAll("{afterHeroRollInFight}","hero turn dice roll");
+		// Room - Actions
+		line=line.replaceAll("{moveOnStairs}","move on stairs");
+		line=line.replaceAll("{roomIsEmpty}","room is empty");
+		line=line.replaceAll("{noEscape}","no escape");
+		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
 
+		// HP - Conditions
+		line=line.replace(/\{ifPayHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
+		line=line.replace(/\{ifHpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
+
+		// HP - Actions
+		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
+		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
+
+		// XP - Conditions
+		line=line.replace(/\{ifPayXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
+
+		// XP - Actions
 		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
-
-		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
 		line=line.replace(/\{gainXp:([0-9]+)\}/g,(m,num)=>"+"+num+"XP");
 		line=line.replace(/\{loseXp:([0-9]+)\}/g,(m,num)=>"-"+num+"XP");
-		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
-		line=line.replace(/\{hpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
+
+		// Gold - Conditions
+		line=line.replace(/\{ifPayGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
 		line=line.replace(/\{ifGoldLeft<half}/g,(m,num)=>"G left <"+Math.floor(gold/2));
 		line=line.replace(/\{ifGoldLeft>half}/g,(m,num)=>"G left >"+Math.floor(gold/2));
-		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
+
+		// Gold - Actions
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
 		line=line.replace(/\{loseGold:([0-9]+)\}/g,(m,num)=>"-"+num+"G");
 
-		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+)\}/g,(m,num)=>" -"+num+"HP to a fighting enemy");
-		
-		line=line.replace(/\{payGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
-		line=line.replace(/\{payXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
-		line=line.replace(/\{payHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
+		// Dice - Conditions
+		line=line.replace(/\{ifRolled:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>num+" "+(num==1?"die":"dice")+" is "+num2);
+		line=line.replace(/\{ifDiscardDie:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"discard "+num+" rolled "+num2);
+		line=line.replace(/\{ifSetDie:([0-9]+),([0-9]+),([0-9]+)\}/g,(m,num,num2,num3)=>"set "+num+" rolled "+num2+" to "+num3);
 
-		line=line.replace(/\{setDieTo:([0-9]+)\}/g,(m,num)=>"set one die to "+num);
+		// Dice - Actions
+		line=line.replace(/\{setDieTo:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"set "+num+" "+(num==1?"die":"dice")+" to "+num);
+		line=line.replace(/\{discardAnyDie:([0-9]+)\}/g,(m,num)=>"discard "+num+" "+(num==1?"die":"dice"));
 
+		// Quest placeholders
 		for (const k in globalPlaceholders)
 			line=line.replaceAll("{"+k+"}",globalPlaceholders[k]);
 
@@ -1281,7 +1313,15 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.prepare=function() {
 		if (!this.prepared) {
+			let debugBackup;
+
 			this.prepared=true;
+
+			if (debug&&debug.dumpSentences)
+				debugBackup={
+					quests:clone(quests),
+					equipment:clone(equipment)
+				};
 
 			// Initialize
 			this.prepareGlobalPlaceholders();
@@ -1314,20 +1354,24 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			this.generateTruthLies();
 
 			// Debug
-			if (debug&&debug.dumpSentences)
-				for (const k in quests) {
-					quests[k].forEach(quest=>{
+			if (debug&&debug.dumpSentences) {
+				debugBackup.equipment.forEach(equip=>{
+					console.warn("[E]",formatFakeDescriptionLine(equip.action));	
+				});
+				for (const k in debugBackup.quests) {
+					debugBackup.quests[k].forEach(quest=>{
 						quest.steps.forEach(steps=>{
 							steps.forEach(step=>{
 								step.roomDescriptions.forEach(description=>{
 									description.forEach(line=>{
-										console.warn(formatFakeDescriptionLine(line));	
+										console.warn("[Q]",formatFakeDescriptionLine(line));	
 									})
 								})
 							})
 						})
 					})
 				}
+			}
 
 			// Solve placeholders
 			this.solvePlaceholders();

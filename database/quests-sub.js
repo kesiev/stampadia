@@ -154,7 +154,7 @@ function loadQuestsSub() {
 						roomDescriptions:[
 							[ 
 								"Gambler: {randomGambler}",
-								"{ifMoveOn:gambler}{and}{payGold:3}{then}{markItem:gambler}, {rollDie}{range:1-4} {nothing}, {range:5-6} {gainGold:6}"
+								"{ifMoveOn:gambler}{and}{ifPayGold:3}{then}{markItem:gambler}, {rollDie}{range:1-4} {nothing}, {range:5-6} {gainGold:6}"
 							]
 						]
 					}
@@ -166,62 +166,58 @@ function loadQuestsSub() {
 			minRooms:3,
 			steps:[
 				// [CODEX-Events] Elemental Chest - Flaming Chest: Find the 2 Water Droplets and open the Flaming item chest (contains Rage).
-				[
-					{
-						id:"keyRoom1",
-						atPercentage:20,
-						items:[{genericItem:"key"},{id:"enemy",level:0}],
-						roomDescriptions:[
-							[ "{ifMoveOn:key}{then}You found a Water Droplet, {markRoom:keyRoom1}, {markItem:key}" ]
-						]
-					},
-					{
-						id:"keyRoom2",
-						atPercentage:60,
-						items:[{genericItem:"key"},{id:"enemy",level:1}],
-						roomDescriptions:[
-							[ "{ifMoveOn:key}{then}You found a Water Droplet, {markRoom:keyRoom2}, {markItem:key}" ]
-						]
-					},
-					{
-						id:"chestRoom",
-						atPercentage:100,
-						items:[{genericItem:"chest"}],
-						equipment:[{id:"rage"}],
-						roomDescriptions:[
-							["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom1}{and}{ifRoomIsMarked:keyRoom2}{then}You opened the Flaming Chest...{hide}{getEquip:equip-rage}, {markItem:chest}"]
-						]
-					}
-				],
-				// [CODEX-Events] Elemental Chest - Rock Chest: Find the 2 Green Leaves and open the Rock Chest (contains Taunt).
-				[
-					{
-						id:"keyRoom1",
-						atPercentage:20,
-						items:[{genericItem:"key"},{id:"enemy",level:0}],
-						roomDescriptions:[
-							[ "{ifMoveOn:key}{then}You found a Green Leaf, {markRoom:keyRoom1}, {markItem:key}" ]
-						]
-					},
-					{
-						id:"keyRoom2",
-						atPercentage:60,
-						items:[{genericItem:"key"},{id:"enemy",level:1}],
-						roomDescriptions:[
-							[ "{ifMoveOn:key}{then}You found a Green Leaf, {markRoom:keyRoom2}, {markItem:key}" ]
-						]
-					},
-					{
-						id:"chestRoom",
-						atPercentage:100,
-						items:[{genericItem:"chest"}],
-						equipment:[{id:"taunt"}],
-						roomDescriptions:[
-							["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom1}{and}{ifRoomIsMarked:keyRoom2}{then}You opened the Rock Chest...{hide}{getEquip:equip-taunt}, {markItem:chest}"]
-						]
-					}
-				]
-			]
+				{key:"Water Droplet",name:"Flaming Chest",content:"rage"},
+				{key:"Cloud Curl",name:"Rock Chest",content:"taunt"},
+				{key:"Bright Spark",name:"Windy Chest",content:"dash"},
+				{key:"Small Rock",name:"Wet Chest",content:"tactic"},
+			].map(chest=>[
+				{
+					id:"keyRoom1",
+					atPercentage:20,
+					items:[{genericItem:"key"},{id:"enemy",level:0}],
+					roomDescriptions:[
+						[ "{ifMoveOn:key}{then}You found a "+chest.key+", {markRoom:keyRoom1}, {markItem:key}" ]
+					]
+				},
+				{
+					id:"keyRoom2",
+					atPercentage:60,
+					items:[{genericItem:"key"},{id:"enemy",level:1}],
+					roomDescriptions:[
+						[ "{ifMoveOn:key}{then}You found a "+chest.key+", {markRoom:keyRoom2}, {markItem:key}" ]
+					]
+				},
+				{
+					id:"chestRoom",
+					atPercentage:100,
+					items:[{genericItem:"chest"}],
+					equipment:[{id:chest.content}],
+					roomDescriptions:[
+						["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom1}{and}{ifRoomIsMarked:keyRoom2}{then}You opened the "+chest.name+"...{hide}{getEquip:equip-"+chest.content+"}, {markItem:chest}"]
+					]
+				}
+			])
+		},
+
+		{
+			minRooms:1,
+			debug:true,
+			steps:[
+				// [CODEX-Events] Subquest - The Trainer: Face his test and earn gold.
+				{sentence:"A coward hero has no use.",test:"testBravery"},
+				{sentence:"A hero respects the enemy.",test:"testMercy"},
+				{sentence:"A hero doesn't rush his strength.",test:"testCalm"}
+			].map(trainer=>[
+				{
+					id:"trainerRoom",
+					atPercentage:100,
+					items:[{genericItem:"trainer"}],
+					equipment:[{id:trainer.test}],
+					roomDescriptions:[
+						["{ifMoveOn:trainer}{then}Trainer: \""+trainer.sentence+"\", {getEquip:equip-"+trainer.test+"}, {markItem:trainer}"]
+					]
+				}
+			])
 		},
 
 		// [CODEX-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.
@@ -363,8 +359,8 @@ function loadQuestsSub() {
 						items:[{genericItem:"barman"}],
 						roomDescriptions:[
 							[
-								"{ifMoveOn:barman}{and}{payGold:1}{then}Barman: \"Well...\"{hide}\"Someone is hiding here...\", {markRoom:missionRoom}, {markItem:barman}",
-								"{ifMoveOn:barman}{and}{payGold:3}{then}Barman: {randomShopKeeper}, {gainHp:1}, {markItem:barman}"
+								"{ifMoveOn:barman}{and}{ifPayGold:1}{then}Barman: \"Well...\"{hide}\"Someone is hiding here...\", {markRoom:missionRoom}, {markItem:barman}",
+								"{ifMoveOn:barman}{and}{ifPayGold:3}{then}Barman: {randomShopKeeper}, {gainHp:1}, {markItem:barman}"
 							]
 						]
 					},
@@ -387,8 +383,8 @@ function loadQuestsSub() {
 						items:[{genericItem:"barman"}],
 						roomDescriptions:[
 							[
-								"{ifMoveOn:barman}{and}{payGold:1}{then}Barman: \"Well...\"{hide}\"Something is hiding here...\", {markRoom:missionRoom}, {markItem:barman}",
-								"{ifMoveOn:barman}{and}{payGold:3}{then}Barman: {randomShopKeeper}, {gainHp:1}, {markItem:barman}"
+								"{ifMoveOn:barman}{and}{ifPayGold:1}{then}Barman: \"Well...\"{hide}\"Something is hiding here...\", {markRoom:missionRoom}, {markItem:barman}",
+								"{ifMoveOn:barman}{and}{ifPayGold:3}{then}Barman: {randomShopKeeper}, {gainHp:1}, {markItem:barman}"
 							]
 						]
 					},

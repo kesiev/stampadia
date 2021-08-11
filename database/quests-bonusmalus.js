@@ -12,7 +12,7 @@ function loadQuestsBonus() {
 	const SHOP=[];
 
 	SHOPITEMS.forEach(item=>{
-		SHOP.push([ "{ifMoveOn:item}{and}{payGold:"+item.cost+"}{then}{randomShopKeeper}, "+item.effect+", {markItem:item}"]);
+		SHOP.push([ "{ifMoveOn:item}{and}{ifPayGold:"+item.cost+"}{then}{randomShopKeeper}, "+item.effect+", {markItem:item}"]);
 	})
 
 	return [
@@ -97,7 +97,7 @@ function loadQuestsBonus() {
 			minRooms:4,
 			steps:[[
 				{id:"roomA",atPercentage:1,roomDescriptions:[
-					[ "{ifMoveOn:saint}{and}{hpLeft=:0}{then}Saint: {randomSaint}, {gainHp:2}, {markItem:saint}" ]
+					[ "{ifMoveOn:saint}{and}{ifHpLeft=:0}{then}Saint: {randomSaint}, {gainHp:2}, {markItem:saint}" ]
 				],items:[{genericItem:"saint"}]}
 			]]
 		},
