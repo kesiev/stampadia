@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (38 items)
+## Events (39 items)
 
 - Bonus
   - **The Magic Tree**: It grows a healing fruit after some time.
@@ -24,6 +24,7 @@
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
   - **The Curse**: Break the spell and kill the bad guy.
+  - **The Escort**: Escort the good guy near the boss and fight.
   - **The Gang**: beat a sequence of enemies.
   - **The Kidnapping**: Fight the boss, free the kidnapped, and return it.
   - **The Lost Item**: Return an item to NPC and unlock the boss and fight.
