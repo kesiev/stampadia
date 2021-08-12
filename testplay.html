@@ -1,0 +1,42 @@
+<html><head>
+	<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
+	<link rel="stylesheet" type="text/css" href="style/style-play.css">
+	<script src="js/jspdf.umd.min.js"></script>
+  	<script src="js/svg2pdf.umd.min.js"></script>
+	<script src="js/svg.js"></script>
+	<script src="js/Seshat-normal.js"></script>
+	<script src="js/generator.js"></script>
+	<script src="js/core.js"></script>
+	<script src="js/player.js"></script>
+	<title>Chronicles of Stampadia - TEST online</title>
+</head>
+<body onload="onl()" style="background-color:#900">
+	<div id="header">
+		<a href='index.html' class="logo"></a><br>
+	</div>
+	<div id="table"></div>
+	<div id="credits"></div>
+</body><script>
+
+function onl() {
+
+	var
+		core=new Core();
+
+	core.initialize(()=>{
+		
+		var player=new DungeonPlayer(
+			core.generateAdventureDaily(0,{
+			heroClass:"Wizard",
+			footer:"TEST"
+		}));
+		document.getElementById("credits").innerHTML=core.getWebFooter();
+		player.play(document.getElementById("table"));
+
+	});
+
+}
+
+</script>
