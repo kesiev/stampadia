@@ -124,7 +124,7 @@ const Core=function() {
 		seed=seed||Math.floor(Math.random()*maxSeed);
 
 		// Prepare footer
-		let footer=fillPlaceholders(PRINTFOOTER,seed);
+		let footer=fillPlaceholders(PRINTFOOTER+(debug&&debug.footer?" ["+debug.footer+"]":""),seed);
 
 		// Set dungeon size
 		const dunggen=new DungeonGenerator(20,20,seed,debug);
