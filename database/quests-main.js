@@ -380,5 +380,79 @@ function loadQuestsMain() {
 				}
 			]
 		},
+
+		// [CODEX-Events] Main quest - The Escort: Escort the good guy near the boss and fight.
+		{
+			minRooms:4,
+			adventureTitle:[
+				"The {goodGuyName}'s Escort",
+				"The Running {goodGuyName}",
+				"The Escort {heroClass}",
+				"The {villainName} Traces",
+				"The {villainName} Hunt",
+				"The Chasing {goodGuyName}",
+				"The Wanted {villainName}",
+				"The {goodGuyName} Run",
+			],
+			steps:[
+				[
+					{
+						id:"step1",
+						atPercentage:20,
+						items:[{genericItem:"goodguy"},{id:"enemy",level:0}],
+						roomDescriptions:[
+							[
+								"{ifEnterRoom}{and}{ifGoldSpentInFifth:2-5}{then}{markItem:goodguy}, {randomGoodGuyLost}",
+								"{ifMoveOn:goodguy}{then}{goodGuyName}: {randomGoodGuyLongFollowMe}, {markItem:goodguy}, {markRoom:step1}",
+							]
+						]
+					},
+					{
+						id:"step2",
+						atPercentage:40,
+						items:[{genericItem:"goodguy"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifEnterRoom}{and}{ifGoldSpentInFifth:4-5}{then}{markItem:goodguy}, {randomGoodGuyLost}",
+								"{ifMoveOn:goodguy}{and}{ifRoomIsMarked:step1}{and}{ifGoldSpentInFifth:2-3}{then}{randomFollowMe}, {markItem:goodguy}, {markRoom:step2}",
+							]
+						]
+					},
+					{
+						id:"step3",
+						atPercentage:60,
+						items:[{genericItem:"goodguy"}],
+						roomDescriptions:[
+							[
+								"{ifEnterRoom}{and}{ifGoldSpentInFifth:4-5}{then}You hear noises coming from nearby, {markRoom:bossRoom}",
+								"{ifMoveOn:goodguy}{and}{ifRoomIsMarked:step2}{and}{ifGoldSpentInFifth:4-5}{then}{randomVillainFound}, {markRoom:step3}",
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:bossRoom}{then}{roomIsEmpty}, {stopReading}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsNotMarked:step3}{then}{hide}but the {goodGuyName} got lost in the {placeName}."
+						]
+					]
+				}
+			]
+		},
 	]
 }

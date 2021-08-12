@@ -132,6 +132,29 @@ function loadRandomizers() {
 			"The branches of the tree sway as if they were alive.",
 			"The Fruit of the tree pulsates with a dim light."
 		],
+		randomGoodGuyLost:[
+			"\"I missed the {goodGuyName}!\"",
+			"\"I've lost the {goodGuyName}...\"",
+			"The {goodGuyName} is no longer here",
+			"\"Where did the {goodGuyName} go?\"",
+		],
+		randomGoodGuyLongFollowMe:[
+			"\"Hurry! Let's go!\"",
+			"\"We've to find the {villainName}! This way!\"",
+			"\"There is no time to waste! Follow me!\"",
+		],
+		randomFollowMe:[
+			"\"We're on the right track!\"",
+			"\"This way!\"",
+			"\"Follow me!\"",
+			"\"Oh! It's you! Let's go!\""
+		],
+		randomVillainFound:[
+			"\"It's the {villainName}. Go there!\"",
+			"\"Time to end the {villainName} life!\"",
+			"\"It's the {villainName}! Go!\"",
+			"\"We've found the {villainName}!\"",
+		],
 		
 		// Loot
 		randomGold:[
