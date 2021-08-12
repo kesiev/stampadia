@@ -103,12 +103,12 @@ const Core=function() {
 		return fillPlaceholders(WEBFOOTER,0);
 	}
 
-	this.generateAdventureDaily=function(daysdelta) {
+	this.generateAdventureDaily=function(daysdelta,debug) {
 		daysdelta=daysdelta||0;
 		const
 			date=new Date(),
 			seed=Math.floor(date.getTime()/86400000)+daysdelta,
-			generator=this.generateAdventureById(seed);
+			generator=this.generateAdventureById(seed,debug);
 
 		generator.coreMetadata={
 			filename:METADATA.filePrefix+"-"+date.getFullYear()+"_"+(date.getMonth() + 1)+"_"+date.getDate()
