@@ -65,10 +65,10 @@ function loadHeroModels() {
 		{
 			heroClass:"Wizard",
 			skills:[
-				["ATK -2\nRNG 3","Move\n-2"],
-				["Move\n-4","Move\n-1"],
-				["DEF\n-2","ATK -1\nRNG 2"],
-				["Gain HP\n-4","ATK\nRNG 1"]
+				["ATK -2\nRNG 2","Move\n-3"],
+				["Move\n-2","Move\n-3"],
+				["DEF\n-2","ATK -2\nRNG 3"],
+				["Gain HP\n-5","ATK\nRNG 1"]
 			],
 			defense:[1,1,1,1],
 			xpRamp:[
