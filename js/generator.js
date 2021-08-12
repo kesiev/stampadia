@@ -29,7 +29,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			},
 			{
 				regex:/{ifMoveOn:([^}]*)}/g,
-				replace:"Move [{item:1}]"
+				replace:"move [{item:1}]"
 			},
 			{
 				regex:/{markItem:([^}]*)}/g,
@@ -336,7 +336,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{nothing}","nothing happens");
 		line=line.replaceAll("{stopReading}","stop reading");
 
-		// Special - Conditions TODO
+		// Special - Conditions
 		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
 
 		// Hero state - Conditions
@@ -381,8 +381,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		// Gold - Conditions
 		line=line.replace(/\{ifPayGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
-		line=line.replace(/\{ifGoldLeft<half}/g,(m,num)=>"G left <"+Math.floor(gold/2));
-		line=line.replace(/\{ifGoldLeft>half}/g,(m,num)=>"G left >"+Math.floor(gold/2));
+		line=line.replace(/\{ifGoldLeft<half\}/g,(m,num)=>"<"+(Math.floor(gold/2)+1)+"G left");
+		line=line.replace(/\{ifGoldLeft>half\}/g,(m,num)=>">"+Math.floor(gold/2)+"G left");
+		line=line.replace(/\{ifGoldSpentInFifth:([0-9]+)-([0-9]+)\}/g,(m,num,num2)=>(Math.floor(gold/5)*(num-1)+(num==1?0:1))+"~"+(num2==5?gold:Math.floor(gold/5)*num2)+"G spent");
 
 		// Gold - Actions
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
@@ -1200,6 +1201,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.selectHeroModel=function() {
 		heroModel=getRandom(heroModels);
+
+		if (debug&&debug.heroClass) {
+			heroModels.forEach(model=>{
+				if (model.heroClass==debug.heroClass) heroModel=model;
+			})
+		}
 
 		// Add equipment
 		heroModel.equipment.forEach(equip=>{
