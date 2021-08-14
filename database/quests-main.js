@@ -454,5 +454,81 @@ function loadQuestsMain() {
 				}
 			]
 		},
+
+		// [CODEX-Events] Main quest - The Moral Compass: Do good or bad things and trigger a different ending.
+		{
+			minRooms:4,
+			adventureTitle:[
+				"The End Of The {goodGuyName}",
+				"The {heroClass}'s Destiny",
+				"The {heroClass}'s Last Quest",
+				"The {goodGuyName}'s Last Words",
+				"The {heroClass}'s Destiny",
+				"The {heroClass}'s Resolve",
+				"The Dying {goodGuyName}",
+				"The {heroClass}'s Heart",
+				"The Last {heroClass}",
+				"The Last {goodGuyName}",
+			],
+			steps:[
+				[
+					{
+						id:"step1",
+						atPercentage:20,
+						items:[{genericItem:"slaver"},{id:"enemy",level:0}],
+						roomDescriptions:[ // Pay good, fight bad. Mark is good.
+							[
+								"{ifEnterRoom}{and}{ifPayGold:3}{then}Slaver: {randomSlaverBuy}, {markItem:slaver}, {markRoom:step1}",
+								"{ifEnterRoom}{and}{ifRoomIsMarked:step1}{then}{roomIsEmpty}",
+							]
+						]
+					},
+					{
+						id:"step2",
+						atPercentage:40,
+						items:[{genericItem:"mobster"},{id:"enemy",level:1}],
+						roomDescriptions:[ // Pay bad, fight good. Mark is bad.
+							[
+								"{ifEnterRoom}{and}{ifPayGold:3}{then}Mobster: {randomMobsterPay}, {markItem:mobster}, {markRoom:step2}",
+								"{ifEnterRoom}{and}{ifRoomIsMarked:step2}{then}{roomIsEmpty}",
+							]
+						]
+					},
+					{
+						id:"step3",
+						atPercentage:80,
+						items:[{genericItem:"goodguy"}],
+						roomDescriptions:[ // Pay good, Pay bad. Mark is bad.
+							[
+								"{ifMoveOn:goodguy}{and}{ifPayHp:2}{and}\"Live!\"{then}{goodGuyName}: {randomGoodDying}, {markItem:goodguy}, {markRoom:bossRoom}",
+								"{ifMoveOn:goodguy}{and}{ifPayXp:2}{and}\"...\"{then}{goodGuyName}: {randomBadDying}, {markItem:goodguy}, {markRoom:step3}",
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[ // Mark is good.
+							[
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}",
+								"{ifNoFoes}{and}{ifRoomIsNotMarked:step1}{and}{ifRoomIsMarked:step2}{and}{ifRoomIsMarked:step3}{then}{hide}You sit on the {villainName} throne. Quest over."
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:step1}{and}{ifRoomIsNotMarked:step2}{and}{ifRoomIsMarked:bossRoom}{hide}You sit on the Stampadia thorne.",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+						]
+					]
+				}
+			]
+		},
 	]
 }

@@ -155,6 +155,30 @@ function loadRandomizers() {
 			"\"It's the {villainName}! Go!\"",
 			"\"We've found the {villainName}!\"",
 		],
+		randomSlaverBuy:[
+			"\"Okay, the beast is yours.\"",
+			"\"Make good use of it, heh!\"",
+			"\"Thank you!\"",
+			"\"You got a great deal!\"",
+		],
+		randomMobsterPay:[
+			"\"Thanks from the {villainName}!\"",
+			"\"You serve the {villainName} well!\"",
+			"\"Hail to the {villainName}!\"",
+			"\"The {villainName} will be pleased!\"",
+		],
+		randomGoodDying:[
+			"\"So... rry...\"",
+			"\"Fare... well...\"",
+			"\"I... can't...\"",
+			"\"I can't... Thank... you.\"",
+		],
+		randomBadDying:[
+			"\"Why... You... Ugh!\"",
+			"\"Please... help... Ugh!\"",
+			"\"Why... Ugh...\"",
+			"\"Ugh!\"",
+		],
 		
 		// Loot
 		randomGold:[
