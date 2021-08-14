@@ -490,7 +490,7 @@ function loadQuestsMain() {
 						roomDescriptions:[ // Pay bad, fight good. Mark is bad.
 							[
 								"{ifEnterRoom}{and}{ifPayGold:3}{then}Mobster: {randomMobsterPay}, {markItem:mobster}, {markRoom:step2}",
-								"{ifEnterRoom}{and}{ifRoomIsMarked:step2}{then}{roomIsEmpty}",
+								"{ifEnterRoom}{and}{ifRoomIsMarked:step2}{then}{roomIsEmpty}, {markItem:mobster}",
 							]
 						]
 					},
