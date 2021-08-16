@@ -947,7 +947,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 								stepMeta.room=q;
 								break;
 							}
-						head=q;
+						head=q-1;
 					};
 
 					if (result.length!=steps.length) debugger;
@@ -955,7 +955,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					return result;
 				}
 
-			} else debugger;
+			}
 
 			return false;
 
@@ -985,6 +985,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 							subroutes[route.length].push(subroute);
 						}
 					})
+					if (quest.debugger) debugger;
 					if (longestRoute) questVersions.push({subroutes:subroutes[longestRoute],quest:quest,steps:steps});
 				})
 				if (questVersions.length) quests.push(getRandom(questVersions));
