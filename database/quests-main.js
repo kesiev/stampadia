@@ -1,6 +1,7 @@
 /* exported loadQuestsMain */
 
 function loadQuestsMain() {
+
 	return [
 
 		// [CODEX-Events] Main quest - The Missing Key: Find the key and beat the boss.
@@ -111,7 +112,7 @@ function loadQuestsMain() {
 					{
 						id:"enemy1room",
 						atPercentage:20,
-						items:[{id:"enemy",level:0,ignoreXp:true}],
+						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
 							[
 								"\"We will stop you at any cost!\"",
@@ -122,7 +123,7 @@ function loadQuestsMain() {
 					{
 						id:"enemy2room",
 						atPercentage:100,
-						items:[{id:"enemy",level:1,ignoreXp:true}],
+						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:enemy1room}{then}You feel watched, {roomIsEmpty}, {stopReading}",
@@ -357,7 +358,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
-						atPercentage:40,
+						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
@@ -524,6 +525,56 @@ function loadQuestsMain() {
 					roomDescriptions:[
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:step1}{and}{ifRoomIsNotMarked:step2}{and}{ifRoomIsMarked:bossRoom}{hide}You sit on the Stampadia thorne.",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+						]
+					]
+				}
+			]
+		},
+
+		// [CODEX-Events] Main quest - The Twins: Fight a 2-stages boss.
+		{
+			minRooms:4,
+			adventureTitle:[
+				"The {villainName} Twins",
+				"The {villainName}'s Final Form",
+				"The {villainName} Double",
+				"The {heroClass}'s Endurance",
+				"The {villainName}'s Trick",
+				"The {villainName}'s Transformation",
+			],
+			steps:[
+				[
+					{
+						id:"bossRoom1",
+						atPercentage:70,
+						items:[{id:"enemy",level:1},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{randomTwinBossEntrance}, {noEscape}",
+								"{ifNoFoes}{then}{hide}{randomFinalFormAnnounce}, {markRoom:bossRoom2}, {teleportToRoom:bossRoom2}"
+							]
+						]
+					},
+					{
+						id:"bossRoom2",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:bossRoom2}{then}{roomIsEmpty}, {stopReading}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"\"The {villainName} Twins are keeping the {placeName} on their knees!\"",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
 						]
 					]

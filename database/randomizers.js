@@ -68,6 +68,19 @@ function loadRandomizers() {
 			"\"The {goodGuyName} will regret sending you here!\"",
 			"\"A {heroClass} this time... very well! Bring it on!\""
 		],
+		randomTwinBossEntrance:[
+			"\"Do you think you can beat the {villainName} Twins?\"",
+			"\"We are the {villainName} Twins and now you'll die!\"",
+			"\"The {villainName} Twins will crush you!\"",
+			"\"You are all alone, {heroClass}!\"",
+		],
+		randomFinalFormAnnounce:[
+			"\"Behold our final form, {heroClass}!\"",
+			"\"This isn't even our final form!\"",
+			"\"Now see our full power!\"",
+			"\"We've had enough of playing!\"",
+		],
+
 		randomBossRevenge:[
 			"\"That's the right price for the {goodGuyName}'s indolence!\"",
 			"\"A simple {heroClass} can't save the {goodGuyName}'s {goodGuyRelativeName} life!\"",
