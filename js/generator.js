@@ -285,8 +285,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	function shortestPath(room,path) {
 		if (!path) path=[];
-		path.push(room.id);
 		if (room.isStartingRoom) return path; else {
+			path.push(room.id);
 			const subpaths=[];
 			room.exits.forEach(exit=>{
 				if (path.indexOf(exit.toRoom.id)==-1) {
@@ -776,19 +776,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			}
 		})
 		rooms.forEach(room=>{
-			if (!room.isStartingRoom) {
-				const
-					path=shortestPath(room),
-					route=[];
-				path.forEach(roomid=>{
-					const indexnode=roomsIndex[roomid];
-					if (
-						!indexnode.room.isStartingRoom&&
-						indexnode.freeSpaces.length
-					) route.push(indexnode);
-				})
-				if (route.length) routes.push(route);
-			}
+			if (!room.isStartingRoom)
+				routes.push(shortestPath(room).map(roomid=>roomsIndex[roomid]));
 		});
 		routes.sort(sortByLengthInverse);
 		return routes;
@@ -823,8 +812,6 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					// Room must fit the required amount of items
 					suitable&=!step.items||(room.freeSpaces.length>=step.items.length);
 
-					// TODO prima crea l'eroe e poi assegna gli oggetti. Occhio a resurrectionz
-
 					// Room must fit the required amount of description
 					suitable&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
 
@@ -849,6 +836,133 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		}
 	}
 
+	this.getQuestSubroute=function(route,quest,steps) {
+
+		let
+			minRooms=quest.minRooms||steps.length;
+
+		if (route.length<minRooms) return false;
+		else {
+
+			const
+				tempServices=clone(services),
+				tempEquipment=clone(equipment);
+			let success=true;
+
+			// Check if the equipment fits in the Equipment Scroll
+			steps.forEach(step=>{
+
+				// Room must fit the required equipment
+				if (step.equipment)
+					step.equipment.forEach(equip=>{
+						let neededEquipment=pickEquipment(tempServices,tempEquipment,equip.id);
+						if (neededEquipment) addEquipment(tempServices,neededEquipment);
+						else success=false;
+					});
+
+			});
+
+			if (success) {
+
+				const
+					roomsMeta=[],
+					stepsMeta=[];
+
+				// Generate steps metadata
+				steps.forEach((step,id)=>{
+					stepsMeta.push({
+						step:step,
+						id:id,
+						atPercentage:step.atPercentage
+					})
+				});
+
+				// Sort steps by percentage
+				stepsMeta.sort((a,b)=>{
+					if (a.atPercentage<b.atPercentage) return -1; else
+					if (a.atPercentage>b.atPercentage) return 1; else
+					return 0;
+				});
+
+				// Generate route metadata
+				route.forEach((room,id)=>{
+
+					let roomMeta={
+						room:room,
+						id:id,
+						fitSteps:{},
+						step:-1
+					};
+
+					// Check which steps fits the room
+					stepsMeta.forEach(stepMeta=>{
+
+						const step=stepMeta.step;
+						success=true;
+
+						// Room must be not busy
+						success&=!room.room.isBusy;
+
+						// Room must fit the required amount of items
+						success&=!step.items||(room.freeSpaces.length>=step.items.length);
+
+						// Room must fit the required amount of description
+						success&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
+
+						if (success) roomMeta.fitSteps[stepMeta.id]=true;
+
+					});
+
+					roomsMeta.unshift(roomMeta);
+
+				});
+
+				// Place steps on rooms, minimal distance.
+				let head=-1;
+				success=true;
+
+				stepsMeta.forEach(stepMeta=>{
+					while (success) {
+						head++;
+						if (!roomsMeta[head]) success=false;
+						else if (roomsMeta[head].fitSteps[stepMeta.id]) break;
+					}
+					if (success) stepMeta.room=head;
+				});
+
+				if (success) {
+					// Move steps as near as possible their requested positions
+					let head=roomsMeta.length-1;
+					const result=[];
+
+					for (var j=stepsMeta.length-1;j>=0;j--) {
+						let
+							stepMeta=stepsMeta[j],
+							q,
+							requestedPosition=Math.max(Math.min(Math.floor(stepMeta.atPercentage/101*roomsMeta.length),head),stepMeta.room);
+						
+						for (q=requestedPosition;q>=stepMeta.room;q--)
+							if (roomsMeta[q].fitSteps[stepMeta.id]) {
+								result[stepMeta.id]=roomsMeta[q].room;
+								stepMeta.room=q;
+								break;
+							}
+						head=q;
+					};
+
+					if (result.length!=steps.length) debugger;
+
+					return result;
+				}
+
+			} else debugger;
+
+			return false;
+
+		}
+
+	}
+
 	this.addQuest=function(set,excludeQuests) {
 
 		const
@@ -859,12 +973,19 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			const questVersions=[];
 			if (excludeQuests.indexOf(quest)==-1) {
 				quest.steps.forEach(steps=>{
-					const subroutes=[];
+					const subroutes={};
+					let longestRoute=0;
 					routes.forEach(route=>{
 						const subroute=this.getQuestSubroute(route,quest,steps);
-						if (subroute) subroutes.push(subroute);
+						if (subroute) {
+							if (!subroutes[route.length]) {
+								subroutes[route.length]=[];
+								if (route.length>longestRoute) longestRoute=route.length;
+							}
+							subroutes[route.length].push(subroute);
+						}
 					})
-					if (subroutes.length) questVersions.push({subroutes:subroutes,quest:quest,steps:steps});
+					if (longestRoute) questVersions.push({subroutes:subroutes[longestRoute],quest:quest,steps:steps});
 				})
 				if (questVersions.length) quests.push(getRandom(questVersions));
 			};
