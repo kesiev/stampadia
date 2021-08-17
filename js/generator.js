@@ -782,60 +782,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		routes.sort(sortByLengthInverse);
 		return routes;
 	}
-
-	this.getQuestSubroute=function(route,quest,steps) {
-		// Decide rooms
-		let
-			ok=true,
-			routeCopy=[],
-			questSubroute=[],
-			minRooms=quest.minRooms||steps.length;
-
-		if (route.length<minRooms) return false;
-		else {
-
-			const
-				tempServices=clone(services),
-				tempEquipment=clone(equipment);
-
-			route.forEach(room=>routeCopy.push(room));
-
-			steps.forEach(step=>{
-				const subroute=[];
-				// Filter suitable rooms
-				routeCopy.forEach(room=>{
-					let suitable=true;
-
-					// Room must be not busy
-					suitable&=!room.room.isBusy;
-
-					// Room must fit the required amount of items
-					suitable&=!step.items||(room.freeSpaces.length>=step.items.length);
-
-					// Room must fit the required amount of description
-					suitable&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
-
-					// Room must fit the required equipment
-					if (step.equipment)
-						step.equipment.forEach(equip=>{
-							let neededEquipment=pickEquipment(tempServices,tempEquipment,equip.id);
-							if (neededEquipment) addEquipment(tempServices,neededEquipment);
-							else suitable=false;
-						});
-
-					if (suitable) subroute.push(room);
-				});
-				if (subroute.length) {
-					const pos=Math.floor((1-(step.atPercentage/100))*subroute.length);
-					questSubroute.push(subroute[pos]);
-					routeCopy.splice(routeCopy.indexOf(subroute[pos]),1);				
-				} else ok=false;
-			});
-
-			return ok?questSubroute:false;
-		}
-	}
-
+	
 	this.getQuestSubroute=function(route,quest,steps) {
 
 		let
