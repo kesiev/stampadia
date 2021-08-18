@@ -463,7 +463,14 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
 						case "room":{
-							return placeholders.roomIds[matches[value]].id;
+							let room;
+							if (placeholders) room=placeholders.roomIds[matches[value]];
+							if (!room) room=globalPlaceholders.roomIds[matches[value]];
+							if (room) return room.id;
+							else {
+								console.warn("can't find room",matches[value],"in line",line);
+								return "???";
+							}
 						}
 						case "item":{
 							return placeholders.itemIds[matches[value]];
@@ -496,16 +503,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	// Equipment management
 	function addEquipment(list,equipment,isavailable,placeholder,placeholders) {
-		list.push({
+		let equip={
 			id:equipment.id,
 			isAvailable:!!isavailable,
 			equipment:equipment
-		});
+		};
+		list.push(equip);
 		if (placeholders) {
 			// Register item placeholder
 			placeholders["equip-"+placeholder]=equipment.label;
 			placeholders["equip-"+equipment.id]=equipment.label;
 		}
+		return equip;
 	}
 
 	function pickEquipment(equipment,list,id) {
@@ -782,7 +791,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		routes.sort(sortByLengthInverse);
 		return routes;
 	}
-	
+
 	this.getQuestSubroute=function(route,quest,steps) {
 
 		let
@@ -817,10 +826,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 				// Generate steps metadata
 				steps.forEach((step,id)=>{
+					let percentage=step.atPercentage;
+					if (percentage.from) percentage=percentage.from+Math.floor(random(percentage.to-percentage.from));
 					stepsMeta.push({
 						step:step,
 						id:id,
-						atPercentage:step.atPercentage
+						atPercentage:percentage
 					})
 				});
 
@@ -920,20 +931,23 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			const questVersions=[];
 			if (excludeQuests.indexOf(quest)==-1) {
 				quest.steps.forEach(steps=>{
-					const subroutes={};
-					let longestRoute=0;
-					routes.forEach(route=>{
-						const subroute=this.getQuestSubroute(route,quest,steps);
-						if (subroute) {
-							if (!subroutes[route.length]) {
-								subroutes[route.length]=[];
-								if (route.length>longestRoute) longestRoute=route.length;
+					let
+						subroutes=[];
+						longestRoute=0;
+					routes.forEach(route=>{						
+						if (route.length>=longestRoute) {
+							const subroute=this.getQuestSubroute(route,quest,steps);
+							if (subroute) {
+								if (route.length>longestRoute) {
+									subroutes=[];
+									longestRoute=route.length;
+								}
+								subroutes.push(subroute);
 							}
-							subroutes[route.length].push(subroute);
 						}
-					})
+					});
 					if (quest.debugger) debugger;
-					if (longestRoute) questVersions.push({subroutes:subroutes[longestRoute],quest:quest,steps:steps});
+					if (longestRoute) questVersions.push({subroutes:subroutes,quest:quest,steps:steps});
 				})
 				if (questVersions.length) quests.push(getRandom(questVersions));
 			};
@@ -971,7 +985,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			};
 
 		// Prepare room labels
-		steps.forEach((step,index)=>placeholders.roomIds[step.id]=subroute[index].room);
+		steps.forEach((step,index)=>{
+			placeholders.roomIds[step.id]=subroute[index].room;
+			globalPlaceholders.roomIds[step.id]=subroute[index].room;
+		});
 
 		rooms.forEach(room=>{
 			placeholders.roomIds["id-"+room.id]=room;
@@ -1149,7 +1166,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// Randomly add equipment
 		while (services.length<MAX_EQUIPMENT) {
 			let neededEquipment=pickRandomEquipment(services,equipment);
-			if (neededEquipment) addEquipment(services,neededEquipment);
+			if (neededEquipment) {
+				let equip=addEquipment(services,neededEquipment);
+				equip.isFake=true;
+			}
 			else break;
 		}
 
@@ -1290,6 +1310,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.prepareGlobalPlaceholders=function() {
 		for (const k in placeholderModels)
 			globalPlaceholders[k]=getRandom(placeholderModels[k]);
+		globalPlaceholders.roomIds={};
 	}
 
 	// Metadata
@@ -1861,8 +1882,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				// Render services
 				const serviceHeight=svg.getNum(svg.getById("serviceCheckbox"),"width")+1.2;
 				services.forEach((service,index)=>{
-					const line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight);
-					svg.setText(svg.getById("serviceName",line),service.equipment.label+" ("+formatDescriptionLine(service.equipment.action)+")");
+					const
+						line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight),
+						description=service.isFake?formatFakeDescriptionLine(service.equipment.action):formatDescriptionLine(service.equipment.action);
+					svg.setText(svg.getById("serviceName",line),(service.isFake&&debug&&debug.showFake?"[FAKE] ":"")+service.equipment.label+" ("+description+")");
 					if (!service.isAvailable) svg.delete(svg.getById("serviceCheckbox",line));
 				});
 
