@@ -38,6 +38,12 @@ function loadEquipment() {
 			label:"Tactic",
 			action:"{ifAfterHeroRollInFight}{and}{ifPayXp:2}{then}{setDieTo:2,5}"
 		},
+		// [CODEX-Stuff] Equipment - Mirror: Teleport back to the mirror room.
+		{
+			id:"mirror",
+			label:"Small mirror",
+			action:"{ifAfterEnemyRollInFight}{then}{teleportToRoom:equip-mirror-room}"
+		},
 		// [CODEX-Stuff] Test - Bravery: Skip a turn for gold.
 		{
 			id:"testBravery",

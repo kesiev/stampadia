@@ -96,7 +96,7 @@ function loadQuestsBonus() {
 		{
 			minRooms:4,
 			steps:[[
-				{id:"roomA",atPercentage:1,roomDescriptions:[
+				{id:"roomA",atPercentage:{from:50,to:100},roomDescriptions:[
 					[ "{ifMoveOn:saint}{and}{ifHpLeft=:0}{then}Saint: {randomSaint}, {gainHp:2}, {markItem:saint}" ]
 				],items:[{genericItem:"saint"}]}
 			]]
@@ -107,7 +107,7 @@ function loadQuestsBonus() {
 			minRooms:2,
 			steps:[
 				[
-					{id:"roomA",atPercentage:100,roomDescriptions:[
+					{id:"roomA",atPercentage:{from:1,to:100},roomDescriptions:[
 						[
 							"{randomMagicTree}",
 							"{ifMoveOn:tree}{and}{ifGoldLeft<half}{then}You pick a Fruit, {randomGoodReward}, {markItem:tree}"
@@ -115,13 +115,27 @@ function loadQuestsBonus() {
 					],items:[{genericItem:"tree"}]}
 				],
 				[
-					{id:"roomA",atPercentage:100,roomDescriptions:[
+					{id:"roomA",atPercentage:{from:1,to:100},roomDescriptions:[
 						[
 							"{randomMagicTree}",
 							"{ifMoveOn:tree}{and}{ifGoldLeft>half}{then}You pick a Fruit, {randomGoodReward}, {markItem:tree}"
 						]
 					],items:[{genericItem:"tree"}]}
 				],
+			]
+		},
+
+		// [CODEX-Events] Bonus - The Mirror: Go back to this room using an item.
+		{
+			minRooms:2,
+			steps:[
+				[
+					{id:"equip-mirror-room",atPercentage:100,equipment:[{id:"mirror"}],roomDescriptions:[
+						[
+							"{ifMoveOn:mirror}{then}You see your reflection on a large mirror, {markItem:mirror}, {getEquip:equip-mirror}"
+						]
+					],items:[{genericItem:"mirror"}]}
+				]
 			]
 		},
 
@@ -141,7 +155,7 @@ function loadQuestsMalus() {
 
 		// [CODEX-Events] Malus - The Loop Rooms: It will teleport you to the starting room.
 		{
-			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"trap",atPercentage:{from:50,to:100},roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {teleportToStartingRoom}" ]
 			]}]]
 		},
