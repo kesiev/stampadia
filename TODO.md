@@ -31,6 +31,8 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] New quests
   - [ ] The Witch - Help me, or else...
   - [ ] Exchange xp/hp
+- [ ] NPC
+  - [ ] The Corrupted
 - [ ] Equipment
   - [ ] Flip - Complementary dice values (upside down dice)
   - [ ] Turn - Use dice in reverse order (lower-higher)
@@ -47,6 +49,7 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [x] Simplify the condition in `generator.js`
 - [x] New quests
+  - [x] The Mirror - teleport back to a room
   - [x] Final form - Mini boss, then forced bigger boss
   - [x] Moral choices - Become the next ruler
   - [x] Escort mission
