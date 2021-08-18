@@ -156,9 +156,12 @@ const Core=function() {
 			{questType:"sub",count:2},
 			{questType:"bonus",count:2},
 			{questType:"malus",count:2},
-			{questType:"easyFiller",count:3},
-			{questType:"mediumFiller",count:2},
-			{questType:"hardFiller",count:2}
+			{questType:"easyFiller",count:2},
+			{questType:"mediumFiller",count:1},
+			{questType:"hardFiller",count:1},
+			{questType:"easyFiller",count:1},
+			{questType:"mediumFiller",count:1},
+			{questType:"hardFiller",count:1}			
 		]);
 		dunggen.setPlaceholderModels(PLACEHOLDERS);
 		dunggen.setRandomizers(RANDOMIZERS);
