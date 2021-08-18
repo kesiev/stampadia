@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="9.1747284"
-     inkscape:cx="699.78985"
-     inkscape:cy="30.600878"
+     inkscape:zoom="1.1468411"
+     inkscape:cx="577.90457"
+     inkscape:cy="568.3373"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -691,50 +691,42 @@
        cx="243.67516"
        cy="160.94814"
        r="0.5375948" />
-    <g
-       id="g5626"
-       transform="translate(11.409343)">
-      <rect
-         style="fill:#ffffff;stroke-width:1"
-         id="rect908"
-         width="13.602617"
-         height="2.8998742"
-         x="250.58931"
-         y="159.4982" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
-         x="250.94211"
+    <rect
+       style="fill:#ffffff;stroke-width:1"
+       id="rect908"
+       width="13.602617"
+       height="2.8998742"
+       x="261.99866"
+       y="159.4982" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="262.35144"
+       y="161.60464"
+       id="enemyDefense-8"><tspan
+         sodipodi:role="line"
+         id="tspan16619-8-7"
+         x="262.35144"
          y="161.60464"
-         id="enemyDefense-8"><tspan
-           sodipodi:role="line"
-           id="tspan16619-8-7"
-           x="250.94211"
-           y="161.60464"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Enemy Sheet</tspan></text>
-    </g>
-    <g
-       id="g5621"
-       transform="translate(-23.475122)">
-      <rect
-         style="fill:#ffffff;stroke-width:1"
-         id="rect906"
-         width="11.88013"
-         height="2.8998742"
-         x="233.5802"
-         y="159.35277" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
-         x="245.0419"
-         y="161.60464"
-         id="text904"><tspan
-           sodipodi:role="line"
-           id="tspan902"
-           x="245.0419"
-           y="161.60464"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Hero Sheet</tspan></text>
-    </g>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Enemy Sheet</tspan></text>
+    <rect
+       style="fill:#ffffff;stroke-width:1"
+       id="rect906"
+       width="11.88013"
+       height="2.8998742"
+       x="210.10507"
+       y="159.35277" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       x="210.5248"
+       y="161.70395"
+       id="text904"><tspan
+         sodipodi:role="line"
+         id="tspan902"
+         x="210.5248"
+         y="161.70395"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Hero Sheet</tspan></text>
     <circle
        style="fill:#000000;stroke-width:0.999999"
        id="circle3323"
