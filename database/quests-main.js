@@ -21,7 +21,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"keyRoom",
-						atPercentage:50,
+						atPercentage:{from:50,to:90},
 						items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
 						roomDescriptions:[
 							[ "{ifMoveOn:bossKey}{then}You got the {bossKey}, {markRoom:keyRoom}, {markItem:bossKey}" ]
@@ -111,7 +111,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"enemy1room",
-						atPercentage:20,
+						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
 							[
@@ -133,7 +133,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"enemy3room",
-						atPercentage:40,
+						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
@@ -300,7 +300,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"itemRoom",
-						atPercentage:60,
+						atPercentage:{from:60,to:90},
 						items:[{genericItem:"item"},{id:"enemy",level:1}],
 						roomDescriptions:[
 							[ "{ifMoveOn:item}{and}{ifRoomIsNotMarked:itemRoom}{then}You've found the {documentName}, {markRoom:itemRoom}, {markItem:item}" ]
@@ -347,7 +347,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"goodguyroom",
-						atPercentage:20,
+						atPercentage:{from:20,to:30},
 						items:[{genericItem:"goodguy"}],
 						roomDescriptions:[
 							[
@@ -547,7 +547,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"bossRoom1",
-						atPercentage:70,
+						atPercentage:99,
 						items:[{id:"enemy",level:1},{id:"enemy",level:1}],
 						roomDescriptions:[
 							[

@@ -67,7 +67,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"switchRoom",
-						atPercentage:60,
+						atPercentage:{from:1,to:100},
 						items:[{genericItem:"switch"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:switch}{then}{randomMysteryHappens}{hide}{markRoom:switchRoom}, {markItem:switch}" ]
@@ -75,7 +75,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"switchEffect",
-						atPercentage:100,
+						atPercentage:{from:1,to:100},
 						roomDescriptions:[
 							[ "{ifRoomIsMarked:switchRoom}{and}{ifRoomIsNotMarked:switchEffect}{then}{hide}{randomGoodRoomEffect+randomBadRoomEffect}, {markRoom:switchEffect}" ]
 						]

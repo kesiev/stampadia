@@ -5,7 +5,7 @@ function loadQuestsEasyFillers() {
 
 		// [CODEX-Events] Filler (easy) - The Pair: Two level 0 enemies.
 		{
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Y...you shall not pass!\"" ],
 				[ "\"You're outnumbered! Surrender now!\"" ],
 				[ "\"Let's kill him! The boss will give us a promotion!\""],
@@ -15,7 +15,7 @@ function loadQuestsEasyFillers() {
 
 		// [CODEX-Events] Filler (easy) - The One: One level 1 enemy.
 		{
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Hey you! Stop there!\"" ],
 				[ "\"I'll avenge my brothers!\"" ],
 				[ "\"Give me all your money!\"" ],
@@ -31,7 +31,7 @@ function loadQuestsMediumFillers() {
 		// [CODEX-Events] Filler (medium) - The Pair: Two level 1 enemies.
 		{
 			minRooms:2,
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"Any last word, fool?\"" ],
 				[ "\"It's time to die, thief!\"" ],
 				[ "\"This may be a challenge for us! Let's do our best!\""],
@@ -41,7 +41,7 @@ function loadQuestsMediumFillers() {
 		// [CODEX-Events] Filler (medium) - The One: One level 2 enemy.
 		{
 			minRooms:2,
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"Your quest ends here!\""],
 				[ "\"Raaawwwrrr!\"" ],
 				[ "\"Come here, wimp!\"" ]
@@ -56,7 +56,7 @@ function loadQuestsHardFillers() {
 		// [CODEX-Events] Filler (hard) - The Pair: Two level 2 enemies.
 		{
 			minRooms:2,
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:80,roomDescriptions:[
 				[ "\"Let's get him out, guys!\"" ],
 				[ "\"Let's tear this guy apart!\"" ],
 				[ "\"I want his head on a pike!\"" ]
@@ -66,7 +66,7 @@ function loadQuestsHardFillers() {
 		// [CODEX-Events] Filler (hard) - The One: One Level 3 enemy.
 		{
 			minRooms:2,
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:80,roomDescriptions:[
 				[ "\"Your bones taste good. Give me bones.\"" ],
 				[ "\"You woke me from my sleep. Now you will die.\"" ],
 				[ "\"You should be my lunch. Come closer!\"" ]
