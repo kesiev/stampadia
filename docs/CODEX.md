@@ -2,10 +2,11 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (41 items)
+## Events (42 items)
 
 - Bonus
   - **The Magic Tree**: It grows a healing fruit after some time.
+  - **The Mirror**: Go back to this room using an item.
   - **The NPC**: Learn about the Stampadia lore by Stampadians.
   - **The Random Item**: A random bonus item.
   - **The Saint**: They will help you when you're in danger.
@@ -59,11 +60,12 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (19 items)
+## Stuff (20 items)
 
 - Equipment
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Fireball**: Inflict 2 damage.
+  - **Mirror**: Teleport back to the mirror room.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
   - **Tactic**: Sacrifice XPs to strike a two strong hits.
