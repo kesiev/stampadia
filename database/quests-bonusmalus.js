@@ -139,6 +139,21 @@ function loadQuestsBonus() {
 			]
 		},
 
+		// [CODEX-Events] Bonus - The Clover: It may bring good luck in your future adventures...
+		{
+			minRooms:2,
+			steps:[
+				[
+					{id:"roomA",atPercentage:100,roomDescriptions:[
+						[
+							"{ifMoveOn:item}{and}{ifLoseKeyword:luck}{then}You found{hide}{randomGoodLoot}, {markItem:item}",
+							"{ifMoveOn:item}{and}{ifNotKeyword:luck}{then}You found a clover, {getKeyword:luck}, {markItem:item}"
+						]
+					],items:[{genericItem:"item"}]}
+				]
+			]
+		},
+
 	];
 }
 
@@ -214,6 +229,40 @@ function loadQuestsMalus() {
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap clicks, {markRoom:roomA}"
 						]
 					]}
+				]
+			]
+		},
+
+		// [CODEX-Events] Malus - The Witch: Pay her or she will curse you!
+		{
+			minRooms:2,
+			steps:[
+				[
+					{id:"witchRoom",items:[{genericItem:"witch"}],atPercentage:{from:10,to:40},roomDescriptions:[
+						[
+							"{ifMoveOn:witch}{and}{ifPayGold:3}{then}Witch: \"Thank you, {heroClass}! Heh heh...\", {markRoom:witchRoom}, {markItem:witch}"
+						]
+					]},
+					{id:"cursedRoom",atPercentage:100,roomDescriptions:[
+						[
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:cursedRoom}{and}{ifRoomIsNotMarked:witchRoom}{then}{randomBadFeeling}, {randomBadReward}, {markRoom:cursedRoom}"
+						]
+					]}
+				]
+			]
+		},
+
+		// [CODEX-Events] Bonus - The Small Horn: It may bring bad luck in your future adventures...
+		{
+			minRooms:2,
+			steps:[
+				[
+					{id:"roomA",atPercentage:100,roomDescriptions:[
+						[
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifKeyword:unluck}{then}{randomBadReward}, {loseKeyword:unluck}, {markRoom:roomA}",
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{then}You found a small horn, {getKeyword:unluck}, {markRoom:roomA}"
+						]
+					],items:[{genericItem:"item"}]}
 				]
 			]
 		},

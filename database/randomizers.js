@@ -80,6 +80,13 @@ function loadRandomizers() {
 			"\"Now see our full power!\"",
 			"\"We've had enough of playing!\"",
 		],
+		randomBadFeeling:[
+			"Are not you feeling good",
+			"There is something wrong",
+			"Your stomach hurts",
+			"Your eyes burn",
+			"You feel weak arms",
+		],
 
 		randomBossRevenge:[
 			"\"That's the right price for the {goodGuyName}'s indolence!\"",
