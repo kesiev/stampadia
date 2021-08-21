@@ -2,25 +2,29 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (42 items)
+## Events (48 items)
 
 - Bonus
+  - **The Clover**: It may bring good luck in your future adventures...
   - **The Magic Tree**: It grows a healing fruit after some time.
   - **The Mirror**: Go back to this room using an item.
   - **The NPC**: Learn about the Stampadia lore by Stampadians.
   - **The Random Item**: A random bonus item.
   - **The Saint**: They will help you when you're in danger.
   - **The Shop**: Pay gold for useful items.
+  - **The Small Horn**: It may bring bad luck in your future adventures...
   - **The Teleports**: Teleport from a room to another.
 - Filler (easy)
   - **The One**: One level 1 enemy.
   - **The Pair**: Two level 0 enemies.
+  - **The Weak**: One level 0 enemy.
 - Filler (hard)
   - **The One**: One Level 3 enemy.
   - **The Pair**: Two level 2 enemies.
 - Filler (medium)
   - **The One**: One level 2 enemy.
   - **The Pair**: Two level 1 enemies.
+  - **The Swarm**: Three level 0 enemy.
 - Main quest
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
@@ -39,6 +43,9 @@
   - **The Switch Trap**: Step on a trap to get injured.
   - **The Teleport Trap**: It will teleport you to a room with an enemy.
   - **The Timed Traps**: Defuse it with the right timing or it will trigger!
+  - **The Witch**: Pay her or she will curse you!
+- Storyline
+  - **The End Of Stampadia**: Discover how Stampadia ended.
 - Subquest
   - **The Altar**: Sacrify important resources for other advantages.
   - **The Barman**: Pay gold for health or a short mission.
@@ -88,3 +95,16 @@
   - **Mercy**: Turn an enemy rolled 1 to a 6 for gold.
 - Trap
   - **The Mimic**: Lose 1 HP.
+
+## Keywords (9 items)
+
+- Keyword
+  - **City**: Part of the The End Of Stampadia storyline.
+  - **Computer**: Part of the The End Of Stampadia storyline.
+  - **End**: Part of the The End Of Stampadia storyline.
+  - **Ink**: Part of the The End Of Stampadia storyline.
+  - **Irony**: Part of the The End Of Stampadia storyline.
+  - **Luck**: It may bring you good luck during your adventures...
+  - **Press**: Part of the The End Of Stampadia storyline.
+  - **Spaceship**: Part of the The End Of Stampadia storyline.
+  - **Unluck**: It may bring you bad luck during your adventures...
