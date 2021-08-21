@@ -14,8 +14,10 @@ const Core=function() {
 			"database/quests-fillers.js",
 			"database/quests-main.js",
 			"database/quests-sub.js",
+			"database/quests-story.js",
 			"database/truthMap.js",
 			"database/equipment.js",
+			"database/keywords.js",
 		],
 		PADSEED=10,
 		METADATA={
@@ -44,6 +46,8 @@ const Core=function() {
 		QUESTS_MEDIUMFILLERS,
 		QUESTS_HARDFILLERS,
 		QUESTS_MAIN,
+		QUESTS_STORY,
+		KEYWORDS,
 		TRUTHMAP,
 		EQUIPMENT,
 		initialize;
@@ -92,8 +96,10 @@ const Core=function() {
 				QUESTS_MEDIUMFILLERS=loadQuestsMediumFillers();
 				QUESTS_HARDFILLERS=loadQuestsHardFillers();
 				QUESTS_MAIN=loadQuestsMain();
+				QUESTS_STORY=loadQuestsStory();
 				TRUTHMAP=loadTruthMap();
 				EQUIPMENT=loadEquipment();
+				KEYWORDS=loadKeywords();
 				cb();
 			}
 		}
@@ -152,16 +158,30 @@ const Core=function() {
 
 		// Set databases
 		dunggen.setQuestsStructure([
-			{questType:"main",count:1},
-			{questType:"sub",count:2},
-			{questType:"bonus",count:2},
-			{questType:"malus",count:2},
-			{questType:"easyFiller",count:2},
-			{questType:"mediumFiller",count:1},
-			{questType:"hardFiller",count:1},
-			{questType:"easyFiller",count:1},
-			{questType:"mediumFiller",count:1},
-			{questType:"hardFiller",count:1}			
+
+			// Basic elements
+			{questType:"main",count:1,distance:"farthest"},
+			{questType:"story",count:1,distance:"farthest"},
+
+			// Initial area
+			{questType:"easyFiller",count:2,distance:"nearest"},
+
+			// Hardest area
+			{questType:"hardFiller",count:1,distance:"farthest"},
+			{questType:"bonus",count:1,distance:"farthest"},
+			{questType:"sub",count:1,distance:"farthest"},
+			{questType:"malus",count:1,distance:"farthest"},
+
+			// Medium area
+			{questType:"mediumFiller",count:1,distance:"farthest"},
+			{questType:"sub",count:1,distance:"farthest"},
+			{questType:"bonus",count:1,distance:"farthest"},
+			{questType:"malus",count:1,distance:"farthest"},
+
+			// Filling
+			{questType:"sub",count:1,distance:"farthest"},
+			{questType:"mediumFiller",count:1,distance:"random"},
+
 		]);
 		dunggen.setPlaceholderModels(PLACEHOLDERS);
 		dunggen.setRandomizers(RANDOMIZERS);
@@ -170,6 +190,7 @@ const Core=function() {
 		dunggen.setFlavorTexts(FLAVORTEXTS)
 		dunggen.setTruthMap(TRUTHMAP);
 		dunggen.setEquipment(EQUIPMENT);
+		dunggen.setKeywords(KEYWORDS);
 		dunggen.setQuests(
 			{
 				main:QUESTS_MAIN,
@@ -178,7 +199,8 @@ const Core=function() {
 				malus:QUESTS_MALUS,
 				easyFiller:QUESTS_EASYFILLERS,
 				mediumFiller:QUESTS_MEDIUMFILLERS,
-				hardFiller:QUESTS_HARDFILLERS
+				hardFiller:QUESTS_HARDFILLERS,
+				story:QUESTS_STORY
 			}
 		);
 

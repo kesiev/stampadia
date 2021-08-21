@@ -45,6 +45,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		originalRandomizers,
 		randomizers,
 		equipment,
+		keywords,
+		keywordsIndex={},
 		enemies=[],		
 		noise=[],
 		questsStructure=[],
@@ -67,6 +69,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.prepared=false;
 
+	this.setKeywords=(keywordsdata)=>keywords=keywordsdata;
 	this.setEquipment=(equipmentdata)=>equipment=equipmentdata;
 	this.setTruthMap=(truthmapdata)=>truthMap=truthmapdata;
 	this.setRoomIds=(roomidsdata)=>roomIds=roomidsdata;
@@ -395,7 +398,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{ifSetDie:([0-9]+),([0-9]+),([0-9]+)\}/g,(m,num,num2,num3)=>"set "+num+" rolled "+num2+" to "+num3);
 
 		// Dice - Actions
-		line=line.replace(/\{setDieTo:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"set "+num+" "+(num==1?"die":"dice")+" to "+num);
+		line=line.replace(/\{setDieTo:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"set "+num+" "+(num==1?"die":"dice")+" to "+num2);
 		line=line.replace(/\{discardAnyDie:([0-9]+)\}/g,(m,num)=>"discard "+num+" "+(num==1?"die":"dice"));
 
 		// Quest placeholders
@@ -420,6 +423,19 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				let equipment=globalPlaceholders[id];
 				if (!equipment) equipment=getRandom(services).equipment.label;
 				return entry.verb+" "+equipment;
+			});
+		});
+
+		// Keywords
+		[
+			{regex:/\{ifKeyword:([^}]+)\}/g,verb:"know"},
+			{regex:/\{ifNotKeyword:([^}]+)\}/g,verb:"don't know"},
+			{regex:/\{ifLoseKeyword:([^}]+)\}/g,verb:"forget"},
+			{regex:/\{loseKeyword:([^}]+)\}/g,verb:"forget"},
+			{regex:/\{getKeyword:([^}]+)\}/g,verb:"learn"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				return entry.verb+" '"+getRandom(keywords).label+"'";
 			});
 		})
 		
@@ -456,6 +472,21 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{payEquip:([^}]+)\}/g,(m,id)=>"pay "+globalPlaceholders[id]);
 		line=line.replace(/\{loseEquip:([^}]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
 		line=line.replace(/\{getEquip:([^}]+)\}/g,(m,id)=>"get "+globalPlaceholders[id]);
+
+		// Keywords
+		[
+			{regex:/\{ifKeyword:([^}]+)\}/g,verb:"know"},
+			{regex:/\{ifNotKeyword:([^}]+)\}/g,verb:"don't know"},
+			{regex:/\{ifLoseKeyword:([^}]+)\}/g,verb:"forget"},
+			{regex:/\{loseKeyword:([^}]+)\}/g,verb:"forget"},
+			{regex:/\{getKeyword:([^}]+)\}/g,verb:"learn"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				let keyword=keywordsIndex[id];
+				if (!keyword) console.warn("Can't find keyword",id);
+				return entry.verb+" '"+(keyword?keyword.label+"'":"???");
+			});
+		})
 
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
@@ -921,7 +952,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	}
 
-	this.addQuest=function(set,excludeQuests) {
+	this.addQuest=function(set,excludeQuests,distance) {
 
 		const
 			quests=[],
@@ -932,32 +963,47 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			if (excludeQuests.indexOf(quest)==-1) {
 				quest.steps.forEach(steps=>{
 					let
-						subroutes=[];
-						longestRoute=0;
-					routes.forEach(route=>{						
-						if (route.length>=longestRoute) {
-							const subroute=this.getQuestSubroute(route,quest,steps);
-							if (subroute) {
-								if (route.length>longestRoute) {
-									subroutes=[];
-									longestRoute=route.length;
-								}
-								subroutes.push(subroute);
-							}
+						subroutes={},
+						allSubroutes=[];
+						longestRoute=0,
+						shortestRoute=0;
+					routes.forEach(route=>{
+						const subroute=this.getQuestSubroute(route,quest,steps);
+						if (subroute) {
+							if (!subroutes[route.length]) subroutes[route.length]=[];
+							subroutes[route.length].push(subroute);
+							allSubroutes.push(subroute);
+							if (!longestRoute||(route.length>longestRoute)) longestRoute=route.length;
+							if (!shortestRoute||(route.length<shortestRoute)) shortestRoute=route.length;
 						}
 					});
 					if (quest.debugger) debugger;
-					if (longestRoute) questVersions.push({subroutes:subroutes,quest:quest,steps:steps});
+					if (allSubroutes.length) {
+						var subroute;
+						switch (distance) {
+							case "nearest":{
+								subroute=getRandom(subroutes[shortestRoute]);
+								break;
+							}
+							case "nearest":{
+								subroute=getRandom(allSubroutes);
+								break;
+							}
+							default:{
+								subroute=getRandom(subroutes[longestRoute]);
+								break;
+							}
+						}
+						questVersions.push({subroute:subroute,quest:quest,steps:steps});
+					}
 				})
 				if (questVersions.length) quests.push(getRandom(questVersions));
 			};
 		})
 
 		if (quests.length) {
-			const
-				quest=getRandom(quests),
-				subroute=getRandom(quest.subroutes);
-			this.applyQuest(subroute,quest.quest,quest.steps);
+			const quest=getRandom(quests);
+			this.applyQuest(quest.subroute,quest.quest,quest.steps);
 			return quest.quest;
 		} else return false;
 	}
@@ -970,8 +1016,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		questsStructure.forEach(entry=>{
 			for (let i=0;i<entry.count;i++) {
-				quest=this.addQuest(quests[entry.questType],addedQuests);
+				if (entry.debugger) debugger;
+				quest=this.addQuest(quests[entry.questType],addedQuests,entry.distance);
 				if (quest) addedQuests.push(quest);
+				else if (debug&&debug.logMissingQuests) console.log("Can't add requested",entry.questType,"at",entry.distance);
 			}
 		});
 
@@ -1313,6 +1361,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		globalPlaceholders.roomIds={};
 	}
 
+	// Keywords index
+
+	this.prepareKeywordsIndex=function() {
+		keywords.forEach(keyword=>keywordsIndex[keyword.id]=keyword);
+	}
+
 	// Metadata
 
 	this.setupMetadata=function() {
@@ -1422,6 +1476,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 			// Initialize
 			this.prepareGlobalPlaceholders();
+			this.prepareKeywordsIndex();
 			this.selectHeroModel();
 
 			// Prepare rooms
@@ -1438,7 +1493,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			this.generateHero();
 
 			// Add noise and tidy up
-			this.addNoise();
+			if (!debug||!debug.skipNoise) this.addNoise();
 			this.addFakeRooms();
 			this.addFlavorTexts();
 			this.sortRooms();
@@ -1555,13 +1610,21 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				room.width*CELLSIZE,
 				room.height*CELLSIZE
 			);
+			if (room.isStartingRoom)
+				ctx.rect(
+					room.x*CELLSIZE+3,
+					room.y*CELLSIZE+3,
+					room.width*CELLSIZE-6,
+					room.height*CELLSIZE-6
+				);	
+
 			ctx.stroke();	
 			ctx.font = HCELLSIZE+"px Arial";
 			ctx.fillStyle="#f00";
 			ctx.textAlign = "center";
 			ctx.textBaseline = "middle";
 			ctx.fillText(room.id, room.x*CELLSIZE+(room.width*CELLSIZE/2),room.y*CELLSIZE+(room.height*CELLSIZE/2));
-			
+
 			table+="<td>";
 			room.exits.forEach(exit=>{
 				const
@@ -1727,8 +1790,18 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				rooms.forEach((room,index)=>{
 
 					// Render starting room
-					if (room.isStartingRoom)
+					if (debug&&debug.drawRooms) {
+						if (room.isFake)
+							svg.cloneNodeBy("startingRoom",0,room.x*cellWidth+2,room.y*cellHeight+2,cellWidth*room.width-4,cellHeight*room.height-4);
+						else {
+							svg.cloneNodeBy("startingRoom",0,room.x*cellWidth,room.y*cellHeight,cellWidth*room.width,cellHeight*room.height);
+							if (room.isStartingRoom)
+								svg.cloneNodeBy("startingRoom",0,room.x*cellWidth+1,room.y*cellHeight+1,cellWidth*room.width-2,cellHeight*room.height-2);
+						}
+					} else if (room.isStartingRoom)
 						svg.cloneNodeBy("startingRoom",0,room.x*cellWidth,room.y*cellHeight,cellWidth*room.width,cellHeight*room.height);
+
+
 					room.exits.forEach(exit=>{
 						const id=getDoorId(exit);
 						if (!renderedDoors[id]) {
@@ -1765,7 +1838,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 						item=item.item;
 						switch (item.id) {
 							case "entrance":{
-								svg.setText(svg.cloneNodeBy("gridNumber",0,px,py),getCellValue(x,y,room));
+								if (debug&&debug.drawRoomNumbers)
+									svg.setText(svg.cloneNodeBy("gridNumber",0,px,py),room.id);
+								else
+									svg.setText(svg.cloneNodeBy("gridNumber",0,px,py),getCellValue(x,y,room));
 								break;
 							}
 							case "enemy":{
