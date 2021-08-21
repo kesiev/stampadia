@@ -25,12 +25,12 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
-- [!] Add shuffled missions!
 - [ ] New classes
   - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
 - [ ] New quests
-  - [ ] The Witch - Help me, or else...
   - [ ] Exchange xp/hp
+  - [ ] Use luck/unluck more
+  - [ ] The messenger - bring messages between quests
 - [ ] NPC
   - [ ] The Corrupted
 - [ ] Equipment
@@ -49,6 +49,7 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [x] Simplify the condition in `generator.js`
 - [x] New quests
+  - [x] The Witch - Help me, or else...
   - [x] The Mirror - teleport back to a room
   - [x] Final form - Mini boss, then forced bigger boss
   - [x] Moral choices - Become the next ruler
