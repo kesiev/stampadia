@@ -17,8 +17,12 @@ function onl() {
 	core.initialize(()=>{
 
 		var dungen=core.generateAdventureDaily(-1,{
-			showFake:false,
-			dumpSentences:false,
+			showFake:true,
+			dumpSentences:true,
+			logMissingQuests:true,
+			skipNoise:true,
+			drawRooms:true,
+			drawRoomNumbers:true,
 			flavorText:""
 		});
 		dungen.prepare();	
