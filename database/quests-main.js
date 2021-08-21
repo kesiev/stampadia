@@ -513,7 +513,7 @@ function loadQuestsMain() {
 						roomDescriptions:[ // Mark is good.
 							[
 								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}",
-								"{ifNoFoes}{and}{ifRoomIsNotMarked:step1}{and}{ifRoomIsMarked:step2}{and}{ifRoomIsMarked:step3}{then}{hide}You sit on the {villainName} throne. Quest over."
+								"{ifNoFoes}{and}{ifRoomIsNotMarked:step1}{and}{ifRoomIsMarked:step2}{and}{ifRoomIsMarked:step3}{then}{hide}You sit on the {villainName} throne. The end."
 							]
 						]
 					}
