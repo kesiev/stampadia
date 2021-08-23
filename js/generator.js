@@ -400,6 +400,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		// Dice - Actions
 		line=line.replace(/\{setDieTo:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"set "+num+" "+(num==1?"die":"dice")+" to "+num2);
 		line=line.replace(/\{discardAnyDie:([0-9]+)\}/g,(m,num)=>"discard "+num+" "+(num==1?"die":"dice"));
+		line=line.replace(/\{flipDieUpsideDown:([0-9]+)\}/g,(m,num)=>"flip "+num+" "+(num==1?"die":"dice"));
+		line=line.replaceAll("{playLowerDieFirst}","play lower die first");
 
 		// Quest placeholders
 		for (const k in globalPlaceholders)
@@ -1407,7 +1409,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			truthCounter={
 				fakeRooms:0,
 				rooms:0,
-				ones:0
+				ones:0,
+				seed:originalSeed
 			},
 			truth=[],
 			lies=[];
@@ -1437,20 +1440,31 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		// Generate truth/lies
 		truthMap.forEach((map)=>{
-			const subLies=[];
-			let
-				trueValue=truthCounter[map.id],
-				num=truthCounter[map.id]+map.lie.range[0],
-				limit=truthCounter[map.id]+map.lie.range[1];
-			truth.push(formatTruth(trueValue,map));
-			if ((map.lie.max!==undefined)&&(limit>map.lie.max)) limit=map.lie.max;
-			if ((map.lie.min!==undefined)&&(num<map.lie.min)) num=map.lie.min;
-			while (num<=limit) {
-				if (num!=trueValue)
-					subLies.push(formatTruth(num,map));
-				num+=(map.lie.step||1);
+			let trueValue=truthCounter[map.id];
+			if (map.pair) {
+				if (trueValue%2) {
+					truth.push(map.odd);
+					lies.push(map.pair);
+				} else {
+					truth.push(map.pair);
+					lies.push(map.odd);
+				}
 			}
-			if (subLies.length) lies.push(getRandom(subLies));
+			if (map.lie) {
+				const subLies=[];
+				let
+					num=trueValue+map.lie.range[0],
+					limit=trueValue+map.lie.range[1];
+				truth.push(formatTruth(trueValue,map));
+				if ((map.lie.max!==undefined)&&(limit>map.lie.max)) limit=map.lie.max;
+				if ((map.lie.min!==undefined)&&(num<map.lie.min)) num=map.lie.min;
+				while (num<=limit) {
+					if (num!=trueValue)
+						subLies.push(formatTruth(num,map));
+					num+=(map.lie.step||1);
+				}
+				if (subLies.length) lies.push(getRandom(subLies));
+			}
 		});
 
 		// Inject truth/lies in randomizers
