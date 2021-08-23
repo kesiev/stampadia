@@ -27,19 +27,13 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [ ] New classes
   - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
+  - [ ] Rogue - Get gold by fights
 - [ ] New quests
   - [ ] Exchange xp/hp
   - [ ] Use luck/unluck more
   - [ ] The messenger - bring messages between quests
 - [ ] NPC
   - [ ] The Corrupted
-- [ ] Equipment
-  - [ ] Flip - Complementary dice values (upside down dice)
-  - [ ] Turn - Use dice in reverse order (lower-higher)
-- [ ] Improve quests
-  - [ ] Pair/odd in Sphinx
-  - [ ] Quest ID in Sphinx (pair/odd)
-  - [ ] More smaller quests
 
 ### In progress
 
@@ -48,6 +42,9 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Done
 
 - [x] Simplify the condition in `generator.js`
+- [x] Equipment
+  - [x] Flip - Complementary dice values (upside down dice)
+  - [x] Turn - Use dice in reverse order (lower-higher)
 - [x] New quests
   - [x] The Witch - Help me, or else...
   - [x] The Mirror - teleport back to a room
@@ -58,3 +55,7 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] The Time Bomb - Reach the room in time
   - [x] The Barman
   - [x] One Last Fight - The enemy spawn only on your way back  
+- [x] Improve quests
+  - [x] Pair/odd in Sphinx
+  - [x] Quest ID in Sphinx (pair/odd)
+  - [x] More smaller quests
