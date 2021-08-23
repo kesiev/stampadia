@@ -62,6 +62,19 @@ function loadEquipment() {
 			label:"Test: Calm",
 			action:"{ifAfterHeroRollInFight}{and}{ifDiscardDie:1,6}{then}{gainGold:4}"
 		},
+		// [CODEX-Stuff] Equipment - Backflip: Flip a dice upside down.
+		{
+			id:"backflip",
+			label:"Backflip",
+			action:"{ifAfterHeroRollInFight}{and}{ifDiscardDie:1,1}{then}{flipDieUpsideDown:1}"
+		},
+		// [CODEX-Stuff] Equipment - Spin: Play dices in reverse order.
+		{
+			id:"spin",
+			label:"Spin",
+			action:"{ifAfterHeroRollInFight}{and}{ifPayGold:2}{then}{playLowerDieFirst}"
+		},
+
 		
 		
 	];
