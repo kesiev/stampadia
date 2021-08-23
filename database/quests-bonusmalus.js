@@ -154,6 +154,28 @@ function loadQuestsBonus() {
 			]
 		},
 
+		// [CODEX-Events] Bonus - The Clown: Pay him to learn cool stunts!
+		{
+			minRooms:1,
+			steps:[
+				[
+					{id:"clownRoom",atPercentage:100,equipment:[{id:"backflip"}],roomDescriptions:[
+						[
+							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice jump, {heroClass}!\", {getEquip:equip-backflip}, {markItem:clown}"
+						]
+					],items:[{genericItem:"clown"}]}
+				],
+				[
+					{id:"clownRoom",atPercentage:100,equipment:[{id:"spin"}],roomDescriptions:[
+						[
+							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice dancing, {heroClass}!\", {getEquip:equip-spin}, {markItem:clown}"
+						]
+					],items:[{genericItem:"clown"}]}
+				]
+
+			]
+		},
+
 	];
 }
 
@@ -252,7 +274,27 @@ function loadQuestsMalus() {
 			]
 		},
 
-		// [CODEX-Events] Bonus - The Small Horn: It may bring bad luck in your future adventures...
+		// [CODEX-Events] Malus - The Mercenary: Eliminate an enemy or pay the Mercenary to do that.
+		{
+			minRooms:3,
+			steps:[
+				[
+					{id:"mercenaryRoom",items:[{genericItem:"mercenary"}],atPercentage:10,roomDescriptions:[
+						[
+							"{ifMoveOn:mercenary}{and}{ifPayGold:5}{then}Mercenary: {randomOk}, {markRoom:mercenaryRoom}, {markItem:mercenary}"
+						]
+					]},
+					{id:"enemyRoom",atPercentage:100,roomDescriptions:[
+						[
+							"{ifEnterRoom}{and}{ifRoomIsMarked:mercenaryRoom}{then}{randomCorpse}, {roomIsEmpty}, {stopReading}",
+							"{randomEnemyChallenge}"
+						]
+					],items:[{id:"enemy",level:2}]}
+				]
+			]
+		},
+
+		// [CODEX-Events] Malus - The Small Horn: It may bring bad luck in your future adventures...
 		{
 			minRooms:2,
 			steps:[

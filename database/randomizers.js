@@ -199,6 +199,17 @@ function loadRandomizers() {
 			"\"Why... Ugh...\"",
 			"\"Ugh!\"",
 		],
+		randomCorpse:[
+			"Bloodstains are on the floor",
+			"There is a corpse here",
+			"You see a dead body",
+		],
+		randomOk:[
+			"\"Let me handle this.\"",
+			"\"Roger that.\"",
+			"\"Understood.\"",
+			"\"It's settled then.\""
+		],
 		
 		// Loot
 		randomGold:[
