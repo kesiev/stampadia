@@ -2,17 +2,17 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (48 items)
+## Events (50 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
+  - **The Clown**: Pay him to learn cool stunts!
   - **The Magic Tree**: It grows a healing fruit after some time.
   - **The Mirror**: Go back to this room using an item.
   - **The NPC**: Learn about the Stampadia lore by Stampadians.
   - **The Random Item**: A random bonus item.
   - **The Saint**: They will help you when you're in danger.
   - **The Shop**: Pay gold for useful items.
-  - **The Small Horn**: It may bring bad luck in your future adventures...
   - **The Teleports**: Teleport from a room to another.
 - Filler (easy)
   - **The One**: One level 1 enemy.
@@ -39,7 +39,9 @@
 - Malus
   - **The Last Fight**: An enemy will challenge you on your way back.
   - **The Loop Rooms**: It will teleport you to the starting room.
+  - **The Mercenary**: Eliminate an enemy or pay the Mercenary to do that.
   - **The Random Trap**: Dodge a trap rolling a die.
+  - **The Small Horn**: It may bring bad luck in your future adventures...
   - **The Switch Trap**: Step on a trap to get injured.
   - **The Teleport Trap**: It will teleport you to a room with an enemy.
   - **The Timed Traps**: Defuse it with the right timing or it will trigger!
@@ -67,14 +69,16 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (20 items)
+## Stuff (22 items)
 
 - Equipment
+  - **Backflip**: Flip a dice upside down.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Fireball**: Inflict 2 damage.
   - **Mirror**: Teleport back to the mirror room.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
+  - **Spin**: Play dices in reverse order.
   - **Tactic**: Sacrifice XPs to strike a two strong hits.
   - **Taunt**: Sacrifice XPs to weaken an enemy attack.
 - Fountain
