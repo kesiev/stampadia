@@ -69,16 +69,18 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (22 items)
+## Stuff (24 items)
 
 - Equipment
   - **Backflip**: Flip a dice upside down.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Fireball**: Inflict 2 damage.
+  - **Lunge**: Place dice on the same column.
   - **Mirror**: Teleport back to the mirror room.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
   - **Spin**: Play dices in reverse order.
+  - **Sweep**: Place dice on the same row.
   - **Tactic**: Sacrifice XPs to strike a two strong hits.
   - **Taunt**: Sacrifice XPs to weaken an enemy attack.
 - Fountain
