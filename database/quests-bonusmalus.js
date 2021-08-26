@@ -171,8 +171,21 @@ function loadQuestsBonus() {
 							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice dancing, {heroClass}!\", {getEquip:equip-spin}, {markItem:clown}"
 						]
 					],items:[{genericItem:"clown"}]}
+				],
+				[
+					{id:"clownRoom",atPercentage:100,equipment:[{id:"lunge"}],roomDescriptions:[
+						[
+							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice stretch, {heroClass}!\", {getEquip:equip-lunge}, {markItem:clown}"
+						]
+					],items:[{genericItem:"clown"}]}
+				],
+				[
+					{id:"clownRoom",atPercentage:100,equipment:[{id:"sweep"}],roomDescriptions:[
+						[
+							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice sweep, {heroClass}!\", {getEquip:equip-sweep}, {markItem:clown}"
+						]
+					],items:[{genericItem:"clown"}]}
 				]
-
 			]
 		},
 

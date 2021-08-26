@@ -74,7 +74,18 @@ function loadEquipment() {
 			label:"Spin",
 			action:"{ifAfterHeroRollInFight}{and}{ifPayGold:2}{then}{playLowerDieFirst}"
 		},
-
+		// [CODEX-Stuff] Equipment - Lunge: Place dice on the same column.
+		{
+			id:"lunge",
+			label:"Lunge",
+			action:"{ifAfterHeroRollInFight}{and}{ifPayGold:2}{then}{placeDiceInSameColumn}"
+		},
+		// [CODEX-Stuff] Equipment - Sweep: Place dice on the same row.
+		{
+			id:"sweep",
+			label:"Sweep",
+			action:"{ifAfterHeroRollInFight}{and}{ifPayGold:2}{then}{placeDiceInSameRow}"
+		},
 		
 		
 	];
