@@ -8,7 +8,7 @@ function loadHeroModels() {
 			skills:[
 				["ATK -1\nRNG 1","Move\n-3"],
 				["DEF -3","Move\n-2"],
-				["Gain HP\n-5","ATK -3\nRNG 1"],
+				["(pay 1G)\nGain HP\n-5","ATK -3\nRNG 1"],
 				["ATK\nRNG 2","Move"]
 			],
 			defense:[1,1,1,1],
@@ -68,7 +68,7 @@ function loadHeroModels() {
 				["ATK -2\nRNG 2","Move\n-3"],
 				["Move\n-2","Move\n-3"],
 				["DEF\n-2","ATK -1\nRNG 3"],
-				["Gain HP\n-5","ATK\nRNG 1"]
+				["(pay 1G)\nGain HP\n-5","ATK\nRNG 1"]
 			],
 			defense:[1,1,1,1],
 			xpRamp:[
