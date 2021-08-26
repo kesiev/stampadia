@@ -56,7 +56,7 @@ function loadPlaceholders() {
 			"Lost Key",
 			"Diamond Rombhus",
 			"Rupture Seal",
-			"Remembrance Seal",
+			"Recall Seal",
 			"Trauma Orb",
 		],
 		placeName:[
