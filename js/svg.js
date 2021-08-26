@@ -143,7 +143,7 @@ function SVG(template) {
 
     this.setText = (subnode, text) => {
         const
-            LH = 3.5,
+            LH = 3.1,
             lines = ("" + text).split("\n"),
             tspan = subnode.querySelector("tspan"),
             style = tspan.getAttribute("style"),
