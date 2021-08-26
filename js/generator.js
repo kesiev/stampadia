@@ -402,6 +402,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{discardAnyDie:([0-9]+)\}/g,(m,num)=>"discard "+num+" "+(num==1?"die":"dice"));
 		line=line.replace(/\{flipDieUpsideDown:([0-9]+)\}/g,(m,num)=>"flip "+num+" "+(num==1?"die":"dice"));
 		line=line.replaceAll("{playLowerDieFirst}","play lower die first");
+		line=line.replaceAll("{placeDiceInSameColumn}","play dice in same column");
+		line=line.replaceAll("{placeDiceInSameRow}","play dice in same row");
 
 		// Quest placeholders
 		for (const k in globalPlaceholders)
