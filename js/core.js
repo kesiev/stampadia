@@ -21,7 +21,7 @@ const Core=function() {
 		],
 		PADSEED=10,
 		METADATA={
-			version:"0.9",
+			version:"1.0",
 			filePrefix:"stampadia",
 			projectName:"Chronicles of Stampadia",
 			year:"2021",
