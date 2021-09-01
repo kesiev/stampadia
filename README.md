@@ -4,7 +4,7 @@
 
 ---
 
-<div align="center"><a href="https://www.kesiev.com/stampadia">Play today's adventure</a> | <a href="manuals/manual.pdf">Read the manual</a> | <a href="https://www.kesiev.com/stampadia/learn.html">Learn how to play</a> | <a href="https://discord.gg/EDYP2N4RMn">Discord</a></div>
+<div align="center"><a href="https://www.kesiev.com/stampadia">Play today's adventure</a> | <a href="manuals/manual.pdf">Read the manual</a> | <a href="https://www.kesiev.com/stampadia/learn.html">Learn how to play</a> | <a href="https://discord.gg/EDYP2N4RMn">Discord</a> | <a href="https://boardgamegeek.com/boardgame/345607/chronicles-stampadia">BGG</a></div>
 
 ---
 
