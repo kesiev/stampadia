@@ -41,6 +41,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Done
 
+- [x] Bugs
+  - [ ] There is 1 extra xp box in the tutorial pdf!
 - [x] Simplify the condition in `generator.js`
 - [x] Equipment
   - [x] Flip - Complementary dice values (upside down dice)
