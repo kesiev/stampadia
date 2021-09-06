@@ -8,17 +8,17 @@ function loadQuestsSub() {
 		SHAPE_PUZZLES_CIRCLE_SQUARE="{ifMoveOn:puzzle}{and}{ifRoomIsMarked:circleRoom}{and}{ifRoomIsNotMarked:triangleRoom}{and}{ifRoomIsMarked:squareRoom}{then}",
 		SHAPE_PUZZLES_SOLVED="{hide}{randomGoodReward}, {markItem:puzzle}",
 		SHAPE_PUZZLES=[
-			// [CODEX-Stuff] Shape puzzle - The Eye Of The Gods: Which shapes are the right one?
+			// [CODEX-Stuff] Shape puzzle - The Eye Of The Gods: Which shapes are the right ones?
 			[ "A painting of the Eye Of The Gods is hanging on the wall.", SHAPE_PUZZLES_CIRCLE_TRIANGLE+"The painting burns"+SHAPE_PUZZLES_SOLVED ],
-			// [CODEX-Stuff] Shape puzzle - The Compass: Which shapes are the right one?
+			// [CODEX-Stuff] Shape puzzle - The Compass: Which shapes are the right ones?
 			[ "The needle of the huge compass hanging from the ceiling is spinning.", SHAPE_PUZZLES_CIRCLE_TRIANGLE+"The needle stops"+SHAPE_PUZZLES_SOLVED ],
-			// [CODEX-Stuff] Shape puzzle - The Home: Which shapes are the right one?
+			// [CODEX-Stuff] Shape puzzle - The Home: Which shapes are the right ones?
 			[ "An image of your home comes to your mind.", SHAPE_PUZZLES_SQUARE_TRIANGLE+"You miss home"+SHAPE_PUZZLES_SOLVED ],			
-			// [CODEX-Stuff] Shape puzzle - The Glass Of Wine: Which shapes are the right one?
+			// [CODEX-Stuff] Shape puzzle - The Glass Of Wine: Which shapes are the right ones?
 			[ "There is a glass of wine on an altar.", SHAPE_PUZZLES_SQUARE_TRIANGLE+"The wine disappear"+SHAPE_PUZZLES_SOLVED ],
-			// [CODEX-Stuff] Shape puzzle - The Coin With The Hole: Which shapes are the right one?
+			// [CODEX-Stuff] Shape puzzle - The Coin With The Hole: Which shapes are the right ones?
 			[ "There is a coin with a squared hole on the floor.", SHAPE_PUZZLES_CIRCLE_SQUARE+"The coin liquefies"+SHAPE_PUZZLES_SOLVED ],
-			// [CODEX-Stuff] Shape puzzle - The Bolt: Which shapes are the right one?
+			// [CODEX-Stuff] Shape puzzle - The Bolt: Which shapes are the right ones?
 			[ "There a bolt from some kind of machine on the floor.", SHAPE_PUZZLES_CIRCLE_SQUARE+"The bolt turns into ink"+SHAPE_PUZZLES_SOLVED ],
 		];
 
