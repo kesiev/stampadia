@@ -10,10 +10,13 @@
 <body onload="onl()">	
 </body><script>
 
-function onl() {
+var	
+	lookFor=0,
+	timer=100;
+
+function createDungeon() {
 
 	var core=new Core();
-
 	core.initialize(()=>{
 
 		var dungen=core.generateAdventureDaily(-1,{
@@ -25,14 +28,28 @@ function onl() {
 			drawRoomNumbers:true,
 			flavorText:""
 		});
-		dungen.prepare();	
+		dungen.prepare();
+		if (lookFor)
+			console.log("Attempt left",timer,"for",lookFor,"seed",dungen.metadata.seed);
+		else
+			console.log("Generating dungeon",dungen.metadata.seed);
 		dungen.createSVG(svg=>{
-			dungen.showSVG();
-			dungen.debug();
+			if (!lookFor||(svg.getSVG().match(lookFor))) {
+				dungen.showSVG();
+				dungen.debug();
+			} else {
+				if (timer) {
+					timer--;
+					setTimeout(createDungeon,1);
+				} else console.log("Can't find",lookFor)
+			}
 		});
 
 	});
+}
 
+function onl() {
+	createDungeon();
 }
 
 </script>
