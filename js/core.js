@@ -161,6 +161,7 @@ const Core=function() {
 
 			// Basic elements
 			{questType:"main",count:1,distance:"farthest"},
+			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"story",count:1,distance:"farthest"},
 
 			// Initial area
@@ -169,7 +170,6 @@ const Core=function() {
 			// Hardest area
 			{questType:"hardFiller",count:1,distance:"farthest"},
 			{questType:"bonus",count:1,distance:"farthest"},
-			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"malus",count:1,distance:"farthest"},
 
 			// Medium area
