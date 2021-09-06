@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (50 items)
+## Events (51 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -60,6 +60,7 @@
   - **The Key And The Chests**: Find the key and open one of two random chests.
   - **The Linked Rooms**: Walk on a cell and enable another room effect.
   - **The Murderer**: Avenge the dead body or steal its gold?
+  - **The Shapes Puzzle**: Get the right shapes to solve the puzzle.
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
   - **The Trainer**: Face his test and earn gold.
 
@@ -69,7 +70,7 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (24 items)
+## Stuff (30 items)
 
 - Equipment
   - **Backflip**: Flip a dice upside down.
@@ -92,6 +93,13 @@
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
   - **The Star Pin**: Gain 1 XP.
+- Shape puzzle
+  - **The Bolt**: Which shapes are the right ones?
+  - **The Coin With The Hole**: Which shapes are the right ones?
+  - **The Compass**: Which shapes are the right ones?
+  - **The Eye Of The Gods**: Which shapes are the right ones?
+  - **The Glass Of Wine**: Which shapes are the right ones?
+  - **The Home**: Which shapes are the right ones?
 - Special room
   - **The Blessed Room**: Gain 1 HP.
   - **The Poisonous Room**: Lose 1 HP.
