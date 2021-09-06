@@ -2,6 +2,26 @@
 
 function loadQuestsSub() {
 
+	const
+		SHAPE_PUZZLES_CIRCLE_TRIANGLE="{ifMoveOn:puzzle}{and}{ifRoomIsMarked:circleRoom}{and}{ifRoomIsMarked:triangleRoom}{and}{ifRoomIsNotMarked:squareRoom}{then}",
+		SHAPE_PUZZLES_SQUARE_TRIANGLE="{ifMoveOn:puzzle}{and}{ifRoomIsNotMarked:circleRoom}{and}{ifRoomIsMarked:triangleRoom}{and}{ifRoomIsMarked:squareRoom}{then}",
+		SHAPE_PUZZLES_CIRCLE_SQUARE="{ifMoveOn:puzzle}{and}{ifRoomIsMarked:circleRoom}{and}{ifRoomIsNotMarked:triangleRoom}{and}{ifRoomIsMarked:squareRoom}{then}",
+		SHAPE_PUZZLES_SOLVED="{hide}{randomGoodReward}, {markItem:puzzle}",
+		SHAPE_PUZZLES=[
+			// [CODEX-Stuff] Shape puzzle - The Eye Of The Gods: Which shapes are the right one?
+			[ "A painting of the Eye Of The Gods is hanging on the wall.", SHAPE_PUZZLES_CIRCLE_TRIANGLE+"The painting burns"+SHAPE_PUZZLES_SOLVED ],
+			// [CODEX-Stuff] Shape puzzle - The Compass: Which shapes are the right one?
+			[ "The needle of the huge compass hanging from the ceiling is spinning.", SHAPE_PUZZLES_CIRCLE_TRIANGLE+"The needle stops"+SHAPE_PUZZLES_SOLVED ],
+			// [CODEX-Stuff] Shape puzzle - The Home: Which shapes are the right one?
+			[ "An image of your home comes to your mind.", SHAPE_PUZZLES_SQUARE_TRIANGLE+"You miss home"+SHAPE_PUZZLES_SOLVED ],			
+			// [CODEX-Stuff] Shape puzzle - The Glass Of Wine: Which shapes are the right one?
+			[ "There is a glass of wine on an altar.", SHAPE_PUZZLES_SQUARE_TRIANGLE+"The wine disappear"+SHAPE_PUZZLES_SOLVED ],
+			// [CODEX-Stuff] Shape puzzle - The Coin With The Hole: Which shapes are the right one?
+			[ "There is a coin with a squared hole on the floor.", SHAPE_PUZZLES_CIRCLE_SQUARE+"The coin liquefies"+SHAPE_PUZZLES_SOLVED ],
+			// [CODEX-Stuff] Shape puzzle - The Bolt: Which shapes are the right one?
+			[ "There a bolt from some kind of machine on the floor.", SHAPE_PUZZLES_CIRCLE_SQUARE+"The bolt turns into ink"+SHAPE_PUZZLES_SOLVED ],
+		];
+
 	return [
 
 		// [CODEX-Events] Subquest - The Guardians: Kill 2 mini-boss and earn bonus XPs.
@@ -397,6 +417,97 @@ function loadQuestsSub() {
 								"{ifMoveOn:item}{and}{ifRoomIsMarked:missionRoom}{then}You found{hide}{randomGoodLoot+randomBadLoot}, {markItem:item}"
 							]
 						]
+					}
+				]
+			]
+		},
+
+		// [CODEX-Events] Subquest - The Shapes Puzzle: Get the right shapes to solve the puzzle.
+		{
+			minRooms:3,
+			steps:[
+				// Square+triangle, circle, puzzle room
+				[
+					{
+						id:"squareRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"square"},{genericItem:"triangle"}],
+						roomDescriptions:[
+							[ 
+								"{ifMoveOn:square}{then}The engraved square on the floor is now glowing, {markItem:square}, {markRoom:squareRoom}",
+								"{ifMoveOn:triangle}{then}The engraved triangle on the floor is now glowing, {markItem:triangle}, {markRoom:triangleRoom}"
+							]
+						]
+					},
+					{
+						id:"circleRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"circle"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:circle}{then}The engraved circle on the floor is now glowing, {markItem:circle}, {markRoom:circleRoom}" ]
+						]
+					},
+					{
+						id:"triangleRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"puzzle"}],
+						roomDescriptions:SHAPE_PUZZLES
+					}
+				],
+				// Square+circle, triangle, puzzle room
+				[
+					{
+						id:"squareRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"square"},{genericItem:"circle"}],
+						roomDescriptions:[
+							[ 
+								"{ifMoveOn:square}{then}The engraved square on the floor is now glowing, {markItem:square}, {markRoom:squareRoom}",
+								"{ifMoveOn:circle}{then}The engraved circle on the floor is now glowing, {markItem:circle}, {markRoom:circleRoom}"
+							]
+						]
+					},
+					{
+						id:"triangleRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"triangle"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:triangle}{then}The engraved triangle on the floor is now glowing, {markItem:triangle}, {markRoom:triangleRoom}" ]
+						]
+					},
+					{
+						id:"circleRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"puzzle"}],
+						roomDescriptions:SHAPE_PUZZLES
+					}
+				],
+				// Triangle+circle, square, puzzle room
+				[
+					{
+						id:"triangleRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"triangle"},{genericItem:"circle"}],
+						roomDescriptions:[
+							[ 
+								"{ifMoveOn:triangle}{then}The engraved triangle on the floor is now glowing, {markItem:triangle}, {markRoom:triangleRoom}",
+								"{ifMoveOn:circle}{then}The engraved circle on the floor is now glowing, {markItem:circle}, {markRoom:circleRoom}"
+							]
+						]
+					},
+					{
+						id:"squareRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"square"},{id:"enemy",level:1}],
+						roomDescriptions:[
+							[ "{ifMoveOn:square}{then}The engraved square on the floor is now glowing, {markItem:square}, {markRoom:squareRoom}" ]
+						]
+					},
+					{
+						id:"circleRoom",
+						atPercentage:{from:1,to:100},
+						items:[{genericItem:"puzzle"}],
+						roomDescriptions:SHAPE_PUZZLES
 					}
 				]
 			]
