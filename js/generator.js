@@ -1301,8 +1301,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 					dungeonEnemies++;
 					// Calculate dungeon XPs (except final boss, if any)
 					if (!item.item.ignoreXp) {
-						const xp=enemies[0].gainXp+enemies[item.item.level].gainXp;
+						const xp=enemies[0].gainXp+(item.item.level?enemies[item.item.level].gainXp:0);
 						dungeonXp.all+=xp;
+						if (debug&&debug.dumpXPs) console.log("XP","Adding Lv.",item.item.level,"enemy for",enemies[0].gainXp,"+",(item.item.level?enemies[item.item.level].gainXp:0),"=",xp,"XPs from",item.item);
 						switch (item.item.level) {
 							case 0:{
 								dungeonXp.low+=xp;
@@ -1312,10 +1313,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 								dungeonXp.high+=xp;
 							}
 						}							
-					}
+					} else if (debug&&debug.dumpXPs) console.log("XP","Ignoring",item.item);
 				}
 			})
 		});
+		
+		if (debug&&debug.dumpXPs) console.log("XP","Total XPs",dungeonXp);
 
 		const maxHp=dungeonEnemies*heroModel.damageRatio;
 
