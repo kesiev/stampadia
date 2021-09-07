@@ -113,7 +113,7 @@ const Core=function() {
 		daysdelta=daysdelta||0;
 		const
 			date=new Date(),
-			seed=Math.floor(date.getTime()/86400000)+daysdelta,
+			seed=Math.floor((date.getTime()-(date.getTimezoneOffset()*60000))/86400000)+daysdelta,
 			generator=this.generateAdventureById(seed,debug);
 
 		generator.coreMetadata={
