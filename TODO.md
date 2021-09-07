@@ -25,6 +25,9 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] Use >= and <= for ranges in hero sheet
+- [ ] Items/attacks using exact range values
+  - [ ] Good/weak atk depending on range
 - [ ] New classes
   - [ ] Tank/Dwarf - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
   - [ ] Rogue - Get gold by fights
