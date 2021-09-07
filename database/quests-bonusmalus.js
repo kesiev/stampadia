@@ -237,7 +237,7 @@ function loadQuestsMalus() {
 
 		// [CODEX-Events] Malus - The Last Fight: An enemy will challenge you on your way back.
 		{
-			steps:[[{id:"enemy",atPercentage:50,items:[{id:"enemy",level:2,ignoreXp:true}],roomDescriptions:[
+			steps:[[{id:"enemy",atPercentage:50,items:[{id:"enemy",level:2}],roomDescriptions:[
 				[
 					"{ifRoomIsNotMarked:startingRoom}{then}{roomIsEmpty}, {stopReading}",
 					"{randomEnemyChallenge}"
