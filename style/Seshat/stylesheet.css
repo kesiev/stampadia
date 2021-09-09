@@ -10,3 +10,11 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: "Seshat";
+    src: url('seshat-webfont.woff2') format('woff2'),
+         url('seshat-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
