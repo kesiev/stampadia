@@ -42,7 +42,7 @@ function loadFlavorTexts() {
 			"A mysterious disturbing buzz fills the cave, invading your brain.",
 			"Weird machines and gliphes stamps are stocked in the workroom.",
 			"A rusty knife is still stucked in a boar stinking carcass, lying on the table.",
-			"Faded ink sketches of letal creatures and traps are hanging on the walls.",
+			"Faded ink sketches of lethal creatures and traps are hanging on the walls.",
 			"By going through the charming courtyard, warm sun rays pacify your spirit.",
 			"Rivolets of a thick black fluid gush from the wall of the romboid room.",
 			"A maze of mirrors hides the way out. Your trembling legs start moving...",
