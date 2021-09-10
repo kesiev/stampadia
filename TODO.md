@@ -22,9 +22,15 @@ A daily print-and-play roguelike adventure you can play offline.
   - Challenge: How we can make the sheets larger?
   - Challenge: How we can make the sheets taller?
   - Suggestion: Export the an adventure sheet using `debug.html` and prototype alternate sheets on Inkscape
+- [ ] New layout
+  - Checkboxes on the top
+  - Split lines in the room description with IDs
+  - Link cell IDs in room cells/room IDs may link to a specific line, that chain the other lines.
 
 ### Ideas - Gameplay
 
+- [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
+  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
 - [ ] Use >= and <= for ranges in hero sheet
 - [ ] Items/attacks using exact range values
   - [ ] Good/weak atk depending on range
