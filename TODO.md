@@ -31,7 +31,7 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
   - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
-- [ ] Use >= and <= for ranges in hero sheet
+- [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
 - [ ] Items/attacks using exact range values
   - [ ] Good/weak atk depending on range
 - [ ] New classes
