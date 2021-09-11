@@ -1260,11 +1260,13 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.generateEnemies=function() {
 		enemyModels.forEach((model,id)=>{
+			var skills=clone(model.skills);
+			heroModel.enemyModels[id].skills.forEach(skill=>skills.push(skill));
 			enemies.push({
 				level:id,
 				gainXp:id||1,
 				defense:id||1,
-				skills:getRandom(model.skills),
+				skills:getRandom(skills),
 				truth:{
 					eyes:id,
 					horns:2,
@@ -1319,6 +1321,10 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		});
 		
 		if (debug&&debug.dumpXPs) console.log("XP","Total XPs",dungeonXp);
+		if ((dungeonXp.low<3)&&(dungeonXp.high>3)) {
+			dungeonXp.high-=3-dungeonXp.low;
+			dungeonXp.low=3;
+		}
 
 		const maxHp=dungeonEnemies*heroModel.damageRatio;
 

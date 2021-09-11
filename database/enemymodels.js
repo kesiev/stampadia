@@ -5,8 +5,7 @@ function loadEnemyModels() {
 		// Level 0
 		{
 			skills:[
-				["ATK -1\nRNG 1","Move\n-2"],
-				["ATK -1\nRNG 2","Move\n-3"]
+				["ATK -1\nRNG 1","Move\n-2"]
 			]
 		},
 		// Level 1
@@ -20,8 +19,7 @@ function loadEnemyModels() {
 		{
 			skills:[
 				["DEF -3","ATK -3\nRNG 1"],
-				["DEF -4","ATK -3\nRNG 2"],
-				["DEF -3","ATK -3\nRNG 2"],
+				["DEF -4","ATK -3\nRNG 2"]
 			]
 		},
 		// Level 3

@@ -18,7 +18,7 @@ function loadHeroModels() {
 				},{
 					xpGroup:"low",
 					round:"floor",
-					percentage:0.95
+					percentage:1
 				},{
 					xpGroup:"high",
 					round:"floor",
@@ -59,8 +59,23 @@ function loadHeroModels() {
 					id:"resurrection",
 					isAvailable:true
 				}
+			],
+			enemyModels:[
+				// Level 0
+				{ skills:[] },
+				// Level 1
+				{ skills:[] },
+				// Level 2
+				{
+					skills:[
+						["DEF -3","ATK -3\nRNG 2"]
+					]
+				},
+				// Level 3
+				{ skills:[] }
 			]
 		},
+
 		// [CODEX-Heroes] Class - The Wizard: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 		{
 			heroClass:"Wizard",
@@ -77,7 +92,7 @@ function loadHeroModels() {
 				},{
 					xpGroup:"low",
 					round:"floor",
-					percentage:0.95
+					percentage:1
 				},{
 					xpGroup:"high",
 					round:"floor",
@@ -97,6 +112,21 @@ function loadHeroModels() {
 					id:"fireball",
 					isAvailable:true
 				}
+			],
+
+			enemyModels:[
+				// Level 0
+				{
+					skills:[
+						["ATK -1\nRNG 2","Move\n-3"]
+					]
+				},
+				// Level 1
+				{ skills:[] },
+				// Level 2
+				{ skills:[] },
+				// Level 3
+				{ skills:[] }
 			]
 		}
 	];
