@@ -6,6 +6,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	const
 		MAX_EQUIPMENT=3,
 		MAX_DESCRIPTION=2,
+		MIN_LVL1_XP=3,
 		ROOMPLACEHOLDERS=[
 			{
 				regex:/{roomId:([^}]*)}/g,
@@ -835,117 +836,124 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		if (route.length<minRooms) return false;
 		else {
 
-			const
-				tempServices=clone(services),
-				tempEquipment=clone(equipment);
-			let success=true;
-
-			// Check if the equipment fits in the Equipment Scroll
-			steps.forEach(step=>{
-
-				// Room must fit the required equipment
-				if (step.equipment)
-					step.equipment.forEach(equip=>{
-						let neededEquipment=pickEquipment(tempServices,tempEquipment,equip.id);
-						if (neededEquipment) addEquipment(tempServices,neededEquipment);
-						else success=false;
-					});
-
-			});
-
-			if (success) {
+			// The quest must fit the selected hero class
+			if (
+				(!quest.ignoreForHeroClasses||quest.ignoreForHeroClasses.indexOf(heroModel.id)==-1)
+			) {
 
 				const
-					roomsMeta=[],
-					stepsMeta=[];
+					tempServices=clone(services),
+					tempEquipment=clone(equipment);
+				let success=true;
 
-				// Generate steps metadata
-				steps.forEach((step,id)=>{
-					let percentage=step.atPercentage;
-					if (percentage.from) percentage=percentage.from+Math.floor(random(percentage.to-percentage.from));
-					stepsMeta.push({
-						step:step,
-						id:id,
-						atPercentage:percentage
-					})
-				});
+				// Check if the equipment fits in the Equipment Scroll
+				steps.forEach(step=>{
 
-				// Sort steps by percentage
-				stepsMeta.sort((a,b)=>{
-					if (a.atPercentage<b.atPercentage) return -1; else
-					if (a.atPercentage>b.atPercentage) return 1; else
-					return 0;
-				});
+					// Room must fit the required equipment
+					if (step.equipment)
+						step.equipment.forEach(equip=>{
+							let neededEquipment=pickEquipment(tempServices,tempEquipment,equip.id);
+							if (neededEquipment) addEquipment(tempServices,neededEquipment);
+							else success=false;
+						});
 
-				// Generate route metadata
-				route.forEach((room,id)=>{
-
-					let roomMeta={
-						room:room,
-						id:id,
-						fitSteps:{},
-						step:-1
-					};
-
-					// Check which steps fits the room
-					stepsMeta.forEach(stepMeta=>{
-
-						const step=stepMeta.step;
-						success=true;
-
-						// Room must be not busy
-						success&=!room.room.isBusy;
-
-						// Room must fit the required amount of items
-						success&=!step.items||(room.freeSpaces.length>=step.items.length);
-
-						// Room must fit the required amount of description
-						success&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
-
-						if (success) roomMeta.fitSteps[stepMeta.id]=true;
-
-					});
-
-					roomsMeta.unshift(roomMeta);
-
-				});
-
-				// Place steps on rooms, minimal distance.
-				let head=-1;
-				success=true;
-
-				stepsMeta.forEach(stepMeta=>{
-					while (success) {
-						head++;
-						if (!roomsMeta[head]) success=false;
-						else if (roomsMeta[head].fitSteps[stepMeta.id]) break;
-					}
-					if (success) stepMeta.room=head;
 				});
 
 				if (success) {
-					// Move steps as near as possible their requested positions
-					let head=roomsMeta.length-1;
-					const result=[];
 
-					for (var j=stepsMeta.length-1;j>=0;j--) {
-						let
-							stepMeta=stepsMeta[j],
-							q,
-							requestedPosition=Math.max(Math.min(Math.floor(stepMeta.atPercentage/101*roomsMeta.length),head),stepMeta.room);
-						
-						for (q=requestedPosition;q>=stepMeta.room;q--)
-							if (roomsMeta[q].fitSteps[stepMeta.id]) {
-								result[stepMeta.id]=roomsMeta[q].room;
-								stepMeta.room=q;
-								break;
-							}
-						head=q-1;
-					};
+					const
+						roomsMeta=[],
+						stepsMeta=[];
 
-					if (result.length!=steps.length) debugger;
+					// Generate steps metadata
+					steps.forEach((step,id)=>{
+						let percentage=step.atPercentage;
+						if (percentage.from) percentage=percentage.from+Math.floor(random(percentage.to-percentage.from));
+						stepsMeta.push({
+							step:step,
+							id:id,
+							atPercentage:percentage
+						})
+					});
 
-					return result;
+					// Sort steps by percentage
+					stepsMeta.sort((a,b)=>{
+						if (a.atPercentage<b.atPercentage) return -1; else
+						if (a.atPercentage>b.atPercentage) return 1; else
+						return 0;
+					});
+
+					// Generate route metadata
+					route.forEach((room,id)=>{
+
+						let roomMeta={
+							room:room,
+							id:id,
+							fitSteps:{},
+							step:-1
+						};
+
+						// Check which steps fits the room
+						stepsMeta.forEach(stepMeta=>{
+
+							const step=stepMeta.step;
+							success=true;
+
+							// Room must be not busy
+							success&=!room.room.isBusy;
+
+							// Room must fit the required amount of items
+							success&=!step.items||(room.freeSpaces.length>=step.items.length);
+
+							// Room must fit the required amount of description
+							success&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
+
+							if (success) roomMeta.fitSteps[stepMeta.id]=true;
+
+						});
+
+						roomsMeta.unshift(roomMeta);
+
+					});
+
+					// Place steps on rooms, minimal distance.
+					let head=-1;
+					success=true;
+
+					stepsMeta.forEach(stepMeta=>{
+						while (success) {
+							head++;
+							if (!roomsMeta[head]) success=false;
+							else if (roomsMeta[head].fitSteps[stepMeta.id]) break;
+						}
+						if (success) stepMeta.room=head;
+					});
+
+					if (success) {
+						// Move steps as near as possible their requested positions
+						let head=roomsMeta.length-1;
+						const result=[];
+
+						for (var j=stepsMeta.length-1;j>=0;j--) {
+							let
+								stepMeta=stepsMeta[j],
+								q,
+								requestedPosition=Math.max(Math.min(Math.floor(stepMeta.atPercentage/101*roomsMeta.length),head),stepMeta.room);
+							
+							for (q=requestedPosition;q>=stepMeta.room;q--)
+								if (roomsMeta[q].fitSteps[stepMeta.id]) {
+									result[stepMeta.id]=roomsMeta[q].room;
+									stepMeta.room=q;
+									break;
+								}
+							head=q-1;
+						};
+
+						if (result.length!=steps.length) debugger;
+
+						return result;
+					}
+
 				}
 
 			}
@@ -1321,9 +1329,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		});
 		
 		if (debug&&debug.dumpXPs) console.log("XP","Total XPs",dungeonXp);
-		if ((dungeonXp.low<3)&&(dungeonXp.high>3)) {
-			dungeonXp.high-=3-dungeonXp.low;
-			dungeonXp.low=3;
+		if ((dungeonXp.low<MIN_LVL1_XP)&&(dungeonXp.high>MIN_LVL1_XP)) {
+			dungeonXp.high-=MIN_LVL1_XP-dungeonXp.low;
+			dungeonXp.low=MIN_LVL1_XP;
 		}
 
 		const maxHp=dungeonEnemies*heroModel.damageRatio;
@@ -1352,9 +1360,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.selectHeroModel=function() {
 		heroModel=getRandom(heroModels);
 
-		if (debug&&debug.heroClass) {
+		if (debug&&debug.heroId) {
 			heroModels.forEach(model=>{
-				if (model.heroClass==debug.heroClass) heroModel=model;
+				if (model.id==debug.heroId) heroModel=model;
 			})
 		}
 

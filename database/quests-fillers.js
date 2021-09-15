@@ -25,6 +25,7 @@ function loadQuestsEasyFillers() {
 
 		// [CODEX-Events] Filler (easy) - The One: One level 1 enemy.
 		{
+			ignoreForHeroClasses:["wizard"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Hey you! Stop there!\"" ],
 				[ "\"I'll avenge my brothers!\"" ],
@@ -33,6 +34,7 @@ function loadQuestsEasyFillers() {
 			],items:[{id:"enemy",level:1}]}]]
 		},
 		{
+			ignoreForHeroClasses:["wizard"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Don't move a muscle, {heroClass}!\"" ],
 				[ "\"Damn {heroClass}! You killed my sister!\"" ],
