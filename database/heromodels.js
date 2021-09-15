@@ -4,6 +4,7 @@ function loadHeroModels() {
 	return [
 		// [CODEX-Heroes] Class - The Warrior: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
 		{
+			id:"warrior",
 			heroClass:"Warrior",
 			skills:[
 				["ATK -1\nRNG 1","Move\n-3"],
@@ -78,6 +79,7 @@ function loadHeroModels() {
 
 		// [CODEX-Heroes] Class - The Wizard: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 		{
+			id:"wizard",
 			heroClass:"Wizard",
 			skills:[
 				["ATK -2\nRNG 2","Move\n-3"],
