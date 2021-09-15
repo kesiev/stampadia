@@ -29,6 +29,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] Excess XP/HP to gold
+  - [ ] Is this a way to buy too much time?
 - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
   - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
 - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
