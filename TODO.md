@@ -40,10 +40,10 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Fireball item that damages all enemies in the room.
 - [ ] Dice roll skill: the hero locks a dice for other enemies
 - [ ] New classes
-  - [ ] Tank/Dwarf: Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
-  - [ ] Dwarf: lower movement
   - [ ] Rogue: Get gold by fights
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
+- [ ] Mod classes
+  - [ ] Wizard: ATK ALL -3
 - [ ] New quests
   - [ ] Exchange xp/hp
   - [ ] Use luck/unluck more
@@ -53,7 +53,10 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### In progress
 
-- [ ] _N/A_
+- [ ] New class
+  - [ ] Tank/Dwarf
+    - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
+    - lower movement
 
 ### Done
 
