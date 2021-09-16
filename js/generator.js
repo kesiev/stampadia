@@ -1358,7 +1358,14 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	}
 
 	this.selectHeroModel=function() {
-		heroModel=getRandom(heroModels);
+
+		let models=[];
+
+		heroModels.forEach(model=>{
+			if (!model.isBetaTesting) models.push(model);
+		});
+
+		heroModel=getRandom(models);
 
 		if (debug&&debug.heroId) {
 			heroModels.forEach(model=>{
