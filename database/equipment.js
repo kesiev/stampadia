@@ -86,6 +86,12 @@ function loadEquipment() {
 			label:"Sweep",
 			action:"{ifAfterHeroRollInFight}{and}{ifPayGold:2}{then}{placeDiceInSameRow}"
 		},
+		// [CODEX-Stuff] Equipment - Mead: Discard one die, set the other one to 6.
+		{
+			id:"mead",
+			label:"Mead",
+			action:"{ifAfterHeroRollInFight}{then}{discardAnyDie:1}{and}{setDieTo:1,6}"
+		},
 		
 		
 	];
