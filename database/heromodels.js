@@ -130,6 +130,57 @@ function loadHeroModels() {
 				// Level 3
 				{ skills:[] }
 			]
-		}
+		},
+
+		// [CODEX-Heroes] Dwarf - The Dawrf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
+		{
+			isBetaTesting:true,
+			id:"dwarf",
+			heroClass:"Dwarf",
+			skills:[
+				["ATK -1\nRNG 1","Move\n-4"],
+				["DEF -2","Move\n-3"],
+				["(pay 1G)\nATK ALL\n-2","DEF -2"],
+				["ATK\nRNG 1","(pay 1G)\nATK -1\nRNG 1"]
+			],
+			defense:[1,1,1,1],
+			xpRamp:[
+				{
+					value:0
+				},{
+					xpGroup:"low",
+					round:"floor",
+					percentage:1
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.35
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.65
+				}
+			],
+			
+			hpRamp:[0.5,0.15,0.25,0.1],
+			damageRatio:0.5,
+			equipment:[
+				{
+					placeholder:"heroItem",
+					id:"mead",
+					isAvailable:true
+				}
+			],
+			enemyModels:[
+				// Level 0
+				{ skills:[] },
+				// Level 1
+				{ skills:[] },
+				// Level 2
+				{skills: [] },
+				// Level 3
+				{ skills:[] }
+			]
+		},
 	];
 }
