@@ -138,10 +138,10 @@ function loadHeroModels() {
 			id:"dwarf",
 			heroClass:"Dwarf",
 			skills:[
-				["ATK -1\nRNG 1","Move\n-4"],
+				["ATK\nRNG 1","Move\n-4"],
 				["DEF -2","Move\n-3"],
-				["(pay 1G)\nATK -2\nALL 1","DEF -2"],
-				["ATK\nRNG 1","(pay 1G)\nATK -1\nRNG 1"]
+				["(pay 1G)\nATK -2\nALL 1","DEF -3"],
+				["ATK -1\nRNG 1","(pay 1G)\nATK -1\nRNG 1"]
 			],
 			defense:[1,1,1,1],
 			xpRamp:[
