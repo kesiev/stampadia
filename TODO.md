@@ -32,6 +32,7 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] The game could spawn some kind of gold/health converter on a room next to the stairs room. Conversion ratio may vary.
+  - [ ] should for wizard, could for warrior/dwarf?
 - [ ] Excess XP/HP to gold
   - [ ] Is this a way to buy too much time?
 - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
