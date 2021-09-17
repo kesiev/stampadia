@@ -140,7 +140,7 @@ function loadHeroModels() {
 			skills:[
 				["ATK -1\nRNG 1","Move\n-4"],
 				["DEF -2","Move\n-3"],
-				["(pay 1G)\nATK ALL\n-2","DEF -2"],
+				["(pay 1G)\nATK -2\nALL 1","DEF -2"],
 				["ATK\nRNG 1","(pay 1G)\nATK -1\nRNG 1"]
 			],
 			defense:[1,1,1,1],
