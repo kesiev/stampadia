@@ -22,13 +22,21 @@ function loadPlaceholders() {
 			"Devil",
 			"Unnamed",
 			"Dark One",
-			"Destroyer"
+			"Destroyer",
+			"Souls Thief",
+			"Dark Lady",
+			"Fallen Angel",
+			"Mad Valkyrie",
+			"Cruel Gorgon",			
+			"Usurper",
 		],
 		winningScene:[
 			"You did it!",
 			"You are carried in triumph to the capital!",
 			"You won!",
 			"You are a legend!",
+			"You are a hero!",
+			"You will always be remembered!",
 		],
 		goodGuyName:[
 			"King",
@@ -37,7 +45,11 @@ function loadPlaceholders() {
 			"Great Saviour",
 			"Sarge",
 			"Queen",
-			"Old Sage"
+			"Old Sage",
+			"Guardian",
+			"Cleric",
+			"Counsellor",
+			"Hermit",
 		],
 		goodGuyRelativeName:[
 			"Friend",
@@ -58,6 +70,9 @@ function loadPlaceholders() {
 			"Rupture Seal",
 			"Recall Seal",
 			"Trauma Orb",
+			"Frozen Heart",
+			"Spirit Stone",
+			"Forgotten Stamp",
 		],
 		placeName:[
 			"Island",
@@ -73,7 +88,14 @@ function loadPlaceholders() {
 			"Swamp",
 			"Catacomb",
 			"Borough",
-			"Mill"
+			"Mill",
+			"Desert",
+			"Shore",
+			"Hill",
+			"Wood",
+			"Village",
+			"Castle",
+			"Cliff",
 		],
 		explorerName:[
 			"Archaeologist",
@@ -81,13 +103,19 @@ function loadPlaceholders() {
 			"Spy",
 			"Hunter",
 			"Scholar",
-			"Detective"
+			"Detective",
+			"Recruit",
+			"Wanderer",
+			"Scribe",
+			"Chronicler",
 		],
 		documentName:[
 			"Scroll",
 			"Inscription",
 			"Document",
-			"Message"
+			"Message",
+			"Register",
+			"Engraving",
 		],
 		victimName:[
 			"Kid",
