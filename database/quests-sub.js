@@ -360,7 +360,7 @@ function loadQuestsSub() {
 						roomDescriptions:[
 							[
 								"{randomMurderer}",
-								"{ifKilledLastFoe}{and}{ifRoomIsMarked:killerRoom}{then}{hide}You avenged the {victimName}, {randomGoodReward}, {markRoom:killerRoom}"
+								"{ifKilledLastFoe}{and}{ifRoomIsMarked:killerRoom}{then}{hide}You avenged the {victimName}, {randomGoodReward}"
 							]
 						]
 					}
