@@ -66,7 +66,7 @@ function loadPlaceholders() {
 			"Discovery Scroll",
 			"Flaming Gem",
 			"Lost Key",
-			"Diamond Rombhus",
+			"Diamond Rhombus",
 			"Rupture Seal",
 			"Recall Seal",
 			"Trauma Orb",
