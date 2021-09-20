@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (51 items)
+## Events (54 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -25,6 +25,10 @@
   - **The One**: One level 2 enemy.
   - **The Pair**: Two level 1 enemies.
   - **The Swarm**: Three level 0 enemy.
+- Helper
+  - **Nobody**: You're on your own, as in classic Stampadia. Good luck!
+  - **The Insurance**: Pay Gold/XP for HP.
+  - **The Tallyshop**: Trade your class item for full health.
 - Main quest
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
@@ -64,19 +68,22 @@
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
   - **The Trainer**: Face his test and earn gold.
 
-## Heroes (2 items)
+## Heroes (3 items)
 
 - Class
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
+- Dwarf
+  - **The Dawrf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
 
-## Stuff (30 items)
+## Stuff (31 items)
 
 - Equipment
   - **Backflip**: Flip a dice upside down.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Fireball**: Inflict 2 damage.
   - **Lunge**: Place dice on the same column.
+  - **Mead**: Discard one die, set the other one to 6.
   - **Mirror**: Teleport back to the mirror room.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
