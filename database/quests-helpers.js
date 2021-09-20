@@ -13,12 +13,12 @@ function loadQuestsHelpers() {
 				]
 			],items:[{genericItem:"npc"}]}]]
 		},
-		// [CODEX-Events] Helper - The Tallyshop: Trade your class item for full health.
+		// [CODEX-Events] Helper - The Junk Shop: Trade your class item for full health.
 		{
 			ignoreForHeroClasses:["warrior"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[
-						"Tallyman: \"Do you have anything interesting to trade, {heroClass}?\"",
+						"Junk Shop Owner: \"Do you have anything interesting to trade, {heroClass}?\"",
 						"{ifMoveOn:npc}{and}{payEquip:equip-heroItem}{then}\"Just what I needed!\", {gainFullHp}, {markItem:npc}"
 				]
 			],items:[{genericItem:"npc"}]}]]

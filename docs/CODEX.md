@@ -28,7 +28,7 @@
 - Helper
   - **Nobody**: You're on your own, as in classic Stampadia. Good luck!
   - **The Insurance**: Pay Gold/XP for HP.
-  - **The Tallyshop**: Trade your class item for full health.
+  - **The Junk Shop**: Trade your class item for full health.
 - Main quest
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
