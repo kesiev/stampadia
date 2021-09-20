@@ -31,12 +31,14 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
-- [ ] The game could spawn some kind of gold/health converter on a room next to the stairs room. Conversion ratio may vary.
-  - [ ] should for wizard, could for warrior/dwarf?
+- [ ] New helpers
+  - [ ] "Easy mode" item purchase.
 - [ ] Excess XP/HP to gold
   - [ ] Is this a way to buy too much time?
 - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
-  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
+  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, 
+  cautious, daring, defensive ...
+- [ ] Arcade variant: damage = atk - defense
 - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
 - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
 - [ ] Fireball item that damages all enemies in the room.
@@ -62,6 +64,9 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Done
 
+- [x] The game could spawn some kind of "help kiosk" near the entrance.
+  - [x] gold/XP to health converter. Conversion ratio may vary.
+  - [x] should for wizard, could for warrior/dwarf?
 - [x] Bugs
   - [x] There is 1 extra xp box in the tutorial pdf!
 - [x] Simplify the condition in `generator.js`
