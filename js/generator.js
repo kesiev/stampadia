@@ -66,10 +66,12 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		placeholderModels,
 		enemyModels,
 		truthMap,
+		roomPriorities,
 		svg;
 
 	this.prepared=false;
 
+	this.setRoomPriorities=(roomprioritiesdata)=>roomPriorities=roomprioritiesdata;
 	this.setKeywords=(keywordsdata)=>keywords=keywordsdata;
 	this.setEquipment=(equipmentdata)=>equipment=equipmentdata;
 	this.setTruthMap=(truthmapdata)=>truthMap=truthmapdata;
@@ -578,7 +580,8 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	// Rooms
 
-	const Room=function(x,y,width,height,isCorridor,isStartingRoom) {
+	const Room=function(priorityid,x,y,width,height,isCorridor,isStartingRoom) {
+		this.priorityId=priorityid;
 		this.x=x;
 		this.y=y;
 		this.isFake=false;
@@ -667,8 +670,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		return this;
 	}
 
-	this.addRoom=function(x,y,width,height,isCorridor,isStartingRoom) {
+	this.addRoom=function(priorityid,x,y,width,height,isCorridor,isStartingRoom) {
 		const room=new Room(
+			priorityid,
 			solveRoomTemplateArgument(x),
 			solveRoomTemplateArgument(y),
 			solveRoomTemplateArgument(width),
@@ -680,8 +684,20 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 	this.scatterRooms=function() {
 		// TODO continua per un pò a distribuire le stanze
-		let valid=false;
-		shuffleArray(rooms);
+		let
+			valid=false,
+			priorities=getRandom(roomPriorities),
+			roomsPerPriority=[];
+
+		// Shuffle same priority rooms
+		rooms.forEach(room=>{
+			var priority=priorities[room.priorityId];
+			if (!roomsPerPriority[priority]) roomsPerPriority[priority]=[];
+			roomsPerPriority[priority].push(room);
+		});
+		roomsPerPriority.forEach(rooms=>shuffleArray(rooms));
+		rooms=roomsPerPriority.flat();
+
 		let minx, miny;
 		let w, h;
 		for (let i=0;i<100;i++) {

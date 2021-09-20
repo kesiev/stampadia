@@ -15,6 +15,7 @@ const Core=function() {
 			"database/quests-main.js",
 			"database/quests-sub.js",
 			"database/quests-story.js",
+			"database/quests-helpers.js",
 			"database/truthMap.js",
 			"database/equipment.js",
 			"database/keywords.js",
@@ -47,6 +48,7 @@ const Core=function() {
 		QUESTS_HARDFILLERS,
 		QUESTS_MAIN,
 		QUESTS_STORY,
+		QUESTS_HELPERS,
 		KEYWORDS,
 		TRUTHMAP,
 		EQUIPMENT,
@@ -97,6 +99,7 @@ const Core=function() {
 				QUESTS_HARDFILLERS=loadQuestsHardFillers();
 				QUESTS_MAIN=loadQuestsMain();
 				QUESTS_STORY=loadQuestsStory();
+				QUESTS_HELPERS=loadQuestsHelpers();
 				TRUTHMAP=loadTruthMap();
 				EQUIPMENT=loadEquipment();
 				KEYWORDS=loadKeywords();
@@ -135,19 +138,60 @@ const Core=function() {
 		// Set dungeon size
 		const dunggen=new DungeonGenerator(20,20,seed,debug);
 
-		// Set rooms
+		// Set room priorities
+		dunggen.setRoomPriorities([
+			{
+				// Fully randomized dungeons
+				startingRoom:100,
+				largeRooms:100,
+				midRooms:100,
+				corridors:100,
+			},{
+				// Starting room inside, then corridors and large and mid rooms on the outside
+				startingRoom:50,
+				largeRooms:150,
+				midRooms:150,
+				corridors:100,
+			},{
+				// Starting room inside,then large and mid rooms, and corridors on the outside
+				startingRoom:50,
+				largeRooms:100,
+				midRooms:100,
+				corridors:150,
+			},{
+				// Corridors inside, then the starting room, and large and mid rooms on the outside
+				startingRoom:100,
+				largeRooms:150,
+				midRooms:150,
+				corridors:50,
+			},
+			{
+				// Large and mid rooms inside, then the corridors, and the starting room outside
+				startingRoom:150,
+				largeRooms:50,
+				midRooms:50,
+				corridors:100,
+			},
+			{
+				// Large inside, then the corridors, then mid rooms, and the starting room outside
+				startingRoom:200,
+				largeRooms:50,
+				midRooms:150,
+				corridors:100,
+			}
+		]);
 
 		// 1 room
-		const room=dunggen.addRoom(0,0,3,3,false,true);
+		const room=dunggen.addRoom("startingRoom",0,0,3,3,false,true);
 		room.addItem(1,1,{id:"stairs"});
 		for (let i=0;i<4;i++) { // 12 rooms
-			dunggen.addRoom(0,0,4,4); // 4 empty
-			dunggen.addRoom(0,0,3,5); // 3 empty
-			dunggen.addRoom(0,0,5,3); // 3 empty
+			dunggen.addRoom("largeRooms",0,0,4,4); // 4 empty
+			dunggen.addRoom("midRooms",0,0,3,5); // 3 empty
+			dunggen.addRoom("midRooms",0,0,5,3); // 3 empty
 		}
 		for (let i=0;i<3;i++) { // 6 random corridors
-			dunggen.addRoom(0,0,[2,3,4],1,true);
-			dunggen.addRoom(0,0,1,[2,3,4],true);
+			dunggen.addRoom("corridors",0,0,[2,3,4],1,true);
+			dunggen.addRoom("corridors",0,0,1,[2,3,4],true);
 		}
 
 		// Set rooms base ID
@@ -161,6 +205,8 @@ const Core=function() {
 
 			// Basic elements
 			{questType:"main",count:1,distance:"farthest"},
+			{questType:"helpers",count:1,distance:"nearest"},
+			
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"story",count:1,distance:"farthest"},
 
@@ -200,7 +246,8 @@ const Core=function() {
 				easyFiller:QUESTS_EASYFILLERS,
 				mediumFiller:QUESTS_MEDIUMFILLERS,
 				hardFiller:QUESTS_HARDFILLERS,
-				story:QUESTS_STORY
+				story:QUESTS_STORY,
+				helpers:QUESTS_HELPERS
 			}
 		);
 
