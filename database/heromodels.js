@@ -53,7 +53,7 @@ function loadHeroModels() {
 			*/
 			
 			hpRamp:[0.5,0.15,0.25,0.1],
-			damageRatio:0.5,
+			damageRatio:0.7,
 			equipment:[
 				{
 					placeholder:"heroItem",
@@ -107,7 +107,7 @@ function loadHeroModels() {
 			],
 
 			hpRamp:[0.6,0.15,0.15,0.1],
-			damageRatio:0.5,
+			damageRatio:0.7,
 			equipment:[
 				{
 					placeholder:"heroItem",
@@ -163,7 +163,7 @@ function loadHeroModels() {
 			],
 			
 			hpRamp:[0.5,0.15,0.25,0.1],
-			damageRatio:0.5,
+			damageRatio:0.7,
 			equipment:[
 				{
 					placeholder:"heroItem",
