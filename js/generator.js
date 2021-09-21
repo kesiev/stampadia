@@ -355,7 +355,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 		// Fight turn - Actions
 		line=line.replaceAll("{pass}","pass");
-		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP to a fighting enemy");
+		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+),([0-9]+),([0-9]+)\}/g,(m,num,num2,num3)=>"-"+num+"HP to "+(num2*1?(num2==1?"1 enemy":"up to "+num2+" enemies"):"any enemy")+" in range "+num3);
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter room");
