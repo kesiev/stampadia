@@ -317,7 +317,7 @@ function loadQuestsMalus() {
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifKeyword:unluck}{then}{randomBadReward}, {loseKeyword:unluck}, {markRoom:roomA}",
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{then}You found a small horn, {getKeyword:unluck}, {markRoom:roomA}"
 						]
-					],items:[{genericItem:"item"}]}
+					]}
 				]
 			]
 		},
