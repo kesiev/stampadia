@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (54 items)
+## Events (56 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -15,18 +15,21 @@
   - **The Shop**: Pay gold for useful items.
   - **The Teleports**: Teleport from a room to another.
 - Filler (easy)
-  - **The One**: One level 1 enemy.
-  - **The Pair**: Two level 0 enemies.
-  - **The Weak**: One level 0 enemy.
-- Filler (hard)
-  - **The One**: One Level 3 enemy.
-  - **The Pair**: Two level 2 enemies.
-- Filler (medium)
-  - **The One**: One level 2 enemy.
+  - **The One 1**: One level 2 enemy.
+  - **The One 2**: One level 2 enemy.
   - **The Pair**: Two level 1 enemies.
-  - **The Swarm**: Three level 0 enemy.
+  - **The Weak**: One level 1 enemy.
+- Filler (hard)
+  - **The Pair**: Two level 2 enemies.
+  - **The Pair**: Two level 3 enemies.
+- Filler (medium)
+  - **The One 1**: One level 3 enemy.
+  - **The One 2**: One level 3 enemy.
+  - **The Pair**: Two level 2 enemies.
+  - **The Swarm**: Three level 1 enemy.
+- Filler (very hard)
+  - **The One**: One Level 4 enemy.
 - Helper
-  - **Nobody**: You're on your own, as in classic Stampadia. Good luck!
   - **The Insurance**: Pay Gold/XP for HP.
   - **The Junk Shop**: Trade your class item for full health.
 - Main quest
@@ -43,7 +46,7 @@
 - Malus
   - **The Last Fight**: An enemy will challenge you on your way back.
   - **The Loop Rooms**: It will teleport you to the starting room.
-  - **The Mercenary**: Eliminate an enemy or pay the Mercenary to do that.
+  - **The Mercenary**: Eliminate an enemy or pay The Mercenary to do that.
   - **The Random Trap**: Dodge a trap rolling a die.
   - **The Small Horn**: It may bring bad luck in your future adventures...
   - **The Switch Trap**: Step on a trap to get injured.
@@ -129,3 +132,13 @@
   - **Press**: Part of the The End Of Stampadia storyline.
   - **Spaceship**: Part of the The End Of Stampadia storyline.
   - **Unluck**: It may bring you bad luck during your adventures...
+
+## Generator (6 items)
+
+- Layout
+  - **The City**: Large rooms inside, then the corridors, then mid rooms, and the starting room outside.
+  - **The Classic**: Fully randomized dungeons.
+  - **The Crossing**: Corridors inside, then the starting room, and large and mid rooms on the outside.
+  - **The Halls**: Starting room inside, then large and mid rooms, and corridors on the outside.
+  - **The Hill**: Large and mid rooms inside, then the corridors, and the starting room outside.
+  - **The Maze**: Starting room inside, then corridors and large and mid rooms on the outside.
