@@ -1,7 +1,9 @@
 /* globals DungeonGenerator loadQuestsSub loadRandomizers loadEnemyModels loadFlavorTexts loadHeroModels loadPlaceholders loadQuestsBonus loadQuestsMalus loadQuestsEasyFillers loadQuestsMediumFillers loadQuestsHardFillers loadQuestsMain */
 /* exported Core */
 
-const Core=function() {
+const Core=function(settings) {
+	if (!settings) settings={};
+	if (!settings.root) settings.root="";
 
 	const
 		DATABASES=[
@@ -46,6 +48,7 @@ const Core=function() {
 		QUESTS_EASYFILLERS,
 		QUESTS_MEDIUMFILLERS,
 		QUESTS_HARDFILLERS,
+		QUESTS_VERYHARDFILLERS,
 		QUESTS_MAIN,
 		QUESTS_STORY,
 		QUESTS_HELPERS,
@@ -80,7 +83,7 @@ const Core=function() {
 		} else {
 			if (DATABASES[pos]) {
 				const tag = document.createElement('script');
-				tag.setAttribute("src",DATABASES[pos]+"?"+ts);
+				tag.setAttribute("src",settings.root+DATABASES[pos]+"?"+ts);
 				tag.setAttribute("async", "false");
 				tag.onload =(_e)=>this.initialize(cb,pos+1,ts);
 				document.head.firstElementChild.appendChild(tag);
@@ -97,6 +100,7 @@ const Core=function() {
 				QUESTS_EASYFILLERS=loadQuestsEasyFillers();
 				QUESTS_MEDIUMFILLERS=loadQuestsMediumFillers();
 				QUESTS_HARDFILLERS=loadQuestsHardFillers();
+				QUESTS_VERYHARDFILLERS=loadQuestsVeryHardFillers();
 				QUESTS_MAIN=loadQuestsMain();
 				QUESTS_STORY=loadQuestsStory();
 				QUESTS_HELPERS=loadQuestsHelpers();
@@ -136,44 +140,44 @@ const Core=function() {
 		let footer=fillPlaceholders(PRINTFOOTER+(debug&&debug.footer?" ["+debug.footer+"]":""),seed);
 
 		// Set dungeon size
-		const dunggen=new DungeonGenerator(20,20,seed,debug);
+		const dunggen=new DungeonGenerator(settings.root,20,20,seed,debug);
 
 		// Set room priorities
 		dunggen.setRoomPriorities([
 			{
-				// Fully randomized dungeons
+				// [CODEX-Generator] Layout - The Classic: Fully randomized dungeons.
 				startingRoom:100,
 				largeRooms:100,
 				midRooms:100,
 				corridors:100,
 			},{
-				// Starting room inside, then corridors and large and mid rooms on the outside
+				// [CODEX-Generator] Layout - The Maze: Starting room inside, then corridors and large and mid rooms on the outside.
 				startingRoom:50,
 				largeRooms:150,
 				midRooms:150,
 				corridors:100,
 			},{
-				// Starting room inside,then large and mid rooms, and corridors on the outside
+				// [CODEX-Generator] Layout - The Halls: Starting room inside, then large and mid rooms, and corridors on the outside.
 				startingRoom:50,
 				largeRooms:100,
 				midRooms:100,
 				corridors:150,
 			},{
-				// Corridors inside, then the starting room, and large and mid rooms on the outside
+				// [CODEX-Generator] Layout - The Crossing: Corridors inside, then the starting room, and large and mid rooms on the outside.
 				startingRoom:100,
 				largeRooms:150,
 				midRooms:150,
 				corridors:50,
 			},
 			{
-				// Large and mid rooms inside, then the corridors, and the starting room outside
+				// [CODEX-Generator] Layout - The Hill: Large and mid rooms inside, then the corridors, and the starting room outside.
 				startingRoom:150,
 				largeRooms:50,
 				midRooms:50,
 				corridors:100,
 			},
 			{
-				// Large inside, then the corridors, then mid rooms, and the starting room outside
+				// [CODEX-Generator] Layout - The City: Large rooms inside, then the corridors, then mid rooms, and the starting room outside.
 				startingRoom:200,
 				largeRooms:50,
 				midRooms:150,
@@ -206,6 +210,7 @@ const Core=function() {
 			// Basic elements
 			{questType:"main",count:1,distance:"farthest"},
 			{questType:"helpers",count:1,distance:"nearest"},
+			{questType:"veryHardFiller",count:1,distance:"farthest"},
 			
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"story",count:1,distance:"farthest"},
@@ -246,8 +251,9 @@ const Core=function() {
 				easyFiller:QUESTS_EASYFILLERS,
 				mediumFiller:QUESTS_MEDIUMFILLERS,
 				hardFiller:QUESTS_HARDFILLERS,
+				veryHardFiller:QUESTS_VERYHARDFILLERS,
 				story:QUESTS_STORY,
-				helpers:QUESTS_HELPERS
+				helpers:QUESTS_HELPERS,
 			}
 		);
 
