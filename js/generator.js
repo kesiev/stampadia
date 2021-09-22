@@ -1,7 +1,7 @@
 /* globals SVGTemplate SVG */
 /* exported DungeonGenerator */
 
-const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
+const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	const
 		MAX_EQUIPMENT=3,
@@ -954,20 +954,29 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 							let
 								stepMeta=stepsMeta[j],
 								q,
-								requestedPosition=Math.max(Math.min(Math.floor(stepMeta.atPercentage/101*roomsMeta.length),head),stepMeta.room);
+								requestedPosition=Math.max(Math.min(Math.floor(stepMeta.atPercentage/101*roomsMeta.length),head),stepMeta.room),
+								force=(stepMeta.atPercentage==0)||(stepMeta.atPercentage==100);
 							
 							for (q=requestedPosition;q>=stepMeta.room;q--)
 								if (roomsMeta[q].fitSteps[stepMeta.id]) {
+									if (force&&(q!=requestedPosition)) {
+										success=false;
+										break;
+									}
 									result[stepMeta.id]=roomsMeta[q].room;
 									stepMeta.room=q;
 									break;
 								}
 							head=q-1;
+							if (!success) break;
 						};
 
-						if (result.length!=steps.length) debugger;
+						if (success) {
 
-						return result;
+							if (result.length!=steps.length) debugger;
+							return result;
+
+						} else return false;
 					}
 
 				}
@@ -1126,7 +1135,13 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			});
 
 		// Set adventure metadata
-		if (quest.adventureTitle) adventureTitle=getRandom(quest.adventureTitle);
+		if (quest.adventureTitle) {
+			adventureTitle=getRandom(quest.adventureTitle);
+			this.metadata.title.line=adventureTitle;
+		}
+
+		// Log quest to metadata
+		if (debug&&debug.dumpSelection) this.metadata.selection.push({quest:quest});
 	}
 
 	// Flavor text
@@ -1403,6 +1418,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 		for (const k in placeholderModels)
 			globalPlaceholders[k]=getRandom(placeholderModels[k]);
 		globalPlaceholders.roomIds={};
+
+		// Update metadata
+		this.metadata.header.line=globalPlaceholders.adventureHeader;
 	}
 
 	// Keywords index
@@ -1416,8 +1434,9 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 	this.setupMetadata=function() {
 		this.metadata={
 			seed:originalSeed,
-			title:{line:adventureTitle},
-			header:{line:globalPlaceholders.adventureHeader}
+			title:{line:"N/A"},
+			header:{line:"N/A"},
+			selection:[]
 		}
 	}
 
@@ -1531,6 +1550,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 				};
 
 			// Initialize
+			this.setupMetadata();
 			this.prepareGlobalPlaceholders();
 			this.prepareKeywordsIndex();
 			this.selectHeroModel();
@@ -1554,9 +1574,6 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 			this.addFlavorTexts();
 			this.sortRooms();
 			this.sortEquipment();
-
-			// Setup metadata
-			this.setupMetadata();
 
 			// Generate dungeon stats
 			this.generateTruthLies();
@@ -1811,7 +1828,7 @@ const DungeonGenerator=function(mapwidth,mapheight,seed,debug) {
 
 			this.prepare();
 
-			const template=new SVGTemplate("svg/model.svg?"+Math.random());
+			const template=new SVGTemplate(root+"svg/model.svg?"+Math.random());
 			template.load(()=>{
 				svg=new SVG(template);
 
