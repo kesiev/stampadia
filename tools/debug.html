@@ -1,11 +1,11 @@
 <html><head>
-	<link rel="stylesheet" type="text/css" href="style/Seshat/stylesheet.css">
-	<script src="js/jspdf.umd.min.js"></script>
-  	<script src="js/svg2pdf.umd.min.js"></script>
-	<script src="js/svg.js"></script>
-	<script src="js/Seshat-normal.js"></script>
-	<script src="js/generator.js"></script>
-	<script src="js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../style/Seshat/stylesheet.css">
+	<script src="../js/jspdf.umd.min.js"></script>
+  	<script src="../js/svg2pdf.umd.min.js"></script>
+	<script src="../js/svg.js"></script>
+	<script src="../js/Seshat-normal.js"></script>
+	<script src="../js/generator.js"></script>
+	<script src="../js/core.js"></script>
 </head>
 <body onload="onl()">	
 </body><script>
@@ -16,7 +16,9 @@ var
 
 function createDungeon() {
 
-	var core=new Core();
+	var core=new Core({
+		root:"../"
+	});
 	core.initialize(()=>{
 
 		var dungen=core.generateAdventureDaily(-1,{
@@ -36,6 +38,7 @@ function createDungeon() {
 			console.log("Generating dungeon",dungen.metadata.seed);
 		dungen.createSVG(svg=>{
 			if (!lookFor||(svg.getSVG().match(lookFor))) {
+				console.log(dungen.metadata.selection);
 				dungen.showSVG();
 				dungen.debug();
 			} else {
