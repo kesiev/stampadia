@@ -24,8 +24,8 @@ function loadQuestsSub() {
 
 	return [
 
-		// [CODEX-Events] Subquest - The Guardians: Kill 2 mini-boss and earn bonus XPs.
 		{
+			id:"[CODEX-Events] Subquest - The Guardians: Kill 2 mini-boss and earn bonus XPs.",
 			minRooms:3,
 			steps:[
 				[
@@ -42,7 +42,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"guardian2",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
 							[									
@@ -55,8 +55,8 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Fountains: Decide between two effects.
 		{
+			id:"[CODEX-Events] Subquest - The Fountains: Decide between two effects.",
 			minRooms:3,
 			steps:[
 				[
@@ -70,7 +70,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"room2",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"switch"}],
 						roomDescriptions:[
 							["{ifMoveOn:switch}{and}{ifRoomIsNotMarked:room2}{then}You drink{hide}from {randomGoodFountain+randomBadFountain}, {markRoom:room2}, {markRoom:room1}"]
@@ -80,14 +80,14 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Linked Rooms: Walk on a cell and enable another room effect.
 		{
+			id:"[CODEX-Events] Subquest - The Linked Rooms: Walk on a cell and enable another room effect.",
 			minRooms:3,
 			steps:[
 				[
 					{
 						id:"switchRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"switch"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:switch}{then}{randomMysteryHappens}{hide}{markRoom:switchRoom}, {markItem:switch}" ]
@@ -95,7 +95,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"switchEffect",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						roomDescriptions:[
 							[ "{ifRoomIsMarked:switchRoom}{and}{ifRoomIsNotMarked:switchEffect}{then}{hide}{randomGoodRoomEffect+randomBadRoomEffect}, {markRoom:switchEffect}" ]
 						]
@@ -104,8 +104,8 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Key And The Chests: Find the key and open one of two random chests.
 		{
+			id:"[CODEX-Events] Subquest - The Key And The Chests: Find the key and open one of two random chests.",
 			minRooms:3,
 			steps:[
 				[
@@ -127,7 +127,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"chestRoom2",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"chest"}],
 						roomDescriptions:[
 							["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{and}{ifRoomIsNotMarked:chestRoom2}{then}You found{hide}{randomGoodLoot+randomBadLoot}, {markRoom:chestRoom1}, {markRoom:chestRoom2}"]
@@ -137,14 +137,14 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Key And The Chest (good): Find the key and open one good chest.
 		{
+			id:"[CODEX-Events] Subquest - The Key And The Chest (good): Find the key and open one good chest.",
 			minRooms:3,
 			steps:[
 				[
 					{
 						id:"keyRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"key"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:key}{then}You found {randomSmallKey}, {markRoom:keyRoom}, {markItem:key}" ]
@@ -162,14 +162,14 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Gambler: Bet Gold, roll a die and you may win more gold.
 		{
+			id:"[CODEX-Events] Subquest - The Gambler: Bet Gold, roll a die and you may win more gold.",
 			minRooms:3,
 			steps:[
 				[
 					{
 						id:"keyRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"gambler"}],
 						roomDescriptions:[
 							[ 
@@ -183,9 +183,9 @@ function loadQuestsSub() {
 		},
 		
 		{
+			id:"[CODEX-Events] Subquest - The Elemental Chest: Find the 2 elemental keys and open a chest containing equipment.",
 			minRooms:3,
 			steps:[
-				// [CODEX-Events] Subquest - The Elemental Chest: Find the 2 elemental keys and open a chest containing equipment.
 				{key:"Water Droplet",name:"Flaming Chest",content:"rage"},
 				{key:"Cloud Curl",name:"Rock Chest",content:"taunt"},
 				{key:"Bright Spark",name:"Windy Chest",content:"dash"},
@@ -209,7 +209,7 @@ function loadQuestsSub() {
 				},
 				{
 					id:"chestRoom",
-					atPercentage:100,
+					atPercentage:99,
 					items:[{genericItem:"chest"}],
 					equipment:[{id:chest.content}],
 					roomDescriptions:[
@@ -220,17 +220,17 @@ function loadQuestsSub() {
 		},
 
 		{
+			id:"[CODEX-Events] Subquest - The Trainer: Face his test and earn gold.",
 			minRooms:1,
 			debug:true,
 			steps:[
-				// [CODEX-Events] Subquest - The Trainer: Face his test and earn gold.
 				{sentence:"A coward hero has no use.",test:"testBravery"},
 				{sentence:"A hero respects the enemy.",test:"testMercy"},
 				{sentence:"A hero doesn't rush his strength.",test:"testCalm"}
 			].map(trainer=>[
 				{
 					id:"trainerRoom",
-					atPercentage:100,
+					atPercentage:99,
 					items:[{genericItem:"trainer"}],
 					equipment:[{id:trainer.test}],
 					roomDescriptions:[
@@ -240,14 +240,14 @@ function loadQuestsSub() {
 			])
 		},
 
-		// [CODEX-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.
 		{
+			id:"[CODEX-Events] Subquest - The Bloody Gambler: Bet HP, roll a die and you may win more HP.",
 			minRooms:3,
 			steps:[
 				[
 					{
 						id:"keyRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"gambler"}],
 						roomDescriptions:[
 							[ 
@@ -260,14 +260,14 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Altar: Sacrify important resources for other advantages.
 		{
+			id:"[CODEX-Events] Subquest - The Altar: Sacrify important resources for other advantages.",
 			minRooms:2,
 			steps:[
 				[
 					{
 						id:"keyRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"altar"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:altar}{and}{randomHighCost}{then}Altar: {randomAltar}, {randomHighPrize}, {markItem:altar}" ],
@@ -277,8 +277,8 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Sphynx: Give the right answer, meet the Sphynx and get your reward.
 		{
+			id:"[CODEX-Events] Subquest - The Sphynx: Give the right answer, meet the Sphynx and get your reward.",
 			minRooms:3,
 			steps:[
 				[
@@ -296,7 +296,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"questionRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"statue"}],
 						shuffleRoomDescriptions:true,
 						roomDescriptions:[
@@ -323,7 +323,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"questionRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"statue"}],
 						shuffleRoomDescriptions:true,
 						roomDescriptions:[
@@ -337,8 +337,8 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Murderer: Avenge the dead body or steal its gold?
 		{
+			id:"[CODEX-Events] Subquest - The Murderer: Avenge the dead body or steal its gold?",
 			minRooms:3,
 			steps:[
 				[
@@ -355,7 +355,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"killerRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
 							[
@@ -368,8 +368,8 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Barman: Pay gold for health or a short mission.
 		{
+			id:"[CODEX-Events] Subquest - The Barman: Pay gold for health or a short mission.",
 			minRooms:2,
 			steps:[
 				[
@@ -386,7 +386,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"missionRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
 							[
@@ -410,7 +410,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"missionRoom",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"item"}],
 						roomDescriptions:[
 							[
@@ -422,15 +422,15 @@ function loadQuestsSub() {
 			]
 		},
 
-		// [CODEX-Events] Subquest - The Shapes Puzzle: Get the right shapes to solve the puzzle.
 		{
+			id:"[CODEX-Events] Subquest - The Shapes Puzzle: Get the right shapes to solve the puzzle.",
 			minRooms:3,
 			steps:[
 				// Square+triangle, circle, puzzle room
 				[
 					{
 						id:"squareRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"square"},{genericItem:"triangle"}],
 						roomDescriptions:[
 							[ 
@@ -441,7 +441,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"circleRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"circle"},{id:"enemy",level:1}],
 						roomDescriptions:[
 							[ "{ifMoveOn:circle}{then}The engraved circle on the floor is now glowing, {markItem:circle}, {markRoom:circleRoom}" ]
@@ -449,7 +449,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"triangleRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"puzzle"}],
 						roomDescriptions:SHAPE_PUZZLES
 					}
@@ -458,7 +458,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"squareRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"square"},{genericItem:"circle"}],
 						roomDescriptions:[
 							[ 
@@ -469,7 +469,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"triangleRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"triangle"},{id:"enemy",level:1}],
 						roomDescriptions:[
 							[ "{ifMoveOn:triangle}{then}The engraved triangle on the floor is now glowing, {markItem:triangle}, {markRoom:triangleRoom}" ]
@@ -477,7 +477,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"circleRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"puzzle"}],
 						roomDescriptions:SHAPE_PUZZLES
 					}
@@ -486,7 +486,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"triangleRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"triangle"},{genericItem:"circle"}],
 						roomDescriptions:[
 							[ 
@@ -497,7 +497,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"squareRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"square"},{id:"enemy",level:1}],
 						roomDescriptions:[
 							[ "{ifMoveOn:square}{then}The engraved square on the floor is now glowing, {markItem:square}, {markRoom:squareRoom}" ]
@@ -505,7 +505,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"circleRoom",
-						atPercentage:{from:1,to:100},
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"puzzle"}],
 						roomDescriptions:SHAPE_PUZZLES
 					}

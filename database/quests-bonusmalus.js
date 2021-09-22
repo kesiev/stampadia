@@ -17,18 +17,18 @@ function loadQuestsBonus() {
 
 	return [
 
-		// [CODEX-Events] Bonus - The Random Item: A random bonus item.
 		{
+			id:"[CODEX-Events] Bonus - The Random Item: A random bonus item.",
 			minRooms:2,
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "{ifMoveOn:item}{then}{hide}You found {randomGoodLoot}, {markItem:item}" ]
 			],items:[{genericItem:"item"}]}]]
 		},
 
-		// [CODEX-Events] Bonus - The NPC: Learn about the Stampadia lore by Stampadians.
 		{
+			id:"[CODEX-Events] Bonus - The NPC: Learn about the Stampadia lore by Stampadians.",
 			minRooms:2,
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 
 				// The Travellers, who has interesting unanswered questions about Stampadia...
 				[ "{ifMoveOn:item}{then}Traveller: \"Are the wall of this dungeon moving?\"" ],
@@ -70,44 +70,44 @@ function loadQuestsBonus() {
 			],items:[{genericItem:"item"}]}]]
 		},
 
-		// [CODEX-Events] Bonus - The Teleports: Teleport from a room to another.
 		{
+			id:"[CODEX-Events] Bonus - The Teleports: Teleport from a room to another.",
 			minRooms:4,
 			steps:[[
 				{id:"roomA",atPercentage:1,roomDescriptions:[
 					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{teleportToRoom:roomB}" ]
 				],items:[{genericItem:"item1"}]},
-				{id:"roomB",atPercentage:100,roomDescriptions:[
+				{id:"roomB",atPercentage:99,roomDescriptions:[
 					[ "{ifMoveOn:item2}{then}{randomTeleportation}{hide}{teleportToRoom:roomA}" ]
 				],items:[{genericItem:"item2"}]}
 			]]
 		},
 
-		// [CODEX-Events] Bonus - The Shop: Pay gold for useful items.
 		{
+			id:"[CODEX-Events] Bonus - The Shop: Pay gold for useful items.",
 			minRooms:2,
 			steps:[[
-				{id:"spawn",atPercentage:100,roomDescriptions:SHOP
+				{id:"spawn",atPercentage:99,roomDescriptions:SHOP
 				,items:[{genericItem:"item"}]}
 			]]
 		},
 
-		// [CODEX-Events] Bonus - The Saint: They will help you when you're in danger.
 		{
+			id:"[CODEX-Events] Bonus - The Saint: They will help you when you're in danger.",
 			minRooms:4,
 			steps:[[
-				{id:"roomA",atPercentage:{from:50,to:100},roomDescriptions:[
+				{id:"roomA",atPercentage:{from:50,to:99},roomDescriptions:[
 					[ "{ifMoveOn:saint}{and}{ifHpLeft=:0}{then}Saint: {randomSaint}, {gainHp:2}, {markItem:saint}" ]
 				],items:[{genericItem:"saint"}]}
 			]]
 		},
 
-		// [CODEX-Events] Bonus - The Magic Tree: It grows a healing fruit after some time.
 		{
+			id:"[CODEX-Events] Bonus - The Magic Tree: It grows a healing fruit after some time.",
 			minRooms:2,
 			steps:[
 				[
-					{id:"roomA",atPercentage:{from:1,to:100},roomDescriptions:[
+					{id:"roomA",atPercentage:{from:1,to:99},roomDescriptions:[
 						[
 							"{randomMagicTree}",
 							"{ifMoveOn:tree}{and}{ifGoldLeft<half}{then}You pick a Fruit, {randomGoodReward}, {markItem:tree}"
@@ -115,7 +115,7 @@ function loadQuestsBonus() {
 					],items:[{genericItem:"tree"}]}
 				],
 				[
-					{id:"roomA",atPercentage:{from:1,to:100},roomDescriptions:[
+					{id:"roomA",atPercentage:{from:1,to:99},roomDescriptions:[
 						[
 							"{randomMagicTree}",
 							"{ifMoveOn:tree}{and}{ifGoldLeft>half}{then}You pick a Fruit, {randomGoodReward}, {markItem:tree}"
@@ -125,12 +125,12 @@ function loadQuestsBonus() {
 			]
 		},
 
-		// [CODEX-Events] Bonus - The Mirror: Go back to this room using an item.
 		{
+			id:"[CODEX-Events] Bonus - The Mirror: Go back to this room using an item.",
 			minRooms:2,
 			steps:[
 				[
-					{id:"equip-mirror-room",atPercentage:100,equipment:[{id:"mirror"}],roomDescriptions:[
+					{id:"equip-mirror-room",atPercentage:99,equipment:[{id:"mirror"}],roomDescriptions:[
 						[
 							"{ifMoveOn:mirror}{then}You see your reflection on a large mirror, {markItem:mirror}, {getEquip:equip-mirror}"
 						]
@@ -139,12 +139,12 @@ function loadQuestsBonus() {
 			]
 		},
 
-		// [CODEX-Events] Bonus - The Clover: It may bring good luck in your future adventures...
 		{
+			id:"[CODEX-Events] Bonus - The Clover: It may bring good luck in your future adventures...",
 			minRooms:2,
 			steps:[
 				[
-					{id:"roomA",atPercentage:100,roomDescriptions:[
+					{id:"roomA",atPercentage:99,roomDescriptions:[
 						[
 							"{ifMoveOn:item}{and}{ifLoseKeyword:luck}{then}You found{hide}{randomGoodLoot}, {markItem:item}",
 							"{ifMoveOn:item}{and}{ifNotKeyword:luck}{then}You found a clover, {getKeyword:luck}, {markItem:item}"
@@ -154,33 +154,33 @@ function loadQuestsBonus() {
 			]
 		},
 
-		// [CODEX-Events] Bonus - The Clown: Pay him to learn cool stunts!
 		{
+			id:"[CODEX-Events] Bonus - The Clown: Pay him to learn cool stunts!",
 			minRooms:1,
 			steps:[
 				[
-					{id:"clownRoom",atPercentage:100,equipment:[{id:"backflip"}],roomDescriptions:[
+					{id:"clownRoom",atPercentage:99,equipment:[{id:"backflip"}],roomDescriptions:[
 						[
 							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice jump, {heroClass}!\", {getEquip:equip-backflip}, {markItem:clown}"
 						]
 					],items:[{genericItem:"clown"}]}
 				],
 				[
-					{id:"clownRoom",atPercentage:100,equipment:[{id:"spin"}],roomDescriptions:[
+					{id:"clownRoom",atPercentage:99,equipment:[{id:"spin"}],roomDescriptions:[
 						[
 							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice dancing, {heroClass}!\", {getEquip:equip-spin}, {markItem:clown}"
 						]
 					],items:[{genericItem:"clown"}]}
 				],
 				[
-					{id:"clownRoom",atPercentage:100,equipment:[{id:"lunge"}],roomDescriptions:[
+					{id:"clownRoom",atPercentage:99,equipment:[{id:"lunge"}],roomDescriptions:[
 						[
 							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice stretch, {heroClass}!\", {getEquip:equip-lunge}, {markItem:clown}"
 						]
 					],items:[{genericItem:"clown"}]}
 				],
 				[
-					{id:"clownRoom",atPercentage:100,equipment:[{id:"sweep"}],roomDescriptions:[
+					{id:"clownRoom",atPercentage:99,equipment:[{id:"sweep"}],roomDescriptions:[
 						[
 							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice sweep, {heroClass}!\", {getEquip:equip-sweep}, {markItem:clown}"
 						]
@@ -196,28 +196,28 @@ function loadQuestsMalus() {
 
 	return [
 
-		// [CODEX-Events] Malus - The Switch Trap: Step on a trap to get injured.
 		{
-			steps:[[{id:"trap",atPercentage:100,items:[{genericItem:"switch"}],roomDescriptions:[
+			id:"[CODEX-Events] Malus - The Switch Trap: Step on a trap to get injured.",
+			steps:[[{id:"trap",atPercentage:99,items:[{genericItem:"switch"}],roomDescriptions:[
 				[ "{ifMoveOn:switch}{then}{hide}{randomTrap}, {loseHp:1}, {markItem:switch}" ]
 			]}]]
 		},
 
-		// [CODEX-Events] Malus - The Loop Rooms: It will teleport you to the starting room.
 		{
-			steps:[[{id:"trap",atPercentage:{from:50,to:100},roomDescriptions:[
+			id:"[CODEX-Events] Malus - The Loop Rooms: It will teleport you to the starting room.",
+			steps:[[{id:"trap",atPercentage:{from:50,to:99},roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {teleportToStartingRoom}" ]
 			]}]]
 		},
 
-		// [CODEX-Events] Malus - The Teleport Trap: It will teleport you to a room with an enemy.
 		{
+			id:"[CODEX-Events] Malus - The Teleport Trap: It will teleport you to a room with an enemy.",
 			minRooms:4,
 			steps:[[
 				{id:"switch",atPercentage:51,roomDescriptions:[
 					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{markItem:item1}, {teleportToRoom:trap}" ]
 				],items:[{genericItem:"item1"}]},
-				{id:"trap",atPercentage:100,roomDescriptions:[
+				{id:"trap",atPercentage:99,roomDescriptions:[
 					[ "\"You fell in my trap!\"" ],
 					[ "\"What are you doing here?!\"" ],
 					[ "\"Hey... YOU!\"" ],
@@ -227,16 +227,16 @@ function loadQuestsMalus() {
 			]]
 		},
 		
-		// [CODEX-Events] Malus - The Random Trap: Dodge a trap rolling a die.
 		{
-			steps:[[{id:"trap",atPercentage:100,roomDescriptions:[
+			id:"[CODEX-Events] Malus - The Random Trap: Dodge a trap rolling a die.",
+			steps:[[{id:"trap",atPercentage:99,roomDescriptions:[
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDie}{range:1-4} {loseHp:1}, {range:5-6} {nothing}" ],
 				[ "{ifEnterRoom}{and}{ifRoomIsNotMarked:trap}{then}{markRoom:trap}, {rollDie}{range:1-2} {loseHp:2}, {range:3-6} {nothing}" ]
 			]}]]
 		},
 
-		// [CODEX-Events] Malus - The Last Fight: An enemy will challenge you on your way back.
 		{
+			id:"[CODEX-Events] Malus - The Last Fight: An enemy will challenge you on your way back.",
 			steps:[[{id:"enemy",atPercentage:50,items:[{id:"enemy",level:2}],roomDescriptions:[
 				[
 					"{ifRoomIsNotMarked:startingRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -245,12 +245,12 @@ function loadQuestsMalus() {
 			]}]]
 		},
 
-		// [CODEX-Events] Malus - The Timed Traps: Defuse it with the right timing or it will trigger!
 		{
+			id:"[CODEX-Events] Malus - The Timed Traps: Defuse it with the right timing or it will trigger!",
 			minRooms:2,
 			steps:[
 				[
-					{id:"roomA",atPercentage:100,roomDescriptions:[
+					{id:"roomA",atPercentage:99,roomDescriptions:[
 						[
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap is triggered, {randomBadReward}, {markRoom:roomA}",
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}The trap clicks, {markRoom:roomA}"
@@ -258,7 +258,7 @@ function loadQuestsMalus() {
 					]}
 				],
 				[
-					{id:"roomA",atPercentage:100,roomDescriptions:[
+					{id:"roomA",atPercentage:99,roomDescriptions:[
 						[
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}The trap is triggered, {randomBadReward}, {markRoom:roomA}",
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap clicks, {markRoom:roomA}"
@@ -268,8 +268,8 @@ function loadQuestsMalus() {
 			]
 		},
 
-		// [CODEX-Events] Malus - The Witch: Pay her or she will curse you!
 		{
+			id:"[CODEX-Events] Malus - The Witch: Pay her or she will curse you!",
 			minRooms:2,
 			steps:[
 				[
@@ -278,7 +278,7 @@ function loadQuestsMalus() {
 							"{ifMoveOn:witch}{and}{ifPayGold:3}{then}Witch: \"Thank you, {heroClass}! Heh heh...\", {markRoom:witchRoom}, {markItem:witch}"
 						]
 					]},
-					{id:"cursedRoom",atPercentage:100,roomDescriptions:[
+					{id:"cursedRoom",atPercentage:99,roomDescriptions:[
 						[
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:cursedRoom}{and}{ifRoomIsNotMarked:witchRoom}{then}{randomBadFeeling}, {randomBadReward}, {markRoom:cursedRoom}"
 						]
@@ -287,8 +287,8 @@ function loadQuestsMalus() {
 			]
 		},
 
-		// [CODEX-Events] Malus - The Mercenary: Eliminate an enemy or pay the Mercenary to do that.
 		{
+			id:"[CODEX-Events] Malus - The Mercenary: Eliminate an enemy or pay The Mercenary to do that.",
 			minRooms:3,
 			steps:[
 				[
@@ -297,7 +297,7 @@ function loadQuestsMalus() {
 							"{ifMoveOn:mercenary}{and}{ifPayGold:5}{then}Mercenary: {randomOk}, {markRoom:mercenaryRoom}, {markItem:mercenary}"
 						]
 					]},
-					{id:"enemyRoom",atPercentage:100,roomDescriptions:[
+					{id:"enemyRoom",atPercentage:99,roomDescriptions:[
 						[
 							"{ifEnterRoom}{and}{ifRoomIsMarked:mercenaryRoom}{then}{randomCorpse}, {roomIsEmpty}, {stopReading}",
 							"{randomEnemyChallenge}"
@@ -307,12 +307,12 @@ function loadQuestsMalus() {
 			]
 		},
 
-		// [CODEX-Events] Malus - The Small Horn: It may bring bad luck in your future adventures...
 		{
+			id:"[CODEX-Events] Malus - The Small Horn: It may bring bad luck in your future adventures...",
 			minRooms:2,
 			steps:[
 				[
-					{id:"roomA",atPercentage:100,roomDescriptions:[
+					{id:"roomA",atPercentage:99,roomDescriptions:[
 						[
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifKeyword:unluck}{then}{randomBadReward}, {loseKeyword:unluck}, {markRoom:roomA}",
 							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{then}You found a small horn, {getKeyword:unluck}, {markRoom:roomA}"

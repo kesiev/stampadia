@@ -4,8 +4,8 @@ function loadQuestsHelpers() {
 
 	return [
 
-		// [CODEX-Events] Helper - The Insurance: Pay Gold/XP for HP.
 		{
+			id:"[CODEX-Events] Helper - The Insurance: Pay Gold/XP for HP.",
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[
 						"Agent: \"Stampadia {placeName} Insurance Service. Welcome, {heroClass}!\"",
@@ -13,8 +13,8 @@ function loadQuestsHelpers() {
 				]
 			],items:[{genericItem:"npc"}]}]]
 		},
-		// [CODEX-Events] Helper - The Junk Shop: Trade your class item for full health.
 		{
+			id:"[CODEX-Events] Helper - The Junk Shop: Trade your class item for full health.",
 			ignoreForHeroClasses:["warrior"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[
@@ -23,11 +23,7 @@ function loadQuestsHelpers() {
 				]
 			],items:[{genericItem:"npc"}]}]]
 		},
-		// [CODEX-Events] Helper - Nobody: You're on your own, as in classic Stampadia. Good luck!
-		{
-			ignoreForHeroClasses:["wizard"],
-			steps:[[]]
-		}
+		{ ignoreForHeroClasses:["wizard"], steps:[[]] }
 	]
 
 }

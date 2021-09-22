@@ -4,8 +4,8 @@ function loadQuestsMain() {
 
 	return [
 
-		// [CODEX-Events] Main quest - The Missing Key: Find the key and beat the boss.
 		{
+			id:"[CODEX-Events] Main quest - The Missing Key: Find the key and beat the boss.",
 			minRooms:4,
 			adventureTitle:[
 				"The Quest For The {villainName}",
@@ -53,8 +53,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Boss Battle: Beat the boss.
 		{
+			id:"[CODEX-Events] Main quest - The Boss Battle: Beat the boss.",
 			minRooms:4,
 			adventureTitle:[
 				"The End Of The {villainName}",
@@ -95,8 +95,8 @@ function loadQuestsMain() {
 			]
 		},
 		
-		// [CODEX-Events] Main quest - The Gang: beat a sequence of enemies.
 		{
+			id:"[CODEX-Events] Main quest - The Gang: beat a sequence of enemies.",
 			minRooms:3,
 			adventureTitle:[
 				"The {placeName}'s {villainName} Gang",
@@ -157,8 +157,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Curse: Break the spell and kill the bad guy.
 		{
+			id:"[CODEX-Events] Main quest - The Curse: Break the spell and kill the bad guy.",
 			minRooms:4,
 			adventureTitle:[
 				"The {villainName} Deception",
@@ -210,8 +210,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Broken Key: Collect the key parts and beat the boss.
 		{
+			id:"[CODEX-Events] Main quest - The Broken Key: Collect the key parts and beat the boss.",
 			minRooms:4,
 			adventureTitle:[
 				"The {bossKey} Hunt",
@@ -275,8 +275,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.
 		{
+			id:"[CODEX-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.",
 			minRooms:4,
 			adventureTitle:[
 				"The Lost {documentName}",
@@ -332,8 +332,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Kidnapping: Fight the boss, free the kidnapped, and return it.
 		{
+			id:"[CODEX-Events] Main quest - The Kidnapping: Fight the boss, free the kidnapped, and return it.",
 			minRooms:3,
 			adventureTitle:[
 				"The Kidnapped {goodGuyRelativeName}",
@@ -382,8 +382,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Escort: Escort the good guy near the boss and fight.
 		{
+			id:"[CODEX-Events] Main quest - The Escort: Escort the good guy near the boss and fight.",
 			minRooms:4,
 			adventureTitle:[
 				"The {goodGuyName}'s Escort",
@@ -456,8 +456,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Moral Compass: Do good or bad things and trigger a different ending.
 		{
+			id:"[CODEX-Events] Main quest - The Moral Compass: Do good or bad things and trigger a different ending.",
 			minRooms:4,
 			adventureTitle:[
 				"The End Of The {goodGuyName}",
@@ -532,8 +532,8 @@ function loadQuestsMain() {
 			]
 		},
 
-		// [CODEX-Events] Main quest - The Twins: Fight a 2-stages boss.
 		{
+			id:"[CODEX-Events] Main quest - The Twins: Fight a 2-stages boss.",
 			minRooms:4,
 			adventureTitle:[
 				"The {villainName} Twins",

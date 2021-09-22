@@ -3,8 +3,8 @@
 function loadQuestsEasyFillers() {
 	return [
 
-		// [CODEX-Events] Filler (easy) - The Weak: One level 0 enemy.
 		{
+			id:"[CODEX-Events] Filler (easy) - The Weak: One level 1 enemy.",
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Hey, the {heroClass} is here! Help!\""],
 				[ "\"Oh... no!\""],
@@ -13,8 +13,8 @@ function loadQuestsEasyFillers() {
 			],items:[{id:"enemy",level:0}]}]]
 		},
 
-		// [CODEX-Events] Filler (easy) - The Pair: Two level 0 enemies.
 		{
+			id:"[CODEX-Events] Filler (easy) - The Pair: Two level 1 enemies.",
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Y...you shall not pass!\"" ],
 				[ "\"You're outnumbered! Surrender now!\"" ],
@@ -23,8 +23,8 @@ function loadQuestsEasyFillers() {
 			],items:[{id:"enemy",level:0},{id:"enemy",level:0}]}]]
 		},
 
-		// [CODEX-Events] Filler (easy) - The One: One level 1 enemy.
 		{
+			id:"[CODEX-Events] Filler (easy) - The One 1: One level 2 enemy.",
 			ignoreForHeroClasses:["wizard"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Hey you! Stop there!\"" ],
@@ -34,6 +34,7 @@ function loadQuestsEasyFillers() {
 			],items:[{id:"enemy",level:1}]}]]
 		},
 		{
+			id:"[CODEX-Events] Filler (easy) - The One 2: One level 2 enemy.",
 			ignoreForHeroClasses:["wizard"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Don't move a muscle, {heroClass}!\"" ],
@@ -48,8 +49,8 @@ function loadQuestsEasyFillers() {
 function loadQuestsMediumFillers() {
 	return [
 
-		// [CODEX-Events] Filler (medium) - The Swarm: Three level 0 enemy.
 		{
+			id:"[CODEX-Events] Filler (medium) - The Swarm: Three level 1 enemy.",
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"We want your items! We want your life!\""],
 				[ "\"What do you want? What do you want?\""],
@@ -57,8 +58,8 @@ function loadQuestsMediumFillers() {
 			],items:[{id:"enemy",level:0},{id:"enemy",level:0},{id:"enemy",level:0}]}]]
 		},
 
-		// [CODEX-Events] Filler (medium) - The Pair: Two level 1 enemies.
 		{
+			id:"[CODEX-Events] Filler (medium) - The Pair: Two level 2 enemies.",
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"Any last word, fool?\"" ],
 				[ "\"It's time to die, thief!\"" ],
@@ -66,8 +67,8 @@ function loadQuestsMediumFillers() {
 			],items:[{id:"enemy",level:1},{id:"enemy",level:1}]}]]
 		},
 
-		// [CODEX-Events] Filler (medium) - The One: One level 2 enemy.
 		{
+			id:"[CODEX-Events] Filler (medium) - The One 1: One level 3 enemy.",
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"Your quest ends here!\""],
 				[ "\"Raaawwwrrr!\"" ],
@@ -75,6 +76,7 @@ function loadQuestsMediumFillers() {
 			],items:[{id:"enemy",level:2}]}]]
 		},
 		{
+			id:"[CODEX-Events] Filler (medium) - The One 2: One level 3 enemy.",
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"I'm sorry for you, {heroClass}!\""],
 				[ "\"I'll mince you up, {heroClass}!\"" ],
@@ -87,22 +89,37 @@ function loadQuestsMediumFillers() {
 function loadQuestsHardFillers() {
 	return [
 
-		// [CODEX-Events] Filler (hard) - The Pair: Two level 2 enemies.
 		{
+			id:"[CODEX-Events] Filler (hard) - The Pair: Two level 2 enemies.",
+			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
+				[ "\"See you in hell, {heroClass}!\"" ],
+				[ "\"Farewell, {heroClass}!\"" ],
+				[ "\"End of the line, {heroClass}!\"" ],
+			],items:[{id:"enemy",level:1},{id:"enemy",level:1}]}]]
+		},
+		{
+			id:"[CODEX-Events] Filler (hard) - The Pair: Two level 3 enemies.",
 			steps:[[{id:"spawn",atPercentage:80,roomDescriptions:[
 				[ "\"Let's get him out, guys!\"" ],
 				[ "\"Let's tear this guy apart!\"" ],
 				[ "\"I want his head on a pike!\"" ]
 			],items:[{id:"enemy",level:2},{id:"enemy",level:2}]}]]
-		},
-		
-		// [CODEX-Events] Filler (hard) - The One: One Level 3 enemy.
+		}
+
+	];
+}
+
+function loadQuestsVeryHardFillers() {
+	return [
 		{
-			steps:[[{id:"spawn",atPercentage:80,roomDescriptions:[
+			minRooms:4,
+			id:"[CODEX-Events] Filler (very hard) - The One: One Level 4 enemy.",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
 				[ "\"Your bones taste good. Give me bones.\"" ],
 				[ "\"You woke me from my sleep. Now you will die.\"" ],
 				[ "\"You should be my lunch. Come closer!\"" ]
-			],items:[{id:"enemy",level:3}]}]]
-		}
+			],items:[{id:"enemy",level:3,ignoreXp:true}]}]]
+		},
+		{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]}
 	];
 }

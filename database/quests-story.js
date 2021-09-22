@@ -4,13 +4,13 @@ function loadQuestsStory() {
 
 	return [
 
-		// [CODEX-Events] Storyline - The End Of Stampadia: Discover how Stampadia ended.
 		{
+			id:"[CODEX-Events] Storyline - The End Of Stampadia: Discover how Stampadia ended.",
 			steps:[
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:npc}{then}\"We need machines, to help us create.\", {getKeyword:computer}, {markItem:npc}" ]
@@ -20,7 +20,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:npc}{then}\"We need energy, to help us grow.\", {getKeyword:electricity}, {markItem:npc}" ]
@@ -30,7 +30,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:npc}{then}\"We need wings, to help us fly.\", {getKeyword:spaceship}, {markItem:npc}" ]
@@ -40,7 +40,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
 							[ "{ifMoveOn:npc}{then}\"We need places, to help us share.\", {getKeyword:city}, {markItem:npc}" ]
@@ -50,7 +50,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
 							[
@@ -63,7 +63,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
 							[
@@ -76,7 +76,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						atPercentage:99,
 						items:[{genericItem:"press"}],
 						roomDescriptions:[
 							[
