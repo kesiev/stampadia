@@ -1,0 +1,83 @@
+<html><head>
+	<link rel="stylesheet" type="text/css" href="../style/Seshat/stylesheet.css">
+	<script src="../js/jspdf.umd.min.js"></script>
+  	<script src="../js/svg2pdf.umd.min.js"></script>
+	<script src="../js/svg.js"></script>
+	<script src="../js/Seshat-normal.js"></script>
+	<script src="../js/generator.js"></script>
+	<script src="../js/core.js"></script>
+	<script src="index.js"></script>
+</head>
+<body onload="onl()">	
+</body><script>
+
+var	
+	day=0,
+	dayLimit=60,
+	stats={};
+
+function createDungeon() {
+
+	var core=new Core({
+		root:"../"
+	});
+	core.initialize(()=>{
+		console.log("Day",day);
+		var dungen=core.generateAdventureDaily(day,{
+			dumpSelection:true
+		});
+		dungen.prepare();
+		dungen.metadata.selection.forEach(selection=>{
+			if (!selection.quest.id) {
+				if (!selection.quest||!selection.quest.steps||!selection.quest.steps.length)
+					console.log(selection);
+			} else {
+				if (!stats[selection.quest.id]) stats[selection.quest.id]={count:0,days:[]};
+				stats[selection.quest.id].count++;
+				stats[selection.quest.id].days.push(day);
+			}
+		})
+		if (day<dayLimit) {
+			day++;
+			setTimeout(createDungeon,1);
+		} else {
+			var rank=[];
+			for (var k in stats) {
+				var label=k.split("]")[1].trim().split(" - ");
+				rank.push({cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
+			}
+			rank.sort((a,b)=>{
+				if (a.cat>b.cat) return 1;
+				else if (a.cat<b.cat) return -1;
+				if (a.count>b.count) return -1;
+				else if (a.count<b.count) return 1;
+				else return 0;
+			});
+			var cat="";
+			var html="<table>";
+			rank.forEach(row=>{
+				if (cat!=row.cat) {
+					html+="</table><hr><table>";
+					cat=row.cat;
+				}
+				if (row.count)
+				html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+"</td><td>"+row.count+"</td></tr>";
+				else
+					html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+"</td><td>0</td></tr>";
+			});
+			html+="</table>";
+			document.body.innerHTML=html;
+			console.log("done");
+		}
+	});
+}
+
+function onl() {
+	INDEX.forEach(line=>{
+		if (line.match(/^\[CODEX-Events\]/))
+			stats[line]=0;
+	})
+	createDungeon();
+}
+
+</script>
