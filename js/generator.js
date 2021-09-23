@@ -374,14 +374,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{ifHpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
 
 		// HP - Actions
+		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
+		line=line.replaceAll("{loseFullHp}","-"+hero.maxHp+"HP");
 		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
 		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
 
 		// XP - Conditions
 		line=line.replace(/\{ifPayXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
 
-		// XP - Actions
-		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
+		// XP - Actions		
 		line=line.replace(/\{gainXp:([0-9]+)\}/g,(m,num)=>"+"+num+"XP");
 		line=line.replace(/\{loseXp:([0-9]+)\}/g,(m,num)=>"-"+num+"XP");
 
