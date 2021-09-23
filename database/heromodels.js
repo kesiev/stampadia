@@ -132,7 +132,7 @@ function loadHeroModels() {
 			]
 		},
 
-		// [CODEX-Heroes] Dwarf - The Dawrf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
+		// [CODEX-Heroes] Dwarf - The Dwarf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
 		{
 			isBetaTesting:true,
 			id:"dwarf",

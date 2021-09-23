@@ -59,7 +59,7 @@ var INDEX=[
 	"[CODEX-Events] Subquest - The Trainer: Face his test and earn gold.",
 	"[CODEX-Heroes] Class - The Warrior: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.",
 	"[CODEX-Heroes] Class - The Wizard: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.",
-	"[CODEX-Heroes] Dwarf - The Dawrf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.",
+	"[CODEX-Heroes] Dwarf - The Dwarf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.",
 	"[CODEX-Stuff] Equipment - Backflip: Flip a dice upside down.",
 	"[CODEX-Stuff] Equipment - Dash: Sacrifice XPs to skip the enemy turn.",
 	"[CODEX-Stuff] Equipment - Fireball: Inflict 2 damage.",
