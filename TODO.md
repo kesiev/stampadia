@@ -52,6 +52,9 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Exchange xp/hp
   - [ ] Use luck/unluck more
   - [ ] The messenger - bring messages between adventures using keywords
+- [ ] Very hard rooms
+  - [ ] The Swarm - A lot of LVL0 enemies!
+  - [ ] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
 - [ ] NPC
   - [ ] The Corrupted
 
