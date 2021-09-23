@@ -38,6 +38,7 @@ const Core=function(settings) {
 	// Databases
 	let
 		QUESTS_SUB,
+		QUESTS_VERYHARDSUB,
 		RANDOMIZERS,
 		ENEMYMODELS,
 		FLAVORTEXTS,
@@ -48,7 +49,6 @@ const Core=function(settings) {
 		QUESTS_EASYFILLERS,
 		QUESTS_MEDIUMFILLERS,
 		QUESTS_HARDFILLERS,
-		QUESTS_VERYHARDFILLERS,
 		QUESTS_MAIN,
 		QUESTS_STORY,
 		QUESTS_HELPERS,
@@ -100,7 +100,7 @@ const Core=function(settings) {
 				QUESTS_EASYFILLERS=loadQuestsEasyFillers();
 				QUESTS_MEDIUMFILLERS=loadQuestsMediumFillers();
 				QUESTS_HARDFILLERS=loadQuestsHardFillers();
-				QUESTS_VERYHARDFILLERS=loadQuestsVeryHardFillers();
+				QUESTS_VERYHARDSUB=loadQuestsVeryHardSub();
 				QUESTS_MAIN=loadQuestsMain();
 				QUESTS_STORY=loadQuestsStory();
 				QUESTS_HELPERS=loadQuestsHelpers();
@@ -210,7 +210,7 @@ const Core=function(settings) {
 			// Basic elements
 			{questType:"main",count:1,distance:"farthest"},
 			{questType:"helpers",count:1,distance:"nearest"},
-			{questType:"veryHardFiller",count:1,distance:"farthest"},
+			{questType:"veryHardSub",count:1,distance:"farthest"},
 			
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"story",count:1,distance:"farthest"},
@@ -251,7 +251,7 @@ const Core=function(settings) {
 				easyFiller:QUESTS_EASYFILLERS,
 				mediumFiller:QUESTS_MEDIUMFILLERS,
 				hardFiller:QUESTS_HARDFILLERS,
-				veryHardFiller:QUESTS_VERYHARDFILLERS,
+				veryHardSub:QUESTS_VERYHARDSUB,
 				story:QUESTS_STORY,
 				helpers:QUESTS_HELPERS,
 			}
