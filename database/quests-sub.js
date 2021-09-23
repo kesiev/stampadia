@@ -515,3 +515,47 @@ function loadQuestsSub() {
 	]
 
 }
+
+function loadQuestsVeryHardSub() {
+	return [
+		{
+			minRooms:4,
+			id:"[CODEX-Events] Filler (very hard) - The One: One Level 4 enemy.",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+				[ "\"Your bones taste good. Give me bones.\"" ],
+				[ "\"You woke me from my sleep. Now you will die.\"" ],
+				[ "\"You should be my lunch. Come closer!\"" ]
+			],items:[{id:"enemy",level:3,ignoreXp:true}]}]]
+		},
+		{
+			minRooms:4,
+			id:"[CODEX-Events] Filler (very hard) - The Deadly Sip: Gain all your health... or die.",
+			steps:[
+				[
+					{
+						id:"room",
+						atPercentage:100,
+						items:[{genericItem:"glass"}],
+						roomDescriptions:[
+							[
+								"There is a bottle with a black liquid in a glass display case.",
+								"{ifMoveOn:glass}{and}\"Let's end this\"{then}{markItem:glass}, {rollDie}{range:1-4} {loseFullHp}, {range:5-6} {gainFullHp}"
+							],
+						]
+					}
+				]
+			]
+		},
+		{
+			minRooms:4,
+			id:"[CODEX-Events] Filler (very hard) - The Critters: Five level 0 enemy.",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+				[ "\"Meat! Meat! Meat!\"" ],
+				[ "\"It's mine! It's mine! It's mine!\"" ],
+				[ "\"Yummy!\"" ]
+			],items:[{id:"enemy",level:0,ignoreXp:true},{id:"enemy",level:0,ignoreXp:true},{id:"enemy",level:0,ignoreXp:true},{id:"enemy",level:0,ignoreXp:true},{id:"enemy",level:0,ignoreXp:true}]}]]
+		},
+		{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},
+		{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]}
+	];
+}
