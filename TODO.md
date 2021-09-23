@@ -54,7 +54,6 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] The messenger - bring messages between adventures using keywords
 - [ ] Very hard rooms
   - [ ] The Swarm - A lot of LVL0 enemies!
-  - [ ] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
 - [ ] NPC
   - [ ] The Corrupted
 
@@ -67,6 +66,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Done
 
+- [x] Very hard rooms
+  - [x] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
 - [x] The game could spawn some kind of "help kiosk" near the entrance.
   - [x] gold/XP to health converter. Conversion ratio may vary.
   - [x] should for wizard, could for warrior/dwarf?
