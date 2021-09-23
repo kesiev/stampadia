@@ -92,7 +92,7 @@ function loadPlaceholders() {
 			"Desert",
 			"Shore",
 			"Hill",
-			"Wood",
+			"Woods",
 			"Village",
 			"Castle",
 			"Cliff",
