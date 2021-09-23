@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (56 items)
+## Events (58 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -15,19 +15,21 @@
   - **The Shop**: Pay gold for useful items.
   - **The Teleports**: Teleport from a room to another.
 - Filler (easy)
+  - **The One 1**: One level 1 enemy.
+  - **The One 2**: One level 1 enemy.
+  - **The Pair**: Two level 0 enemies.
+  - **The Weak**: One level 0 enemy.
+- Filler (hard)
+  - **The Pair**: Two level 1 enemies.
+  - **The Pair**: Two level 2 enemies.
+- Filler (medium)
   - **The One 1**: One level 2 enemy.
   - **The One 2**: One level 2 enemy.
   - **The Pair**: Two level 1 enemies.
-  - **The Weak**: One level 1 enemy.
-- Filler (hard)
-  - **The Pair**: Two level 2 enemies.
-  - **The Pair**: Two level 3 enemies.
-- Filler (medium)
-  - **The One 1**: One level 3 enemy.
-  - **The One 2**: One level 3 enemy.
-  - **The Pair**: Two level 2 enemies.
-  - **The Swarm**: Three level 1 enemy.
+  - **The Swarm**: Three level 0 enemy.
 - Filler (very hard)
+  - **The Critters**: Five level 0 enemy.
+  - **The Deadly Sip**: Gain all your health... or die.
   - **The One**: One Level 4 enemy.
 - Helper
   - **The Insurance**: Pay Gold/XP for HP.
