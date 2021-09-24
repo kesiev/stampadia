@@ -89,6 +89,28 @@ const DungeonPlayer=function(dungen) {
 				}
 			}
 
+			function setDragging(obj) {
+				if (dragging) unsetDragging();
+				dragging=obj;
+				dragging.className+=" dragging";
+			}
+
+			function unsetDragging() {
+				if (dragging) {
+					dragging.className=dragging.className.replace(" dragging","");
+					dragging=0;
+				}
+			}
+
+			function setRolling(obj) {
+				unsetDragging(obj);
+				obj.className+=" rolling";
+			}
+
+			function unsetRolling(obj) {
+				obj.className=obj.className.replace(" rolling","");
+			}
+
 			canvas.onmousedown=function(e) {
 				pen=e.button==2?2:1;
 				x1=e.offsetX;
@@ -106,11 +128,13 @@ const DungeonPlayer=function(dungen) {
 
 			document.onmouseup=function() {
 				pen=0;
-				dragging=0;
+				unsetDragging();
 			}
 
 			function rollDie(die,animation) {
 				if (!die.rolling) {
+					if (die.unrolltimeout) clearTimeout(die.unrolltimeout);
+					setRolling(die);
 					die.rolling=true;
 					die.rollingStep=50;
 					die.style.backgroundColor="#ccc";
@@ -121,10 +145,14 @@ const DungeonPlayer=function(dungen) {
 					if (die.rollingStep) {
 						die.innerHTML=1+(die.rollingStep%6);
 						setTimeout(()=>{rollDie(die,true)},10);
-					} else {
+					} else {						
 						die.style.backgroundColor="";
 						die.rolling=false;
 						die.innerHTML=1+Math.floor(Math.random()*6);
+						die.unrolltimeout=setTimeout(e=>{
+							die.unrolltimeout=0;
+							unsetRolling(die);
+						},2000);
 					}
 				}
 			}
@@ -164,7 +192,7 @@ const DungeonPlayer=function(dungen) {
 					if (!dragging) {
 						this._dx=e.offsetX;
 						this._dy=e.offsetY;
-						dragging=this;
+						setDragging(this);
 					}
 				}
 			}

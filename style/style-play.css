@@ -50,6 +50,15 @@ BODY {
 	border:1px solid #000;
 	border-bottom: 3px solid #000;
 	color:#000;
+	transition:opacity 0.2s;
+}
+
+.token:hover {
+	opacity:0.2;
+}
+
+.token.dragging, .token.rolling {
+	opacity:1;
 }
 
 .token-0 {
