@@ -1,6 +1,9 @@
 /* exported loadHeroModels */
 
 function loadHeroModels() {
+	
+	// Notes: add "isBetaTesting:true," to beta-tested heroes.
+
 	return [
 		// [CODEX-Heroes] Class - The Warrior: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
 		{
@@ -134,7 +137,6 @@ function loadHeroModels() {
 
 		// [CODEX-Heroes] Dwarf - The Dwarf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
 		{
-			isBetaTesting:true,
 			id:"dwarf",
 			heroClass:"Dwarf",
 			skills:[
