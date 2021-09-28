@@ -19,6 +19,7 @@ function loadFlavorTexts() {
 			"Green grass pops out between the floor tiles.",
 			"The wooden door closes behind you.",
 			"Pieces of glass, soaked by black ink, are scattered along dark corridor.",
+			"This corridor is so dark that you begin doubting of your own existence.",
 		],
 		rooms:[
 			"A dim light is filtering through the curtains.",
@@ -49,6 +50,8 @@ function loadFlavorTexts() {
 			"Heap of bones lies tidy in the vault corners, attended by peaceful statues.",
 			"Amazing sea-green luminescences reflect in the almost dry pond of the cave.",
 			"Something in the room appears so familiar to you... A thrill crosses your skin.",
+			"The countless leaves of a titanic oak are piled up in the court floor.",
+			"You enter in a room with no openings welcomed by a fierce stink of death.",
 		]
 	};
 }
