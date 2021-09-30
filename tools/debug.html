@@ -12,7 +12,27 @@
 
 var	
 	lookFor=0, // Insert 0 or REGEX for full text search: /forgotten/i
-	timer=100;
+	mode="dump",
+	timer=100,
+	MODES={
+		dump:{
+			showFake:true,
+			dumpSentences:true,
+			logMissingQuests:true,
+			skipNoise:true,
+			drawRooms:true,
+			drawRoomNumbers:true,
+			dumpXPs:true,
+			dumpSelection:true,
+			flavorText:""
+		},
+		trace:{
+			drawRoomNumbers:true,
+			drawRooms:true,
+			dumpSelection:true,
+			flavorText:""
+		}
+	}
 
 function createDungeon() {
 
@@ -21,24 +41,28 @@ function createDungeon() {
 	});
 	core.initialize(()=>{
 
-		var dungen=core.generateAdventureDaily(0,{
-			showFake:true,
-			dumpSentences:true,
-			logMissingQuests:true,
-			skipNoise:true,
-			drawRooms:true,
-			drawRoomNumbers:true,
-			dumpXPs:true,
-			flavorText:""
-		});
+		var dungen=core.generateAdventureDaily(0,MODES[mode]);
 		dungen.prepare();
 		if (lookFor)
 			console.log("Attempt left",timer,"for",lookFor,"seed",dungen.metadata.seed);
 		else
 			console.log("Generating dungeon",dungen.metadata.seed);
 		dungen.createSVG(svg=>{
-			if (!lookFor||(svg.getSVG().match(lookFor))) {
-				console.log(dungen.metadata.selection);
+			var stop=false;
+			if (lookFor) {
+				dungen.metadata.selection.forEach(row=>{
+					if (row.quest.id&&row.quest.id.match(lookFor)) {
+						console.log("Found in",row);
+						stop=true;
+					}
+				})
+				if (!stop) stop=svg.getSVG().match(lookFor);
+			} else stop=true;
+			if (stop) {
+				dungen.metadata.selection.forEach(row=>{
+					if (row.quest.id) console.log(row.quest.id)
+				});
+				console.log();
 				dungen.showSVG();
 				dungen.debug();
 			} else {
