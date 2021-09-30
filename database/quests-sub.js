@@ -512,6 +512,77 @@ function loadQuestsSub() {
 				]
 			]
 		},
+		{
+			id:"[CODEX-Events] Subquest - The Nothing: A teleport to a place that leaves you no choice.",
+			minRooms:2,
+			steps:[
+				[
+					{
+						id:"teleportRoom",
+						atPercentage:10,
+						items:[{genericItem:"teleport"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:teleport}{and}{ifRoomIsMarked:teleportRoom}{then}{randomTeleportation}, {markItem:teleport}, {teleportToRoom:hiddenRoom}"
+							]
+						]
+					},
+					{
+						id:"switchRoom",
+						atPercentage:99,
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifNoFoes}{then}{randomMysteryHappens}, {markRoom:teleportRoom}"
+							]
+						]
+					},
+					{
+						id:"hiddenRoom",
+						isHiddenRoom:true,
+						atPercentage:{from:1,to:99},
+						items:[{genericItem:"item"}],
+						roomDescriptions:[
+							// [CODEX-Stuff] Item - Red Dice: Gives you a random good reward.
+							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Red Dice, {randomGoodReward}, {teleportToRoom:teleportRoom}" ],
+							// [CODEX-Stuff] Item - Blue Dice: Gives you a random bad reward.
+							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Blue Dice, {randomBadReward}, {teleportToRoom:teleportRoom}" ],
+						]
+					}
+				],
+				[
+					{
+						id:"teleportRoom",
+						atPercentage:10,
+						items:[{genericItem:"teleport"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:teleport}{and}{ifRoomIsMarked:teleportRoom}{then}{randomTeleportation}, {markItem:teleport}, {teleportToRoom:hiddenRoom}"
+							]
+						]
+					},
+					{
+						id:"switchRoom",
+						atPercentage:99,
+						items:[{id:"enemy",level:0}],
+						roomDescriptions:[
+							[
+								"{ifNoFoes}{then}{randomMysteryHappens}, {markRoom:teleportRoom}"
+							]
+						]
+					},
+					{
+						id:"hiddenRoom",
+						isHiddenRoom:true,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:2,ignoreXp:true}],
+						roomDescriptions:[
+							[ "{randomConfusion}", "{ifNoFoes}{then}{randomTeleportation}, {teleportToRoom:teleportRoom}" ],
+						]
+					}
+				]
+			]
+		},
 	]
 
 }
@@ -519,22 +590,22 @@ function loadQuestsSub() {
 function loadQuestsVeryHardSub() {
 	return [
 		{
-			minRooms:4,
 			id:"[CODEX-Events] Filler (very hard) - The One: One Level 4 enemy.",
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",isOptionalRoom:true,atPercentage:{from:1,to:99},roomDescriptions:[
 				[ "\"Your bones taste good. Give me bones.\"" ],
-				[ "\"You woke me from my sleep. Now you will die.\"" ],
+				[ "\"You woke me up from my sleep. Now you will die.\"" ],
 				[ "\"You should be my lunch. Come closer!\"" ]
 			],items:[{id:"enemy",level:3,ignoreXp:true}]}]]
 		},
 		{
-			minRooms:4,
+			
 			id:"[CODEX-Events] Filler (very hard) - The Deadly Sip: Gain all your health... or die.",
 			steps:[
 				[
 					{
 						id:"room",
-						atPercentage:100,
+						isOptionalRoom:true,
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"glass"}],
 						roomDescriptions:[
 							[
@@ -547,9 +618,8 @@ function loadQuestsVeryHardSub() {
 			]
 		},
 		{
-			minRooms:4,
 			id:"[CODEX-Events] Filler (very hard) - The Critters: Five level 0 enemy.",
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",isOptionalRoom:true,atPercentage:{from:1,to:99},roomDescriptions:[
 				[ "\"Meat! Meat! Meat!\"" ],
 				[ "\"It's mine! It's mine! It's mine!\"" ],
 				[ "\"Yummy!\"" ]

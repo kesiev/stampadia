@@ -210,6 +210,15 @@ function loadRandomizers() {
 			"\"Understood.\"",
 			"\"It's settled then.\""
 		],
+		randomConfusion:[
+			"You are sitting in the middle of nowhere.",
+			"You feel like you're floating into the void.",
+			"\"Am... I... still in Stampadia?\"",
+			"Being a {heroClass} makes no longer sense.",
+			"You are doubting yourself. Are you still a {heroClass}?",
+			"There is nothing here. Not even yourself.",
+			"Is it all in your mind?"
+		],
 		
 		// Loot
 		randomGold:[
