@@ -31,23 +31,29 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] Rooms & Dungeon generator
+  - [ ] Include a square in a room/Join another room when solving a puzzle
+  - [ ] Preset rooms
+  - [ ] Arena with multiple enemies
+  - [ ] Teleports enabled only on conditions
+  - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
 - [ ] New helpers
   - [ ] "Easy mode" item purchase.
-- [ ] Excess XP/HP to gold
-  - [ ] Is this a way to buy too much time?
-- [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
-  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, 
-  cautious, daring, defensive ...
-- [ ] Arcade variant: damage = atk - defense
-- [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
-- [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
-- [ ] Fireball item that damages all enemies in the room.
-- [ ] Dice roll skill: the hero locks a dice for other enemies
+- [ ] Mechanics
+  - [ ] Excess XP/HP to gold
+    - Is this a way to buy too much time?
+- [ ] Variants 
+  - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
+  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
+  - [ ] Arcade variant: damage = atk - defense
+- [ ] Skills & Items
+  - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
+  - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
+  - [ ] Fireball item that damages all enemies in the room.
+  - [ ] Dice roll skill: the hero locks a dice for other enemies
 - [ ] New classes
   - [ ] Rogue: Get gold by fights
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
-- [ ] Mod classes
-  - [ ] Wizard: ATK ALL -3
 - [ ] New quests
   - [ ] Exchange xp/hp
   - [ ] Use luck/unluck more
@@ -57,13 +63,12 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### In progress
 
-- [ ] New class
-  - [ ] Tank/Dwarf
-    - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
-    - lower movement
-
 ### Done
 
+- [x] New class
+  - [x] Tank/Dwarf
+    - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
+    - lower movement
 - [x] Very hard rooms
   - [x] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
   - [x] The Swarm - A lot of LVL0 enemies!
