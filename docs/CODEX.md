@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (58 items)
+## Events (59 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -69,6 +69,7 @@
   - **The Key And The Chests**: Find the key and open one of two random chests.
   - **The Linked Rooms**: Walk on a cell and enable another room effect.
   - **The Murderer**: Avenge the dead body or steal its gold?
+  - **The Nothing**: A teleport to a place that leaves you no choice.
   - **The Shapes Puzzle**: Get the right shapes to solve the puzzle.
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
   - **The Trainer**: Face his test and earn gold.
@@ -81,7 +82,7 @@
 - Dwarf
   - **The Dwarf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
 
-## Stuff (31 items)
+## Stuff (33 items)
 
 - Equipment
   - **Backflip**: Flip a dice upside down.
@@ -102,6 +103,8 @@
   - **The Fresh Fountain**: Gain 2 HP.
   - **The Muddy Fountain**: Lose 1 HP.
 - Item
+  - **Blue Dice**: Gives you a random bad reward.
+  - **Red Dice**: Gives you a random good reward.
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
   - **The Star Pin**: Gain 1 XP.
