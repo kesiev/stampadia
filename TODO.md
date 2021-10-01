@@ -35,13 +35,15 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
   - [ ] Arena with multiple enemies
-  - [ ] Teleports enabled only on conditions
   - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
 - [ ] New helpers
   - [ ] "Easy mode" item purchase.
 - [ ] Mechanics
   - [ ] Excess XP/HP to gold
     - Is this a way to buy too much time?
+- [ ] Enemy abilities
+  - [ ] PUSH: pushes the hero away, for ranged enemies
+    - It takes an enemy slot.
 - [ ] Variants 
   - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
   - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
@@ -65,6 +67,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Done
 
+- [x] Rooms & Dungeon generator
+  - [x] Teleports enabled only on conditions
 - [x] New class
   - [x] Tank/Dwarf
     - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
