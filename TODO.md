@@ -31,6 +31,9 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] Asterisk for more hidden rows
+- [ ] FAQ
+  - [ ] How to manage pairs
 - [ ] Rooms & Dungeon generator
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
