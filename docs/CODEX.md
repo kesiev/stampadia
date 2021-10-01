@@ -103,8 +103,8 @@
   - **The Fresh Fountain**: Gain 2 HP.
   - **The Muddy Fountain**: Lose 1 HP.
 - Item
-  - **Blue Dice**: Gives you a random bad reward.
-  - **Red Dice**: Gives you a random good reward.
+  - **Blue Die**: Gives you a random bad reward.
+  - **Red Die**: Gives you a random good reward.
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
   - **The Star Pin**: Gain 1 XP.

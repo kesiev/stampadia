@@ -543,10 +543,10 @@ function loadQuestsSub() {
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"item"}],
 						roomDescriptions:[
-							// [CODEX-Stuff] Item - Red Dice: Gives you a random good reward.
-							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Red Dice, {randomGoodReward}, {teleportToRoom:teleportRoom}" ],
-							// [CODEX-Stuff] Item - Blue Dice: Gives you a random bad reward.
-							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Blue Dice, {randomBadReward}, {teleportToRoom:teleportRoom}" ],
+							// [CODEX-Stuff] Item - Red Die: Gives you a random good reward.
+							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Red Die, {randomGoodReward}, {teleportToRoom:teleportRoom}" ],
+							// [CODEX-Stuff] Item - Blue Die: Gives you a random bad reward.
+							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Blue Die, {randomBadReward}, {teleportToRoom:teleportRoom}" ],
 						]
 					}
 				],
