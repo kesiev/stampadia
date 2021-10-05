@@ -32,8 +32,6 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] Asterisk for more hidden rows
-- [ ] FAQ
-  - [ ] How to manage pairs
 - [ ] Rooms & Dungeon generator
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
@@ -44,12 +42,14 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Mechanics
   - [ ] Excess XP/HP to gold
     - Is this a way to buy too much time?
+  - [ ] Remove the "don't visit new rooms in fight" rule?
+    - Is it dangerous for the player or game breaking?
 - [ ] Enemy abilities
   - [ ] PUSH: pushes the hero away, for ranged enemies
     - It takes an enemy slot.
 - [ ] Variants 
   - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
-  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room descripbing combat strategy for mobs: berserk, cautious, daring, defensive ...
+  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room describing combat strategy for mobs: berserk, cautious, daring, defensive ...
   - [ ] Arcade variant: damage = atk - defense
 - [ ] Skills & Items
   - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
