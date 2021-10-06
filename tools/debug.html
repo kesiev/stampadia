@@ -12,9 +12,20 @@
 
 var	
 	lookFor=0, // Insert 0 or REGEX for full text search: /forgotten/i
-	mode="dump",
+	mode="find",
 	timer=100,
 	MODES={
+		find:{
+			showFake:true,
+			dumpSentences:false,
+			logMissingQuests:true,
+			skipNoise:true,
+			drawRooms:true,
+			drawRoomNumbers:true,
+			dumpXPs:true,
+			dumpSelection:true,
+			flavorText:""
+		},
 		dump:{
 			showFake:true,
 			dumpSentences:true,
