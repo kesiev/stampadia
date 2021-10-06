@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (59 items)
+## Events (61 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -40,10 +40,12 @@
   - **The Curse**: Break the spell and kill the bad guy.
   - **The Escort**: Escort the good guy near the boss and fight.
   - **The Gang**: beat a sequence of enemies.
+  - **The Great Old Ones**: Beat the boss before being corrupted by madness.
   - **The Kidnapping**: Fight the boss, free the kidnapped, and return it.
   - **The Lost Item**: Return an item to NPC and unlock the boss and fight.
   - **The Missing Key**: Find the key and beat the boss.
   - **The Moral Compass**: Do good or bad things and trigger a different ending.
+  - **The Suicide Mission**: Fight 2 bosses at once, or...
   - **The Twins**: Fight a 2-stages boss.
 - Malus
   - **The Last Fight**: An enemy will challenge you on your way back.
@@ -82,11 +84,13 @@
 - Dwarf
   - **The Dwarf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
 
-## Stuff (33 items)
+## Stuff (35 items)
 
 - Equipment
   - **Backflip**: Flip a dice upside down.
+  - **Book**: Lose 1 HP, deal 1 damage.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
+  - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.
