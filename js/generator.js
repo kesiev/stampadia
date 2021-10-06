@@ -357,11 +357,13 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Fight turn - Conditions
 		line=line.replaceAll("{ifAfterEnemyRollInFight}","enemy turn roll");
 		line=line.replaceAll("{ifAfterHeroRollInFight}","hero turn roll");
+		line=line.replaceAll("{ifHeroTurn}","hero turn");
 		line=line.replaceAll("{ifBeforeHeroRollInFight}","before hero turn roll");
+		line=line.replaceAll("{ifEveryBattleRoundStarts}","a battle round starts");
 
 		// Fight turn - Actions
 		line=line.replaceAll("{pass}","pass");
-		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+),([0-9]+),([0-9]+)\}/g,(m,num,num2,num3)=>"-"+num+"HP to "+(num2*1?(num2==1?"1 enemy":"up to "+num2+" enemies"):"any enemy")+" in range "+num3);
+		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+),([0-9]+),([0-9]+)\}/g,(m,num,num2,num3)=>"-"+num+"HP to "+(num2*1?(num2==1?"1 enemy":"up to "+num2+" enemies"):"all enemies")+" in range "+num3);
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter room");
@@ -2148,8 +2150,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				services.forEach((service,index)=>{
 					const
 						line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight),
+						label=service.isFake?formatFakeDescriptionLine(service.equipment.label):formatDescriptionLine(service.equipment.label),
 						description=service.isFake?formatFakeDescriptionLine(service.equipment.action):formatDescriptionLine(service.equipment.action);
-					svg.setText(svg.getById("serviceName",line),(service.isFake&&debug&&debug.showFake?"[FAKE] ":"")+service.equipment.label+" ("+description+")");
+					svg.setText(svg.getById("serviceName",line),(service.isFake&&debug&&debug.showFake?"[FAKE] ":"")+label+" ("+description+")");
 					if (!service.isAvailable) svg.delete(svg.getById("serviceCheckbox",line));
 				});
 
