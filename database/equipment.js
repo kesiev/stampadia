@@ -92,6 +92,18 @@ function loadEquipment() {
 			label:"Mead",
 			action:"{ifAfterHeroRollInFight}{then}{discardAnyDie:1}{and}{setDieTo:1,6}"
 		},
+		// [CODEX-Stuff] Equipment - Epic Weapon: A weapon with many names. Deal 2 damage to all enemies in range 4.
+		{
+			id:"epicWeapon",
+			label:"{epicWeapon}",
+			action:"{ifHeroTurn}{then}{fightingEnemyLoseHp:2,0,4}"
+		},
+		// [CODEX-Stuff] Equipment - Book: Lose 1 HP, deal 1 damage.
+		{
+			id:"book",
+			label:"Book",
+			action:"{ifAfterHeroRollInFight}{and}{loseHp:1}{then}{fightingEnemyLoseHp:1,1,2}"
+		},
 		
 		
 	];

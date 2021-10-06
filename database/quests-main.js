@@ -581,5 +581,154 @@ function loadQuestsMain() {
 				}
 			]
 		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Suicide Mission: Fight 2 bosses at once, or...",
+			minRooms:4,
+			adventureTitle:[
+				"The {villainName} Victory",
+				"The {epicWeapon} {epicWeaponPart}",
+				"The {epicWeaponPart}",
+				"The Lost {epicWeaponPart}",
+				"The {epicWeapon} Forge",
+				"The {heroClass} Despair",
+				"The {heroClass} Defeat",
+				"The {epicWeapon}",				
+			],
+			steps:[
+				[
+					{
+						id:"part1",
+						atPercentage:{from:99,to:50},
+						items:[{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifNoFoes}{and}{ifRoomIsNotMarked:part1}{then}You found a {epicWeapon} {epicWeaponPart}, {markRoom:part1}"
+							]
+						]
+					},
+					{
+						id:"part2",
+						atPercentage:{from:30,to:49},
+						items:[{id:"enemy",level:1},{genericItem:"part"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:part}{then}You found a {epicWeapon} {epicWeaponPart}, {markItem:part}, {markRoom:part2}"
+							]
+						]
+					},
+					{
+						id:"forge",
+						atPercentage:{from:1,to:99},
+						equipment:[{id:"epicWeapon"}],
+						items:[{genericItem:"blacksmith"}],
+						roomDescriptions:[
+							[
+								"A blacksmith is working tirelessly on a sword.",
+								"{ifRoomIsMarked:part1}{and}{ifRoomIsMarked:part2}{then}\"Done! It's my masterpiece!\"{hide}{getEquip:equip-epicWeapon}, {markItem:blacksmith}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true},{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{randomFear}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"\"You'll never get out alive! {heroClass}! Please, don't go!\"",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Great Old Ones: Beat the boss before being corrupted by madness.",
+			minRooms:4,
+			adventureTitle:[
+				"The {heroClass}'s Madness",
+				"The {heroClass} Mind",
+				"The {placeName} Gods",
+				"The {heroClass}'s Insanity",
+				"The Madness Of A {heroClass}",
+				"The Depths Of The {placeName}",
+				"The {placeName}'s Book",
+				"The Insane {heroClass}",
+			],
+			steps:[
+				[
+					{
+						id:"bookRoom",
+						atPercentage:1,
+						equipment:[{id:"book"}],
+						items:[{genericItem:"book"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:book}{then}You read: \"{randomBookQuote}\", {getEquip:equip-book}, {markRoom:bookRoom}, {markItem:book}"
+							]
+						]
+					},
+
+
+					{
+						id:"enlightenment",
+						atPercentage:80,
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsMarked:bookRoom}{and}{ifRoomIsNotMarked:enlightenment}{then}Now you know the Truth, {gainHp:1}, {markRoom:enlightenment}"
+							]
+						]
+					},
+					{
+						id:"abyss",
+						atPercentage:99,
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:bookRoom}{then}You hear something calling, {roomIsEmpty}, {stopReading}",
+								"{ifKilledLastFoe}{then}{teleportToRoom:bossRoom}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						isHiddenRoom:true,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifEveryBattleRoundStarts}{then}{rollDie}{range:1-1} {loseXp:2}, {range:2-5} {nothing}, {range:6-6} {gainHp:1}",
+								"{ifNoFoes}{then}\"Your mind is still mine\", {markRoom:startingRoom}, {teleportToRoom:abyss}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"As soon as you arrive to the {placeName} your head feels heavier.",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+						]
+					]
+				}
+			]
+		},
 	]
 }

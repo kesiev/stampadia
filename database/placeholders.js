@@ -125,6 +125,17 @@ function loadPlaceholders() {
 			"Man",
 			"Woman",
 			"Elder"
-		]
+		],
+		epicWeapon:[
+			"Void Cutter",
+			"Black Shythe",
+			"Bloody Claw",
+			"Black Blade"
+		],
+		epicWeaponPart:[
+			"Shard",
+			"Part",
+			"Piece"
+		],
 	};
 }

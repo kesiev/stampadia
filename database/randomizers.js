@@ -3,6 +3,20 @@
 function loadRandomizers() {
 	return {
 
+		// Thanks to...
+		randomBookQuote:[
+			"Bi-Anca painted all the walls",  // Bianca (wife) for tons of narrative contributes and quest suggestions!
+			"Frank is our first Brother",     // FrankBro (Discord) for being the first supporting the project!
+			"The stagger Lee lived twice",    // StaggerLee (BGG) for laminating Stampadia dungeons to reuse them!
+			"Peter piers them all",           // PeterPiers (BGG) for help and passion!
+			"Marianne guided us here",        // Marianne Waage (BGG) for guiding this game on BGG!
+			"The word of Preuk helped",       // Preuk (Discord) for tons of clever suggestions!
+			"Sam and Marcus gave us voice",   // Sam Marcus (Roguelike Celebration) for suggesting me to talk about CoS!
+			"Beep is up, Test is down",       // Beeptest (Discord) for suggesting upside-down text!
+			"Supp-Japan was a wizard god",    // SuppJapan (Discord) for suggesting new classes, like The Wizard!
+			"Court-Jus balanced our world",   // CourtJus (Discord) for suggesting balance fixes!
+		],
+
 		// Narrative
 		randomShopKeeper:[
 			"\"Thank you, stranger!\"",
@@ -218,6 +232,12 @@ function loadRandomizers() {
 			"You are doubting yourself. Are you still a {heroClass}?",
 			"There is nothing here. Not even yourself.",
 			"Is it all in your mind?"
+		],
+		randomFear:[
+			"You feel the taste of blood in your mouth.",
+			"You have the feeling that you will not be able to do it.",
+			"This time it really is the end for you.",
+			"Hopes leave you in an instant."
 		],
 		
 		// Loot
