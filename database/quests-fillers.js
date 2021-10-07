@@ -92,6 +92,15 @@ function loadQuestsHardFillers() {
 	return [
 
 		{
+			id:"[CODEX-Events] Filler (medium) - The One: One level 2 enemy.",
+			onlyForHeroClasses:["wizard"],
+			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
+				[ "\"I'm sorry for you, {heroClass}!\""],
+				[ "\"I'll mince you up, {heroClass}!\"" ],
+				[ "\"Say goodbye, {heroClass}!\"" ]
+			],items:[{id:"enemy",level:2}]}]]
+		},
+		{
 			id:"[CODEX-Events] Filler (hard) - The Pair: Two level 1 enemies.",
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"See you in hell, {heroClass}!\"" ],
