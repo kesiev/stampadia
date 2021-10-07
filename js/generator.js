@@ -937,7 +937,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 			// The quest must fit the selected hero class
 			if (
-				(!quest.ignoreForHeroClasses||quest.ignoreForHeroClasses.indexOf(heroModel.id)==-1)
+				(!quest.ignoreForHeroClasses||quest.ignoreForHeroClasses.indexOf(heroModel.id)==-1)&&
+				(!quest.onlyForHeroClasses||quest.onlyForHeroClasses.indexOf(heroModel.id)!=-1)
 			) {
 
 				const
