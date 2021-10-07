@@ -69,6 +69,7 @@ function loadQuestsMediumFillers() {
 
 		{
 			id:"[CODEX-Events] Filler (medium) - The One 1: One level 2 enemy.",
+			ignoreForHeroClasses:["wizard"],
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"Your quest ends here!\""],
 				[ "\"Raaawwwrrr!\"" ],
@@ -77,6 +78,7 @@ function loadQuestsMediumFillers() {
 		},
 		{
 			id:"[CODEX-Events] Filler (medium) - The One 2: One level 2 enemy.",
+			ignoreForHeroClasses:["wizard"],
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"I'm sorry for you, {heroClass}!\""],
 				[ "\"I'll mince you up, {heroClass}!\"" ],
