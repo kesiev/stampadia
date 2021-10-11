@@ -77,7 +77,7 @@ function loadQuestsMain() {
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
-							[ "\"The {goodGuyName} will die... and you with him!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
+							[ "\"The {goodGuyName} will die... and so will you!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
 						]
 					}
 				]
@@ -116,7 +116,7 @@ function loadQuestsMain() {
 						roomDescriptions:[
 							[
 								"\"We will stop you at any cost!\"",
-								"{ifNoFoes}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
+								"{ifKilledLastFoe}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
 							]
 						]
 					},
@@ -127,7 +127,7 @@ function loadQuestsMain() {
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:enemy1room}{then}You feel watched, {roomIsEmpty}, {stopReading}",
-								"{ifNoFoes}{then}\"Wrong move, bwahahah!\", {markRoom:enemy2room}"
+								"{ifKilledLastFoe}{then}\"Wrong move, bwahahah!\", {markRoom:enemy2room}"
 							]
 						]
 					},
@@ -603,7 +603,7 @@ function loadQuestsMain() {
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
 							[
-								"{ifNoFoes}{and}{ifRoomIsNotMarked:part1}{then}You found a {epicWeapon} {epicWeaponPart}, {markRoom:part1}"
+								"{ifKilledLastFoe}{and}{ifRoomIsNotMarked:part1}{then}You found a {epicWeapon} {epicWeaponPart}, {markRoom:part1}"
 							]
 						]
 					},
@@ -700,7 +700,7 @@ function loadQuestsMain() {
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:bookRoom}{then}You hear something calling, {roomIsEmpty}, {stopReading}",
-								"{ifKilledLastFoe}{then}{teleportToRoom:bossRoom}"
+								"{ifNoFoes}{then}{teleportToRoom:bossRoom}"
 							]
 						]
 					},

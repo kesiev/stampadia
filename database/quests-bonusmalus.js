@@ -155,7 +155,7 @@ function loadQuestsBonus() {
 		},
 
 		{
-			id:"[CODEX-Events] Bonus - The Clown: Pay him to learn cool stunts!",
+			id:"[CODEX-Events] Bonus - The Clown: Pay him/her to learn cool stunts!",
 			minRooms:1,
 			steps:[
 				[
