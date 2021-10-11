@@ -236,8 +236,21 @@ function loadQuestsMalus() {
 		},
 
 		{
-			id:"[CODEX-Events] Malus - The Last Fight: An enemy will challenge you on your way back.",
+			id:"[CODEX-Events] Malus - The Last Fight (1): An enemy will challenge you on your way back.",
+			ignoreForHeroTags:["weak"],
 			steps:[[{id:"enemy",atPercentage:50,items:[{id:"enemy",level:2}],roomDescriptions:[
+				[
+					"{ifRoomIsNotMarked:startingRoom}{then}{roomIsEmpty}, {stopReading}",
+					"{randomEnemyChallenge}"
+				]
+			]}]]
+		},
+
+		{
+			// Weak characters can max up XPs before the last fight.
+			id:"[CODEX-Events] Malus - The Last Fight (2): An enemy will challenge you on your way back.",
+			onlyForHeroTags:["weak"],
+			steps:[[{id:"enemy",atPercentage:50,items:[{id:"enemy",level:2,ignoreXp:true}],roomDescriptions:[
 				[
 					"{ifRoomIsNotMarked:startingRoom}{then}{roomIsEmpty}, {stopReading}",
 					"{randomEnemyChallenge}"
