@@ -160,6 +160,13 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		return arr[getRandomId(arr)];
 	}
 
+	function isIntersecting(list1,list2) {
+		if (!list1||!list1.length||!list2||!list2.length) return false;
+		for (let i=0;i<list1.length;i++)
+			if (list2.indexOf(list1[i])!=-1) return true;
+		return false;
+	}
+
 	function setCheckBox(svg,checkbox,number) {
 		const
 			x=svg.getNum(checkbox,"x"),
@@ -937,8 +944,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 			// The quest must fit the selected hero class
 			if (
-				(!quest.ignoreForHeroClasses||quest.ignoreForHeroClasses.indexOf(heroModel.id)==-1)&&
-				(!quest.onlyForHeroClasses||quest.onlyForHeroClasses.indexOf(heroModel.id)!=-1)
+				(!quest.ignoreForHeroTags||!isIntersecting(quest.ignoreForHeroTags,heroModel.tags))&&
+				(!quest.onlyForHeroTags||isIntersecting(quest.onlyForHeroTags,heroModel.tags))
 			) {
 
 				const

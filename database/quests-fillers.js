@@ -18,14 +18,14 @@ function loadQuestsEasyFillers() {
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Y...you shall not pass!\"" ],
 				[ "\"You're outnumbered! Surrender now!\"" ],
-				[ "\"Let's kill him! The boss will give us a promotion!\""],
+				[ "\"Let's kill! The boss will give us a promotion!\""],
 				[ "\"Finally some training!\"" ]		
 			],items:[{id:"enemy",level:0},{id:"enemy",level:0}]}]]
 		},
 
 		{
-			id:"[CODEX-Events] Filler (easy) - The One 1: One level 1 enemy.",
-			ignoreForHeroClasses:["wizard"],
+			id:"[CODEX-Events] Filler (easy) - The One (1): One level 1 enemy.",
+			ignoreForHeroTags:["weak"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Hey you! Stop there!\"" ],
 				[ "\"I'll avenge my brothers!\"" ],
@@ -34,8 +34,8 @@ function loadQuestsEasyFillers() {
 			],items:[{id:"enemy",level:1}]}]]
 		},
 		{
-			id:"[CODEX-Events] Filler (easy) - The One 2: One level 1 enemy.",
-			ignoreForHeroClasses:["wizard"],
+			id:"[CODEX-Events] Filler (easy) - The One (2): One level 1 enemy.",
+			ignoreForHeroTags:["weak"],
 			steps:[[{id:"spawn",atPercentage:1,roomDescriptions:[
 				[ "\"Don't move a muscle, {heroClass}!\"" ],
 				[ "\"Damn {heroClass}! You killed my sister!\"" ],
@@ -68,8 +68,8 @@ function loadQuestsMediumFillers() {
 		},
 
 		{
-			id:"[CODEX-Events] Filler (medium) - The One 1: One level 2 enemy.",
-			ignoreForHeroClasses:["wizard"],
+			id:"[CODEX-Events] Filler (medium) - The One (1): One level 2 enemy.",
+			ignoreForHeroTags:["weak"],
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"Your quest ends here!\""],
 				[ "\"Raaawwwrrr!\"" ],
@@ -77,8 +77,8 @@ function loadQuestsMediumFillers() {
 			],items:[{id:"enemy",level:2}]}]]
 		},
 		{
-			id:"[CODEX-Events] Filler (medium) - The One 2: One level 2 enemy.",
-			ignoreForHeroClasses:["wizard"],
+			id:"[CODEX-Events] Filler (medium) - The One (2): One level 2 enemy.",
+			ignoreForHeroTags:["weak"],
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"I'm sorry for you, {heroClass}!\""],
 				[ "\"I'll mince you up, {heroClass}!\"" ],
@@ -93,7 +93,7 @@ function loadQuestsHardFillers() {
 
 		{
 			id:"[CODEX-Events] Filler (medium) - The One: One level 2 enemy.",
-			onlyForHeroClasses:["wizard"],
+			onlyForHeroTags:["weak"],
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"I'm sorry for you, {heroClass}!\""],
 				[ "\"I'll mince you up, {heroClass}!\"" ],
@@ -101,7 +101,7 @@ function loadQuestsHardFillers() {
 			],items:[{id:"enemy",level:2}]}]]
 		},
 		{
-			id:"[CODEX-Events] Filler (hard) - The Pair: Two level 1 enemies.",
+			id:"[CODEX-Events] Filler (hard) - The Weak Pair: Two level 1 enemies.",
 			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
 				[ "\"See you in hell, {heroClass}!\"" ],
 				[ "\"Farewell, {heroClass}!\"" ],
@@ -109,11 +109,11 @@ function loadQuestsHardFillers() {
 			],items:[{id:"enemy",level:1},{id:"enemy",level:1}]}]]
 		},
 		{
-			id:"[CODEX-Events] Filler (hard) - The Pair: Two level 2 enemies.",
+			id:"[CODEX-Events] Filler (hard) - The Strong Pair: Two level 2 enemies.",
 			steps:[[{id:"spawn",atPercentage:80,roomDescriptions:[
-				[ "\"Let's get him out, guys!\"" ],
-				[ "\"Let's tear this guy apart!\"" ],
-				[ "\"I want his head on a pike!\"" ]
+				[ "\"Let's get it on, guys!\"" ],
+				[ "\"Let's tear it up!\"" ],
+				[ "\"I want that head on a pike!\"" ]
 			],items:[{id:"enemy",level:2},{id:"enemy",level:2}]}]]
 		}
 

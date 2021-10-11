@@ -9,6 +9,7 @@ function loadHeroModels() {
 		{
 			id:"warrior",
 			heroClass:"Warrior",
+			tags:["startsWithResurrection"],
 			skills:[
 				["ATK -1\nRNG 1","Move\n-3"],
 				["DEF -3","Move\n-2"],
@@ -84,6 +85,7 @@ function loadHeroModels() {
 		{
 			id:"wizard",
 			heroClass:"Wizard",
+			tags:["weak"],
 			skills:[
 				["ATK -2\nRNG 2","Move\n-3"],
 				["Move\n-2","Move\n-3"],
