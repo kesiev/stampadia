@@ -1405,6 +1405,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			var skills=clone(model.skills);
 			heroModel.enemyModels[id].skills.forEach(skill=>skills.push(skill));
 			enemies.push({
+				isVirtual:model.isVirtual,
 				level:id,
 				gainXp:id||1,
 				defense:id||1,
@@ -1417,6 +1418,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					level2:id==1?1:0,
 					level3:id==2?1:0,
 					level4:id==3?1:0,
+					zombie:id==4?1:0
 				}
 			})
 		});
@@ -2104,14 +2106,16 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				// Render enemies
 				tierWidth=svg.getNum(svg.getById("enemyBox"),"width");
 				enemies.forEach((enemy,index)=>{
-					const skillTier=svg.cloneNodeBy("enemyTier",0,tierWidth*index,0);
-					if (index==0) svg.delete(svg.getById("enemySymbol",skillTier));
-					else svg.delete(svg.getById("enemyOutline",skillTier));
-					svg.setText(svg.getById("enemySkillUp",skillTier),enemy.skills[0]||"");
-					svg.setText(svg.getById("enemySkillDown",skillTier),enemy.skills[1]||"");
-					svg.setText(svg.getById("enemyXp",skillTier),"+"+enemy.gainXp+" XP");
-					svg.setText(svg.getById("enemyDefense",skillTier),enemy.defense?"+"+enemy.defense+" DEF":"-");
-					setCheckBox(svg,svg.getById("enemyLevel",skillTier),enemy.level);
+					if (!enemy.isVirtual) {
+						const skillTier=svg.cloneNodeBy("enemyTier",0,tierWidth*index,0);
+						if (index==0) svg.delete(svg.getById("enemySymbol",skillTier));
+						else svg.delete(svg.getById("enemyOutline",skillTier));
+						svg.setText(svg.getById("enemySkillUp",skillTier),enemy.skills[0]||"");
+						svg.setText(svg.getById("enemySkillDown",skillTier),enemy.skills[1]||"");
+						svg.setText(svg.getById("enemyXp",skillTier),"+"+enemy.gainXp+" XP");
+						svg.setText(svg.getById("enemyDefense",skillTier),enemy.defense?"+"+enemy.defense+" DEF":"-");
+						setCheckBox(svg,svg.getById("enemyLevel",skillTier),enemy.level);
+					}
 				});
 
 				// Render noise

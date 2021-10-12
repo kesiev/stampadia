@@ -77,6 +77,8 @@ function loadHeroModels() {
 					]
 				},
 				// Level 3
+				{ skills:[] },
+				// Level 4 - Zombies
 				{ skills:[] }
 			]
 		},
@@ -133,6 +135,8 @@ function loadHeroModels() {
 				// Level 2
 				{ skills:[] },
 				// Level 3
+				{ skills:[] },
+				// Level 4 - Zombies
 				{ skills:[] }
 			]
 		},
@@ -183,6 +187,8 @@ function loadHeroModels() {
 				// Level 2
 				{skills: [] },
 				// Level 3
+				{ skills:[] },
+				// Level 4 - Zombies
 				{ skills:[] }
 			]
 		},

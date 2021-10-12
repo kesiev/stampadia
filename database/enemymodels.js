@@ -28,6 +28,8 @@ function loadEnemyModels() {
 				["ATK\nRNG 1","ATK -2\nRNG 1"],
 				["ATK\nRNG 1","ATK -2\nRNG 2"]
 			]
-		}
+		},
+		// Level 4 (Zombies) - They act like level 0 enemies but with higher health.
+		{ isVirtual:true, skills:[[]] }
 	];
 }
