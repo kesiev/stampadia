@@ -31,22 +31,13 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] **Lower damageRatio for all classes**
 - [ ] Asterisk for more hidden rows
 - [ ] Rooms & Dungeon generator
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
   - [ ] Arena with multiple enemies
   - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
-- [ ] New helpers
-  - [ ] "Easy mode" item purchase.
-- [ ] Mechanics
-  - [ ] Excess XP/HP to gold
-    - Is this a way to buy too much time?
-  - [ ] Remove the "don't visit new rooms in fight" rule?
-    - Is it dangerous for the player or game breaking?
-- [ ] Enemy abilities
-  - [ ] PUSH: pushes the hero away, for ranged enemies
-    - It takes an enemy slot.
 - [ ] Variants 
   - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
   - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room describing combat strategy for mobs: berserk, cautious, daring, defensive ...
@@ -54,10 +45,9 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Skills & Items
   - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
   - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
-  - [ ] Fireball item that damages all enemies in the room.
-  - [ ] Dice roll skill: the hero locks a dice for other enemies
+  - [ ] Dice roll skill: the hero locks a die for other enemies
 - [ ] New classes
-  - [ ] Rogue: Get gold by fights
+  - [ ] Rogue: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
 - [ ] New quests
   - [ ] Exchange xp/hp
@@ -66,10 +56,26 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] NPC
   - [ ] The Corrupted
 
+### Ideas - Gameplay (questions)
+
+- [ ] New helpers
+  - [ ] "Easy mode" item purchase.
+    - Is that truly needed?
+- [ ] Mechanics
+  - [ ] Excess XP/HP to gold
+    - Is this a way to buy too much time?
+  - [ ] Remove the "don't visit new rooms in fight" rule?
+    - Is it dangerous for the player or game breaking?
+- [ ] Enemy abilities
+  - [ ] PUSH: pushes the hero away, for ranged enemies
+    - It takes an enemy slot.
+
 ### In progress
 
 ### Done
 
+- [x] Skills and items
+  - [x] Fireball item that damages all enemies in the room.
 - [x] Rooms & Dungeon generator
   - [x] Teleports enabled only on conditions
 - [x] New class
