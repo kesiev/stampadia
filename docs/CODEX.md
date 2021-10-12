@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (59 items)
+## Events (60 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -43,6 +43,7 @@
   - **The Lost Item**: Return an item to NPC and unlock the boss and fight.
   - **The Missing Key**: Find the key and beat the boss.
   - **The Moral Compass**: Do good or bad things and trigger a different ending.
+  - **The Necromancer**: Someone is trying to bring the evil back.
   - **The Suicide Mission**: Fight 2 bosses at once, or...
   - **The Twins**: Fight a 2-stages boss.
 - Malus

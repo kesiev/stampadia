@@ -34,6 +34,7 @@ var INDEX=[
 	"[CODEX-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.",
 	"[CODEX-Events] Main quest - The Missing Key: Find the key and beat the boss.",
 	"[CODEX-Events] Main quest - The Moral Compass: Do good or bad things and trigger a different ending.",
+	"[CODEX-Events] Main quest - The Necromancer: Someone is trying to bring the evil back.",
 	"[CODEX-Events] Main quest - The Suicide Mission: Fight 2 bosses at once, or...",
 	"[CODEX-Events] Main quest - The Twins: Fight a 2-stages boss.",
 	"[CODEX-Events] Malus - The Last Fight (1): An enemy will challenge you on your way back.",
