@@ -239,6 +239,20 @@ function loadRandomizers() {
 			"This time it really is the end for you.",
 			"Hopes leave you in an instant."
 		],
+		randomResurrection:[
+			"\"The {villainName}... is BACK!\"",
+			"\"Take my life, {villainName}! Gwaah!\"",
+			"\"Too late, {heroClass}! I revived the {villainName}!\"",
+			"\"The final step of my plan... is over!\"",
+			"\"I... I improved the {villainName}!\""
+		],
+		randomZombieEntrance:[
+			"\"Kill... me...\"",
+			"\"I'm... suffering...\"",
+			"\"What... am I?\"",
+			"\"Please... kill me...\"",
+			"\"My body... is...\"",
+		],
 		
 		// Loot
 		randomGold:[

@@ -137,5 +137,10 @@ function loadPlaceholders() {
 			"Part",
 			"Piece"
 		],
+		madScientistName:[
+			"Necromancer",
+			"Scientist",
+			"Doctor",
+		]
 	};
 }

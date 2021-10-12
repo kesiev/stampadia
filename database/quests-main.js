@@ -730,5 +730,55 @@ function loadQuestsMain() {
 				}
 			]
 		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Necromancer: Someone is trying to bring the evil back.",
+			minRooms:4,
+			adventureTitle:[
+				"The Resurrection Of The {villainName}",
+				"The Mad {madScientistName}",
+				"The {madScientistName}'s {villainName}",
+				"The Return Of The {villainName}",
+				"The Undead {villainName}",
+				"The {madScientistName} Last Experiment",
+				"The {madScientistName} Experiment",
+			],
+			steps:[
+				[
+					{
+						id:"necromancer",
+						atPercentage:98,
+						items:[{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}{madScientistName}: {randomResurrection}, {markRoom:bossRoom}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						atPercentage:99,
+						items:[{id:"enemy",level:4,ignoreXp:true},{id:"enemy",level:4,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:bossRoom}{then}{roomIsEmpty}, {stopReading}",
+								"{randomZombieEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					roomDescriptions:[
+						[
+							"The {madScientistName} is trying to bring the {villainName} back!",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+						]
+					]
+				}
+			]
+		},
 	]
 }
