@@ -33,9 +33,6 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [ ] **Lower damageRatio for all classes**
 - [ ] Asterisk for more hidden rows
-- [ ] New actions
-  - [ ] Resting: when not in combat, 5G to get 1HP
-    - Aren't The Helpers enough?
 - [ ] Rooms & Dungeon generator
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
@@ -61,6 +58,9 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay (questions)
 
+- [ ] New actions
+  - [ ] Resting: when not in combat, 5G to get 1HP
+    - Aren't The Helpers enough?
 - [ ] New helpers
   - [ ] "Easy mode" item purchase.
     - Is that truly needed?
