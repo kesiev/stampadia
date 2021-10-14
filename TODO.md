@@ -32,7 +32,10 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] **Lower damageRatio for all classes**
-- [ ] Asterisk for more hidden rows
+- [ ] New actions
+  - [ ] Let the player explore new rooms when running away from a battle
+- [ ] Rooms Table
+  - [ ] Asterisk for more hidden rows
 - [ ] Rooms & Dungeon generator
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
