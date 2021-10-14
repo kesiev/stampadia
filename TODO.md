@@ -32,6 +32,7 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] **Lower damageRatio for all classes**
+  - [ ] Maybe moving 1 HP from LVL1 to LVL2?
 - [ ] Rooms Table
   - [ ] Asterisk for more hidden rows
 - [ ] Rooms & Dungeon generator
