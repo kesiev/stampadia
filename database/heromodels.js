@@ -170,7 +170,7 @@ function loadHeroModels() {
 				}
 			],
 			
-			hpRamp:[0.5,0.15,0.25,0.1],
+			hpRamp:[0.35,0.30,0.25,0.1],
 			damageRatio:0.7,
 			equipment:[
 				{
