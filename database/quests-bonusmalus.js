@@ -140,6 +140,7 @@ function loadQuestsBonus() {
 		},
 
 		{
+			probability:40,
 			id:"[CODEX-Events] Bonus - The Clover: It may bring good luck in your future adventures...",
 			minRooms:2,
 			steps:[
@@ -321,6 +322,7 @@ function loadQuestsMalus() {
 		},
 
 		{
+			probability:40,
 			id:"[CODEX-Events] Malus - The Small Horn: It may bring bad luck in your future adventures...",
 			minRooms:2,
 			steps:[
