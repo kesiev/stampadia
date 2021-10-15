@@ -103,7 +103,7 @@ const DungeonPlayer=function(dungen) {
 			}
 
 			function setRolling(obj) {
-				unsetDragging(obj);
+				unsetRolling(obj);
 				obj.className+=" rolling";
 			}
 
