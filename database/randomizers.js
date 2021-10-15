@@ -1,6 +1,21 @@
 /* exported loadRandomizers */
 
 function loadRandomizers() {
+
+	// Beastcrafters trading card game random events
+	let beasts=[
+		{label:"Golem",id:"golem",setName:"golemSet",beatenBySet:"manticoreSet"},
+		{label:"Manticore",id:"manticore",setName:"manticoreSet",beatenBySet:"hellhoundSet"},
+		{label:"Hellhound",id:"hellhound",setName:"hellhoundSet",beatenBySet:"golemSet"},
+	];
+
+	var getRandomCard=[];
+	beasts.forEach(beast=>{
+		for (let p=1;p<4;p++)
+			getRandomCard.push("{getKeyword:"+beast.id+"-"+p+"}");
+	})
+
+
 	return {
 
 		// Thanks to...
@@ -314,6 +329,9 @@ function loadRandomizers() {
 		randomBadRoomEffect:[
 			// [CODEX-Stuff] Special room - The Poisonous Room: Lose 1 HP.
 			"Poisonous gas fills the room, {loseHp:1}"
-		]
+		],
+
+		// Beastcrafters
+		getRandomCard:getRandomCard
 	}
 }

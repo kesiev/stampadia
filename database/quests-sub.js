@@ -22,6 +22,50 @@ function loadQuestsSub() {
 			[ "There a bolt from some kind of machine on the floor.", SHAPE_PUZZLES_CIRCLE_SQUARE+"The bolt turns into ink"+SHAPE_PUZZLES_SOLVED ],
 		];
 
+	// Beastcrafters trading card games events
+	let
+		battles={
+			id:"challengerRoom",
+			atPercentage:{from:1,to:99},
+			items:[{genericItem:"challenger"}],
+			roomDescriptions:[]
+		},
+		boosterPacksList=[],
+		BEASTCRAFTERS={
+			beasts:[
+				{label:"Golem",id:"golem",setName:"golemSet",beatenBySet:"manticoreSet"},
+				{label:"Manticore",id:"manticore",setName:"manticoreSet",beatenBySet:"hellhoundSet"},
+				{label:"Hellhound",id:"hellhound",setName:"hellhoundSet",beatenBySet:"golemSet"},
+			],
+			events:[
+				[battles],
+				[{
+					id:"shopperRoom",
+					atPercentage:{from:1,to:99},
+					items:[{genericItem:"shopper"}],
+					roomDescriptions:[
+						[
+							"{ifMoveOn:shopper}{and}{ifPayGold:3}{then}You open a booster pack{hide}{getRandomCard}",
+							"{ifMoveOn:shopper}{and}{ifPayGold:3}{then}You open a booster pack{hide}{getRandomCard}",
+						],
+						[
+							"{ifMoveOn:shopper}{then}You found a collectable card, {getRandomCard}, {markItem:shopper}"
+						]
+					]
+				}]
+			]
+		};
+
+	for (var i=0;i<BEASTCRAFTERS.beasts.length;i++) {
+		for (var p=1;p<4;p++) {
+			let beast=BEASTCRAFTERS.beasts[i];
+			battles.roomDescriptions.push([
+				"\"Beat my "+beast.label+" "+p+"!\"{newRule}{ifMoveOn:challenger}{and}{ifLoseKeywordSet:"+beast.beatenBySet+"}{then}{randomHighPrize}, {markItem:challenger}",
+				"{ifMoveOn:challenger}{and}{ifLoseKeywordSet:"+beast.setName+"}{andPayGoldToReach:"+(p+1)+"}{then}{randomHighPrize}, {markItem:challenger}",
+			]);
+		}
+	}
+
 	return [
 
 		{
@@ -512,6 +556,7 @@ function loadQuestsSub() {
 				]
 			]
 		},
+
 		{
 			id:"[CODEX-Events] Subquest - The Nothing: A teleport to a place that leaves you no choice.",
 			minRooms:2,
@@ -582,6 +627,12 @@ function loadQuestsSub() {
 					}
 				]
 			]
+		},
+
+		{
+			probability:40,
+			id:"[CODEX-Events] Subquest - The Beastcrafters: A simple trading card game Stampadians used to play. Buy or find new cards and play.",
+			steps:BEASTCRAFTERS.events
 		},
 	]
 
