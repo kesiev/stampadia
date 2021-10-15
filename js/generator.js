@@ -48,6 +48,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		equipment,
 		keywords,
 		keywordsIndex={},
+		keywordsSetsIndex={},
 		enemies=[],		
 		noise=[],
 		questsStructure=[],
@@ -406,6 +407,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{ifGoldLeft<half\}/g,(m,num)=>"<"+(Math.floor(gold/2)+1)+"G left");
 		line=line.replace(/\{ifGoldLeft>half\}/g,(m,num)=>">"+Math.floor(gold/2)+"G left");
 		line=line.replace(/\{ifGoldSpentInFifth:([0-9]+)-([0-9]+)\}/g,(m,num,num2)=>(Math.floor(gold/5)*(num-1)+(num==1?0:1))+"~"+(num2==5?gold:Math.floor(gold/5)*num2)+"G spent");
+		line=line.replace(/\{andPayGoldToReach:([0-9]+)\}/g,(m,num)=>"+ G to reach >="+num);
 
 		// Gold - Actions
 		line=line.replace(/\{gainGold:([0-9]+)\}/g,(m,num)=>"+"+num+"G");
@@ -458,7 +460,19 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			{regex:/\{getKeyword:([^}]+)\}/g,verb:"learn"},
 		].forEach((entry)=>{
 			line=line.replace(entry.regex,(m,id)=>{
-				return entry.verb+" '"+getRandom(keywords).label+"'";
+				return entry.verb+" '"+getRandom(keywords.list).label+"'";
+			});
+		});
+
+		[
+			{regex:/\{ifKeywordSet:([^}]+)\}/g,verb:"know any"},
+			{regex:/\{ifNotKeywordSet:([^}]+)\}/g,verb:"don't know any"},
+			{regex:/\{ifLoseKeywordSet:([^}]+)\}/g,verb:"forget any"},
+			{regex:/\{loseKeywordSet:([^}]+)\}/g,verb:"forget any"},
+			{regex:/\{getKeywordSet:([^}]+)\}/g,verb:"learn any"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				return entry.verb+" '"+getRandom(keywords.sets).label+"...'";
 			});
 		})
 		
@@ -508,6 +522,21 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				let keyword=keywordsIndex[id];
 				if (!keyword) console.warn("Can't find keyword",id);
 				return entry.verb+" '"+(keyword?keyword.label+"'":"???");
+			});
+		});
+
+		// Keywords
+		[
+			{regex:/\{ifKeywordSet:([^}]+)\}/g,verb:"know any"},
+			{regex:/\{ifNotKeywordSet:([^}]+)\}/g,verb:"don't know any"},
+			{regex:/\{ifLoseKeywordSet:([^}]+)\}/g,verb:"forget any"},
+			{regex:/\{loseKeywordSet:([^}]+)\}/g,verb:"forget any"},
+			{regex:/\{getKeywordSet:([^}]+)\}/g,verb:"learn any"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				let keyword=keywordsSetsIndex[id];
+				if (!keyword) console.warn("Can't find keyword",id);
+				return entry.verb+" '"+(keyword?keyword.label+"...'":"???");
 			});
 		})
 
@@ -1151,6 +1180,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			quest,
 			addedQuests=[];
 
+		// Check quests spawn probability
+		for (let k in quests)
+			quests[k].forEach(quest=>{
+				if (quest.probability&&(random(100)>quest.probability)) addedQuests.push(quest);
+			})
+
 		questsStructure.forEach(entry=>{
 			for (let i=0;i<entry.count;i++) {
 				if (entry.debugger) debugger;
@@ -1531,7 +1566,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	// Keywords index
 
 	this.prepareKeywordsIndex=function() {
-		keywords.forEach(keyword=>keywordsIndex[keyword.id]=keyword);
+		keywords.list.forEach(keyword=>keywordsIndex[keyword.id]=keyword);
+		keywords.sets.forEach(set=>keywordsSetsIndex[set.id]=set);
 	}
 
 	// Metadata
