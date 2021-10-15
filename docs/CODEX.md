@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (60 items)
+## Events (61 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -61,6 +61,7 @@
 - Subquest
   - **The Altar**: Sacrify important resources for other advantages.
   - **The Barman**: Pay gold for health or a short mission.
+  - **The Beastcrafters**: A simple trading card game Stampadians used to play. Buy or find new cards and play.
   - **The Bloody Gambler**: Bet HP, roll a die and you may win more HP.
   - **The Elemental Chest**: Find the 2 elemental keys and open a chest containing equipment.
   - **The Fountains**: Decide between two effects.
@@ -128,7 +129,7 @@
 - Trap
   - **The Mimic**: Lose 1 HP.
 
-## Keywords (9 items)
+## Keywords (12 items)
 
 - Keyword
   - **City**: Part of the The End Of Stampadia storyline.
@@ -140,6 +141,10 @@
   - **Press**: Part of the The End Of Stampadia storyline.
   - **Spaceship**: Part of the The End Of Stampadia storyline.
   - **Unluck**: It may bring you bad luck during your adventures...
+- Keyword set
+  - **Golem**: Beastcrafters collectable cards from 1 to 3.
+  - **Hellhound**: Beastcrafters collectable cards from 1 to 3.
+  - **Manticore**: Beastcrafters collectable cards from 1 to 3.
 
 ## Generator (6 items)
 
