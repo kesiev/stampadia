@@ -20,7 +20,7 @@
 			Read <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a> and play <a class=mark href='index.html'>today's page of the Chronicles of Stampadia</a> on your PC here!
 		</p>
 	</div>
-	<div id="table"></div>
+	<div id="table">Please wait...</div>
 	<div id="guide">
 		<p>&#x270E; Draw on the sheet with left button, use the right button to erase.</p>
 		<p><div class="token-0 guidetoken"></div> Drag the <span class=mark>Hero Token</span> around the <span class=mark>Map</span> to mark where your hero is.</p>
@@ -39,6 +39,7 @@ function onl() {
 		
 		var player=new DungeonPlayer(core.generateAdventureDaily());
 		document.getElementById("credits").innerHTML=core.getWebFooter();
+		document.getElementById("table").innerHTML="";
 		player.play(document.getElementById("table"));
 
 	});
