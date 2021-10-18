@@ -30,11 +30,11 @@ A daily print-and-play roguelike adventure you can play offline.
   - Link cell IDs in room cells/room IDs may link to a specific line, that chain the other lines.
 
 ### Ideas - Gameplay
-- [ ] Black squares like crosswords
-  - [ ] Runes that can be broken by events/items
 - [ ] Rooms Table
   - [ ] Asterisk for more hidden rows
 - [ ] Rooms & Dungeon generator
+  - [ ] Black squares like crosswords
+    - [ ] Runes that can be broken by events/items
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
   - [ ] Arena with multiple enemies
@@ -44,6 +44,7 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room describing combat strategy for mobs: berserk, cautious, daring, defensive ...
   - [ ] Arcade variant: damage = atk - defense
 - [ ] Skills & Items
+  - [ ] Invisibility potion: enemy rolls < 6 are discarded for the 3 next rolls
   - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
   - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
   - [ ] Dice roll skill: the hero locks a die for other enemies
@@ -51,6 +52,8 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Rogue: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
 - [ ] New quests
+  - [ ] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
+  - [ ] digesting track: corridor "organic walls are trying to squeeze you, -1HP" until you kill lvl3/4 mob in adjacent room
   - [ ] Exchange xp/hp
   - [ ] Use luck/unluck more
   - [ ] The messenger - bring messages between adventures using keywords
