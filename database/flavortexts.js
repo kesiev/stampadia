@@ -20,6 +20,13 @@ function loadFlavorTexts() {
 			"The wooden door closes behind you.",
 			"Pieces of glass, soaked by black ink, are scattered along dark corridor.",
 			"This corridor is so dark that you begin doubting of your own existence.",
+			"Water drips from stalactites.",
+			"Green ooze covers the walls.",
+			"Ceiling is so low you have to crawl.",
+			"This dirt tunnel is about to collapse.",
+			"Broken stone gates used to block intruders.",
+			"Hundreds of bats call this place home.",
+			"You smell burnt wood.",
 		],
 		rooms:[
 			"A dim light is filtering through the curtains.",
@@ -52,6 +59,14 @@ function loadFlavorTexts() {
 			"Something in the room appears so familiar to you... A thrill crosses your skin.",
 			"The countless leaves of a titanic oak are piled up in the court floor.",
 			"You enter in a room with no openings welcomed by a fierce stink of death.",
+			"Every angle is rounded with plaster. Hounds?", // Tindalos hounds of course - Preuk
+			"A small stream runs from a crack in the wall.",
+			"This looks like a giant chessboard.",
+			"Echoes suggest a much bigger room.",
+			"Your mouth fills with the taste of... strawberry?.",
+			"Above is a night sky with unknown constellations.",
+			"Oversize furniture make you feel insignificant.",
+			"You hear a strange hum from the ground.",
 		]
 	};
 }
