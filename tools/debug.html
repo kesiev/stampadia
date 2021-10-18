@@ -28,6 +28,7 @@ var
 		},
 		dump:{
 			showFake:true,
+			solveRoomRiddles:true,
 			dumpSentences:true,
 			logMissingQuests:true,
 			skipNoise:true,
@@ -76,6 +77,7 @@ function createDungeon() {
 				console.log();
 				dungen.showSVG();
 				dungen.debug();
+				dungen.debugDatabase();
 			} else {
 				if (timer) {
 					timer--;
