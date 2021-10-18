@@ -30,9 +30,8 @@ A daily print-and-play roguelike adventure you can play offline.
   - Link cell IDs in room cells/room IDs may link to a specific line, that chain the other lines.
 
 ### Ideas - Gameplay
-
-- [ ] **Lower damageRatio for all classes**
-  - [ ] Maybe moving 1 HP from LVL1 to LVL2?
+- [ ] Black squares like crosswords
+  - [ ] Runes that can be broken by events/items
 - [ ] Rooms Table
   - [ ] Asterisk for more hidden rows
 - [ ] Rooms & Dungeon generator
@@ -79,6 +78,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Done
 
+- [x] Lower damageRatio for all classes
+  - [x] Maybe moving 1 HP from LVL1 to LVL2?
 - [x] Skills and items
   - [x] Fireball item that damages all enemies in the room.
 - [x] Rooms & Dungeon generator
