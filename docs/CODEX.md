@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (61 items)
+## Events (62 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -63,6 +63,7 @@
   - **The Barman**: Pay gold for health or a short mission.
   - **The Beastcrafters**: A simple trading card game Stampadians used to play. Buy or find new cards and play.
   - **The Bloody Gambler**: Bet HP, roll a die and you may win more HP.
+  - **The Broken Teleport**: Solve the riddle to reach an item.
   - **The Elemental Chest**: Find the 2 elemental keys and open a chest containing equipment.
   - **The Fountains**: Decide between two effects.
   - **The Gambler**: Bet Gold, roll a die and you may win more gold.
@@ -84,7 +85,7 @@
 - Dwarf
   - **The Dwarf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
 
-## Stuff (35 items)
+## Stuff (36 items)
 
 - Equipment
   - **Backflip**: Flip a dice upside down.
@@ -112,6 +113,7 @@
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
   - **The Star Pin**: Gain 1 XP.
+  - **Wrench**: Gives you full health.
 - Shape puzzle
   - **The Bolt**: Which shapes are the right ones?
   - **The Coin With The Hole**: Which shapes are the right ones?
