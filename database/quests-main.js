@@ -2,6 +2,10 @@
 
 function loadQuestsMain() {
 
+	let
+		STARTINGROOMLABELS=["Beginning","Stairs","Enter","Exit"],
+		BOSSROOMLABELS=[];
+
 	return [
 
 		{
@@ -21,6 +25,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"keyRoom",
+						labels:["Boss Key"],
 						atPercentage:{from:50,to:90},
 						items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -29,6 +34,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -43,6 +49,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"Please, hero! Kill the {villainName} and save the {placeName}!\"",
@@ -74,6 +81,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -85,6 +93,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"Please, hero! You're the only one that can stop the {villainName}!\"",
@@ -111,6 +120,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"enemy1room",
+						labels:["First Encounter","One"],
 						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -122,6 +132,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"enemy2room",
+						labels:["Second Encounter","Two"],
 						atPercentage:100,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -133,6 +144,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"enemy3room",
+						labels:["Third Encounter","Three"],
 						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -147,6 +159,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labes:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"Sir, we've to stop the {villainName} forces!\"",
@@ -176,6 +189,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"spellRoom",
+						labels:["Ritual"],
 						atPercentage:55,
 						items:[{id:"enemy",level:1}],						
 						roomDescriptions:[
@@ -187,6 +201,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -200,6 +215,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:spellRoom}{then}You did it!{hide}{stopReading}",
@@ -227,6 +243,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"keyRoom1",
+						labels:["Near Part"],
 						atPercentage:1,
 						items:[{genericItem:"bossKey"}],
 						roomDescriptions:[
@@ -235,6 +252,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"keyRoom2",
+						labels:["Middle Part"],
 						atPercentage:25,
 						items:[{genericItem:"bossKey"},{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -243,6 +261,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"keyRoom3",
+						labels:["Far Part"],
 						atPercentage:60,
 						items:[{genericItem:"bossKey"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -251,6 +270,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -265,6 +285,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"Please, hero! Kill the {villainName} and save the {placeName}!\"",
@@ -289,6 +310,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"npcRoom",
+						labels:["Explorer"],
 						atPercentage:10,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -300,6 +322,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"itemRoom",
+						labels:["Lost","Found"],
 						atPercentage:{from:60,to:90},
 						items:[{genericItem:"item"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -308,6 +331,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -322,6 +346,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"The {explorerName} disappeared days ago. We're worried...\"",
@@ -347,6 +372,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"goodguyroom",
+						labels:["{goodGuyName}"], // TODO testa
 						atPercentage:{from:20,to:30},
 						items:[{genericItem:"goodguy"}],
 						roomDescriptions:[
@@ -358,6 +384,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -372,6 +399,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"The {goodGuyName} ran to the {placeName} alone... Why?\"",
@@ -399,6 +427,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"step1",
+						labels:["First Spot"],
 						atPercentage:20,
 						items:[{genericItem:"goodguy"},{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -410,6 +439,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"step2",
+						labels:["Second Spot"],
 						atPercentage:40,
 						items:[{genericItem:"goodguy"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -421,6 +451,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"step3",
+						labels:["Third Spot","Last Spot"],
 						atPercentage:60,
 						items:[{genericItem:"goodguy"}],
 						roomDescriptions:[
@@ -432,6 +463,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -446,6 +478,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
@@ -475,6 +508,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"step1",
+						labels:["Slave","Slavery","Saving"],
 						atPercentage:20,
 						items:[{genericItem:"slaver"},{id:"enemy",level:0}],
 						roomDescriptions:[ // Pay good, fight bad. Mark is good.
@@ -486,6 +520,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"step2",
+						labels:["Mob","Mobbing"],
 						atPercentage:40,
 						items:[{genericItem:"mobster"},{id:"enemy",level:1}],
 						roomDescriptions:[ // Pay bad, fight good. Mark is bad.
@@ -497,6 +532,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"step3",
+						labels:["Dead","Goodbye"],
 						atPercentage:80,
 						items:[{genericItem:"goodguy"}],
 						roomDescriptions:[ // Pay good, Pay bad. Mark is bad.
@@ -508,6 +544,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[ // Mark is good.
@@ -522,6 +559,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:step1}{and}{ifRoomIsNotMarked:step2}{and}{ifRoomIsMarked:bossRoom}{hide}You sit on the Stampadia thorne.",
@@ -547,6 +585,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"bossRoom1",
+						labels:[],
 						atPercentage:99,
 						items:[{id:"enemy",level:1},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -558,6 +597,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom2",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -572,6 +612,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:BOSSROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"The {villainName} Twins are keeping the {placeName} on their knees!\"",
@@ -599,6 +640,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"part1",
+						labels:["Far part"],
 						atPercentage:{from:99,to:50},
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
@@ -609,6 +651,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"part2",
+						labels:["Near part"],
 						atPercentage:{from:30,to:49},
 						items:[{id:"enemy",level:1},{genericItem:"part"}],
 						roomDescriptions:[
@@ -619,6 +662,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"forge",
+						labels:["Forging","Hammering"],
 						atPercentage:{from:1,to:99},
 						equipment:[{id:"epicWeapon"}],
 						items:[{genericItem:"blacksmith"}],
@@ -631,6 +675,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true},{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
@@ -645,6 +690,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"\"You'll never get out alive! {heroClass}! Please, don't go!\"",
@@ -672,6 +718,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"bookRoom",
+						labels:["Book","Pages"],
 						atPercentage:1,
 						equipment:[{id:"book"}],
 						items:[{genericItem:"book"}],
@@ -685,6 +732,7 @@ function loadQuestsMain() {
 
 					{
 						id:"enlightenment",
+						labels:["Enlightenment"],
 						atPercentage:80,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -695,6 +743,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"abyss",
+						labels:["Abyss","Call","Calling"],
 						atPercentage:99,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -706,6 +755,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						isHiddenRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
@@ -721,6 +771,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
 							"As soon as you arrive to the {placeName} your head feels heavier.",
@@ -747,6 +798,7 @@ function loadQuestsMain() {
 				[
 					{
 						id:"necromancer",
+						labels:["Resurrection","Mad"],
 						atPercentage:98,
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
@@ -757,6 +809,7 @@ function loadQuestsMain() {
 					},
 					{
 						id:"bossRoom",
+						labels:BOSSROOMLABELS,
 						atPercentage:99,
 						items:[{id:"enemy",level:4,ignoreXp:true},{id:"enemy",level:4,ignoreXp:true}],
 						roomDescriptions:[
@@ -771,6 +824,7 @@ function loadQuestsMain() {
 			otherDescriptions:[
 				{
 					at:"startingRoom",
+					labels:BOSSROOMLABELS,
 					roomDescriptions:[
 						[
 							"The {madScientistName} is trying to bring the {villainName} back!",
