@@ -268,6 +268,17 @@ function loadRandomizers() {
 			"\"Please... kill me...\"",
 			"\"My body... is...\"",
 		],
+		randomBrokenTeleport:[
+			"There is an unfinished teleport.",
+			"Someone broke this teleport.",
+			"There is a teleport that doesn't work well.",
+			"Someone teared down this teleport."
+		],
+		randomFixedTeleport:[
+			"You managed to fix the teleport in some way!",
+			"It worked!",
+			"The teleport started working!"
+		],
 		
 		// Loot
 		randomGold:[
