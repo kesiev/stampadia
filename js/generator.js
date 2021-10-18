@@ -29,6 +29,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				replace:"move anywhere in room {room:1}"
 			},
 			{
+				regex:/{teleportToRiddleRoom:([^}]*)}/g,
+				replace:"move anywhere in {roomRiddle:1}"
+			},
+			{
 				regex:/{ifMoveOn:([^}]*)}/g,
 				replace:"move [{item:1}]"
 			},
@@ -61,6 +65,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		mapGuidesEvery=0,
 		fakeRooms=[],
 		rooms=[],
+		roomLabels={
+			index:{},
+			byRoomId:{},
+			rooms:[]
+		},
 		allRooms=[],
 		flavorTexts,
 		quests,
@@ -166,6 +175,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		for (let i=0;i<list1.length;i++)
 			if (list2.indexOf(list1[i])!=-1) return true;
 		return false;
+	}
+
+	function generateRoomRiddle(roomid) {
+		let riddleRoom=0;
+		do {
+			riddleRoom=getRandom(roomLabels.rooms);
+		} while (riddleRoom.id==roomid);
+		let delta=roomid-riddleRoom.id;
+		return getRandom(riddleRoom.labels)+" Room "+(debug.solveRoomRiddles?"("+riddleRoom.id+") ":"")+(delta>0?"+ ":"- ")+Math.abs(delta)+(debug.solveRoomRiddles?" = "+roomid:"");
 	}
 
 	function setCheckBox(svg,checkbox,number) {
@@ -481,8 +499,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				const matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
+						case "roomRiddle":
 						case "room":{
 							if (!placeholders.roomIds[matches[value]]) placeholders.roomIds[matches[value]]=getRandom(rooms);
+							if (marker=="roomRiddle") return generateRoomRiddle(placeholders.roomIds[matches[value]].id);
 							return placeholders.roomIds[matches[value]].id;
 						}
 						case "item":{
@@ -545,12 +565,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				const matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
+						case "roomRiddle":
 						case "room":{
 							let room;
 							if (placeholders) room=placeholders.roomIds[matches[value]];
 							if (!room) room=globalPlaceholders.roomIds[matches[value]];
-							if (room) return room.id;
-							else {
+							if (room) {
+								if (marker=="roomRiddle") return generateRoomRiddle(room.id);
+								else return room.id;
+							} else {
 								console.warn("can't find room",matches[value],"in line",line);
 								return "???";
 							}
@@ -1197,6 +1220,31 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	}
 
+	this.generateDictionaries=function() {
+		for (let k in roomLabels.byRoomId)
+			roomLabels.rooms.push({id:k,labels:roomLabels.byRoomId[k]});
+	}
+
+	function updateRoomLabels(roomid,labels) {
+		if (labels)
+			labels.forEach(label=>{
+				if (roomLabels.index[label]) {
+					// Labels are colliding, so they aren't meaningful
+					if (roomLabels.index[label]!=-1) {
+						let labelsList=roomLabels.byRoomId[roomLabels.index[label]];
+						labelsList.splice(labelsList.indexOf(label),1);
+						if (labelsList.length==0) delete roomLabels.byRoomId[roomLabels.index[label]];
+						roomLabels.index[label]=-1; // Disable the room label
+					}
+				} else {
+					// Register the new label
+					roomLabels.index[label]=roomid;
+					if (!roomLabels.byRoomId[roomid]) roomLabels.byRoomId[roomid]=[];
+					roomLabels.byRoomId[roomid].push(label);
+				}
+			})
+	}
+
 	this.applyQuest=function(subroute,quest,steps) {
 		const
 			placeholders={
@@ -1255,6 +1303,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				if (step.isHiddenRoom) room.makeHidden();
 				else if (step.isDeadEndRoom) room.makeDeadEnd();
 				else if (step.isOptionalRoom) room.makeOptional();
+
+				updateRoomLabels(room.id,step.labels);
 			}
 		});
 
@@ -1270,6 +1320,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						placeholders:placeholders
 					});
 				})
+				updateRoomLabels(room.id,line.labels);
 			});
 
 		// Set adventure metadata
@@ -1704,6 +1755,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 			// Prepare quests
 			this.addQuests();
+			this.generateDictionaries();
 
 			// Generate actors
 			this.generateEnemies();
@@ -1924,6 +1976,44 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		document.body.style.overflow="scroll";
 		document.body.appendChild(canvas);
 		document.body.appendChild(div);
+	}
+
+	this.debugDatabase=function() {
+		console.warn("\n\nDebugging data for database\n\n");
+		var labels={};
+		for (let k in quests) {
+			let questSet=quests[k];
+			questSet.forEach(quest=>{
+				let
+					warnMissingLabels=false;
+					questLabels={};
+				quest.steps.forEach(step=>{
+					step.forEach(room=>{
+						if (!room.labels) warnMissingLabels=true;
+						else room.labels.forEach(label=>questLabels[label]=1)
+					});
+				});
+				if (quest.otherDescriptions)
+					quest.otherDescriptions.forEach(step=>{
+						if (step.labels) step.labels.forEach(label=>questLabels[label]=1)
+					});
+				for (let k in questLabels) {
+					if (!labels[k]) labels[k]=[];
+					labels[k].push(quest);
+				}
+				if (warnMissingLabels) console.log("Quest",quest.id,"has missing labels");
+			});
+		}
+
+		for (let k in labels)
+			if (labels[k].length>1) {
+				console.warn("Duplicate label",k);
+				labels[k].forEach(quest=>{
+					console.log(" \\_ ",quest.id);
+				})
+			}
+
+		console.log(roomLabels);
 	}
 
 	this.downloadPDF=function(filename) {
