@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (62 items)
+## Events (63 items)
 
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -75,6 +75,7 @@
   - **The Nothing**: A teleport to a place that leaves you no choice.
   - **The Shapes Puzzle**: Get the right shapes to solve the puzzle.
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
+  - **The Tapeworm**: Kill the monster to stop him digesting you.
   - **The Trainer**: Face his test and earn gold.
 
 ## Heroes (3 items)
@@ -84,14 +85,16 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (36 items)
+## Stuff (37 items)
 
 - Equipment
+  - **Apple**: Gain 1/2 max HP.
   - **Backflip**: Flip a dice upside down.
   - **Book**: Lose 1 HP, deal 1 damage.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
+  - **Invisibility**: For the next 3 enemy turn, discard all dice less than 6.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.
   - **Mirror**: Teleport back to the mirror room.
@@ -112,7 +115,6 @@
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
   - **The Star Pin**: Gain 1 XP.
-  - **Wrench**: Gives you full health.
 - Shape puzzle
   - **The Bolt**: Which shapes are the right ones?
   - **The Coin With The Hole**: Which shapes are the right ones?
