@@ -718,6 +718,39 @@ function loadQuestsSub() {
 				]
 			)
 		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Tapeworm: Kill the monster to stop him digesting you.",
+			minRooms:3,
+			steps:[
+				[
+					{
+						id:"monsterRoom",
+						labels:["Eater","Parasite","Head"],
+						items:[{id:"enemy",level:2}],
+						atPercentage:99,
+						roomDescriptions:[
+							"\"Yummy meat... escaped... stomach?\"",
+							"\"{heroClass} food... hurts!\"",
+							"\"Food... go back... belly!\""
+						].map(line=>[
+							line, "{ifKilledLastFoe}{then}{gainHp:1}, {markRoom:monsterRoom}"
+						])
+					},
+					{
+						id:"digestingRoom",
+						labels:["Stomach","Eating"],
+						atPercentage:{from:50,to:98},
+						roomDescriptions:[
+							[
+								"Organic walls are trying to squeeze you.",
+								"{ifEnterRoom}{and}{ifRoomIsNotMarked:monsterRoom}{then}The whole room is trying to digest you, {loseHp:1}"
+							]
+						]
+					}
+				]
+			]
+		},
 	]
 
 }
