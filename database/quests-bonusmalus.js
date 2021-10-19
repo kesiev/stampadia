@@ -3,6 +3,7 @@
 function loadQuestsBonus() {
 
 	const
+		QUEST_RARE=40,
 		SHOPITEMS=[
 			{cost:3,effect:"{gainHp:1}"},
 			{cost:10,effect:"{gainHp:2}"},
@@ -140,7 +141,7 @@ function loadQuestsBonus() {
 		},
 
 		{
-			probability:40,
+			probability:QUEST_RARE,
 			id:"[CODEX-Events] Bonus - The Clover: It may bring good luck in your future adventures...",
 			minRooms:2,
 			steps:[
@@ -194,7 +195,8 @@ function loadQuestsBonus() {
 }
 
 function loadQuestsMalus() {
-
+	const QUEST_RARE=40;
+	
 	return [
 
 		{
@@ -322,7 +324,7 @@ function loadQuestsMalus() {
 		},
 
 		{
-			probability:40,
+			probability:QUEST_RARE,
 			id:"[CODEX-Events] Malus - The Small Horn: It may bring bad luck in your future adventures...",
 			minRooms:2,
 			steps:[
