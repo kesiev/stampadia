@@ -13,9 +13,9 @@
 	<title>Chronicles of Stampadia</title>
 </head>
 <body onload="onl()">
-	<div id="waitbox">Please wait...</div>
+	<!--div id="waitbox">Please wait...</div-->
 	<div id="box">
-		<div class="header" id="adventureHeader">Please wait...</div>
+		<div class="header" id="adventureHeader"></div>
 		<div class="title download" id="adventureTitle"></div>
 		<div class="ruler"></div>
 		<div class="tips">
@@ -44,7 +44,7 @@ function onl() {
 				" &dash; <a class=mark href='https://discord.gg/EDYP2N4RMn'>Discord</a>"+
 				" &dash; <a class=mark href='https://boardgamegeek.com/boardgame/345607/chronicles-stampadia'>BGG</a>"+
 				" &dash; <a target=_blank class=mark href='play.html'>No printer or tokens?</a>";
-			document.getElementById("waitbox").style.display="none";
+			//document.getElementById("waitbox").style.display="none";
 			document.getElementById("box").className="show";
 
 			if (document.location.href.match(/\?show=1/)) dungen.showSVG();

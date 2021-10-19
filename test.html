@@ -13,7 +13,7 @@
 	<title>Chronicles of Stampadia - TEST</title>
 </head>
 <body onload="onl()" style="background-color:#900">
-	<div id="waitbox">Please wait...</div>
+	<!--div id="waitbox">Please wait...</div-->
 	<div id="box">
 		<div class="header" id="adventureHeader"></div>
 		<div class="title download" id="adventureTitle"></div>
@@ -43,7 +43,7 @@ function onl() {
 			core.getWebFooter()+
 			" &dash; <a target=_blank class=mark href='testplay.html'>No printer or tokens?</a>"+
 			" &dash; <a class=mark href='index.html'>Go back to the project page</a>";
-		document.getElementById("waitbox").style.display="none";
+		//document.getElementById("waitbox").style.display="none";
 		document.getElementById("box").className="show";
 		
 		var downloads=document.getElementsByClassName("download");
