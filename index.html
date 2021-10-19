@@ -13,6 +13,7 @@
 	<title>Chronicles of Stampadia</title>
 </head>
 <body onload="onl()">
+	<!--div id="waitbox">Please wait...</div-->
 	<div id="box">
 		<div class="header" id="adventureHeader"></div>
 		<div class="title download" id="adventureTitle"></div>
@@ -26,37 +27,43 @@
 
 function onl() {
 
-	var core=new Core();
+	setTimeout(function(){
 
-	core.initialize(()=>{
+		var core=new Core();
 
-		var dungen=core.generateAdventureDaily();
-		dungen.prepare();
+		core.initialize(()=>{
 
-		document.getElementById("adventureHeader").innerHTML=dungen.metadata.header.replace(/_+/,"<span class='you'>You</span>");
-		document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
-		document.getElementById("credits").innerHTML=
-			core.getWebFooter()+
-			" &dash; <a class=mark href='learn.html'>Learn how to play</a>"+
-			" &dash; <a class=mark href='https://discord.gg/EDYP2N4RMn'>Discord</a>"+
-			" &dash; <a class=mark href='https://boardgamegeek.com/boardgame/345607/chronicles-stampadia'>BGG</a>"+
-			" &dash; <a target=_blank class=mark href='play.html'>No printer or tokens?</a>";
-		document.getElementById("box").className="show";
+			var dungen=core.generateAdventureDaily();
+			dungen.prepare();
 
-		if (document.location.href.match(/\?show=1/)) dungen.showSVG();
-		else if (document.location.href.match(/\?play=1/)) {
-			var player=new DungeonPlayer(dungen);
-			player.play();
-		} else if (document.location.href.match(/\?debug=1/)) dungen.debug();
-		else {
+			document.getElementById("adventureHeader").innerHTML=dungen.metadata.header.replace(/_+/,"<span class='you'>You</span>");
+			document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
+			document.getElementById("credits").innerHTML=
+				core.getWebFooter()+
+				" &dash; <a class=mark href='learn.html'>Learn how to play</a>"+
+				" &dash; <a class=mark href='https://discord.gg/EDYP2N4RMn'>Discord</a>"+
+				" &dash; <a class=mark href='https://boardgamegeek.com/boardgame/345607/chronicles-stampadia'>BGG</a>"+
+				" &dash; <a target=_blank class=mark href='play.html'>No printer or tokens?</a>";
+			//document.getElementById("waitbox").style.display="none";
+			document.getElementById("box").className="show";
 
-			var downloads=document.getElementsByClassName("download");
+			if (document.location.href.match(/\?show=1/)) dungen.showSVG();
+			else if (document.location.href.match(/\?play=1/)) {
+				var player=new DungeonPlayer(dungen);
+				player.play();
+			} else if (document.location.href.match(/\?debug=1/)) dungen.debug();
+			else {
 
-			for (var i=0;i<downloads.length;i++)
-				downloads[i].onclick=()=>dungen.downloadPDF(dungen.coreMetadata.filename+".pdf");
+				var downloads=document.getElementsByClassName("download");
 
-		}
-	});
+				for (var i=0;i<downloads.length;i++)
+					downloads[i].onclick=()=>dungen.downloadPDF(dungen.coreMetadata.filename+".pdf");
+
+			}
+		});
+	},500);
+
+	
 
 }
 

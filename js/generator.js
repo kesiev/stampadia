@@ -29,6 +29,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				replace:"move anywhere in room {room:1}"
 			},
 			{
+				regex:/{teleportToRiddleRoom:([^}]*)}/g,
+				replace:"move anywhere in {roomRiddle:1}"
+			},
+			{
 				regex:/{ifMoveOn:([^}]*)}/g,
 				replace:"move [{item:1}]"
 			},
@@ -61,6 +65,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		mapGuidesEvery=0,
 		fakeRooms=[],
 		rooms=[],
+		roomLabels={
+			index:{},
+			byRoomId:{},
+			rooms:[]
+		},
 		allRooms=[],
 		flavorTexts,
 		quests,
@@ -166,6 +175,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		for (let i=0;i<list1.length;i++)
 			if (list2.indexOf(list1[i])!=-1) return true;
 		return false;
+	}
+
+	function generateRoomRiddle(roomid) {
+		let riddleRoom=0;
+		do {
+			riddleRoom=getRandom(roomLabels.rooms);
+		} while (riddleRoom.id==roomid);
+		let delta=roomid-riddleRoom.id;
+		return getRandom(riddleRoom.labels)+" Room "+(debug.solveRoomRiddles?"("+riddleRoom.id+") ":"")+(delta>0?"+ ":"- ")+Math.abs(delta)+(debug.solveRoomRiddles?" = "+roomid:"");
 	}
 
 	function setCheckBox(svg,checkbox,number) {
@@ -298,27 +316,47 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		}
 	}
 
-	function shortestPath(room,exclude,path) {
-		if (!path) path=[];
-		if (!exclude) exclude=[];
-		if (room.isStartingRoom) return path; else {
-			path.push(room.id);
-			const subpaths=[];
-			room.exits.forEach(exit=>{
+	function shortestPath(room,exclude) {
+		if (
+			room.isStartingRoom||
+			(exclude&&(exclude.indexOf(room.id)!=-1))
+		) return [];
+		let
+			queue = [ room ],
+			visited = { },
+			predecessor = {},
+			tail = 0;
+			visited[room.id]=1;
+		while (tail < queue.length) {
+			let
+				u = queue[tail++],
+				neighbors = u.exits;
+			for (let i = 0; i < neighbors.length; ++i) {
+				let exit = neighbors[i];
 				if (
-						(!exit.toRoom.isOptionalRoom)&&
-						(path.indexOf(exit.toRoom.id)==-1)&&
-						(exclude.indexOf(exit.toRoom.id)==-1)
-				) {
-					const shortest=shortestPath(exit.toRoom,exclude,clone(path));
-					if (shortest) subpaths.push(shortest);
+					(visited[exit.toRoom.id])||
+					(exit.toRoom.isOptionalRoom)||
+					(exclude&&(exclude.indexOf(exit.toRoom.id)!=-1))
+				) continue;
+				let v=exit.toRoom;
+				visited[v.id] = 1;
+				if (v.isStartingRoom) {
+					let path = [ ];
+					while (u !== room) {	        
+						path.push(u.id);
+						u = predecessor[u.id];
+					}
+					path.push(u.id);
+					path.reverse();
+					return path;
 				}
-			});
-			subpaths.sort(sortByLength);
-			return subpaths[0];
+				predecessor[v.id] = u;
+				queue.push(v);
+			}
 		}
+		return [];
 	}
-
+	
 	function formatRandomizers(line) {
 		return line.replace(/\{([^}]*)\}/g,(m,match)=>{
 			const
@@ -368,6 +406,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{ifHeroTurn}","hero turn");
 		line=line.replaceAll("{ifBeforeHeroRollInFight}","before hero turn roll");
 		line=line.replaceAll("{ifEveryBattleRoundStarts}","a battle round starts");
+		line=line.replace(/\{ifNextEnemyRolls:([0-9]+)\}/g,(m,num)=>"next "+num+" enemy turn rolls");
+		line=line.replace(/\{ifNextHeroRolls:([0-9]+)\}/g,(m,num)=>"next "+num+" hero  turn rolls");
 
 		// Fight turn - Actions
 		line=line.replaceAll("{pass}","pass");
@@ -392,6 +432,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// HP - Actions
 		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
 		line=line.replaceAll("{loseFullHp}","-"+hero.maxHp+"HP");
+		line=line.replaceAll("{gainHalfHp}","+"+Math.ceil(hero.maxHp/2)+"HP");
+		line=line.replaceAll("{loseHalfHp}","-"+Math.ceil(hero.maxHp/2)+"HP");
 		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
 		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
 
@@ -421,6 +463,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Dice - Actions
 		line=line.replace(/\{setDieTo:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"set "+num+" "+(num==1?"die":"dice")+" to "+num2);
 		line=line.replace(/\{discardAnyDie:([0-9]+)\}/g,(m,num)=>"discard "+num+" "+(num==1?"die":"dice"));
+		line=line.replace(/\{discardAllDie<=:([0-9]+)\}/g,(m,num)=>"discard dice <="+num);
 		line=line.replace(/\{flipDieUpsideDown:([0-9]+)\}/g,(m,num)=>"flip "+num+" "+(num==1?"die":"dice"));
 		line=line.replaceAll("{playLowerDieFirst}","play lower die first");
 		line=line.replaceAll("{placeDiceInSameColumn}","play dice in same column");
@@ -481,8 +524,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				const matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
+						case "roomRiddle":
 						case "room":{
 							if (!placeholders.roomIds[matches[value]]) placeholders.roomIds[matches[value]]=getRandom(rooms);
+							if (marker=="roomRiddle") return generateRoomRiddle(placeholders.roomIds[matches[value]].id);
 							return placeholders.roomIds[matches[value]].id;
 						}
 						case "item":{
@@ -545,12 +590,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				const matches=arguments;
 				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
+						case "roomRiddle":
 						case "room":{
 							let room;
 							if (placeholders) room=placeholders.roomIds[matches[value]];
 							if (!room) room=globalPlaceholders.roomIds[matches[value]];
-							if (room) return room.id;
-							else {
+							if (room) {
+								if (marker=="roomRiddle") return generateRoomRiddle(room.id);
+								else return room.id;
+							} else {
 								console.warn("can't find room",matches[value],"in line",line);
 								return "???";
 							}
@@ -746,6 +794,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			})
 		}
 
+		this.shuffleExits=function() {
+			shuffleArray(this.exits)
+		}
+
 		this.makeFake=function() {
 			this.isFake=true;
 			this.exits=[];
@@ -802,7 +854,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	}
 
 	this.scatterRooms=function() {
-		// TODO continua per un pò a distribuire le stanze
 		let
 			valid=false,
 			priorities=getRandom(roomPriorities),
@@ -819,14 +870,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		let minx, miny;
 		let w, h;
-		for (let i=0;i<100;i++) {
+		while (!valid) {
 			minx=9999;
 			miny=9999;
 			let
 				maxx=0,
 				maxy=0,
 				angle=random(Math.PI*2);
-			for (i=0;i<rooms.length;i++) {
+			for (let i=0;i<rooms.length;i++) {
 				angle+=0.1+random(1);
 				let
 					ok=false,
@@ -866,7 +917,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			w=maxx-minx;
 			h=maxy-miny;
 			valid=((w<=mapwidth)&&(h<=mapheight));
-			if (valid) break;				
 		}
 		
 		if (valid) {
@@ -923,6 +973,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		});
 		newRooms.forEach(room=>room.removeRooms(fakeRooms));
 		newRooms.forEach(room=>room.createEntrances());
+		newRooms.forEach(room=>room.shuffleExits());
 		rooms=newRooms;
 	}
 
@@ -1041,10 +1092,17 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							// Room may host a hidden room
 							if (success&&(step.isOptionalRoom||step.isHiddenRoom||step.isDeadEndRoom)) {
 								var avoidRooms=[room.room.id];
-								rooms.forEach(otherroom=>{
-									var path=shortestPath(otherroom,avoidRooms);
-									if (!path) success=false;
-								});
+								for (let j=0;j<rooms.length;j++)
+									if (
+											!rooms[j].isStartingRoom&&
+											(rooms[j].id!=room.room.id)
+									) {
+										var path=shortestPath(rooms[j],avoidRooms);
+										if (!path.length) {
+											success=false;
+											break;
+										}
+									}
 							}
 
 							// Room must fit the required amount of items
@@ -1197,6 +1255,31 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	}
 
+	this.generateDictionaries=function() {
+		for (let k in roomLabels.byRoomId)
+			roomLabels.rooms.push({id:k,labels:roomLabels.byRoomId[k]});
+	}
+
+	function updateRoomLabels(roomid,labels) {
+		if (labels)
+			labels.forEach(label=>{
+				if (roomLabels.index[label]) {
+					// Labels are colliding, so they aren't meaningful
+					if (roomLabels.index[label]!=-1) {
+						let labelsList=roomLabels.byRoomId[roomLabels.index[label]];
+						labelsList.splice(labelsList.indexOf(label),1);
+						if (labelsList.length==0) delete roomLabels.byRoomId[roomLabels.index[label]];
+						roomLabels.index[label]=-1; // Disable the room label
+					}
+				} else {
+					// Register the new label
+					roomLabels.index[label]=roomid;
+					if (!roomLabels.byRoomId[roomid]) roomLabels.byRoomId[roomid]=[];
+					roomLabels.byRoomId[roomid].push(label);
+				}
+			})
+	}
+
 	this.applyQuest=function(subroute,quest,steps) {
 		const
 			placeholders={
@@ -1255,6 +1338,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				if (step.isHiddenRoom) room.makeHidden();
 				else if (step.isDeadEndRoom) room.makeDeadEnd();
 				else if (step.isOptionalRoom) room.makeOptional();
+
+				updateRoomLabels(room.id,step.labels);
 			}
 		});
 
@@ -1270,6 +1355,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						placeholders:placeholders
 					});
 				})
+				updateRoomLabels(room.id,line.labels);
 			});
 
 		// Set adventure metadata
@@ -1704,6 +1790,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 			// Prepare quests
 			this.addQuests();
+			this.generateDictionaries();
 
 			// Generate actors
 			this.generateEnemies();
@@ -1924,6 +2011,44 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		document.body.style.overflow="scroll";
 		document.body.appendChild(canvas);
 		document.body.appendChild(div);
+	}
+
+	this.debugDatabase=function() {
+		console.warn("\n\nDebugging data for database\n\n");
+		var labels={};
+		for (let k in quests) {
+			let questSet=quests[k];
+			questSet.forEach(quest=>{
+				let
+					warnMissingLabels=false;
+					questLabels={};
+				quest.steps.forEach(step=>{
+					step.forEach(room=>{
+						if (!room.labels) warnMissingLabels=true;
+						else room.labels.forEach(label=>questLabels[label]=1)
+					});
+				});
+				if (quest.otherDescriptions)
+					quest.otherDescriptions.forEach(step=>{
+						if (step.labels) step.labels.forEach(label=>questLabels[label]=1)
+					});
+				for (let k in questLabels) {
+					if (!labels[k]) labels[k]=[];
+					labels[k].push(quest);
+				}
+				if (warnMissingLabels) console.log("Quest",quest.id,"has missing labels");
+			});
+		}
+
+		for (let k in labels)
+			if (labels[k].length>1) {
+				console.warn("Duplicate label",k);
+				labels[k].forEach(quest=>{
+					console.log(" \\_ ",quest.id);
+				})
+			}
+
+		console.log(roomLabels);
 	}
 
 	this.downloadPDF=function(filename) {

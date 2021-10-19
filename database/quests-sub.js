@@ -3,6 +3,7 @@
 function loadQuestsSub() {
 
 	const
+		QUEST_RARE=40,
 		SHAPE_PUZZLES_CIRCLE_TRIANGLE="{ifMoveOn:puzzle}{and}{ifRoomIsMarked:circleRoom}{and}{ifRoomIsMarked:triangleRoom}{and}{ifRoomIsNotMarked:squareRoom}{then}",
 		SHAPE_PUZZLES_SQUARE_TRIANGLE="{ifMoveOn:puzzle}{and}{ifRoomIsNotMarked:circleRoom}{and}{ifRoomIsMarked:triangleRoom}{and}{ifRoomIsMarked:squareRoom}{then}",
 		SHAPE_PUZZLES_CIRCLE_SQUARE="{ifMoveOn:puzzle}{and}{ifRoomIsMarked:circleRoom}{and}{ifRoomIsNotMarked:triangleRoom}{and}{ifRoomIsMarked:squareRoom}{then}",
@@ -26,6 +27,7 @@ function loadQuestsSub() {
 	let
 		battles={
 			id:"challengerRoom",
+			labels:["Challenger","Card"],
 			atPercentage:{from:1,to:99},
 			items:[{genericItem:"challenger"}],
 			roomDescriptions:[]
@@ -41,6 +43,7 @@ function loadQuestsSub() {
 				[battles],
 				[{
 					id:"shopperRoom",
+					labels:["Booster"],
 					atPercentage:{from:1,to:99},
 					items:[{genericItem:"shopper"}],
 					roomDescriptions:[
@@ -75,6 +78,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"guardian1",
+						labels:["Near Guardian"],
 						atPercentage:60,
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
@@ -86,6 +90,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"guardian2",
+						labels:["Far Guardian"],
 						atPercentage:99,
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
@@ -106,6 +111,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"room1",
+						labels:["Near Waters"],
 						atPercentage:60,
 						items:[{genericItem:"switch"}],
 						roomDescriptions:[
@@ -114,6 +120,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"room2",
+						labels:["Far Waters"],
 						atPercentage:99,
 						items:[{genericItem:"switch"}],
 						roomDescriptions:[
@@ -131,6 +138,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"switchRoom",
+						labels:["Switch"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"switch"}],
 						roomDescriptions:[
@@ -139,6 +147,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"switchEffect",
+						labels:["Switched"],
 						atPercentage:{from:1,to:99},
 						roomDescriptions:[
 							[ "{ifRoomIsMarked:switchRoom}{and}{ifRoomIsNotMarked:switchEffect}{then}{hide}{randomGoodRoomEffect+randomBadRoomEffect}, {markRoom:switchEffect}" ]
@@ -155,6 +164,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"keyRoom",
+						labels:["Lock Key"],
 						atPercentage:60,
 						items:[{genericItem:"key"}],
 						roomDescriptions:[
@@ -164,6 +174,7 @@ function loadQuestsSub() {
 					{
 						id:"chestRoom1",
 						atPercentage:1,
+						labels:["First Chest"],
 						items:[{genericItem:"chest"}],
 						roomDescriptions:[
 							["{ifMoveOn:chest}{and}{ifRoomIsMarked:keyRoom}{and}{ifRoomIsNotMarked:chestRoom1}{then}You found{hide}{randomGoodLoot+randomBadLoot}, {markRoom:chestRoom1}, {markRoom:chestRoom2}"]
@@ -171,6 +182,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"chestRoom2",
+						labels:["Last Chest"],
 						atPercentage:99,
 						items:[{genericItem:"chest"}],
 						roomDescriptions:[
@@ -188,6 +200,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"keyRoom",
+						labels:["Good Key"],
 						atPercentage:99,
 						items:[{genericItem:"key"}],
 						roomDescriptions:[
@@ -196,6 +209,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"chestRoom1",
+						labels:["Tiny Chest"],
 						atPercentage:1,
 						items:[{genericItem:"chest"}],
 						roomDescriptions:[
@@ -213,6 +227,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"keyRoom",
+						labels:["Betting","Bet"],
 						atPercentage:99,
 						items:[{genericItem:"gambler"}],
 						roomDescriptions:[
@@ -237,6 +252,7 @@ function loadQuestsSub() {
 			].map(chest=>[
 				{
 					id:"keyRoom1",
+					labels:["First "+chest.key],
 					atPercentage:20,
 					items:[{genericItem:"key"},{id:"enemy",level:0}],
 					roomDescriptions:[
@@ -245,6 +261,7 @@ function loadQuestsSub() {
 				},
 				{
 					id:"keyRoom2",
+					labels:["Last "+chest.key],
 					atPercentage:60,
 					items:[{genericItem:"key"},{id:"enemy",level:1}],
 					roomDescriptions:[
@@ -253,6 +270,7 @@ function loadQuestsSub() {
 				},
 				{
 					id:"chestRoom",
+					labels:["Great Chest"],
 					atPercentage:99,
 					items:[{genericItem:"chest"}],
 					equipment:[{id:chest.content}],
@@ -265,6 +283,7 @@ function loadQuestsSub() {
 
 		{
 			id:"[CODEX-Events] Subquest - The Trainer: Face his test and earn gold.",
+			probability:QUEST_RARE,
 			minRooms:1,
 			debug:true,
 			steps:[
@@ -274,6 +293,7 @@ function loadQuestsSub() {
 			].map(trainer=>[
 				{
 					id:"trainerRoom",
+					labels:["Training"],
 					atPercentage:99,
 					items:[{genericItem:"trainer"}],
 					equipment:[{id:trainer.test}],
@@ -291,6 +311,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"keyRoom",
+						labels:["Risky","Risk"],
 						atPercentage:99,
 						items:[{genericItem:"gambler"}],
 						roomDescriptions:[
@@ -306,11 +327,13 @@ function loadQuestsSub() {
 
 		{
 			id:"[CODEX-Events] Subquest - The Altar: Sacrify important resources for other advantages.",
+			probability:QUEST_RARE,
 			minRooms:2,
 			steps:[
 				[
 					{
 						id:"keyRoom",
+						labels:["Pray","Prayer"],
 						atPercentage:99,
 						items:[{genericItem:"altar"}],
 						roomDescriptions:[
@@ -328,6 +351,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"answerRoom",
+						labels:["Answer"],
 						atPercentage:10,
 						items:[{genericItem:"sphynx"}],
 						shuffleRoomDescriptions:true,
@@ -340,6 +364,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"questionRoom",
+						labels:["Question"],
 						atPercentage:99,
 						items:[{genericItem:"statue"}],
 						shuffleRoomDescriptions:true,
@@ -355,6 +380,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"answerRoom",
+						labels:["Answer"],
 						atPercentage:10,
 						items:[{genericItem:"sphynx"}],
 						shuffleRoomDescriptions:true,
@@ -367,6 +393,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"questionRoom",
+						labels:["Question"],
 						atPercentage:99,
 						items:[{genericItem:"statue"}],
 						shuffleRoomDescriptions:true,
@@ -388,6 +415,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"corpseRoom",
+						labels:["Victim","Innocence"],
 						atPercentage:10,
 						items:[{genericItem:"corpse"}],
 						roomDescriptions:[
@@ -399,6 +427,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"killerRoom",
+						labels:["Vegeance","Justice"],
 						atPercentage:99,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -419,6 +448,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"barmanRoom",
+						labels:["Alcohol","Serving","Drinking"],
 						atPercentage:10,
 						items:[{genericItem:"barman"}],
 						roomDescriptions:[
@@ -430,6 +460,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"missionRoom",
+						labels:["Rumors","Rumored"],
 						atPercentage:99,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -443,6 +474,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"barmanRoom",
+						labels:["Alcohol","Serving","Drinking"],
 						atPercentage:10,
 						items:[{genericItem:"barman"}],
 						roomDescriptions:[
@@ -454,6 +486,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"missionRoom",
+						labels:["Rumors","Rumored"],
 						atPercentage:99,
 						items:[{genericItem:"item"}],
 						roomDescriptions:[
@@ -474,6 +507,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"squareRoom",
+						labels:["Shapes"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"square"},{genericItem:"triangle"}],
 						roomDescriptions:[
@@ -485,6 +519,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"circleRoom",
+						labels:["Shape"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"circle"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -493,6 +528,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"triangleRoom",
+						labels:["Hint"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"puzzle"}],
 						roomDescriptions:SHAPE_PUZZLES
@@ -502,6 +538,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"squareRoom",
+						labels:["Shapes"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"square"},{genericItem:"circle"}],
 						roomDescriptions:[
@@ -513,6 +550,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"triangleRoom",
+						labels:["Shape"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"triangle"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -521,6 +559,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"circleRoom",
+						labels:["Hint"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"puzzle"}],
 						roomDescriptions:SHAPE_PUZZLES
@@ -530,6 +569,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"triangleRoom",
+						labels:["Shapes"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"triangle"},{genericItem:"circle"}],
 						roomDescriptions:[
@@ -541,6 +581,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"squareRoom",
+						labels:["Shape"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"square"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -549,6 +590,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"circleRoom",
+						labels:["Hint"],
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"puzzle"}],
 						roomDescriptions:SHAPE_PUZZLES
@@ -564,6 +606,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"teleportRoom",
+						labels:["Sleeping"],
 						atPercentage:10,
 						items:[{genericItem:"teleport"}],
 						roomDescriptions:[
@@ -574,6 +617,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"switchRoom",
+						labels:["Wake Up"],
 						atPercentage:99,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -584,6 +628,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"hiddenRoom",
+						labels:["Hidden"],
 						isHiddenRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"item"}],
@@ -598,6 +643,7 @@ function loadQuestsSub() {
 				[
 					{
 						id:"teleportRoom",
+						labels:["Sleeping"],
 						atPercentage:10,
 						items:[{genericItem:"teleport"}],
 						roomDescriptions:[
@@ -608,6 +654,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"switchRoom",
+						labels:["Wake Up"],
 						atPercentage:99,
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -618,6 +665,7 @@ function loadQuestsSub() {
 					},
 					{
 						id:"hiddenRoom",
+						labels:["Hidden"],
 						isHiddenRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{id:"enemy",level:2,ignoreXp:true}],
@@ -630,9 +678,78 @@ function loadQuestsSub() {
 		},
 
 		{
-			probability:40,
+			probability:QUEST_RARE,
 			id:"[CODEX-Events] Subquest - The Beastcrafters: A simple trading card game Stampadians used to play. Buy or find new cards and play.",
 			steps:BEASTCRAFTERS.events
+		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Broken Teleport: Solve the riddle to reach an item.",
+			minRooms:2,
+			steps:[
+				{content:"apple"},
+				{content:"invisibility"}
+			].map(room=>[
+					{
+						id:"teleportRoom",
+						labels:["Broken"],
+						atPercentage:10,
+						items:[{genericItem:"teleport"}],
+						roomDescriptions:[
+							[
+								"{randomBrokenTeleport} Can you fix it?",
+								"{ifMoveOn:teleport}{and}{ifRoomIsNotMarked:teleportRoom}{then}A sign says \"{teleportToRiddleRoom:secretRoom}\""
+							]
+						]
+					},
+					{
+						id:"secretRoom",
+						labels:[], // Riddle teleporters can't have a label.
+						isHiddenRoom:true,
+						atPercentage:{from:1,to:99},						
+						items:[{genericItem:"item"}],
+						equipment:[{id:room.content}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:item}{then}{getEquip:equip-"+room.content+"}, {markRoom:teleportRoom}, {teleportToRoom:teleportRoom}"
+							]
+						]
+					},
+				]
+			)
+		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Tapeworm: Kill the monster to stop him digesting you.",
+			minRooms:3,
+			steps:[
+				[
+					{
+						id:"monsterRoom",
+						labels:["Eater","Parasite","Head"],
+						items:[{id:"enemy",level:2}],
+						atPercentage:99,
+						roomDescriptions:[
+							"\"Yummy meat... escaped... stomach?\"",
+							"\"{heroClass} food... hurts!\"",
+							"\"Food... go back... belly!\""
+						].map(line=>[
+							line, "{ifKilledLastFoe}{then}{gainHp:1}, {markRoom:monsterRoom}"
+						])
+					},
+					{
+						id:"digestingRoom",
+						labels:["Stomach","Eating"],
+						atPercentage:{from:50,to:98},
+						roomDescriptions:[
+							[
+								"Organic walls are trying to squeeze you.",
+								"{ifEnterRoom}{and}{ifRoomIsNotMarked:monsterRoom}{then}The whole room is trying to digest you, {loseHp:1}"
+							]
+						]
+					}
+				]
+			]
 		},
 	]
 
@@ -655,13 +772,14 @@ function loadQuestsVeryHardSub() {
 				[
 					{
 						id:"room",
+						labels:["Bottle"],
 						isOptionalRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"glass"}],
 						roomDescriptions:[
 							[
 								"There is a bottle with a black liquid in a glass display case.",
-								"{ifMoveOn:glass}{and}\"Let's end this\"{then}{markItem:glass}, {rollDie}{range:1-4} {loseFullHp}, {range:5-6} {gainFullHp}"
+								"{ifMoveOn:glass}{and}\"Let's end this\"{then}{markItem:glass}, {rollDie}{range:1-3} {loseFullHp}, {range:4-6} {gainFullHp}"
 							],
 						]
 					}
@@ -670,7 +788,7 @@ function loadQuestsVeryHardSub() {
 		},
 		{
 			id:"[CODEX-Events] Filler (very hard) - The Critters: Five level 0 enemy.",
-			steps:[[{id:"spawn",isOptionalRoom:true,atPercentage:{from:1,to:99},roomDescriptions:[
+			steps:[[{id:"spawn",labels:["Crowded"],isOptionalRoom:true,atPercentage:{from:1,to:99},roomDescriptions:[
 				[ "\"Meat! Meat! Meat!\"" ],
 				[ "\"It's mine! It's mine! It's mine!\"" ],
 				[ "\"Yummy!\"" ]

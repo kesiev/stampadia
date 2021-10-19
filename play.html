@@ -39,6 +39,7 @@ function onl() {
 		
 		var player=new DungeonPlayer(core.generateAdventureDaily());
 		document.getElementById("credits").innerHTML=core.getWebFooter();
+		document.getElementById("table").innerHTML="";
 		player.play(document.getElementById("table"));
 
 	});

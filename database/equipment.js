@@ -104,7 +104,18 @@ function loadEquipment() {
 			label:"Book",
 			action:"{ifAfterHeroRollInFight}{and}{loseHp:1}{then}{fightingEnemyLoseHp:1,1,2}"
 		},
-		
+		// [CODEX-Stuff] Equipment - Apple: Gain 1/2 max HP.
+		{
+			id:"apple",
+			label:"Apple",
+			action:"{ifBeforeHeroRollInFight}{then}{gainHalfHp}"
+		},
+		// [CODEX-Stuff] Equipment - Invisibility: For the next 3 enemy turns, discard all dice less than 6.
+		{
+			id:"invisibility",
+			label:"Invisibility",
+			action:"{ifNextEnemyRolls:3}{then}{discardAllDie<=:5}"
+		},
 		
 	];
 }

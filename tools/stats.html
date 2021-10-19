@@ -55,17 +55,20 @@ function createDungeon() {
 			});
 			var cat="";
 			var html="<table>";
+			var tot=0;
 			rank.forEach(row=>{
 				if (cat!=row.cat) {
-					html+="</table><hr><table>";
+					html+="</table>Total: "+tot+"<hr><table>";
+					tot=0;
 					cat=row.cat;
 				}
-				if (row.count)
-				html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+"</td><td>"+row.count+"</td></tr>";
-				else
+				if (row.count) {
+					html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+"</td><td>"+row.count+"</td></tr>";
+					tot+=row.count;
+				} else
 					html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+"</td><td>0</td></tr>";
 			});
-			html+="</table>";
+			html+="</table>Total: "+tot;
 			document.body.innerHTML=html;
 			console.log("done");
 		}

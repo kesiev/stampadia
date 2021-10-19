@@ -10,6 +10,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Sage","Machine","Creation"],
 						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -20,6 +21,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Sage","Energy","Growth"],
 						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -30,6 +32,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Sage","Wings","Flying"],
 						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -40,6 +43,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Sage","Wings","Flying"],
 						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -50,6 +54,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Sage","Time","Pressing"],
 						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -63,6 +68,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Sage","Trace","Path"],
 						atPercentage:99,
 						items:[{genericItem:"npc"}],
 						roomDescriptions:[
@@ -76,6 +82,7 @@ function loadQuestsStory() {
 				[
 					{
 						id:"room",
+						labels:["Tearing","Scrap"],
 						atPercentage:99,
 						items:[{genericItem:"press"}],
 						roomDescriptions:[

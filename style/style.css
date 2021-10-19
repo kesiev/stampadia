@@ -21,6 +21,16 @@ BODY {
 	transition-timing-function:ease;
 }
 
+#waitbox {
+	position: absolute;
+	text-align: center;
+	position: absolute;
+	width:90%;
+	top: 50%;
+	transform: translate(5%, -55%) scale(2);
+	transition-timing-function:ease;
+}
+
 #box.show {
 	opacity: 1;
 	transform: translate(5%, -55%) scale(1);
