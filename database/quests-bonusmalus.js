@@ -196,7 +196,7 @@ function loadQuestsBonus() {
 
 function loadQuestsMalus() {
 	const QUEST_RARE=40;
-	
+
 	return [
 
 		{
@@ -225,7 +225,6 @@ function loadQuestsMalus() {
 					[ "\"What are you doing here?!\"" ],
 					[ "\"Hey... YOU!\"" ],
 					[ "\"Well well... What we have here?\"" ],
-					[ "\"Food... appeared...\"" ],
 				],items:[{id:"enemy",level:2}]}
 			]]
 		},
