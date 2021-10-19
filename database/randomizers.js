@@ -269,16 +269,22 @@ function loadRandomizers() {
 			"\"My body... is...\"",
 		],
 		randomBrokenTeleport:[
-			"There is an unfinished teleport.",
-			"Someone broke this teleport.",
-			"There is a teleport that doesn't work well.",
-			"Someone teared down this teleport."
+			"There is an unfinished teleport to a secret room.",
+			"Someone broke this secret room teleport.",
+			"There is a secret room teleport that doesn't work well.",
+			"Someone teared down this secret room teleport."
 		],
-		randomFixedTeleport:[
-			"You managed to fix the teleport in some way!",
-			"It worked!",
-			"The teleport started working!"
+		/*
+		randomRightGuess:[
+			"You have the feeling that everything has gone well.",
+			"There is no doubt: you are in the right place.",
+			"You're exactly where you expected to be.",
+			"All in all you managed to get it this time too.",
+			"Even if the room is dimly lit, you know it's the right one.",
+			"Who would have thought you could make it this far?",
+			"This is probably where you should have arrived."
 		],
+		*/
 		
 		// Loot
 		randomGold:[
