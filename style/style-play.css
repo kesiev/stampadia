@@ -34,6 +34,7 @@ BODY {
 	box-shadow: 1px 1px 5px #333;
 	overflow: hidden;
 	position: relative;
+	touch-action: none;
 }
 
 .sheet * {
