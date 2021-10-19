@@ -110,7 +110,7 @@ function loadEquipment() {
 			label:"Apple",
 			action:"{ifBeforeHeroRollInFight}{then}{gainHalfHp}"
 		},
-		// [CODEX-Stuff] Equipment - Invisibility: For the next 3 enemy turn, discard all dice less than 6.
+		// [CODEX-Stuff] Equipment - Invisibility: For the next 3 enemy turns, discard all dice less than 6.
 		{
 			id:"invisibility",
 			label:"Invisibility",

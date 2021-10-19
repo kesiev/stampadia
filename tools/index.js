@@ -75,7 +75,7 @@ var INDEX=[
 	"[CODEX-Stuff] Equipment - Dash: Sacrifice XPs to skip the enemy turn.",
 	"[CODEX-Stuff] Equipment - Epic Weapon: A weapon with many names. Deal 2 damage to all enemies in range 4.",
 	"[CODEX-Stuff] Equipment - Fireball: Inflict 2 damage.",
-	"[CODEX-Stuff] Equipment - Invisibility: For the next 3 enemy turn, discard all dice less than 6.",
+	"[CODEX-Stuff] Equipment - Invisibility: For the next 3 enemy turns, discard all dice less than 6.",
 	"[CODEX-Stuff] Equipment - Lunge: Place dice on the same column.",
 	"[CODEX-Stuff] Equipment - Mead: Discard one die, set the other one to 6.",
 	"[CODEX-Stuff] Equipment - Mirror: Teleport back to the mirror room.",

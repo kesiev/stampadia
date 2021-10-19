@@ -94,7 +94,7 @@
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
-  - **Invisibility**: For the next 3 enemy turn, discard all dice less than 6.
+  - **Invisibility**: For the next 3 enemy turns, discard all dice less than 6.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.
   - **Mirror**: Teleport back to the mirror room.
