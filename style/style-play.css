@@ -54,14 +54,6 @@ BODY {
 	transition:opacity 0.2s;
 }
 
-.token:hover {
-	opacity:0.2;
-}
-
-.token.dragging, .token.rolling {
-	opacity:1;
-}
-
 .token-0 {
 	background-color: rgba(255,0,0,0.5);
 	border-radius: 100px;
@@ -110,3 +102,18 @@ BODY {
 #guide .token-1 {
 	border-radius: 0px;
 }
+
+
+@media (hover: hover) and (pointer: fine) {
+	/* Targets mouse/touchpads only */
+
+	.token:hover {
+		opacity:0.2;
+	}
+
+}
+
+.token.dragging, .token.rolling {
+	opacity:1;
+}
+
