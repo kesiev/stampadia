@@ -53,14 +53,13 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Arcade variant: damage = atk - defense
 
 - [ ] Skills & Items
-  - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
   - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
   - [ ] Dice roll skill: the hero locks a die for other enemies
 
 - [ ] New classes
   - [ ] Rogue: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
-  - [ ] new class: ranger/druid ? : can use monster all moves
+  - [ ] new class: druid
     - [ ] class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
 
 - [ ] New quests
@@ -90,15 +89,23 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] PUSH: pushes the hero away, for ranged enemies
     - It takes an enemy slot.
 
+### Ideas - Misc (questions)
+
+- [ ] Publishing
+  - [ ] Send the daily dungeon via mail
+    - Adventure sheets are generated with no server ATM
+
 ### In progress
 
-- [ ] Mechanics
-  - [ ] Remove the "don't visit new rooms in fight" rule?
-    - Is it dangerous for the player or game breaking?
-    - Now testing...
+- [ ] New classes
+  - [ ] new class: ranger
+    - [ ] can use monster moves
+    - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
 
 ### Done
 
+- [x] Mechanics
+  - [x] Remove the "don't visit new rooms in fight" rule? (Thank you, PeterPiers!)
 - [x] Lower damageRatio for all classes
   - [x] Maybe moving 1 HP from LVL1 to LVL2?
 - [x] Skills & items
