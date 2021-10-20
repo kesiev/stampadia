@@ -192,5 +192,61 @@ function loadHeroModels() {
 				{ skills:[] }
 			]
 		},
+
+		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow, and a Copy item.
+		{
+			isBetaTesting:true,
+			id:"ranger",
+			heroClass:"Ranger",
+			skills:[
+				["ATK -1\nRNG 1","Move\n-3"],
+				["ATK -2\nRNG =2","DEF -3"],
+				["",""],
+				["ATK -1\nRNG =2","Move"]
+			],
+			defense:[1,1,1,1],
+			xpRamp:[
+				{
+					value:0
+				},{
+					xpGroup:"low",
+					round:"floor",
+					percentage:1
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.35
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.65
+				}
+			],
+			hpRamp:[0.5,0.15,0.25,0.1],
+			damageRatio:0.7,
+			equipment:[
+				{
+					placeholder:"heroItem",
+					id:"copy",
+					isAvailable:true
+				}
+			],
+			enemyModels:[
+				// Level 0
+				{ skills:[] },
+				// Level 1
+				{ skills:[] },
+				// Level 2
+				{
+					skills:[
+						["DEF -3","ATK -3\nRNG 2"]
+					]
+				},
+				// Level 3
+				{ skills:[] },
+				// Level 4 - Zombies
+				{ skills:[] }
+			]
+		},
 	];
 }

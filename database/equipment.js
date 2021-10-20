@@ -116,6 +116,12 @@ function loadEquipment() {
 			label:"Invisibility",
 			action:"{ifNextEnemyRolls:3}{then}{discardAllDie<=:5}"
 		},
+		// [CODEX-Stuff] Equipment - Copy: Copy one enabled column from the Enemy Sheet to the Hero sheet.
+		{
+			id:"copy",
+			label:"Copy",
+			action:"{ifAfterEnemyRollInFight}{then}{copyEnemyColumn:1}"
+		},
 		
 	];
 }

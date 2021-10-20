@@ -400,6 +400,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Hero state - Conditions
 		line=line.replaceAll("{ifHeroDied}","hero died");
 
+		// Hero Sheet - Actions
+		line=line.replace(/\{copyEnemyColumn:([0-9]+)\}/g,(m,num)=>"copy "+num+" enabled enemy "+(num==1?"column":"columns"));
+
 		// Fight turn - Conditions
 		line=line.replaceAll("{ifAfterEnemyRollInFight}","enemy turn roll");
 		line=line.replaceAll("{ifAfterHeroRollInFight}","hero turn roll");
