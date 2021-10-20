@@ -16,7 +16,7 @@
 	<!--div id="waitbox">Please wait...</div-->
 	<div id="box">
 		<div class="header" id="adventureHeader"></div>
-		<div class="title download" id="adventureTitle"></div>
+		<a class="title download" id="adventureTitle"></a>
 		<div class="ruler"></div>
 		<div class="tips">
 				We're testing a new rule here: <span class="mark">Now you are allowed to explore a new room during a battle</span>. Please, share any feedback on <a class=mark href='https://discord.gg/EDYP2N4RMn'>Discord</a>! Thank you!
@@ -27,31 +27,37 @@
 
 function onl() {
 
-	var core=new Core();
+	setTimeout(function(){
 
-	core.initialize(()=>{
+		var core=new Core();
 
-		var dungen=core.generateAdventureDaily(0,{
-			//heroId:"dwarf",
-			footer:"T"
+		core.initialize(()=>{
+
+			var dungen=core.generateAdventureDaily(0,{
+				//heroId:"dwarf",
+				footer:"T"
+			});
+			dungen.prepare();
+
+			document.getElementById("adventureHeader").innerHTML=dungen.metadata.header.replace(/_+/,"<span class='you'>You</span>");
+			document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
+			document.getElementById("credits").innerHTML=
+				core.getWebFooter()+
+				" &dash; <a target=_blank class=mark href='testplay.html'>No printer or tokens?</a>"+
+				" &dash; <a class=mark href='index.html'>Go back to the project page</a>";
+
+			var downloads=document.getElementsByClassName("download");
+
+			for (var i=0;i<downloads.length;i++)
+				dungen.createDownloadPDFAnchor(downloads[i],dungen.coreMetadata.filename+"-test.pdf");
+
+			setTimeout(()=>{
+				//document.getElementById("waitbox").style.display="none";
+				document.getElementById("box").className="show";
+			},200);
+
 		});
-		dungen.prepare();
-
-		document.getElementById("adventureHeader").innerHTML=dungen.metadata.header.replace(/_+/,"<span class='you'>Foobar</span>");
-		document.getElementById("adventureTitle").innerHTML=dungen.metadata.title;
-		document.getElementById("credits").innerHTML=
-			core.getWebFooter()+
-			" &dash; <a target=_blank class=mark href='testplay.html'>No printer or tokens?</a>"+
-			" &dash; <a class=mark href='index.html'>Go back to the project page</a>";
-		//document.getElementById("waitbox").style.display="none";
-		document.getElementById("box").className="show";
-		
-		var downloads=document.getElementsByClassName("download");
-
-		for (var i=0;i<downloads.length;i++)
-			downloads[i].onclick=()=>dungen.downloadPDF(dungen.coreMetadata.filename+"-test.pdf");
-
-	});
+	},500);
 
 }
 

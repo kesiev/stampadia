@@ -2051,6 +2051,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		console.log(roomLabels);
 	}
 
+	this.createDownloadPDFAnchor=function(anchor,filename) {
+		this.createSVG(svg=>{
+			svg.assignPDFDownloadToAnchor(anchor,filename);
+		})
+	}
+
 	this.downloadPDF=function(filename) {
 		this.createSVG(svg=>{
 			svg.getPDF(filename);

@@ -50,6 +50,10 @@ function SVG(template) {
         },
         node = document.createElement("div");
 
+    let
+        pdfCache=0,
+        pdfQueue=[];
+
     node.innerHTML = template.getSVG();
 
     this.get = (node,attr) => {
@@ -163,16 +167,30 @@ function SVG(template) {
 
     }
 
-    this.download = (filename) => {
-        const a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style.display = "none";
-        const blob = new Blob([this.getSVG()], {
-            type: "image/svg+xml"
+    this.assignDownloadToAnchor = (a,mimetype,data,filename) => {
+        const blob = new Blob([data], {
+            type: mimetype
         });
         const url = window.URL.createObjectURL(blob);
         a.href = url;
         a.download = filename;
+    }
+
+    this.assignPDFDownloadToAnchor = (a,filename) => {
+        this.getPDF((data)=>{
+            this.assignDownloadToAnchor(a,"application/pdf",data,filename);
+        })
+    }
+
+     this.assignSVGDownloadToAnchor = (a,filename) => {
+        this.assignDownloadToAnchor(a,"image/svg+xml",this.getSVG(),filename);
+    }
+
+    this.download = (filename) => {
+        const a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style.display = "none";
+        this.assignSVGDownloadToAnchor(a,filename);
         a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
@@ -180,22 +198,34 @@ function SVG(template) {
 
     this.getSVG = () => node.innerHTML;
 
-    this.getPDF = (filename) => {
+    this.getPDF = (cb) => {
 
-        const svgElement = node.firstElementChild;
-        svgElement.getBoundingClientRect();
+        if (pdfQueue.length) pdfQueue.push(cb);
+        else {
 
-        const doc = new jspdf.jsPDF({
-            orientation: 'l',
-            unit: 'mm'
-        });
-        doc
-            .svg(svgElement)
-            .then(() => {
-                // save the created pdf
-                doc.save(filename)
-            })
+            if (pdfCache) cb(pdfCache);
+            else {
 
+                pdfQueue.push(cb);
+
+                const svgElement = node.firstElementChild;
+                svgElement.getBoundingClientRect();
+
+                const doc = new jspdf.jsPDF({
+                    orientation: 'l',
+                    unit: 'mm'
+                });
+                doc
+                    .svg(svgElement)
+                    .then(() => {
+                        pdfCache=doc.output('arraybuffer');
+                        pdfQueue.forEach(cb=>cb(pdfCache));
+                        pdfQueue=[];
+                    })
+
+            }
+
+        }
 
     }
 

@@ -68,6 +68,9 @@ BODY {
 }
 
 .title {
+	display: block;
+	text-decoration: none;
+	color:#ccc;
 	font-size: 7vw;	
 	cursor: pointer;
 }

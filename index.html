@@ -16,10 +16,10 @@
 	<!--div id="waitbox">Please wait...</div-->
 	<div id="box">
 		<div class="header" id="adventureHeader"></div>
-		<div class="title download" id="adventureTitle"></div>
+		<a class="title download" id="adventureTitle"></a>
 		<div class="ruler"></div>
 		<div class="tips">
-				All you need to play is <span class=mark>2 dice</span>, <span class=mark>a pencil</span>, <span class=mark>an eraser</span>, <span class=mark>a small button</span>, <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a>, and print <span class=download id=downloadquest>today's page of the Chronicles of Stampadia</span>. Good luck!
+				All you need to play is <span class=mark>2 dice</span>, <span class=mark>a pencil</span>, <span class=mark>an eraser</span>, <span class=mark>a small button</span>, <a class=mark target=_blank href='manuals/manual.pdf'>this manual</a>, and print <a class=download id=downloadquest>today's page of the Chronicles of Stampadia</a>. Good luck!
 		</div>
 	</div>
 	<div id="credits"></div>
@@ -44,26 +44,20 @@ function onl() {
 				" &dash; <a class=mark href='https://discord.gg/EDYP2N4RMn'>Discord</a>"+
 				" &dash; <a class=mark href='https://boardgamegeek.com/boardgame/345607/chronicles-stampadia'>BGG</a>"+
 				" &dash; <a target=_blank class=mark href='play.html'>No printer or tokens?</a>";
-			//document.getElementById("waitbox").style.display="none";
-			document.getElementById("box").className="show";
 
-			if (document.location.href.match(/\?show=1/)) dungen.showSVG();
-			else if (document.location.href.match(/\?play=1/)) {
-				var player=new DungeonPlayer(dungen);
-				player.play();
-			} else if (document.location.href.match(/\?debug=1/)) dungen.debug();
-			else {
+			var downloads=document.getElementsByClassName("download");
 
-				var downloads=document.getElementsByClassName("download");
+			for (var i=0;i<downloads.length;i++)
+				dungen.createDownloadPDFAnchor(downloads[i],dungen.coreMetadata.filename+".pdf");
 
-				for (var i=0;i<downloads.length;i++)
-					downloads[i].onclick=()=>dungen.downloadPDF(dungen.coreMetadata.filename+".pdf");
 
-			}
+			setTimeout(()=>{
+				//document.getElementById("waitbox").style.display="none";
+				document.getElementById("box").className="show";
+			},200);
+
 		});
 	},500);
-
-	
 
 }
 
