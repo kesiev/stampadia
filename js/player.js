@@ -111,24 +111,29 @@ const DungeonPlayer=function(dungen) {
 				obj.className=obj.className.replace(" rolling","");
 			}
 
-			canvas.onmousedown=function(e) {
-				pen=e.button==2?2:1;
-				x1=e.offsetX;
-				y1=e.offsetY;
-				line(x1,y1,x1,y1,PENCOLORS[pen]);
+			canvas.onpointerdown=function(e) {
+				if (e.pointerType != "touch") {
+					pen=e.button==2?2:1;
+					x1=e.offsetX;
+					y1=e.offsetY;
+					line(x1,y1,x1,y1,PENCOLORS[pen]);
+				}
+				return false;
 			}
 
-			canvas.onmousemove=function(e) {
+			canvas.onpointermove=function(e) {
 				if (pen) {
 					line(x1,y1,e.offsetX,e.offsetY,PENCOLORS[pen]);
 					x1=e.offsetX;
 					y1=e.offsetY;
 				}
+				return false;
 			}
 
-			document.onmouseup=function() {
+			document.onpointerup=function() {
 				pen=0;
 				unsetDragging();
+				return false;
 			}
 
 			function rollDie(die,animation) {
@@ -180,7 +185,7 @@ const DungeonPlayer=function(dungen) {
 					}
 					default:{
 						token.innerHTML="?";
-						token.onmouseup=function(e) {
+						token.onpointerup=function(e) {
 							if (e.button==2) rollDie(this);
 						}
 					}
@@ -188,15 +193,16 @@ const DungeonPlayer=function(dungen) {
 				token.oncontextmenu=function() { return false }
 				sheet.appendChild(token);
 
-				token.onmousedown=function(e) {
+				token.onpointerdown=function(e) {
 					if (!dragging) {
 						this._dx=e.offsetX;
 						this._dy=e.offsetY;
 						setDragging(this);
 					}
+					return false;
 				}
 			}
-			document.onmousemove=function(e) {
+			document.onpointermove=function(e) {
 				if (dragging&&((e.target==canvas)||(e.target==dragging))) {
 					const offset=getOffset(e.offsetX,e.offsetY,e.target,dragging.parentNode);
 					let
@@ -210,8 +216,8 @@ const DungeonPlayer=function(dungen) {
 					dragging.style.left=px+"px";
 					dragging.style.top=py+"px";
 					e.preventDefault();
-					return false;
 				}
+				return false;
 			}
 
 			// Place tokens
