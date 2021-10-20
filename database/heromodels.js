@@ -9,7 +9,7 @@ function loadHeroModels() {
 		{
 			id:"warrior",
 			heroClass:"Warrior",
-			tags:["startsWithResurrection"],
+			tags:["importantStartingItem"],
 			skills:[
 				["ATK -1\nRNG 1","Move\n-3"],
 				["DEF -3","Move\n-2"],
@@ -196,6 +196,7 @@ function loadHeroModels() {
 		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow, and a Copy item.
 		{
 			isBetaTesting:true,
+			tags:["importantStartingItem"],
 			id:"ranger",
 			heroClass:"Ranger",
 			skills:[

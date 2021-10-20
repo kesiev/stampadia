@@ -15,7 +15,7 @@ function loadQuestsHelpers() {
 		},
 		{
 			id:"[CODEX-Events] Helper - The Junk Shop: Trade your class item for full health.",
-			ignoreForHeroTags:["startsWithResurrection"],
+			ignoreForHeroTags:["importantStartingItem"],
 			steps:[[{id:"spawn",labels:["Junk"],atPercentage:1,roomDescriptions:[
 				[
 						"Junk Shop Owner: \"Do you have anything interesting to trade, {heroClass}?\"",
