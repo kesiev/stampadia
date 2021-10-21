@@ -393,15 +393,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{rollDie}","roll a die: ");
 		line=line.replaceAll("{nothing}","nothing happens");
 		line=line.replaceAll("{stopReading}","stop reading");
+		line=line.replace(/\{sumDice:([0-9]+)\}/g,(m,num)=>"sum "+num+" dice");
+		line=line.replace(/\{activateAbility:([0-9]+)\}/g,(m,num)=>"activate "+num+" "+(num==1?"ability":"abilities"));
 
 		// Special - Conditions
 		line=line.replace(/\{range:([0-9]+)-([0-9]+)\}/g,(m,num1,num2)=>(num1==num2?"="+num1:num1+"~"+num2));
 
 		// Hero state - Conditions
 		line=line.replaceAll("{ifHeroDied}","hero died");
-
-		// Hero Sheet - Actions
-		line=line.replace(/\{copyEnemyColumn:([0-9]+)\}/g,(m,num)=>"copy "+num+" enabled enemy "+(num==1?"column":"columns"));
 
 		// Fight turn - Conditions
 		line=line.replaceAll("{ifAfterEnemyRollInFight}","enemy turn roll");
