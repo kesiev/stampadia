@@ -55,6 +55,7 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Skills & Items
   - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
   - [ ] Dice roll skill: the hero locks a die for other enemies
+  - [ ] Reveal a room position the player can choose
 
 - [ ] New classes
   - [ ] Rogue: Get gold by fights/lock dice
