@@ -116,11 +116,11 @@ function loadEquipment() {
 			label:"Invisibility",
 			action:"{ifNextEnemyRolls:3}{then}{discardAllDie<=:5}"
 		},
-		// [CODEX-Stuff] Equipment - Copy: Copy one enabled column from the Enemy Sheet to the Hero sheet.
+		// [CODEX-Stuff] Equipment - Focus: Pay 2G and sum 2 dice values.
 		{
-			id:"copy",
-			label:"Copy",
-			action:"{ifAfterEnemyRollInFight}{then}{copyEnemyColumn:1}"
+			id:"focus",
+			label:"Focus",
+			action:"{ifAfterHeroRollInFight}{then}{sumDice:2}, {activateAbility:1}, {pass}"
 		},
 		
 	];
