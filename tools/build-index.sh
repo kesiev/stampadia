@@ -2,7 +2,7 @@
 IFS=$'\n'
 precategory=""
 echo "var INDEX=["
-for group in Events Heroes Stuff Keywords Generator
+for group in Events Modifiers Heroes Stuff Keywords Generator
 do
 	for line in $(grep -h "\[CODEX-$group\]" ../database/* ../js/*|sed "s/^.*\[/\[/"|sort)
 	do
