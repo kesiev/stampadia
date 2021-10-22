@@ -33,11 +33,12 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
-- [ ] !!!
-  - [ ] Rich terrain: areas with enemies that have special effects (fire scares the enemies: every turn -1 on one player chosen die, mud: movement -1 in this room...)
-    - [ ] Effects can be enabled by objects or other characters
-    - [ ] Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
+- [ ] Gameplay
   - [ ] Diagonal movement?
+
+- [ ] Room modifiers
+  - [ ] Room modifiers can be enabled by objects or other characters
+  - [ ] Truth/lies on terrain types
 
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
@@ -77,6 +78,7 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Use luck/unluck more
   - [ ] The messenger - bring messages between adventures using keywords
   - [ ] Choose between two items
+  - [ ] Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
 
 - [ ] NPC
   - [ ] The Corrupted
@@ -116,6 +118,7 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [x] Mechanics
   - [x] Remove the "don't visit new rooms in fight" rule? (Thank you, PeterPiers!)
+  - [x] Rich terrain: areas with enemies that have special effects (fire scares the enemies: every turn -1 on one player chosen die, mud: movement -1 in this room...)
 - [x] Lower damageRatio for all classes
   - [x] Maybe moving 1 HP from LVL1 to LVL2?
 - [x] Skills & items
