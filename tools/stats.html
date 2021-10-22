@@ -28,14 +28,18 @@ function createDungeon() {
 		});
 		dungen.prepare();
 		dungen.metadata.selection.forEach(selection=>{
-			if (!selection.quest.id) {
-				if (!selection.quest||!selection.quest.steps||!selection.quest.steps.length)
-					console.log(selection);
-			} else {
-				if (!stats[selection.quest.id]) stats[selection.quest.id]={count:0,days:[]};
-				stats[selection.quest.id].count++;
-				stats[selection.quest.id].days.push(day);
+			if (selection.modifier&&selection.modifier.id) {
+				stats[selection.modifier.id].count++;
+				stats[selection.modifier.id].days.push(day);
 			}
+			if (selection.quest)
+				if (!selection.quest.id) {
+					if (!selection.quest||!selection.quest.steps||!selection.quest.steps.length)
+						console.log(selection);
+				} else {
+					stats[selection.quest.id].count++;
+					stats[selection.quest.id].days.push(day);
+				}
 		})
 		if (day<dayLimit) {
 			day++;
@@ -77,8 +81,11 @@ function createDungeon() {
 
 function onl() {
 	INDEX.forEach(line=>{
-		if (line.match(/^\[CODEX-Events\]/))
-			stats[line]=0;
+		if (
+			line.match(/^\[CODEX-Events\]/)||
+			line.match(/^\[CODEX-Modifiers\]/)
+		)
+			stats[line]={count:0,days:[]};
 	})
 	createDungeon();
 }

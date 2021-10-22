@@ -21,6 +21,7 @@ const Core=function(settings) {
 			"database/truthMap.js",
 			"database/equipment.js",
 			"database/keywords.js",
+			"database/modifiers.js",
 		],
 		PADSEED=10,
 		METADATA={
@@ -52,6 +53,7 @@ const Core=function(settings) {
 		QUESTS_MAIN,
 		QUESTS_STORY,
 		QUESTS_HELPERS,
+		MODIFIERS,
 		KEYWORDS,
 		TRUTHMAP,
 		EQUIPMENT,
@@ -104,6 +106,7 @@ const Core=function(settings) {
 				QUESTS_MAIN=loadQuestsMain();
 				QUESTS_STORY=loadQuestsStory();
 				QUESTS_HELPERS=loadQuestsHelpers();
+				MODIFIERS=loadModifiers();
 				TRUTHMAP=loadTruthMap();
 				EQUIPMENT=loadEquipment();
 				KEYWORDS=loadKeywords();
@@ -233,6 +236,12 @@ const Core=function(settings) {
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"mediumFiller",count:1,distance:"random"},
 
+		]);
+		dunggen.setModifiers(MODIFIERS);
+		dunggen.setModifiersModel([
+			{ atPercentage:20, probability:40, modifierType:"good" },
+			{ atPercentage:40, probability:40, modifierType:"bad"},
+			{ atPercentage:60, probability:60, modifierType:"balanced" },
 		]);
 		dunggen.setPlaceholderModels(PLACEHOLDERS);
 		dunggen.setRandomizers(RANDOMIZERS);

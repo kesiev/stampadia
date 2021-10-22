@@ -53,6 +53,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		keywords,
 		keywordsIndex={},
 		keywordsSetsIndex={},
+		modifiers=0,
+		modifiersModel=0,
 		enemies=[],		
 		noise=[],
 		questsStructure=[],
@@ -81,6 +83,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	this.prepared=false;
 
+	this.setModifiers=(modifiersdata)=>modifiers=modifiersdata;
+	this.setModifiersModel=(modifiersmodeldata)=>modifiersModel=modifiersmodeldata;
 	this.setRoomPriorities=(roomprioritiesdata)=>roomPriorities=roomprioritiesdata;
 	this.setKeywords=(keywordsdata)=>keywords=keywordsdata;
 	this.setEquipment=(equipmentdata)=>equipment=equipmentdata;
@@ -118,6 +122,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	function sortByLength(a,b){
 		if (a.length>b.length) return 1;
 		else if (a.length<b.length) return -1;
+		else return 0;
+	}
+
+	function sortByScore(a,b){
+		if (a.score>b.score) return 1;
+		else if (a.score<b.score) return -1;
 		else return 0;
 	}
 
@@ -183,7 +193,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			riddleRoom=getRandom(roomLabels.rooms);
 		} while (riddleRoom.id==roomid);
 		let delta=roomid-riddleRoom.id;
-		return getRandom(riddleRoom.labels)+" Room "+(debug.solveRoomRiddles?"("+riddleRoom.id+") ":"")+(delta>0?"+ ":"- ")+Math.abs(delta)+(debug.solveRoomRiddles?" = "+roomid:"");
+		return getRandom(riddleRoom.labels)+" Room "+(debug&&debug.solveRoomRiddles?"("+riddleRoom.id+") ":"")+(delta>0?"+ ":"- ")+Math.abs(delta)+(debug&&debug.solveRoomRiddles?" = "+roomid:"");
 	}
 
 	function setCheckBox(svg,checkbox,number) {
@@ -405,15 +415,26 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Fight turn - Conditions
 		line=line.replaceAll("{ifAfterEnemyRollInFight}","enemy turn roll");
 		line=line.replaceAll("{ifAfterHeroRollInFight}","hero turn roll");
+		line=line.replaceAll("{ifAfterRollInFight}","any battle turn roll");
+		line=line.replace(/\{ifHeroPerformAction:([^}]+)\}/g,(m,act)=>"hero activates "+act);
+		line=line.replace(/\{ifEnemyPerformAction:([^}]+)\}/g,(m,act)=>"enemy activates "+act);
+		line=line.replace(/\{ifPerformAction:([^}]+)\}/g,(m,act)=>"any "+act+" activation");
 		line=line.replaceAll("{ifHeroTurn}","hero turn");
 		line=line.replaceAll("{ifBeforeHeroRollInFight}","before hero turn roll");
 		line=line.replaceAll("{ifEveryBattleRoundStarts}","a battle round starts");
 		line=line.replace(/\{ifNextEnemyRolls:([0-9]+)\}/g,(m,num)=>"next "+num+" enemy turn rolls");
-		line=line.replace(/\{ifNextHeroRolls:([0-9]+)\}/g,(m,num)=>"next "+num+" hero  turn rolls");
+		line=line.replace(/\{ifNextHeroRolls:([0-9]+)\}/g,(m,num)=>"next "+num+" hero turn rolls");
+		line=line.replace(/\{ifEnemyRolls:([0-9]+)\}/g,(m,num)=>"enemy turn rolled "+num);
+		line=line.replace(/\{ifHeroRolls:([0-9]+)\}/g,(m,num)=>"hero turn rolled "+num);
+		line=line.replace(/\{ifRolls:([0-9]+)\}/g,(m,num)=>"rolled "+num+" in battle");
 
 		// Fight turn - Actions
 		line=line.replaceAll("{pass}","pass");
 		line=line.replace(/\{fightingEnemyLoseHp:([0-9]+),([0-9]+),([0-9]+)\}/g,(m,num,num2,num3)=>"-"+num+"HP to "+(num2*1?(num2==1?"1 enemy":"up to "+num2+" enemies"):"all enemies")+" in range "+num3);
+		line=line.replace(/\{actionEffect:([-0-9]+)\}/g,(m,num)=>"effect "+(num>0?"+":"")+num);
+		line=line.replace(/\{modifyDice:([0-9]+),([-0-9]+)\}/g,(m,num,num2)=>(num2>0?"add":"reduce")+" "+num+" "+(num==1?"die":"dice")+" value by "+Math.abs(num2));
+		line=line.replace(/\{activateOnly:([-0-9]+)\}/g,(m,num)=>"can activate "+num+" "+(num==1?"ability":"abilities")+" only");
+		line=line.replace(/\{reroll:([0-9]+)\}/g,(m,num)=>"reroll all "+num+" once");
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter room");
@@ -1243,7 +1264,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Check quests spawn probability
 		for (let k in quests)
 			quests[k].forEach(quest=>{
-				if (quest.probability&&(random(100)>quest.probability)) addedQuests.push(quest);
+				if (quest.probability&&(random(100)<quest.probability)) addedQuests.push(quest);
 			})
 
 		questsStructure.forEach(entry=>{
@@ -1764,6 +1785,44 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	}
 
+	// Modifiers
+
+	this.generateModifiers=function() {
+
+		let validRooms=[];
+		rooms.forEach(room=>{
+			let valid=false;
+			if (!room.isFake&&(room.description.length<MAX_DESCRIPTION)) {
+				room.items.forEach(item=>{
+					if (item.item.id=="enemy") valid=true;
+				});
+			}
+			if (valid) validRooms.push({
+				score:shortestPath(room).length,
+				room:room
+			});
+		});
+		validRooms.sort(sortByScore);
+		modifiersModel.forEach(model=>{
+			if (!model.probability||(random(100)<model.probability)) {
+				let
+					position=Math.floor(model.atPercentage/100*validRooms.length),
+					room=validRooms[position].room;
+				if (room) {
+					let
+						modifier=getRandom(modifiers[model.modifierType]),
+						modifierDescription=getRandom(modifier.roomDescriptions),
+						description=[];
+					if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier});
+					modifierDescription.forEach(line=>description.push({line:line,placeholders:{}}));
+					room.description.forEach(line=>description.push(line));
+					room.description=description;
+					validRooms[position].room=0;
+				}
+			}
+		});
+	}
+
 	// Initializer
 
 	this.prepare=function() {
@@ -1797,6 +1856,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			// Generate actors
 			this.generateEnemies();
 			this.generateHero();
+
+			// Apply modifiers
+			this.generateModifiers();
 
 			// Add noise and tidy up
 			if (!debug||!debug.skipNoise) this.addNoise();

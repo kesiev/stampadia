@@ -63,7 +63,10 @@ function createDungeon() {
 			var stop=false;
 			if (lookFor) {
 				dungen.metadata.selection.forEach(row=>{
-					if (row.quest.id&&row.quest.id.match(lookFor)) {
+					if (row.quest&&row.quest.id&&row.quest.id.match(lookFor)) {
+						console.log("Found in",row);
+						stop=true;
+					} else if (row.modifier&&row.modifier.id&&row.modifier.id.match(lookFor)) {
 						console.log("Found in",row);
 						stop=true;
 					}
@@ -72,7 +75,8 @@ function createDungeon() {
 			} else stop=true;
 			if (stop) {
 				dungen.metadata.selection.forEach(row=>{
-					if (row.quest.id) console.log(row.quest.id)
+					if (row.modifier&&row.modifier.id) console.log(row.modifier.id);
+					if (row.quest&&row.quest.id) console.log(row.quest.id);
 				});
 				console.log();
 				dungen.showSVG();
