@@ -78,14 +78,33 @@
   - **The Tapeworm**: Kill the monster to stop him digesting you.
   - **The Trainer**: Face his test and earn gold.
 
-## Heroes (3 items)
+## Modifiers (12 items)
+
+- Enemy
+  - **Blind**: Enemies plays just 1 die.
+  - **Crippled**: Enemies moves -1.
+  - **Haste**: Enemies rerolls his 1s.
+  - **Scared**: Enemies -1 a die of choice.
+  - **Stunned**: Hero rerolls his 1s.
+- Hero
+  - **Blind**: Hero plays just 1 die.
+  - **Fear**: Hero moves -1.
+  - **Weak**: Hero -1 a die of choice.
+- Terrain
+  - **Arena**: Everybody rerolls his 1s.
+  - **Darkness**: Everybody plays just 1 die.
+  - **Mud**: Everybody moves -1.
+  - **Tall grass**: Everybody -1 a die of choice.
+
+## Heroes (4 items)
 
 - Class
   - **The Dwarf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
+  - **The Ranger**: An archer that learns from the beasts. It's equipped with a bow, and a Copy item.
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (37 items)
+## Stuff (38 items)
 
 - Equipment
   - **Apple**: Gain 1/2 max HP.
@@ -94,6 +113,7 @@
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
+  - **Focus**: Pay 2G and sum 2 dice values.
   - **Invisibility**: For the next 3 enemy turns, discard all dice less than 6.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.
