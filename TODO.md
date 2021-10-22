@@ -33,6 +33,12 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] !!!
+  - [ ] Rich terrain: areas with enemies that have special effects (fire scares the enemies: every turn -1 on one player chosen die, mud: movement -1 in this room...)
+    - [ ] Effects can be enabled by objects or other characters
+    - [ ] Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
+  - [ ] Diagonal movement?
+
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
 
@@ -56,18 +62,21 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
   - [ ] Dice roll skill: the hero locks a die for other enemies
   - [ ] Reveal a room position the player can choose
+  - [ ] Damage reflection
 
 - [ ] New classes
   - [ ] Rogue: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] new class: druid
     - [ ] class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
+  - [ ] Rookie: most of the skills are copied from enemies
 
 - [ ] New quests
   - [ ] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
   - [ ] Exchange xp/hp
   - [ ] Use luck/unluck more
   - [ ] The messenger - bring messages between adventures using keywords
+  - [ ] Choose between two items
 
 - [ ] NPC
   - [ ] The Corrupted
