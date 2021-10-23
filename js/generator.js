@@ -1157,7 +1157,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 					if (success) {
 						// Move steps as near as possible their requested positions
-						let head=roomsMeta.length-1;
+						let
+							head=roomsMeta.length-1,
+							nearestRoom=1000,
+							farthestRoom=-1;
 						const result=[];
 
 						for (var j=stepsMeta.length-1;j>=0;j--) {
@@ -1166,7 +1169,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 								q,
 								requestedPosition=Math.max(Math.min(Math.floor(stepMeta.atPercentage/101*roomsMeta.length),head),stepMeta.room),
 								force=(stepMeta.atPercentage==0)||(stepMeta.atPercentage==100);
-							
 							for (q=requestedPosition;q>=stepMeta.room;q--)
 								if (roomsMeta[q].fitSteps[stepMeta.id]) {
 									if (force&&(q!=requestedPosition)) {
@@ -1175,6 +1177,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 									}
 									result[stepMeta.id]=roomsMeta[q].room;
 									stepMeta.room=q;
+									if (q>farthestRoom) farthestRoom=q;
+									if (q<nearestRoom) nearestRoom=q;
 									break;
 								}
 							head=q-1;
@@ -1184,7 +1188,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						if (success) {
 
 							if (result.length!=steps.length) debugger;
-							return result;
+							return {subroute:result,farthestRoom:farthestRoom,nearestRoom:nearestRoom};
 
 						} else return false;
 					}
@@ -1210,18 +1214,25 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			if (excludeQuests.indexOf(quest)==-1) {
 				quest.steps.forEach(steps=>{
 					let
-						subroutes={},
+						subroutesNearest={},
+						subroutesFarthest={},
 						allSubroutes=[];
 						longestRoute=0,
 						shortestRoute=0;
 					routes.forEach(route=>{
 						const subroute=this.getQuestSubroute(route,quest,steps);
 						if (subroute) {
-							if (!subroutes[route.length]) subroutes[route.length]=[];
-							subroutes[route.length].push(subroute);
+							if (!subroutesNearest[subroute.nearestRoom]) subroutesNearest[subroute.nearestRoom]=[];
+							subroutesNearest[subroute.nearestRoom].push(subroute);
+
+							if (!subroutesFarthest[subroute.farthestRoom]) subroutesFarthest[subroute.farthestRoom]=[];
+							subroutesFarthest[subroute.farthestRoom].push(subroute);
+
 							allSubroutes.push(subroute);
-							if (!longestRoute||(route.length>longestRoute)) longestRoute=route.length;
-							if (!shortestRoute||(route.length<shortestRoute)) shortestRoute=route.length;
+
+							if (!longestRoute||(subroute.farthestRoom>longestRoute)) longestRoute=subroute.farthestRoom;
+							if (!shortestRoute||(subroute.nearestRoom<shortestRoute)) shortestRoute=subroute.nearestRoom;
+
 						}
 					});
 					if (quest.debugger) debugger;
@@ -1229,19 +1240,19 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						var subroute;
 						switch (distance) {
 							case "nearest":{
-								subroute=getRandom(subroutes[shortestRoute]);
+								subroute=getRandom(subroutesNearest[shortestRoute]);
 								break;
 							}
-							case "nearest":{
-								subroute=getRandom(allSubroutes);
+							case "farthest":{
+								subroute=getRandom(subroutesFarthest[longestRoute]);
 								break;
 							}
 							default:{
-								subroute=getRandom(subroutes[longestRoute]);
+								subroute=getRandom(allSubroutes);
 								break;
 							}
 						}
-						questVersions.push({subroute:subroute,quest:quest,steps:steps});
+						questVersions.push({subroute:subroute.subroute,quest:quest,steps:steps});
 					}
 				})
 				if (questVersions.length) quests.push(getRandom(questVersions));
@@ -1388,7 +1399,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		}
 
 		// Log quest to metadata
-		if (debug&&debug.dumpSelection) this.metadata.selection.push({quest:quest});
+		if (debug&&debug.dumpSelection) this.metadata.selection.push({quest:quest,route:subroute});
 	}
 
 	// Flavor text

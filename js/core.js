@@ -223,6 +223,8 @@ const Core=function(settings) {
 
 			// Hardest area
 			{questType:"hardFiller",count:1,distance:"farthest"},
+
+			
 			{questType:"bonus",count:1,distance:"farthest"},
 			{questType:"malus",count:1,distance:"farthest"},
 
@@ -235,6 +237,7 @@ const Core=function(settings) {
 			// Filling
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"mediumFiller",count:1,distance:"random"},
+			
 
 		]);
 		dunggen.setModifiers(MODIFIERS);

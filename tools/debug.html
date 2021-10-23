@@ -76,7 +76,7 @@ function createDungeon() {
 			if (stop) {
 				dungen.metadata.selection.forEach(row=>{
 					if (row.modifier&&row.modifier.id) console.log(row.modifier.id);
-					if (row.quest&&row.quest.id) console.log(row.quest.id);
+					if (row.quest&&row.quest.id) console.log(row.quest.id,row.route);
 				});
 				console.log();
 				dungen.showSVG();

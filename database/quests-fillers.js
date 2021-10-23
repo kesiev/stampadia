@@ -90,11 +90,10 @@ function loadQuestsMediumFillers() {
 
 function loadQuestsHardFillers() {
 	return [
-
 		{
 			id:"[CODEX-Events] Filler (medium) - The One: One level 2 enemy.",
 			onlyForHeroTags:["weak"],
-			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "\"I'm sorry for you, {heroClass}!\""],
 				[ "\"I'll mince you up, {heroClass}!\"" ],
 				[ "\"Say goodbye, {heroClass}!\"" ]
@@ -102,7 +101,7 @@ function loadQuestsHardFillers() {
 		},
 		{
 			id:"[CODEX-Events] Filler (hard) - The Weak Pair: Two level 1 enemies.",
-			steps:[[{id:"spawn",atPercentage:50,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "\"See you in hell, {heroClass}!\"" ],
 				[ "\"Farewell, {heroClass}!\"" ],
 				[ "\"End of the line, {heroClass}!\"" ],
@@ -110,7 +109,7 @@ function loadQuestsHardFillers() {
 		},
 		{
 			id:"[CODEX-Events] Filler (hard) - The Strong Pair: Two level 2 enemies.",
-			steps:[[{id:"spawn",atPercentage:80,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "\"Let's get it on, guys!\"" ],
 				[ "\"Let's tear it up!\"" ],
 				[ "\"I want that head on a pike!\"" ]
