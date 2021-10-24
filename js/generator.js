@@ -1238,7 +1238,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					if (quest.debugger) debugger;
 					if (allSubroutes.length) {
 						var subroute;
-						switch (distance) {
+						switch (distance||quest.distance) {
 							case "nearest":{
 								subroute=getRandom(subroutesNearest[shortestRoute]);
 								break;
@@ -1279,12 +1279,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			})
 
 		questsStructure.forEach(entry=>{
-			for (let i=0;i<entry.count;i++) {
-				if (entry.debugger) debugger;
-				quest=this.addQuest(quests[entry.questType],addedQuests,entry.distance);
-				if (quest) addedQuests.push(quest);
-				else if (debug&&debug.logMissingQuests) console.log("Can't add requested",entry.questType,"at",entry.distance);
-			}
+			if (!entry.probability||(random(100)<entry.probability)) {
+				for (let i=0;i<entry.count;i++) {
+						if (entry.debugger) debugger;
+						quest=this.addQuest(quests[entry.questType],addedQuests,entry.distance);
+						if (quest) addedQuests.push(quest);
+						else if (debug&&debug.logMissingQuests) console.log("Can't add requested",entry.questType,"at",entry.distance);
+					}
+				}
 		});
 
 	}
