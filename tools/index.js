@@ -1,4 +1,8 @@
 var INDEX=[
+	"[CODEX-Events] Anomaly - The Couple: 2 level 0 enemy in the depth of the dungeon.",
+	"[CODEX-Events] Anomaly - The Little Lost One: A level 0 enemy lost in the depth of the dungeon.",
+	"[CODEX-Events] Anomaly - The Lost Privacy: A level 1 in an optional room.",
+	"[CODEX-Events] Anomaly - The One In Late: A level 1 enemy lost in the depth of the dungeon.",
 	"[CODEX-Events] Bonus - The Clover: It may bring good luck in your future adventures...",
 	"[CODEX-Events] Bonus - The Clown: Pay him/her to learn cool stunts!",
 	"[CODEX-Events] Bonus - The Magic Tree: It grows a healing fruit after some time.",

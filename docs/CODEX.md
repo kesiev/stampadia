@@ -2,8 +2,13 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (63 items)
+## Events (67 items)
 
+- Anomaly
+  - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
+  - **The Little Lost One**: A level 0 enemy lost in the depth of the dungeon.
+  - **The Lost Privacy**: A level 1 in an optional room.
+  - **The One In Late**: A level 1 enemy lost in the depth of the dungeon.
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
   - **The Clown**: Pay him/her to learn cool stunts!
