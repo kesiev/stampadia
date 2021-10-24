@@ -53,6 +53,7 @@ const Core=function(settings) {
 		QUESTS_MAIN,
 		QUESTS_STORY,
 		QUESTS_HELPERS,
+		QUESTS_ANOMALIES,
 		MODIFIERS,
 		KEYWORDS,
 		TRUTHMAP,
@@ -106,6 +107,7 @@ const Core=function(settings) {
 				QUESTS_MAIN=loadQuestsMain();
 				QUESTS_STORY=loadQuestsStory();
 				QUESTS_HELPERS=loadQuestsHelpers();
+				QUESTS_ANOMALIES=loadQuestsAnomalies();
 				MODIFIERS=loadModifiers();
 				TRUTHMAP=loadTruthMap();
 				EQUIPMENT=loadEquipment();
@@ -218,13 +220,16 @@ const Core=function(settings) {
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"story",count:1,distance:"farthest"},
 
+			// Anomaly
+			{questType:"anomaly",count:1, probability:60},
+
 			// Initial area
 			{questType:"easyFiller",count:2,distance:"nearest"},
 
 			// Hardest area
 			{questType:"hardFiller",count:1,distance:"farthest"},
 
-			
+			// Bonus & Malus
 			{questType:"bonus",count:1,distance:"farthest"},
 			{questType:"malus",count:1,distance:"farthest"},
 
@@ -266,6 +271,7 @@ const Core=function(settings) {
 				veryHardSub:QUESTS_VERYHARDSUB,
 				story:QUESTS_STORY,
 				helpers:QUESTS_HELPERS,
+				anomaly:QUESTS_ANOMALIES,
 			}
 		);
 

@@ -798,3 +798,45 @@ function loadQuestsVeryHardSub() {
 		{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]},{steps:[[]]}
 	];
 }
+
+// Anomalies can change the dungeon balance a little, suggesting the player to risk more.
+
+function loadQuestsAnomalies() {
+	return [
+		{
+			id:"[CODEX-Events] Anomaly - The Little Lost One: A level 0 enemy lost in the depth of the dungeon.",
+			distance:"farthest",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+				[ "\"Hey! I lost my way! Please, stop!\"" ],
+				[ "\"Wh... where am I?\"" ],
+				[ "\"Why I'm here!\"" ],
+			],items:[{id:"enemy",level:0}]}]]
+		},
+		{
+			id:"[CODEX-Events] Anomaly - The Lost Privacy: A level 1 in an optional room.",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+				[ "\"I'm getting ready! Go away!\"" ],
+				[ "\"I'm preparing for you, {heroClass}!\"" ],
+				[ "\"Hey, go away!\"" ],
+			],items:[{id:"enemy",level:1,ignoreXp:true}]}]]
+		},
+		{
+			id:"[CODEX-Events] Anomaly - The Couple: 2 level 0 enemy in the depth of the dungeon.",
+			distance:"farthest",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+				[ "\"My love... We have to defend ourselves!\"" ],
+				[ "\"Hey, stop talking! That {heroClass} is spying!\"" ],
+				[ "\"Hey! Are you that {heroClass} they are talking about?\"" ],
+			],items:[{id:"enemy",level:0},{id:"enemy",level:0}]}]]
+		},
+		{
+			id:"[CODEX-Events] Anomaly - The One In Late: A level 1 enemy lost in the depth of the dungeon.",
+			distance:"farthest",
+			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+				[ "\"Hey! You're here too early!\"" ],
+				[ "\"Y... you woke me up, {heroClass}!\"" ],
+				[ "\"What time is it? Oww...\"" ],
+			],items:[{id:"enemy",level:1}]}]]
+		},
+	]
+}
