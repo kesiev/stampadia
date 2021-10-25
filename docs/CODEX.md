@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (67 items)
+## Events (68 items)
 
 - Anomaly
   - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
@@ -76,6 +76,7 @@
   - **The Key And The Chest (good)**: Find the key and open one good chest.
   - **The Key And The Chests**: Find the key and open one of two random chests.
   - **The Linked Rooms**: Walk on a cell and enable another room effect.
+  - **The Monk**: Donate 1G to draw one room walls.
   - **The Murderer**: Avenge the dead body or steal its gold?
   - **The Nothing**: A teleport to a place that leaves you no choice.
   - **The Shapes Puzzle**: Get the right shapes to solve the puzzle.
@@ -105,7 +106,7 @@
 
 - Class
   - **The Dwarf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
-  - **The Ranger**: An archer that learns from the beasts. It's equipped with a bow, and a Copy item.
+  - **The Ranger**: An archer that learns from the beasts. It's equipped with a bow, and a Focus item.
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
