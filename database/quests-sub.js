@@ -283,7 +283,6 @@ function loadQuestsSub() {
 
 		{
 			id:"[CODEX-Events] Subquest - The Trainer: Face his test and earn gold.",
-			probability:QUEST_RARE,
 			minRooms:1,
 			debug:true,
 			steps:[
@@ -327,7 +326,6 @@ function loadQuestsSub() {
 
 		{
 			id:"[CODEX-Events] Subquest - The Altar: Sacrify important resources for other advantages.",
-			probability:QUEST_RARE,
 			minRooms:2,
 			steps:[
 				[
@@ -711,7 +709,7 @@ function loadQuestsSub() {
 						equipment:[{id:room.content}],
 						roomDescriptions:[
 							[
-								"{ifMoveOn:item}{then}{getEquip:equip-"+room.content+"}, {markRoom:teleportRoom}, {teleportToRoom:teleportRoom}"
+								"{ifMoveOn:item}{then}{getEquip:equip-"+room.content+"}, {markItem:item}, {markRoom:teleportRoom}, {teleportToRoom:teleportRoom}"
 							]
 						]
 					},
@@ -751,6 +749,28 @@ function loadQuestsSub() {
 				]
 			]
 		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Monk: Donate 1G to draw one room walls.",
+			minRooms:1,
+			atPercentage:{from:1,to:99},
+			items:[{genericItem:"monk"}],
+			steps:[
+				[
+					{
+						id:"monkRoom",
+						labels:["Map","Mapping","Peeking"],
+						atPercentage:10,
+						items:[{genericItem:"monk"}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:monk}{and}{ifPayGold:1}{then}Monk: \"Peek at my map!\", {discoverRoom:1}, {markItem:monk}"
+							]
+						]
+					}
+				]
+			]
+		}
 	]
 
 }
