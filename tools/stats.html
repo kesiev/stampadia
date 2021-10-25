@@ -14,7 +14,8 @@
 var	
 	day=0,
 	dayLimit=60,
-	stats={};
+	stats={},
+	complexityMap={};
 
 function createDungeon() {
 
@@ -37,6 +38,7 @@ function createDungeon() {
 					if (!selection.quest||!selection.quest.steps||!selection.quest.steps.length)
 						console.log(selection);
 				} else {
+					complexityMap[selection.quest.id]=selection.quest.complexity;
 					stats[selection.quest.id].count++;
 					stats[selection.quest.id].days.push(day);
 				}
@@ -48,7 +50,7 @@ function createDungeon() {
 			var rank=[];
 			for (var k in stats) {
 				var label=k.split("]")[1].trim().split(" - ");
-				rank.push({cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
+				rank.push({orgid:k,cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
 			}
 			rank.sort((a,b)=>{
 				if (a.cat>b.cat) return 1;
@@ -58,21 +60,32 @@ function createDungeon() {
 				else return 0;
 			});
 			var cat="";
-			var html="<table>";
-			var tot=0;
+			var html="<table border=1>";
+			var tot=1;
+			var complexities={};
 			rank.forEach(row=>{
 				if (cat!=row.cat) {
-					html+="</table>Total: "+tot+"<hr><table>";
+					html+="</table><br><table border=1>";
+					for (var k in complexities)
+						html+="<tr><td>complexity "+k+"</td><td>"+Math.floor(complexities[k]/tot*100)+"%</td><tr>";
+					html+="</table><br>Total: "+tot+"<hr><table border=1>";
+					complexities={};
 					tot=0;
+					count=0;
 					cat=row.cat;
 				}
+				var complexity=complexityMap[row.orgid];
+				if (complexity) {
+					if (!complexities[complexity]) complexities[complexity]=0;
+					complexities[complexity]+=row.count;
+				}
 				if (row.count) {
-					html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+"</td><td>"+row.count+"</td></tr>";
+					html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>"+row.count+"</td></tr>";
 					tot+=row.count;
 				} else
-					html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+"</td><td>0</td></tr>";
+					html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>0</td></tr>";
 			});
-			html+="</table>Total: "+tot;
+			html+="Total: "+tot;
 			document.body.innerHTML=html;
 			console.log("done");
 		}
