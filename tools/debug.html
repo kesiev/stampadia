@@ -75,11 +75,11 @@ function createDungeon() {
 			} else stop=true;
 			if (stop) {
 				dungen.metadata.selection.forEach(row=>{
-					if (row.modifier&&row.modifier.id) console.log(row.modifier.id);
+					if (row.modifier&&row.modifier.id) console.log(row.modifier.id,"@",row.room.id);
 					if (row.quest&&row.quest.id) {
 						let path="";
 						row.route.forEach(step=>path+=step.room.id+" -> ");
-						console.log(row.quest.id,path);
+						console.log(row.quest.id,"@",path);
 					}
 				});
 				console.log();
