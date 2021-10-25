@@ -247,9 +247,41 @@ const Core=function(settings) {
 		]);
 		dunggen.setModifiers(MODIFIERS);
 		dunggen.setModifiersModel([
-			{ atPercentage:20, probability:40, modifierType:"good" },
-			{ atPercentage:40, probability:40, modifierType:"bad"},
-			{ atPercentage:60, probability:60, modifierType:"balanced" },
+			[
+				// Harder at the beginning, easier at the end
+				{ atPercentage:25, modifierType:"bad"},
+				{ atPercentage:75, modifierType:"good"},
+			],
+			[
+				// Balanced in the middle
+				{ atPercentage:50, modifierType:"balanced"}
+			],
+			[
+				// Balanced at the beginning
+				{ atPercentage:25, modifierType:"balanced"}
+			],
+			[
+				// Balanced at the end
+				{ atPercentage:75, modifierType:"balanced"}
+			],
+			[
+				// Easier in the middle
+				{ atPercentage:50, modifierType:"good"}
+			],
+			[
+				// Harder in the middle
+				{ atPercentage:50, modifierType:"bad"}
+			],
+			[
+				// Balanced in the middle, easier at end
+				{ atPercentage:50, modifierType:"balanced"},
+				{ atPercentage:75, modifierType:"good"},
+			],
+			[
+				// Harder in the middle, easier at end
+				{ atPercentage:50, modifierType:"bad"},
+				{ atPercentage:75, modifierType:"good"},
+			]
 		]);
 		dunggen.setPlaceholderModels(PLACEHOLDERS);
 		dunggen.setRandomizers(RANDOMIZERS);
