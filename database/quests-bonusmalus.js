@@ -29,7 +29,7 @@ function loadQuestsBonus() {
 		{
 			id:"[CODEX-Events] Bonus - The NPC: Learn about the Stampadia lore by Stampadians.",
 			minRooms:2,			
-			steps:[[{id:"spawn",labels:["Guy","Talking","Chat"],atPercentage:99,roomDescriptions:[
+			steps:[[{id:"spawn",labels:["Guy","Talking","Chat","Chatting"],atPercentage:99,roomDescriptions:[
 
 				// The Travellers, who has interesting unanswered questions about Stampadia...
 				[ "{ifMoveOn:item}{then}Traveller: \"Are the wall of this dungeon moving?\"" ],
