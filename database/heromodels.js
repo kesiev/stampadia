@@ -193,15 +193,15 @@ function loadHeroModels() {
 			]
 		},
 
-		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow, and a Copy item.
+		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow, and a Focus item.
 		{
 			isBetaTesting:true,
 			id:"ranger",
 			heroClass:"Ranger",
 			skills:[
 				["ATK -1\nRNG 1","Move\n-3"],
-				["ATK -2\nRNG =2","Copy\n-1"],
-				["ATK -1\nRNG =2","DEF -2"],
+				["ATK -1\nRNG =2","Copy"],
+				["ATK -1\nRNG 2","DEF -2"],
 				["Copy","Move"]
 			],
 			defense:[1,1,1,1],
