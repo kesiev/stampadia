@@ -125,12 +125,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		else return 0;
 	}
 
-	function sortByScore(a,b){
-		if (a.score>b.score) return 1;
-		else if (a.score<b.score) return -1;
-		else return 0;
-	}
-
 	function sortByLengthInverse(a,b){
 		if (a.length>b.length) return -1;
 		else if (a.length<b.length) return 1;
@@ -447,6 +441,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{roomIsEmpty}","room is empty");
 		line=line.replaceAll("{noEscape}","no escape");
 		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
+		line=line.replace(/\{discoverRoom:([0-9]+)\}/g,(m,num)=>"select "+num+" "+(num==1?"room":"rooms")+", discover "+(num==1?"it":"them"));
 
 		// HP - Conditions
 		line=line.replace(/\{ifPayHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
@@ -1207,7 +1202,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		const
 			quests=[],
+			slices=[],
 			routes=this.getRoutes();
+		let roll=0;
 
 		set.forEach(quest=>{
 			const questVersions=[];
@@ -1255,12 +1252,24 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						questVersions.push({subroute:subroute.subroute,quest:quest,steps:steps});
 					}
 				})
-				if (questVersions.length) quests.push(getRandom(questVersions));
+				if (questVersions.length) {
+					let
+						version=getRandom(questVersions),
+						complexity=version.quest.complexity;
+					slices.push(roll);
+					roll+=complexity;
+					quests.push(version);
+				}
 			};
 		})
 
 		if (quests.length) {
-			const quest=getRandom(quests);
+			let
+				quest,
+				number=random(roll);
+			for (let i=0;i<slices.length;i++)
+				if (number>slices[i]) quest=quests[i];
+				else break;
 			this.applyQuest(quest.subroute,quest.quest,quest.steps);
 			return quest.quest;
 		} else return false;
@@ -1273,10 +1282,18 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			addedQuests=[];
 
 		// Check quests spawn probability
-		for (let k in quests)
+		for (let k in quests) {
 			quests[k].forEach(quest=>{
-				if (quest.probability&&(random(100)<quest.probability)) addedQuests.push(quest);
-			})
+				let complexity=1;
+				quest.steps[0].forEach(step=>
+					complexity+=1+
+						(step.equipment?2:0)+
+						(step.isHiddenRoom||step.isDeadEndRoom||step.isOptionalRoom?4:0)
+				);
+				complexity*=quest.probability?quest.probability/100:1;
+				quest.complexity=complexity;
+			});
+		}
 
 		questsStructure.forEach(entry=>{
 			if (!entry.probability||(random(100)<entry.probability)) {
@@ -1802,7 +1819,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	this.generateModifiers=function() {
 
-		let validRooms=[];
+		let
+			validRooms={},
+			validRoomDistances=[],
+			modifiersSet=getRandom(modifiersModel);
+
 		rooms.forEach(room=>{
 			let valid=false;
 			if (!room.isFake&&(room.description.length<MAX_DESCRIPTION)) {
@@ -1810,30 +1831,34 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					if (item.item.id=="enemy") valid=true;
 				});
 			}
-			if (valid) validRooms.push({
-				score:shortestPath(room).length,
-				room:room
-			});
-		});
-		validRooms.sort(sortByScore);
-		modifiersModel.forEach(model=>{
-			if (!model.probability||(random(100)<model.probability)) {
-				let
-					position=Math.floor(model.atPercentage/100*validRooms.length),
-					room=validRooms[position].room;
-				if (room) {
-					let
-						modifier=getRandom(modifiers[model.modifierType]),
-						modifierDescription=getRandom(modifier.roomDescriptions),
-						description=[];
-					if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier});
-					modifierDescription.forEach(line=>description.push({line:line,placeholders:{}}));
-					room.description.forEach(line=>description.push(line));
-					room.description=description;
-					validRooms[position].room=0;
+			if (valid) {
+				let score=shortestPath(room).length;
+				if (!validRooms[score]) {
+					validRoomDistances.push(score);
+					validRooms[score]=[]
 				}
+				validRooms[score].push(room);
 			}
 		});
+		validRoomDistances.sort();
+		modifiersSet.forEach(step=>{
+			let
+				position=Math.floor(step.atPercentage/100*validRoomDistances.length),
+				roomsSet=validRooms[validRoomDistances[position]],
+				roomId=getRandomId(roomsSet),
+				room=roomsSet[roomId];
+			if (room) {				
+				let
+					modifier=getRandom(modifiers[step.modifierType]),
+					modifierDescription=getRandom(modifier.roomDescriptions),
+					description=[];
+				roomsSet.splice(roomId,1);
+				if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier,room:room});
+				modifierDescription.forEach(line=>description.push({line:line,placeholders:{}}));
+				room.description.forEach(line=>description.push(line));
+				room.description=description;
+			}
+		})
 	}
 
 	// Initializer
