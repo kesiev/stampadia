@@ -33,15 +33,28 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
-- [ ] Gameplay
-  - [ ] Diagonal movement?
+- [ ] !!!
+  - [ ] Join luck/unluck in same quest?
+
+- [ ] Quests
+  - [ ] Main - The Curse: debuff on all encounters/boss until you get an item or buff on boss
+  - [ ] Sub - The Enchanter: do something to get a buff on all encounters
+  - [ ] Sub - The Traitor: reveal where the boss room is on death
+  - [ ] Sub - The Trader - Exchange xp/hp
+  - [ ] Sub - ??? - More luck/unluck uses
+  - [ ] Sub - The Messenger - bring messages between adventures using keywords
+  - [ ] Sub - The Armory - Choose between two items
+  - [ ] Sub - The Landslide - Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
 
 - [ ] Room modifiers
-  - [ ] Room modifiers can be enabled by objects or other characters
-  - [ ] Truth/lies on terrain types
+  - [ ] Room modifiers can be enabled by items/characters/events
+  - [ ] Truth/lies on modifiers
 
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
+
+- [ ] Gameplay
+  - [ ] Diagonal movement?
 
 - [ ] Rooms Table
   - [ ] Asterisk for more hidden rows
@@ -51,34 +64,23 @@ A daily print-and-play roguelike adventure you can play offline.
     - [ ] Runes that can be broken by events/items
   - [ ] Include a square in a room/Join another room when solving a puzzle
   - [ ] Preset rooms
-  - [ ] Arena with multiple enemies
+  - [ ] Arena with multiple enemies to beat in sequence
   - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
 
-- [ ] Variants 
+- [ ] Variants
   - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
-  - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room describing combat strategy for mobs: berserk, cautious, daring, defensive ...
+    - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room describing combat strategy for mobs: berserk, cautious, daring, defensive ...
   - [ ] Arcade variant: damage = atk - defense
 
 - [ ] Skills & Items
-  - [ ] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
-  - [ ] Dice roll skill: the hero locks a die for other enemies
-  - [ ] Reveal a room position the player can choose
-  - [ ] Damage reflection
+  - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
+  - [ ] Hero/Enemy - Damage reflection
 
 - [ ] New classes
   - [ ] Rogue: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
-  - [ ] new class: druid
-    - [ ] class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
-  - [ ] Rookie: most of the skills are copied from enemies
-
-- [ ] New quests
-  - [ ] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
-  - [ ] Exchange xp/hp
-  - [ ] Use luck/unluck more
-  - [ ] The messenger - bring messages between adventures using keywords
-  - [ ] Choose between two items
-  - [ ] Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
+  - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
+  - [ ] Rookie: most of the skills are copied to empty Hero Sheet cells from enemies
 
 - [ ] NPC
   - [ ] The Corrupted
@@ -122,8 +124,10 @@ A daily print-and-play roguelike adventure you can play offline.
 - [x] Lower damageRatio for all classes
   - [x] Maybe moving 1 HP from LVL1 to LVL2?
 - [x] Skills & items
+  - [x] Reveal a room position the player can choose
   - [x] Invisibility potion: enemy rolls < 6 are discarded for the 3 next rolls
   - [x] Fireball item that damages all enemies in the room.
+  - [x] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
 - [x] Rooms & Dungeon generator
   - [x] Teleports enabled only on conditions
 - [x] New class
@@ -154,6 +158,8 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] The Time Bomb - Reach the room in time
   - [x] The Barman
   - [x] One Last Fight - The enemy spawn only on your way back  
+  - [x] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
+    - [x] Implemented in 2-phases boss main quest
 - [x] Improve quests
   - [x] Pair/odd in Sphinx
   - [x] Quest ID in Sphinx (pair/odd)
