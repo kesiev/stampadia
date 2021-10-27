@@ -75,6 +75,7 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Skills & Items
   - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
   - [ ] Hero/Enemy - Damage reflection
+  - [ ] Item - Grenade: ATK by the number of cells of the current room
 
 - [ ] New classes
   - [ ] Rogue: Get gold by fights/lock dice
@@ -118,49 +119,62 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Done
 
+- [x] Dungeon generation
+  - [x] Shredder mode - Quests are no longer distributed on a single path *(previous version available via setShredderMode)*
+
 - [x] Mechanics
   - [x] Remove the "don't visit new rooms in fight" rule? (Thank you, PeterPiers!)
   - [x] Rich terrain: areas with enemies that have special effects (fire scares the enemies: every turn -1 on one player chosen die, mud: movement -1 in this room...)
-- [x] Lower damageRatio for all classes
-  - [x] Maybe moving 1 HP from LVL1 to LVL2?
+
 - [x] Skills & items
   - [x] Reveal a room position the player can choose
   - [x] Invisibility potion: enemy rolls < 6 are discarded for the 3 next rolls
   - [x] Fireball item that damages all enemies in the room.
   - [x] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
-- [x] Rooms & Dungeon generator
-  - [x] Teleports enabled only on conditions
+
 - [x] New class
   - [x] Tank/Dwarf
-    - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
-    - lower movement
-- [x] Very hard rooms
-  - [x] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
-  - [x] The Swarm - A lot of LVL0 enemies!
-- [x] The game could spawn some kind of "help kiosk" near the entrance.
-  - [x] gold/XP to health converter. Conversion ratio may vary.
-  - [x] should for wizard, could for warrior/dwarf?
-- [x] Bugs
-  - [x] There is 1 extra xp box in the tutorial pdf!
-- [x] Simplify the condition in `generator.js`
+      - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
+      - lower movement
+
 - [x] Equipment
   - [x] Flip - Complementary dice values (upside down dice)
   - [x] Turn - Use dice in reverse order (lower-higher)
+
 - [x] New quests
-  - [x] The Tapeworm
-    -[x] digesting track: corridor "organic walls are trying to squeeze you, -1HP" until you kill lvl3/4 mob in adjacent room (not adjacent, weaker enemy, loot added)
-  - [x] The Witch - Help me, or else...
-  - [x] The Mirror - teleport back to a room
-  - [x] Final form - Mini boss, then forced bigger boss
-  - [x] Moral choices - Become the next ruler
-  - [x] Escort mission
-  - [x] Challenge - Items with a challenge
-  - [x] The Time Bomb - Reach the room in time
-  - [x] The Barman
-  - [x] One Last Fight - The enemy spawn only on your way back  
-  - [x] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
-    - [x] Implemented in 2-phases boss main quest
-- [x] Improve quests
+  - [x] Helpers
+    - [x] The game could spawn some kind of "help kiosk" near the entrance.
+      - [x] gold/XP to health converter. Conversion ratio may vary.
+      - [x] should for wizard, could for warrior/dwarf?
+  - [x] Very hard rooms
+    - [x] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
+    - [x] The Swarm - A lot of LVL0 enemies!
+  - [x] Main Quests
+    - [x] Final form - Mini boss, then forced bigger boss
+    - [x] Moral choices - Become the next ruler
+  - [x] Sub Quests
+    - [x] The Tapeworm
+      - [x] digesting track: corridor "organic walls are trying to squeeze you, -1HP" until you kill lvl3/4 mob in adjacent room (not adjacent, weaker enemy, loot added)
+    - [x] The Witch - Help me, or else...
+    - [x] The Mirror - teleport back to a room
+    - [x] Escort mission
+    - [x] Challenge - Items with a challenge
+    - [x] The Time Bomb - Reach the room in time
+    - [x] The Barman
+    - [x] One Last Fight - The enemy spawn only on your way back  
+    - [x] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
+      - [x] Implemented in 2-phases boss main quest
+    - [x] Teleports enabled only on conditions
+
+- [x] Classes balances
+  - [x] Lower damageRatio for all classes
+    - [x] Maybe moving 1 HP from LVL1 to LVL2?
+
+- [x] Quests improvements
   - [x] Pair/odd in Sphinx
   - [x] Quest ID in Sphinx (pair/odd)
   - [x] More smaller quests
+
+- [x] Bugs/Code
+  - [x] Simplify the condition in `generator.js`
+  - [x] There is 1 extra xp box in the tutorial pdf!
