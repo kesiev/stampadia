@@ -92,12 +92,17 @@ const Core=function(settings) {
 				document.head.firstElementChild.appendChild(tag);
 			} else {
 				// Load databases
-				QUESTS_SUB=loadQuestsSub();
-				RANDOMIZERS=loadRandomizers();
-				ENEMYMODELS=loadEnemyModels();
+				MODIFIERS=loadModifiers();
 				FLAVORTEXTS=loadFlavorTexts();
 				HEROMODELS=loadHeroModels();
+				RANDOMIZERS=loadRandomizers();
+				ENEMYMODELS=loadEnemyModels();
 				PLACEHOLDERS=loadPlaceholders();
+				TRUTHMAP=loadTruthMap();
+				EQUIPMENT=loadEquipment();
+				KEYWORDS=loadKeywords();
+
+				QUESTS_SUB=loadQuestsSub();
 				QUESTS_BONUS=loadQuestsBonus();
 				QUESTS_MALUS=loadQuestsMalus();
 				QUESTS_EASYFILLERS=loadQuestsEasyFillers();
@@ -108,10 +113,6 @@ const Core=function(settings) {
 				QUESTS_STORY=loadQuestsStory();
 				QUESTS_HELPERS=loadQuestsHelpers();
 				QUESTS_ANOMALIES=loadQuestsAnomalies();
-				MODIFIERS=loadModifiers();
-				TRUTHMAP=loadTruthMap();
-				EQUIPMENT=loadEquipment();
-				KEYWORDS=loadKeywords();
 				cb();
 			}
 		}
@@ -283,6 +284,8 @@ const Core=function(settings) {
 				{ atPercentage:75, modifierType:"good"},
 			]
 		]);
+		dunggen.setShredderMode(true);
+		dunggen.setComplexityEvaluation(true);
 		dunggen.setPlaceholderModels(PLACEHOLDERS);
 		dunggen.setRandomizers(RANDOMIZERS);
 		dunggen.setHeroModels(HEROMODELS);

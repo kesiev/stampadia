@@ -39,7 +39,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			{
 				regex:/{markItem:([^}]*)}/g,
 				replace:"x[{item:1}]"
-			}
+			},
+			{
+				regex:/{applyModifierOnRoomMarked:([^,]+),([^}]+)\}/g,
+				replace:"x{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
+			},
+			{
+				regex:/{applyModifierOnRoomNotMarked:([^,]+),([^}]+)\}/g,
+				replace:"not x{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
+			},
 		];
 
 	const originalSeed=seed=seed||Math.random();
@@ -54,6 +62,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		keywordsIndex={},
 		keywordsSetsIndex={},
 		modifiers=0,
+		modifiersByType=[],
+		modifiersById=[],
 		modifiersModel=0,
 		enemies=[],		
 		noise=[],
@@ -79,10 +89,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		enemyModels,
 		truthMap,
 		roomPriorities,
+		shredderMode,
+		complexityEnabled,
 		svg;
 
 	this.prepared=false;
 
+	this.setComplexityEvaluation=(v)=>complexityEnabled=v;
+	this.setShredderMode=(v)=>shredderMode=v; // Shredder mode uses starting room distance instead of shortest paths.
 	this.setModifiers=(modifiersdata)=>modifiers=modifiersdata;
 	this.setModifiersModel=(modifiersmodeldata)=>modifiersModel=modifiersmodeldata;
 	this.setRoomPriorities=(roomprioritiesdata)=>roomPriorities=roomprioritiesdata;
@@ -540,7 +554,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
 				const matches=arguments;
-				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
+				return placeholder.replace.replace(/{([^:}]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
 						case "roomRiddle":
 						case "room":{
@@ -552,7 +566,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							return 1;
 						}
 						default:{
-							return "???";
+							return "[???]";
 						}
 					}
 				})
@@ -606,7 +620,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
 				const matches=arguments;
-				return placeholder.replace.replace(/{([^:]*):([^}]*)}/g,(line,marker,value)=>{
+				return placeholder.replace.replace(/{([^:}]*):([^}]*)}/g,(line,marker,value)=>{
 					switch (marker) {
 						case "roomRiddle":
 						case "room":{
@@ -621,16 +635,22 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 								return "???";
 							}
 						}
+						case "modifierCondition":{
+							return modifiersById[matches[value]].condition;
+						}
+						case "modifierAction":{
+							return modifiersById[matches[value]].action;
+						}
 						case "item":{
 							return placeholders.itemIds[matches[value]];
 						}
 						default:{
-							return "???";
+							return "[???]";
 						}
 					}
 				})
 			})
-		})
+		});
 
 		line=formatGlobalPlaceholders(line);
 
@@ -1032,6 +1052,38 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		return routes;
 	}
 
+	function isRoomFittingStep(room,step) {
+
+		success=true;
+
+		// Room must be not busy
+		success&=!room.room.isBusy;
+
+		// Room may host a hidden room
+		if (success&&(step.isOptionalRoom||step.isHiddenRoom||step.isDeadEndRoom)) {
+			var avoidRooms=[room.room.id];
+			for (let j=0;j<rooms.length;j++)
+				if (
+						!rooms[j].isStartingRoom&&
+						(rooms[j].id!=room.room.id)
+				) {
+					var path=shortestPath(rooms[j],avoidRooms);
+					if (!path.length) {
+						success=false;
+						break;
+					}
+				}
+		}
+
+		// Room must fit the required amount of items
+		success&=!step.items||(room.freeSpaces.length>=step.items.length);
+
+		// Room must fit the required amount of description
+		success&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
+
+		return success;					
+	}
+
 	this.getQuestSubroute=function(route,quest,steps) {
 
 		let
@@ -1089,54 +1141,75 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					});
 
 					// Generate route metadata
-					route.forEach((room,id)=>{
+					if (shredderMode) {
 
-						let roomMeta={
-							room:room,
-							id:id,
-							fitSteps:{},
-							step:-1
-						};
+						// Place a single quest on multiple paths, keeping distances
 
-						// Check which steps fits the room
-						stepsMeta.forEach(stepMeta=>{
+						const
+							done={};
+							toVisit=[],
+							distance=0;
 
-							const step=stepMeta.step;
-							success=true;
+						rooms.forEach(room=>{
+							if (room.isStartingRoom) {
+								toVisit.push(room);
+								done[room.id]=true;
+							} else if (room.isFake) done[room.id]=true;
+						})
 
-							// Room must be not busy
-							success&=!room.room.isBusy;
-
-							// Room may host a hidden room
-							if (success&&(step.isOptionalRoom||step.isHiddenRoom||step.isDeadEndRoom)) {
-								var avoidRooms=[room.room.id];
-								for (let j=0;j<rooms.length;j++)
-									if (
-											!rooms[j].isStartingRoom&&
-											(rooms[j].id!=room.room.id)
-									) {
-										var path=shortestPath(rooms[j],avoidRooms);
-										if (!path.length) {
-											success=false;
-											break;
+						do {
+							let nextVisit=[];
+							toVisit.forEach(room=>{
+								room.exits.forEach(exit=>{
+									if (!exit.toRoom.isFake&&!done[exit.toRoom.id]) {
+										var room={
+											room:exit.toRoom,
+											freeSpaces:exit.toRoom.getFreeSpaces()
 										}
+										if (!roomsMeta[distance]) roomsMeta[distance]={
+											fitSteps:{},
+											step:-1
+										};
+										// Check which steps fits the room
+										stepsMeta.forEach(stepMeta=>{
+											if (isRoomFittingStep(room,stepMeta.step)) {
+												if (!roomsMeta[distance].fitSteps[stepMeta.id]) roomsMeta[distance].fitSteps[stepMeta.id]=[];
+												roomsMeta[distance].fitSteps[stepMeta.id].push(room);
+											}
+										});
+										done[exit.toRoom.id]=true;
+										nextVisit.push(exit.toRoom);
 									}
-							}
+								})
+							})
+							toVisit=nextVisit;
+							distance++;
+						} while (toVisit.length);
 
-							// Room must fit the required amount of items
-							success&=!step.items||(room.freeSpaces.length>=step.items.length);
+					} else {
+						
+						// Place a single quest on a single path, keeping distances
 
-							// Room must fit the required amount of description
-							success&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
+						route.forEach((room,id)=>{
 
-							if (success) roomMeta.fitSteps[stepMeta.id]=true;
+							let roomMeta={
+								room:room,
+								id:id,
+								fitSteps:{},
+								step:-1
+							};
+
+							// Check which steps fits the room
+							stepsMeta.forEach(stepMeta=>{
+								if (isRoomFittingStep(room,stepMeta.step)) roomMeta.fitSteps[stepMeta.id]=[room];
+							});
+
+							roomsMeta.unshift(roomMeta);
 
 						});
 
-						roomsMeta.unshift(roomMeta);
-
-					});
-
+					}
+					
 					// Place steps on rooms, minimal distance.
 					let head=-1;
 					success=true;
@@ -1170,7 +1243,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 										success=false;
 										break;
 									}
-									result[stepMeta.id]=roomsMeta[q].room;
+									result[stepMeta.id]=getRandom(roomsMeta[q].fitSteps[stepMeta.id]);
 									stepMeta.room=q;
 									if (q>farthestRoom) farthestRoom=q;
 									if (q<nearestRoom) nearestRoom=q;
@@ -1275,25 +1348,33 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		} else return false;
 	}
 
+	this.evaluateQuestsComplexity=function() {
+
+		// Check quests spawn probability
+		for (let k in quests) {
+			quests[k].forEach(quest=>{
+				if (complexityEnabled) {
+					let complexity=1;
+					quest.steps[0].forEach(step=>
+						complexity+=0.3+
+							(step.equipment?1:0)+
+							(step.isHiddenRoom||step.isDeadEndRoom||step.isOptionalRoom?1:0)
+					);
+					complexity*=quest.probability?quest.probability/100:1;
+					quest.complexity=complexity;
+				} else {
+					quest.complexity=quest.probability?quest.probability/100:1;
+				}
+			});
+		}
+
+	}
+
 	this.addQuests=function() {
 
 		let
 			quest,
 			addedQuests=[];
-
-		// Check quests spawn probability
-		for (let k in quests) {
-			quests[k].forEach(quest=>{
-				let complexity=1;
-				quest.steps[0].forEach(step=>
-					complexity+=1+
-						(step.equipment?2:0)+
-						(step.isHiddenRoom||step.isDeadEndRoom||step.isOptionalRoom?4:0)
-				);
-				complexity*=quest.probability?quest.probability/100:1;
-				quest.complexity=complexity;
-			});
-		}
 
 		questsStructure.forEach(entry=>{
 			if (!entry.probability||(random(100)<entry.probability)) {
@@ -1459,6 +1540,25 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			if (a.equipment.label>b.equipment.label) return 1; else
 			return 0;
 		});
+	}
+
+	// Modifiers
+
+	this.indexModifiers=function() {
+		for (let label in modifiers) {
+			for (let target in modifiers[label]) {
+				let
+					modifier=modifiers[label][target],
+					descriptionParts=modifier.roomDescription.split("{then}");
+				if (!modifiersByType[modifier.type]) modifiersByType[modifier.type]=[];
+				modifiersByType[modifier.type].push(modifier);
+				modifiersById[label+"."+target]={
+					full:modifier.roomDescription,
+					condition:descriptionParts[0],
+					action:descriptionParts[1]
+				}
+			}
+		}
 	}
 
 	// Obfuscation
@@ -1844,19 +1944,17 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		modifiersSet.forEach(step=>{
 			let
 				position=Math.floor(step.atPercentage/100*validRoomDistances.length),
-				roomsSet=validRooms[validRoomDistances[position]],
-				roomId=getRandomId(roomsSet),
-				room=roomsSet[roomId];
-			if (room) {				
+				roomsSet=validRooms[validRoomDistances[position]];
+			if (roomsSet) {
 				let
-					modifier=getRandom(modifiers[step.modifierType]),
-					modifierDescription=getRandom(modifier.roomDescriptions),
-					description=[];
-				roomsSet.splice(roomId,1);
-				if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier,room:room});
-				modifierDescription.forEach(line=>description.push({line:line,placeholders:{}}));
-				room.description.forEach(line=>description.push(line));
-				room.description=description;
+					roomId=getRandomId(roomsSet),
+					room=roomsSet[roomId];
+				if (room) {				
+					let modifier=getRandom(modifiersByType[step.modifierType]);
+					roomsSet.splice(roomId,1);
+					if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier,room:room});
+					room.description.unshift({line:modifier.roomDescription,placeholders:{}});
+				}
 			}
 		})
 	}
@@ -1876,6 +1974,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				};
 
 			// Initialize
+			this.indexModifiers();
+			this.evaluateQuestsComplexity();
 			this.setupMetadata();
 			this.prepareGlobalPlaceholders();
 			this.prepareKeywordsIndex();
