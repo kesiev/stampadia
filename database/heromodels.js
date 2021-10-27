@@ -200,9 +200,9 @@ function loadHeroModels() {
 			heroClass:"Ranger",
 			skills:[
 				["ATK -1\nRNG 1","Move\n-3"],
-				["ATK -1\nRNG =2","Copy"],
-				["ATK -1\nRNG 2","DEF -2"],
-				["Copy","Move"]
+				["ATK -1\nRNG =2","Copy\n-1"],
+				["Copy\n-1","DEF -2"],
+				["ATK\nRNG 3","Move"]
 			],
 			defense:[1,1,1,1],
 			xpRamp:[
