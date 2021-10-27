@@ -1,6 +1,6 @@
 /* exported loadQuestsMain */
 
-function loadQuestsMain() {
+function loadQuestsMain(MODIFIERS) {
 
 	let
 		STARTINGROOMLABELS=["Beginning","Stairs","Enter","Exit"],
@@ -829,6 +829,74 @@ function loadQuestsMain() {
 						[
 							"The {madScientistName} is trying to bring the {villainName} back!",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Enchantment: Find an NPC lost in the dungeons to make your final battle easier.",
+			minRooms:4,
+			adventureTitle:[
+				"The {heroClass}'s Trinket",
+				"The {placeName} Treasure",
+				"The {heroClass}'s Weapon",
+				"The Weakness Of The {villainName}",
+				"The {heroClass} Last Hope",
+				"The {placeName}'s Gift",
+				"The {goodGuyName}'s Gift",
+			],
+			steps:[
+				// [CODEX-Stuff] Item - Pendant: Scares a boss.
+				{trinket:"Pendant",effect:"{applyModifierOnRoomMarked:scared.enemy,npcRoom}"},
+				// [CODEX-Stuff] Item - Boots: Can slow down a boss.
+				{trinket:"Boots",effect:"{applyModifierOnRoomMarked:crippled.enemy,npcRoom}"},
+				// [CODEX-Stuff] Item - Diamond: Can blind a boss.
+				{trinket:"Diamond",effect:"{applyModifierOnRoomMarked:blind.enemy,npcRoom}"},
+				// [CODEX-Stuff] Item - Necklace: Can stun a boss.
+				{trinket:"Necklace",effect:"{applyModifierOnRoomMarked:stunned.enemy,npcRoom}"},
+
+				// [CODEX-Stuff] Item - Shawl: Prevents the boss crippled effect.
+				{trinket:"Shawl",effect:"{applyModifierOnRoomNotMarked:crippled.hero,npcRoom}"},
+				// [CODEX-Stuff] Item - Belt: Prevents the boss fear effect.
+				{trinket:"Belt",effect:"{applyModifierOnRoomNotMarked:scared.hero,npcRoom}"},
+				// [CODEX-Stuff] Item - Goggles: Prevents the boss blind effect.
+				{trinket:"Goggles",effect:"{applyModifierOnRoomNotMarked:blind.hero,npcRoom}"},
+				// [CODEX-Stuff] Item - Helmet: Prevents the boss stun effect.
+				{trinket:"Helmet",effect:"{applyModifierOnRoomNotMarked:stunned.hero,npcRoom}"},
+
+			].map(enchantment=>[
+				{
+					id:"npcRoom",
+					labels:["Rescue","Enchantment"],
+					atPercentage:{from:60,to:90},
+					items:[{genericItem:"npc"},{id:"enemy",level:2}],
+					roomDescriptions:[
+						[ "{ifKilledLastFoe}{then}{goodGuyName}: \"You saved me! Take this "+enchantment.trinket+"!\", {markRoom:npcRoom}, {markItem:npc}" ]
+					]
+				},
+				{
+					id:"bossRoom",
+					labels:BOSSROOMLABELS,
+					atPercentage:100,
+					items:[{id:"enemy",level:3,ignoreXp:true}],
+					roomDescriptions:[
+						[
+							enchantment.effect,
+							"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+						]
+					]
+				}
+			]),
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"\"Please, hero! Kill the {villainName} and save the {placeName}!\"",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
 						]
 					]
 				}
