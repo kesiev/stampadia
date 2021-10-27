@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (68 items)
+## Events (69 items)
 
 - Anomaly
   - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
@@ -41,6 +41,7 @@
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
   - **The Curse**: Break the spell and kill the bad guy.
+  - **The Enchantment**: Find an NPC lost in the dungeons to make your final battle easier.
   - **The Escort**: Escort the good guy near the boss and fight.
   - **The Gang**: beat a sequence of enemies.
   - **The Great Old Ones**: Beat the boss before being corrupted by madness.
@@ -89,13 +90,13 @@
 - Enemy
   - **Blind**: Enemies plays just 1 die.
   - **Crippled**: Enemies moves -1.
+  - **Fear**: Enemies -1 a die of choice.
   - **Haste**: Enemies rerolls his 1s.
-  - **Scared**: Enemies -1 a die of choice.
   - **Stunned**: Hero rerolls his 1s.
 - Hero
   - **Blind**: Hero plays just 1 die.
-  - **Fear**: Hero moves -1.
-  - **Weak**: Hero -1 a die of choice.
+  - **Fear**: Hero -1 a die of choice.
+  - **Paralysis**: Hero moves -1.
 - Terrain
   - **Arena**: Everybody rerolls his 1s.
   - **Darkness**: Everybody plays just 1 die.
@@ -110,7 +111,7 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (38 items)
+## Stuff (46 items)
 
 - Equipment
   - **Apple**: Gain 1/2 max HP.
@@ -136,8 +137,16 @@
   - **The Fresh Fountain**: Gain 2 HP.
   - **The Muddy Fountain**: Lose 1 HP.
 - Item
+  - **Belt**: Prevents the boss fear effect.
   - **Blue Die**: Gives you a random bad reward.
+  - **Boots**: Can slow down a boss.
+  - **Diamond**: Can blind a boss.
+  - **Goggles**: Prevents the boss blind effect.
+  - **Helmet**: Prevents the boss stun effect.
+  - **Necklace**: Can stun a boss.
+  - **Pendant**: Scares a boss.
   - **Red Die**: Gives you a random good reward.
+  - **Shawl**: Prevents the boss crippled effect.
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
   - **The Star Pin**: Gain 1 XP.
