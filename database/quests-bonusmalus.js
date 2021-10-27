@@ -267,16 +267,16 @@ function loadQuestsMalus() {
 				[
 					{id:"roomA",labels:["Bomb","Clicking"],atPercentage:99,roomDescriptions:[
 						[
-							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap is triggered, {randomBadReward}, {markRoom:roomA}",
-							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}The trap clicks, {markRoom:roomA}"
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}You triggered a trap, {randomBadReward}, {markRoom:roomA}",
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}You managed to defuse a trap, {markRoom:roomA}"
 						]
 					]}
 				],
 				[
 					{id:"roomA",labels:["Bomb","Clicking"],atPercentage:99,roomDescriptions:[
 						[
-							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}The trap is triggered, {randomBadReward}, {markRoom:roomA}",
-							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}The trap clicks, {markRoom:roomA}"
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft>half}{then}You triggered a trap, {randomBadReward}, {markRoom:roomA}",
+							"{ifEnterRoom}{and}{ifRoomIsNotMarked:roomA}{and}{ifGoldLeft<half}{then}Someone triggered a trap, {markRoom:roomA}"
 						]
 					]}
 				]
