@@ -18,7 +18,7 @@ function loadEnemyModels() {
 		// Level 2
 		{
 			skills:[
-				["DEF -3","ATK -3\nRNG 1"],
+				["DEF -4","ATK -2\nRNG 1"],
 				["DEF -4","ATK -3\nRNG 2"]
 			]
 		},
