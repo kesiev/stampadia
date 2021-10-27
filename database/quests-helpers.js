@@ -22,8 +22,7 @@ function loadQuestsHelpers() {
 						"{ifMoveOn:npc}{and}{payEquip:equip-heroItem}{then}\"Just what I needed!\", {gainFullHp}, {markItem:npc}"
 				]
 			],items:[{genericItem:"npc"}]}]]
-		},
-		{ ignoreForHeroTags:["weak"], steps:[[]] }
+		}
 	]
 
 }
