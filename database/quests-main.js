@@ -126,7 +126,7 @@ function loadQuestsMain(MODIFIERS) {
 						roomDescriptions:[
 							[
 								"\"We will stop you at any cost!\"",
-								"{ifKilledLastFoe}{then}\"I've to warn... the {villainName}\",{markRoom:enemy1room}"
+								"{ifKilledLastFoe}{then}\"I've to warn... the {villainName}\", {markRoom:enemy1room}"
 							]
 						]
 					},
@@ -143,7 +143,7 @@ function loadQuestsMain(MODIFIERS) {
 						]
 					},
 					{
-						id:"enemy3room",
+						id:"bossRoom",
 						labels:["Third Encounter","Three"],
 						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
@@ -591,18 +591,18 @@ function loadQuestsMain(MODIFIERS) {
 						roomDescriptions:[
 							[
 								"{randomTwinBossEntrance}, {noEscape}",
-								"{ifNoFoes}{then}{hide}{randomFinalFormAnnounce}, {markRoom:bossRoom2}, {teleportToRoom:bossRoom2}"
+								"{ifNoFoes}{then}{hide}{randomFinalFormAnnounce}, {markRoom:bossRoom}, {teleportToRoom:bossRoom}"
 							]
 						]
 					},
 					{
-						id:"bossRoom2",
+						id:"bossRoom",
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						roomDescriptions:[
 							[
-								"{ifRoomIsNotMarked:bossRoom2}{then}{roomIsEmpty}, {stopReading}",
+								"{ifRoomIsNotMarked:bossRoom}{then}{roomIsEmpty}, {stopReading}",
 								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 							]
 						]
@@ -895,7 +895,7 @@ function loadQuestsMain(MODIFIERS) {
 					labels:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
-							"\"Please, hero! Kill the {villainName} and save the {placeName}!\"",
+							"\"They said that the {villainName} have mystical powers. Let's check this out!\"",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
 						]
 					]
