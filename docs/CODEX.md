@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (69 items)
+## Events (74 items)
 
 - Anomaly
   - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
@@ -15,10 +15,13 @@
   - **The Magic Tree**: It grows a healing fruit after some time.
   - **The Mirror**: Go back to this room using an item.
   - **The NPC**: Learn about the Stampadia lore by Stampadians.
+  - **The Powder Magazine**: Choose between 2 room-size based weapons.
   - **The Random Item**: A random bonus item.
   - **The Saint**: They will help you when you're in danger.
-  - **The Shop**: Pay gold for useful items.
+  - **The Shop**: Pay gold or other valuables for useful items.
   - **The Teleports**: Teleport from a room to another.
+  - **The Wildness (bad)**: Earn a debuff after fighting an enemy.
+  - **The Wildness (good)**: Earn a buff after fighting an enemy.
 - Filler (easy)
   - **The One**: One level 1 enemy.
   - **The Pair**: Two level 0 enemies.
@@ -76,6 +79,7 @@
   - **The Guardians**: Kill 2 mini-boss and earn bonus XPs.
   - **The Key And The Chest (good)**: Find the key and open one good chest.
   - **The Key And The Chests**: Find the key and open one of two random chests.
+  - **The Landslide**: Free a room from rubbles or prevent it from collapsing to get an reward.
   - **The Linked Rooms**: Walk on a cell and enable another room effect.
   - **The Monk**: Donate 1G to draw one room walls.
   - **The Murderer**: Avenge the dead body or steal its gold?
@@ -84,6 +88,7 @@
   - **The Sphynx**: Give the right answer, meet the Sphynx and get your reward.
   - **The Tapeworm**: Kill the monster to stop him digesting you.
   - **The Trainer**: Face his test and earn gold.
+  - **The Traitor**: Kill the enemy to learn where the boss is lurking.
 
 ## Modifiers (12 items)
 
@@ -111,8 +116,17 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (46 items)
+## Stuff (57 items)
 
+- Beast
+  - **The Bat**: It can scare you permanently.
+  - **The Bear**: Makes you braver.
+  - **The Light Ball**: It can blind you permanently.
+  - **The Moth**: His spores can blind your enemies.
+  - **The Porcupine**: Gives you thorns to cripple your enemies.
+  - **The Scorpion**: It can stun you permanently.
+  - **The Snake**: It can poison you permanently.
+  - **The Whirlwind**: His colors can stun your enemies.
 - Equipment
   - **Apple**: Gain 1/2 max HP.
   - **Backflip**: Flip a dice upside down.
@@ -121,12 +135,15 @@
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
   - **Focus**: Pay 2G and sum 2 dice values.
+  - **Grenade**: Perform an ATK action by the current room size.
   - **Invisibility**: For the next 3 enemy turns, discard all dice less than 6.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.
   - **Mirror**: Teleport back to the mirror room.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
+  - **Smoke**: Perform a MOVE action by the current room size.
+  - **Sonic**: Perform a DEF action by the current room size.
   - **Spin**: Play dices in reverse order.
   - **Sweep**: Place dice on the same row.
   - **Tactic**: Sacrifice XPs to strike a two strong hits.
@@ -184,7 +201,7 @@
   - **Hellhound**: Beastcrafters collectable cards from 1 to 3.
   - **Manticore**: Beastcrafters collectable cards from 1 to 3.
 
-## Generator (6 items)
+## Generator (9 items)
 
 - Layout
   - **The City**: Large rooms inside, then the corridors, then mid rooms, and the starting room outside.
@@ -193,3 +210,7 @@
   - **The Halls**: Starting room inside, then large and mid rooms, and corridors on the outside.
   - **The Hill**: Large and mid rooms inside, then the corridors, and the starting room outside.
   - **The Maze**: Starting room inside, then corridors and large and mid rooms on the outside.
+- Roomset
+  - **The Sewers**: A set of small rectangular rooms with 2 huge halls.
+  - **The Stampadian**: A set of multiple sized rooms.
+  - **The Towers**: A set of small squared rooms and corridors.
