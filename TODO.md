@@ -33,22 +33,9 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
-- [ ] !!!
-  - [ ] Join luck/unluck in same quest?
-
 - [ ] Quests
-  - [ ] Main - The Curse: debuff on all encounters/boss until you get an item or buff on boss
-  - [ ] Sub - The Enchanter: do something to get a buff on all encounters
-  - [ ] Sub - The Traitor: reveal where the boss room is on death
-  - [ ] Sub - The Trader - Exchange xp/hp
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
-  - [ ] Sub - The Armory - Choose between two items
-  - [ ] Sub - The Landslide - Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
-
-- [ ] Room modifiers
-  - [ ] Room modifiers can be enabled by items/characters/events
-  - [ ] Truth/lies on modifiers
 
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
@@ -63,9 +50,8 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Black squares like crosswords
     - [ ] Runes that can be broken by events/items
   - [ ] Include a square in a room/Join another room when solving a puzzle
+    - [ ] Allows arenas with multiple enemies to beat in sequence
   - [ ] Preset rooms
-  - [ ] Arena with multiple enemies to beat in sequence
-  - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
 
 - [ ] Variants
   - [ ] Roleplay variant: play aggressive or defensive depending on the enemy description
@@ -73,12 +59,11 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Arcade variant: damage = atk - defense
 
 - [ ] Skills & Items
-  - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
   - [ ] Hero/Enemy - Damage reflection
-  - [ ] Item - Grenade: ATK by the number of cells of the current room
 
 - [ ] New classes
   - [ ] Rogue: Get gold by fights/lock dice
+    - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
   - [ ] Rookie: most of the skills are copied to empty Hero Sheet cells from enemies
@@ -104,6 +89,13 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] PUSH: pushes the hero away, for ranged enemies
     - It takes an enemy slot.
 
+- [ ] Rooms & Dungeon generator
+  - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
+    - [ ] Quests can create the same effect with checkboxes conditions - that may be never checked
+    - [ ] *Implemented but unused*
+      - [ ] As {drawItemAt:itemId,roomId} (i.e. {drawItem:1,destinationRoom}). Add a {genericItem:"xxx", isHidden:true} to the destination room to reserve an empty cell.
+      - [ ] Unused definition for the manual: draw [1] in room 35: Discover room 35 and draw a 1 on any of its empty cells. It will act as a grayed numbered cell.
+
 ### Ideas - Misc (questions)
 
 - [ ] Publishing
@@ -121,6 +113,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [x] Dungeon generation
   - [x] Shredder mode - Quests are no longer distributed on a single path *(previous version available via setShredderMode)*
+  - [x] A way to truly create enemies/rooms with modifiers
+  - [x] More dungeons layouts
 
 - [x] Mechanics
   - [x] Remove the "don't visit new rooms in fight" rule? (Thank you, PeterPiers!)
@@ -131,6 +125,7 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] Invisibility potion: enemy rolls < 6 are discarded for the 3 next rolls
   - [x] Fireball item that damages all enemies in the room.
   - [x] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
+  - [x] Item - Grenade: ATK by the number of cells of the current room
 
 - [x] New class
   - [x] Tank/Dwarf
@@ -142,6 +137,8 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] Turn - Use dice in reverse order (lower-higher)
 
 - [x] New quests
+  - [x] General  
+    - [x] Room modifiers can be enabled by items/characters/events
   - [x] Helpers
     - [x] The game could spawn some kind of "help kiosk" near the entrance.
       - [x] gold/XP to health converter. Conversion ratio may vary.
@@ -152,6 +149,11 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] Main Quests
     - [x] Final form - Mini boss, then forced bigger boss
     - [x] Moral choices - Become the next ruler
+    - [x] Main - The Curse: debuff on boss until you get an item / buff on boss when you get an item
+  - [x] Good/bad quests
+    - [x] The Wildness: do something to get a buff on all encounters
+    - [x] Sub - The Trader - Exchange xp/hp *(Added a darker version of the shopper)*
+    - [x] Sub - The Armory - Choose between two items
   - [x] Sub Quests
     - [x] The Tapeworm
       - [x] digesting track: corridor "organic walls are trying to squeeze you, -1HP" until you kill lvl3/4 mob in adjacent room (not adjacent, weaker enemy, loot added)
@@ -165,6 +167,8 @@ A daily print-and-play roguelike adventure you can play offline.
     - [x] room with mob -> room with necromancy lab "I ain't dead" -> respawn mob (maybe in two rooms)
       - [x] Implemented in 2-phases boss main quest
     - [x] Teleports enabled only on conditions
+    - [x] Sub - The Traitor: reveal where the boss room is on death
+    - [x] Sub - The Landslide - Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
 
 - [x] Classes balances
   - [x] Lower damageRatio for all classes
