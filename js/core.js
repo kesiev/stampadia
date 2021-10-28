@@ -148,6 +148,44 @@ const Core=function(settings) {
 		// Set dungeon size
 		const dunggen=new DungeonGenerator(settings.root,20,20,seed,debug);
 
+		const room=dunggen.addRoom("startingRoom",0,0,3,3,false,true);
+		room.addItem(1,1,{id:"stairs"});
+
+		dunggen.setRoomsModels([
+			[
+				// [CODEX-Generator] Roomset - The Stampadian: A set of multiple sized rooms.
+				{ times:4, type:"largeRooms", width:4, height: 4 },
+				{ times:4, type:"midRooms", width:3, height: 5 },
+				{ times:4, type:"midRooms", width:5, height: 3 },
+				{ times:3, type:"corridors", width:[2,3,4], height: 1, isCorridor:true },
+				{ times:3, type:"corridors", width:1, height: [2,3,4], isCorridor:true },
+			],
+			[
+				// [CODEX-Generator] Roomset - The Towers: A set of small squared rooms and corridors.
+				{ times:2, type:"largeRooms", width:4, height: 4 },
+				{ times:10, type:"midRooms", width:3, height: 3 },
+				{ times:3, type:"corridors", width:[2,3,4], height: 1, isCorridor:true },
+				{ times:3, type:"corridors", width:1, height: [2,3,4], isCorridor:true },
+			],
+			[
+				// [CODEX-Generator] Roomset - The Sewers: A set of small rectangular rooms with 2 huge halls.
+				{ times:1, type:"largeRooms", width:5, height: 4 },
+				{ times:1, type:"largeRooms", width:4, height: 5 },
+				{ times:5, type:"midRooms", width:2, height: 3 },
+				{ times:5, type:"midRooms", width:3, height: 2 },
+				{ times:3, type:"corridors", width:[2,3,4], height: 1, isCorridor:true },
+				{ times:3, type:"corridors", width:1, height: [2,3,4], isCorridor:true },
+			],
+			[
+				// [CODEX-Generator] Roomset - The Sewers: A set of small rectangular rooms with 2 huge halls.
+				{ times:1, type:"largeRooms", width:6, height: 6 },
+				{ times:6, type:"midRooms", width:4, height: 2 },
+				{ times:7, type:"midRooms", width:2, height: 4 },
+				{ times:2, type:"corridors", width:[2,3,4], height: 1, isCorridor:true },
+				{ times:2, type:"corridors", width:1, height: [2,3,4], isCorridor:true },
+			]
+		]);
+
 		// Set room priorities
 		dunggen.setRoomPriorities([
 			{
@@ -192,8 +230,11 @@ const Core=function(settings) {
 		]);
 
 		// 1 room
-		const room=dunggen.addRoom("startingRoom",0,0,3,3,false,true);
-		room.addItem(1,1,{id:"stairs"});
+		/*
+		for (let i=0;i<18;i++)
+			dunggen.addRoom("largeRooms",0,0,3,3);
+		*/
+		/*
 		for (let i=0;i<4;i++) { // 12 rooms
 			dunggen.addRoom("largeRooms",0,0,4,4); // 4 empty
 			dunggen.addRoom("midRooms",0,0,3,5); // 3 empty
@@ -203,6 +244,7 @@ const Core=function(settings) {
 			dunggen.addRoom("corridors",0,0,[2,3,4],1,true);
 			dunggen.addRoom("corridors",0,0,1,[2,3,4],true);
 		}
+		*/
 
 		// Set rooms base ID
 		dunggen.setRoomIds(30);
