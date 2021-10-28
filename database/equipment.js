@@ -6,7 +6,7 @@ function loadEquipment() {
 		{
 			id:"resurrection",
 			label:"Resurrection",
-			action:"{ifHeroDied}{and}{ifPayGold:5}{then}{gainFullHp}, {moveOnStairs}"
+			action:"{ifHeroDied}{and}{ifPayGold:2}{then}{gainFullHp}, {moveOnStairs}"
 		},
 		// [CODEX-Stuff] Equipment - Fireball: Inflict 2 damage.
 		{
@@ -121,6 +121,24 @@ function loadEquipment() {
 			id:"focus",
 			label:"Focus",
 			action:"{ifAfterHeroRollInFight}{then}{sumDice:2}, {activateAbility:1}, {pass}"
+		},
+		// [CODEX-Stuff] Equipment - Grenade: Perform an ATK action by the current room size.
+		{
+			id:"grenade",
+			label:"Grenade",
+			action:"{ifAfterHeroRollInFight}{then}{performByRoomSize:ATK}"
+		},
+		// [CODEX-Stuff] Equipment - Smoke: Perform a MOVE action by the current room size.
+		{
+			id:"smoke",
+			label:"Smoke",
+			action:"{ifAfterHeroRollInFight}{then}{performByRoomSize:Move}"
+		},
+		// [CODEX-Stuff] Equipment - Sonic: Perform a DEF action by the current room size.
+		{
+			id:"sonic",
+			label:"Sonic",
+			action:"{ifAfterHeroRollInFight}{then}{performByRoomSize:DEF}"
 		},
 		
 	];
