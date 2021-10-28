@@ -753,24 +753,102 @@ function loadQuestsSub() {
 		{
 			id:"[CODEX-Events] Subquest - The Monk: Donate 1G to draw one room walls.",
 			minRooms:1,
-			atPercentage:{from:1,to:99},
-			items:[{genericItem:"monk"}],
 			steps:[
 				[
 					{
 						id:"monkRoom",
 						labels:["Map","Mapping","Peeking"],
-						atPercentage:10,
+						atPercentage:{from:1,to:99},
 						items:[{genericItem:"monk"}],
 						roomDescriptions:[
 							[
-								"{ifMoveOn:monk}{and}{ifPayGold:1}{then}Monk: \"Peek at my map!\", {discoverRoom:1}, {markItem:monk}"
+								"{ifMoveOn:monk}{and}{ifPayGold:1}{then}Monk: \"Peek at my map!\", {discoverAnyRoom:1}, {markItem:monk}"
+							]
+						]
+					}
+				]
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Traitor: Kill the enemy to learn where the boss is lurking.",
+			minRooms:1,
+			steps:[
+				[
+					{
+						id:"traitorRoom",
+						labels:["Traitor","Information"],
+						atPercentage:100,
+						items:[{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}\"What you're looking for... is... here...\", {discoverRoom:bossRoom}"
+							]
+						]
+					}
+				]
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Landslide: Free a room from rubbles or prevent it from collapsing to get an reward.",
+			minRooms:1,
+			steps:[
+				[
+					{
+						id:"landslideRoom",
+						labels:["Landslide","Fallen","Broken"],
+						atPercentage:{from:1,to:99},
+						isOptionalRoom:true,
+						items:[{genericItem:"pickup"}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsMarked:landslideRoom}{then}This room is collapsed, {goBack}",
+								"{ifMoveOn:pickup}{then}You found{hide}{randomGoodLoot}, {markItem:pickup}"
+							]
+						]
+					},
+					{
+						id:"switchRoom",
+						labels:["Earthquake","Disaster"],
+						atPercentage:{from:1,to:99},
+						items:[{genericItem:"switch"},{id:"enemy",level:1,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifMoveOn:switch}{then}{randomMysteryHappens}{hide}{markRoom:landslideRoom}, {markItem:switch}"
+							]
+						]
+					}
+				],
+				[
+					{
+						id:"landslideRoom",
+						labels:["Landslide","Fallen","Blocked"],
+						atPercentage:{from:1,to:99},
+						isOptionalRoom:true,
+						items:[{genericItem:"pickup"}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:landslideRoom}{then}This room is collapsed, {goBack}",
+								"{ifMoveOn:pickup}{then}You found{hide}{randomGoodLoot}, {markItem:pickup}"
+							]
+						]
+					},
+					{
+						id:"fixerRoom",
+						labels:["Fixer","Worker"],
+						atPercentage:{from:1,to:99},
+						items:[{genericItem:"helper"},{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}\"Thank you!\"{hide}\"I'll help you with that room!\", {markRoom:landslideRoom}, {markItem:helper}"
 							]
 						]
 					}
 				]
 			]
 		}
+
 	]
 
 }
