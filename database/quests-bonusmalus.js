@@ -5,15 +5,18 @@ function loadQuestsBonus() {
 	const
 		QUEST_RARE=40,
 		SHOPITEMS=[
-			{cost:3,effect:"{gainHp:1}"},
-			{cost:10,effect:"{gainHp:2}"},
-			{cost:5,effect:"{gainXp:1}"},
+			{cost:"{ifPayGold:3}",answer:"{randomShopKeeper}",effect:"{gainHp:1}"},
+			{cost:"{ifPayGold:7}",answer:"{randomShopKeeper}",effect:"{gainHp:2}"},
+			{cost:"{ifPayGold:4}",answer:"{randomShopKeeper}",effect:"{gainXp:1}"},
+			{cost:"{ifPayXp:1}",answer:"{randomDarkShopKeeper}",effect:"{gainHp:1}"},
+			{cost:"{ifPayXp:2}",answer:"{randomDarkShopKeeper}",effect:"{gainHp:2}"},
+			{cost:"{ifPayXp:2}",answer:"{randomDarkShopKeeper}",effect:"{gainGold:5}"},
 		];
 
 	const SHOP=[];
 
 	SHOPITEMS.forEach(item=>{
-		SHOP.push([ "{ifMoveOn:item}{and}{ifPayGold:"+item.cost+"}{then}{randomShopKeeper}, "+item.effect+", {markItem:item}"]);
+		SHOP.push([ "{ifMoveOn:item}{and}"+item.cost+"{then}"+item.answer+", "+item.effect+", {markItem:item}"]);
 	})
 
 	return [
@@ -85,7 +88,7 @@ function loadQuestsBonus() {
 		},
 
 		{
-			id:"[CODEX-Events] Bonus - The Shop: Pay gold for useful items.",
+			id:"[CODEX-Events] Bonus - The Shop: Pay gold or other valuables for useful items.",
 			minRooms:2,
 			steps:[[
 				{id:"spawn",labels:["Shop","Shopping","Sale"],atPercentage:99,roomDescriptions:SHOP
@@ -187,6 +190,68 @@ function loadQuestsBonus() {
 							"{ifMoveOn:clown}{and}{ifPayGold:5}{then}Clown: \"Nice sweep, {heroClass}!\", {getEquip:equip-sweep}, {markItem:clown}"
 						]
 					],items:[{genericItem:"clown"}]}
+				]
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Bonus - The Wildness (good): Earn a buff after fighting an enemy.",
+			minRooms:1,
+			steps:[
+				// [CODEX-Stuff] Beast - The Bear: Makes you braver.
+				{ labels:["Bear","Hungry"], intro:"A giant roaring bear stares at you with a hungry gaze.", action:"It was a grueling fight", effect:"{applyModifierOnRoomMarked:scared.enemy,biteRoom}" },
+				// [CODEX-Stuff] Beast - The Porcupine: Gives you thorns to cripple your enemies.
+				{ labels:["Porcupine","Spikes"], intro:"A giant porcupine seems to have a particular interest in you.", action:"Its thorns remain on your body", effect:"{applyModifierOnRoomMarked:crippled.enemy,biteRoom}" },
+				// [CODEX-Stuff] Beast - The Moth: His spores can blind your enemies.
+				{ labels:["Fly","Spores"], intro:"A huge winged moth is spreading spores all over the room.", action:"The spores stick to your body", effect:"{applyModifierOnRoomMarked:blind.enemy,biteRoom}" },
+				// [CODEX-Stuff] Beast - The Whirlwind: His colors can stun your enemies.
+				{ labels:["Colors","Whirlwind"], intro:"A whirlwind of light seems to engulf the colors from every corner of the room.", action:"Colors explode on you", effect:"{applyModifierOnRoomMarked:stunned.enemy,biteRoom}" },
+			].map(enemy=>
+				[
+					{
+						id:"biteRoom",
+						labels:enemy.labels,
+						atPercentage:99,
+						globalModifier:enemy.effect,
+						roomDescriptions:[
+						[
+							enemy.intro,
+							"{ifKilledLastFoe}{then}"+enemy.action+", {markRoom:biteRoom}"
+						]
+					],items:[{id:"enemy",level:2}]}
+				]
+			)
+		},
+
+		{
+			id:"[CODEX-Events] Bonus - The Powder Magazine: Choose between 2 room-size based weapons.",
+			minRooms:2,
+			steps:[
+				[
+					{
+						id:"magazineRoom",
+						labels:["Magazine","Powder","Grenade","Smoke"],
+						atPercentage:{from:1,to:99},
+						equipment:[{id:"grenade"},{id:"smoke"}],roomDescriptions:[
+							[
+								"{ifMoveOn:item1}{and}{ifPayGold:4}{then}{getEquip:equip-grenade}, {markItem:item1}, {markItem:item2}",
+								"{ifMoveOn:item2}{and}{ifPayGold:2}{then}{getEquip:equip-smoke}, {markItem:item1}, {markItem:item2}",
+							]
+						],items:[{genericItem:"item1"},{genericItem:"item2"}]
+					}
+				],
+				[
+					{
+						id:"magazineRoom",
+						labels:["Magazine","Powder","Grenade","Sonic"],
+						atPercentage:{from:1,to:99},
+						equipment:[{id:"grenade"},{id:"sonic"}],roomDescriptions:[
+							[
+								"{ifMoveOn:item1}{and}{ifPayGold:4}{then}{getEquip:equip-grenade}, {markItem:item1}, {markItem:item2}",
+								"{ifMoveOn:item2}{and}{ifPayGold:2}{then}{getEquip:equip-sonic}, {markItem:item1}, {markItem:item2}",
+							]
+						],items:[{genericItem:"item1"},{genericItem:"item2"}]
+					}
 				]
 			]
 		},
@@ -336,6 +401,35 @@ function loadQuestsMalus() {
 					]}
 				]
 			]
+		},
+
+		{
+			id:"[CODEX-Events] Bonus - The Wildness (bad): Earn a debuff after fighting an enemy.",
+			minRooms:1,
+			steps:[
+				// [CODEX-Stuff] Beast - The Scorpion: It can stun you permanently.
+				{ labels:["Scorpion","Tail"], intro:"A huge distracted scorpion is slowly swinging its tail.", action:"With one last swipe the tail stings you", effect:"{applyModifierOnRoomMarked:stunned.hero,biteRoom}" },
+				// [CODEX-Stuff] Beast - The Light Ball: It can blind you permanently.
+				{ labels:["Light","Floater"], intro:"A ball of light floats slowly around the room, illuminating its walls.", action:"It explodes with a dazzling light", effect:"{applyModifierOnRoomMarked:blind.hero,biteRoom}" },
+				// [CODEX-Stuff] Beast - The Bat: It can scare you permanently.
+				{ labels:["Bat","Hanging"], intro:"A giant bat wrapped in its own wings hangs silently from the ceiling.", action:"It has been an horrific battle", effect:"{applyModifierOnRoomMarked:scared.hero,biteRoom}" },
+				// [CODEX-Stuff] Beast - The Snake: It can poison you permanently.
+				{ labels:["Coil","Snake"], intro:"A huge coiled snake is staring at you hissing.", action:"The dying snake bites you", effect:"{applyModifierOnRoomMarked:crippled.hero,biteRoom}" },
+			].map(enemy=>
+				[
+					{
+						id:"biteRoom",
+						labels:enemy.labels,
+						atPercentage:99,
+						globalModifier:enemy.effect,
+						roomDescriptions:[
+						[
+							enemy.intro,
+							"{ifKilledLastFoe}{then}"+enemy.action+", {markRoom:biteRoom}"
+						]
+					],items:[{id:"enemy",level:1}]}
+				]
+			)
 		},
 	];
 
