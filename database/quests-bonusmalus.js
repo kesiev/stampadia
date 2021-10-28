@@ -427,7 +427,7 @@ function loadQuestsMalus() {
 							enemy.intro,
 							"{ifKilledLastFoe}{then}"+enemy.action+", {markRoom:biteRoom}"
 						]
-					],items:[{id:"enemy",level:1}]}
+					],items:[{id:"enemy",level:1,ignoreXp:true}]}
 				]
 			)
 		},
