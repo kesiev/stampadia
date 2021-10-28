@@ -43,6 +43,16 @@ function loadRandomizers() {
 			"\"The best of the {placeName} for you!\"",
 			"\"You take. Me thanks.\""
 		],
+		randomDarkShopKeeper:[
+			"\"Hee hee... Thank you...\"",
+			"A grin opens on the shopkeeper face",
+			"\"Very well, then...\"",
+			"\"Have fun, hee...\"",
+			"The shopkeeper rubs his hands",
+			"\"Thaaank yooou, tee hee!\"",
+			"\"Now leave\"",
+			"\"...\""
+		],
 		randomGambler:[
 			"\"Feeling lucky, huh?\"",
 			"\"Wanna play a little game?\"",
