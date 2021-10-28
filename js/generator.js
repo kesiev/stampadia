@@ -48,6 +48,18 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				regex:/{applyModifierOnRoomNotMarked:([^,]+),([^}]+)\}/g,
 				replace:"not x{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
 			},
+			{
+				regex:/{applyModifier:([^}]+)}/g,
+				replace:"{modifier:1}"
+			},
+			{
+				regex:/{discoverRoom:([^}]*)}/g,
+				replace:"discover room {room:1}"
+			},
+			{
+				regex:/{drawItemAt:([^,]+),([^}]+)\}/g,
+				replace:"draw [{itemId:1}] in room {room:2}"
+			},
 		];
 
 	const originalSeed=seed=seed||Math.random();
@@ -65,6 +77,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		modifiersByType=[],
 		modifiersById=[],
 		modifiersModel=0,
+		roomsModels=0,
+		globalModifier=0,
 		enemies=[],		
 		noise=[],
 		questsStructure=[],
@@ -95,6 +109,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	this.prepared=false;
 
+	this.setRoomsModels=(roomsmodelsdata)=>roomsModels=roomsmodelsdata;
 	this.setComplexityEvaluation=(v)=>complexityEnabled=v;
 	this.setShredderMode=(v)=>shredderMode=v; // Shredder mode uses starting room distance instead of shortest paths.
 	this.setModifiers=(modifiersdata)=>modifiers=modifiersdata;
@@ -443,19 +458,21 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{modifyDice:([0-9]+),([-0-9]+)\}/g,(m,num,num2)=>(num2>0?"add":"reduce")+" "+num+" "+(num==1?"die":"dice")+" value by "+Math.abs(num2));
 		line=line.replace(/\{activateOnly:([-0-9]+)\}/g,(m,num)=>"can activate "+num+" "+(num==1?"ability":"abilities")+" only");
 		line=line.replace(/\{reroll:([0-9]+)\}/g,(m,num)=>"reroll all "+num+" once");
+		line=line.replace(/\{performByRoomSize:([^}]+)\}/g,(m,skill)=>skill+" by current room cells count");
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter room");
 		line=line.replaceAll("{ifMoveOnStairs}","move on stairs");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");
+		line=line.replaceAll("{goBack}","go back on previous room");
 
 		// Room - Actions
 		line=line.replaceAll("{moveOnStairs}","move on stairs");
 		line=line.replaceAll("{roomIsEmpty}","room is empty");
 		line=line.replaceAll("{noEscape}","no escape");
 		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
-		line=line.replace(/\{discoverRoom:([0-9]+)\}/g,(m,num)=>"select "+num+" "+(num==1?"room":"rooms")+", discover "+(num==1?"it":"them"));
+		line=line.replace(/\{discoverAnyRoom:([0-9]+)\}/g,(m,num)=>"select "+num+" "+(num==1?"room":"rooms")+", discover "+(num==1?"it":"them"));
 
 		// HP - Conditions
 		line=line.replace(/\{ifPayHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
@@ -562,6 +579,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							if (marker=="roomRiddle") return generateRoomRiddle(placeholders.roomIds[matches[value]].id);
 							return placeholders.roomIds[matches[value]].id;
 						}
+						case "itemId":
 						case "item":{
 							return 1;
 						}
@@ -641,8 +659,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						case "modifierAction":{
 							return modifiersById[matches[value]].action;
 						}
+						case "modifier":{
+							return modifiersById[matches[value]].full;
+						}
 						case "item":{
 							return placeholders.itemIds[matches[value]];
+						}
+						case "itemId":{
+							return matches[value];
 						}
 						default:{
 							return "[???]";
@@ -1106,13 +1130,16 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				// Check if the equipment fits in the Equipment Scroll
 				steps.forEach(step=>{
 
-					// Room must fit the required equipment
+					// Inventory must fit the required equipment
 					if (step.equipment)
 						step.equipment.forEach(equip=>{
 							let neededEquipment=pickEquipment(tempServices,tempEquipment,equip.id);
 							if (neededEquipment) addEquipment(tempServices,neededEquipment);
 							else success=false;
 						});
+
+					// Global modifier should be still available
+					if (step.globalModifier&&globalModifier) success=false;
 
 				});
 
@@ -1357,7 +1384,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					let complexity=1;
 					quest.steps[0].forEach(step=>
 						complexity+=0.3+
-							(step.equipment?1:0)+
+							(step.equipment?0.5:0)+
 							(step.isHiddenRoom||step.isDeadEndRoom||step.isOptionalRoom?1:0)
 					);
 					complexity*=quest.probability?quest.probability/100:1;
@@ -1443,10 +1470,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						pos=room.freeSpaces.splice(freeSpace,1)[0];
 					if (item.genericItem) {
 						genericItemId++;
-						room.room.addItem(pos.x,pos.y,{id:"genericItem",itemId:genericItemId});
+						room.room.addItem(pos.x,pos.y,{id:"genericItem",itemId:genericItemId,isHidden:item.isHidden});
 						placeholders.itemIds[item.genericItem]=genericItemId;
 					} else room.room.addItem(pos.x,pos.y,item);
 				});
+			if (step.globalModifier)
+				globalModifier={
+					line:step.globalModifier,
+					placeholders:placeholders
+				}
 		});
 
 		// Add room labels and required items
@@ -1940,23 +1972,47 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				validRooms[score].push(room);
 			}
 		});
-		validRoomDistances.sort();
-		modifiersSet.forEach(step=>{
-			let
-				position=Math.floor(step.atPercentage/100*validRoomDistances.length),
-				roomsSet=validRooms[validRoomDistances[position]];
-			if (roomsSet) {
+		if (globalModifier) {
+
+			for (let k in validRooms)
+				validRooms[k].forEach(room=>room.description.unshift(globalModifier));
+
+		} else {
+
+			validRoomDistances.sort();
+			modifiersSet.forEach(step=>{
 				let
-					roomId=getRandomId(roomsSet),
-					room=roomsSet[roomId];
-				if (room) {				
-					let modifier=getRandom(modifiersByType[step.modifierType]);
-					roomsSet.splice(roomId,1);
-					if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier,room:room});
-					room.description.unshift({line:modifier.roomDescription,placeholders:{}});
+					position=Math.floor(step.atPercentage/100*validRoomDistances.length),
+					roomsSet=validRooms[validRoomDistances[position]];
+				if (roomsSet) {
+					let
+						roomId=getRandomId(roomsSet),
+						room=roomsSet[roomId];
+					if (room) {				
+						let modifier=getRandom(modifiersByType[step.modifierType]);
+						roomsSet.splice(roomId,1);
+						if (debug&&debug.dumpSelection) this.metadata.selection.push({modifier:modifier,room:room});
+						room.description.unshift({line:modifier.roomDescription,placeholders:{}});
+					}
 				}
-			}
+			})
+
+		}
+	}
+
+	// Room models
+
+	this.selectRoomsModel=function() {
+		
+		let model=getRandom(roomsModels);
+
+		model.forEach(entry=>{
+			let times=entry.times||1;
+
+			for (let i=0;i<times;i++)
+				this.addRoom(entry.type,0,0,entry.width,entry.height,entry.isCorridor);
 		})
+
 	}
 
 	// Initializer
@@ -1974,6 +2030,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				};
 
 			// Initialize
+			this.selectRoomsModel();
 			this.indexModifiers();
 			this.evaluateQuestsComplexity();
 			this.setupMetadata();
@@ -2178,7 +2235,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						break;
 					}
 					case "genericItem":{						
-						ctx.fillStyle="#0ff";
+						if (item.isHidden) ctx.fillStyle="#099";
+						else ctx.fillStyle="#0ff";
 						ctx.fillText("g"+item.itemId, px+HCELLSIZE, py+HCELLSIZE);						
 						break;
 					}
@@ -2391,23 +2449,26 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							px=x*cellWidth,
 							py=y*cellHeight;
 
-						item=item.item;
-						switch (item.id) {
-							case "enemy":{
-								const enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
-								setCheckBox(svg,svg.getById("gridEnemyLevel",enemy),item.level);
-								break;
+							item=item.item;
+
+							if (!item.isHidden) {
+								switch (item.id) {
+									case "enemy":{
+										const enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
+										setCheckBox(svg,svg.getById("gridEnemyLevel",enemy),item.level);
+										break;
+									}
+									case "genericItem":{
+										const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
+										svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
+										break;
+									}
+									case "stairs":{
+										svg.cloneNodeBy("gridStairs","map-stairs",px,py);
+										break;
+									}
+								}
 							}
-							case "genericItem":{
-								const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
-								svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
-								break;
-							}
-							case "stairs":{
-								svg.cloneNodeBy("gridStairs","map-stairs",px,py);
-								break;
-							}
-						}
 					});
 
 					// Render room entrances
