@@ -62,6 +62,9 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] Hero/Enemy - Damage reflection
 
 - [ ] New classes
+  - [ ] A defense based class
+  - [ ] A class with ignore enemy movement to stay in range
+  - [ ] A class with more attack/move
   - [ ] Rogue: Get gold by fights/lock dice
     - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
