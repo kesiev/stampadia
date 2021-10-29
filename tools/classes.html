@@ -1,0 +1,463 @@
+<html><head>
+	<script src="../database/heromodels.js"></script>
+	<style>
+		.toggle {
+			padding:5px;
+			border:1px solid #000;
+			display: inline-block;
+			background-color: #ccc;
+			margin:10px;
+			cursor: pointer;
+		}
+
+		H2 {
+			display: inline-block;
+		}
+	</style>
+</head>
+<body onload="onl()">	
+</body><script>
+
+function process(skills,database) {
+	let map={},label="",tags={};
+	skills.forEach((skill,id)=>{
+		if ((skill.indexOf("Move")!=-1)&&(id==0)) tags.dash=1;
+		if ((skill.indexOf("Move")!=-1)&&(id==1)) tags.escape=1;
+
+		if (skill.indexOf("ATK -1")!=-1) tags.strong=1;
+		if (skill.indexOf("ATK -2")!=-1) tags.weak=1;
+		if (skill.indexOf("Move\n-1")!=-1) tags.fastest=1;
+		if (skill.indexOf("Move\n-2")!=-1) tags.fast=1;
+		if (skill.indexOf("Move\n-3")!=-1) tags.slow=1;
+		if (skill.indexOf("RNG 1")!=-1) tags.near=1;
+		if (skill.indexOf("RNG 2")!=-1) tags.ranged=1;
+		if (skill.indexOf("RNG =2")!=-1) tags.precise=1;
+		if (skill.indexOf("RNG 3")!=-1) tags.wide=1;
+		if (skill=="Move") tags.blazing=1;
+		let pcs=skill.replace(/\n/g," ").replace(/\([^)]+\)/g,"").replace(/Gain /g,"Gain").replace(/RNG /g,"RNG").trim().split(" ");
+		pcs.forEach(pc=>{
+			if (!map[pc]) map[pc]=0;
+			map[pc]++;	
+		})
+	});
+
+	let moveType="",attackType="";
+	if (tags.blazing) moveType="Blazing ";
+	else if (tags.fastest) moveType="Fastest ";
+	else if (tags.fast) moveType="Fast ";
+	else if (tags.slow) moveType="Slow ";
+
+	if (tags.strong) attackType="Strong ";
+	else if (tags.weak) attackType="Weak ";
+
+	if (tags.ranged) attackType+=(tags.near?"Mixed ":"")+"Ranged ";
+	else if (tags.wide) attackType+=(tags.near?"Mixed ":"")+"Wide ";
+	else if (tags.precise) attackType+=(tags.near?"Mixed ":"")+"Precise ";
+
+	if (tags.dash) attackType+=moveType+"Dashed ";
+	else if (tags.escape) attackType+=moveType+"Escaping ";
+
+
+	if (map["GainHP"]==1) label+="Healing ";
+
+	if (map["ATK"]==2) label+="Double "+attackType+" Attack "; else
+	if (map["ATK"]==1) label+=attackType+"Attack "; else
+	if (map["DEF"]==1) label+=(moveType?moveType+"Moving Defense ":"Defense"); else {
+
+		if (map["Move"]==2) label+=moveType+"Run ";
+		if (map["Move"]==1) label+=moveType+"Movement ";
+
+	}
+
+	if (map["Copy"]==1) label+="Copy ";
+	if (map["Copy"]==2) label+="Double Copy ";
+
+	label=label.trim();
+	if (!database[label]) database[label]=0;
+	database[label]++;
+
+	return "<b>"+label+"</b> <i>"+skills.join(" -&gt; ")+"</i>";
+}
+
+function parseSkill(skill) {
+	return skill.replace(/\n/g," ").replace(/\([^)]+\)/g,"").replace(/Gain /g,"Gain").trim();
+}
+
+function prc(v) {
+	return Math.floor(v*100);
+}
+
+function printCell(col,mix) {
+	let val=mix[col.id]*1,color;
+	switch (col.type) {
+		case "prc":{
+			if (val==100) color="#0f0"; else
+			if (val>80) color="#cfc"; else
+			if (val>50) color="#ff0"; else	
+			if (val>0) color="#f00"; else	
+			color="#fff";
+			if (val) val+="%";
+			break;
+		}
+		case "die":{
+			if (val>6) color="#f0f"; else
+			if (val==6) color="#0f0"; else
+			if (val>3) color="#ff0"; else
+			if (val>2) color="#f00"; else
+			color="#fff";
+			break;
+		}
+		case "qty":{
+			if (val==2) color="#cfc"; else
+			if (val==6) color="#f0f"; else
+			if (val>2) color="#0f0"; else
+			if (val) color="#ccc"; else
+			color="#fff";
+			break;
+		}
+		case "skill":{
+			if (val==1) color="#cfc"; else
+			if (val>1) color="#0f0"; else
+			color="#fff";
+			break;
+		}
+	}
+	return "<td style='background-color:"+color+"'>"+(val||"-")+"</td>"
+}
+
+function addStats(mix,list) {
+	if (!mix.attackMove) mix.attackMove=0;
+	if (!mix.moveAttack) mix.moveAttack=0;
+	if (!mix.doubleMove) mix.doubleMove=0;
+	if (!mix.doubleCopy) mix.doubleCopy=0;
+	if (!mix.maxMovement) mix.maxMovement=0;
+	if (list.length>1) {
+		if (list[0].moveMax&&list[1].atkSuccess) mix.moveAttack++;
+		if (list[0].atkSuccess&&list[1].moveMax) mix.attackMove++;
+		if (list[0].moveMax&&list[1].moveMax) mix.doubleMove++;
+		if (list[0].copySuccess&&list[1].copySuccess) mix.doubleCopy++;
+		let move=0;
+		if (list[0].moveMax) move+=list[0].moveMax;
+		if (list[1].moveMax) move+=list[1].moveMax;
+		if (mix.maxMovement<move) mix.maxMovement=move;
+	} else {
+		if (mix.maxMovement<list[0].moveMax) mix.maxMovement=list[0].moveMax;
+	}
+}
+
+function classSelector(cb,c) {
+	let
+		objs=document.getElementsByClassName(c);
+		show=!cb.checked?"none":"";
+	for (let i=0;i<objs.length;i++)
+		objs[i].style.display=show;
+
+}
+
+function onl() {
+
+	let CLASSES=loadHeroModels();
+
+	let html="",stats=[],moves={},mixes=[];
+
+	let cols=[
+		{id:"maxMovement",type:"die"},
+		{id:"moveSuccess",type:"prc"},
+		{id:"nearAtkSuccess",type:"prc"},
+		{id:"nearAtkTargets",type:"qty"},
+		{id:"atkRange",type:"qty"},
+		{id:"rangeAtkSuccess",type:"prc"},
+		{id:"rangeAtkTargets",type:"qty"},
+		{id:"defSuccess",type:"prc"},
+		{id:"gainHpSuccess",type:"prc"},
+		{id:"copySuccess",type:"prc"},
+		{id:"doubleCopy",type:"skill"},
+		{id:"attackMove",type:"skill"},
+		{id:"moveAttack",type:"skill"},
+		{id:"doubleMove",type:"skill"},
+	];
+
+	CLASSES.forEach(c=>{
+		html+="<input type=checkbox checked onclick=\"classSelector(this,'"+c.id+"')\"> "+c.heroClass;
+	});
+
+
+
+	html+="<h1>By class</h1>";
+
+	CLASSES.forEach(c=>{
+
+		html+="<div class='"+c.id+"'><hr><h2>"+c.heroClass+"</h2>";
+
+		let
+			database={},
+			skillStats=[],
+			classMixes=[];
+			levelMap=[];
+
+		c.skills.forEach((col,lvl)=>{
+			skillStats[lvl]=[];
+			col.forEach(skill=>{
+				let skillData={};
+				let pcs=parseSkill(skill).split(" ");
+				let id=0;
+				do {
+					let p=pcs[id];					
+					switch (p) {
+						case "ATK":{
+							let str=pcs[id+1];
+							if (str*1==str) {
+								id++;
+								str*=1;
+								skillData.atkMalus=str;
+								skillData.atkFailure=prc(-str/6);
+								skillData.atkSuccess=prc((6+str)/6);
+								skillData.atkMaxStr=6+str;
+							} else {
+								skillData.atkMalus=0;
+								skillData.atkFailure=0;
+								skillData.atkSuccess=100;
+								skillData.atkMaxStr=6;
+							}
+							break;
+						}
+						case "ALL":
+						case "RNG":{
+							let str=pcs[++id];
+							if (str.indexOf("=")!=-1) {
+								skillData.precise=true;
+								str=str.substr(1);
+							}
+							str*=1;
+							skillData.atkRange=str;
+							if (p=="ALL") skillData.atkTargets=6;
+							else skillData.atkTargets=1;
+							break;
+						}
+						case "DEF":{
+							let str=pcs[++id];
+							if (!str) str=0;
+							str*=1;
+							skillData.defMalus=str;
+							skillData.defFailure=prc(-str/6);
+							skillData.defSuccess=prc((6+str)/6);
+							skillData.defMax=6+str;
+							break;
+						}
+						case "GainHP":{
+							let str=pcs[++id];
+							if (!str) str=0;
+							str*=1;
+							skillData.gainHpMalus=str;
+							skillData.gainHpFailure=prc(-str/6);
+							skillData.gainHpSuccess=prc((6+str)/6);
+							skillData.gainHpMax=6+str;
+							break;
+						}
+						case "Copy":{
+							let str=pcs[++id];
+							if (!str) str=0;
+							str*=1;
+							skillData.copyMalus=str;
+							skillData.copyFailure=prc(-str/6);
+							skillData.copySuccess=prc((6+str)/6);
+							skillData.copyMax=6+str;
+							break;
+						}
+						case "Move":{
+							let str=pcs[id+1];
+							if (str*1==str) {
+								id++;
+								str*=1;
+								skillData.moveMalus=str;
+								skillData.moveFailure=prc(-str/6);
+								skillData.moveSuccess=prc((6+str)/6);
+								skillData.moveMax=6+str;
+							} else {
+								skillData.moveMalus=0;
+								skillData.moveFailure=0;
+								skillData.moveSuccess=100;
+								skillData.moveMax=6;
+							}
+							break;
+						}
+						default:{
+							console.warn("???",pcs[id-1],p);
+						}
+					}
+					id++;
+				} while (id<pcs.length);
+				if (skillData.atkRange==1) {
+					skillData.nearAtkMalus=skillData.atkMalus;
+					skillData.nearAtkFailure=skillData.atkFailure;
+					skillData.nearAtkSuccess=skillData.atkSuccess;
+					skillData.nearAtkMaxStr=skillData.atkMaxStr;
+					skillData.nearAtkTargets=skillData.atkTargets;
+				} else if (skillData.atkRange>1) {
+					skillData.rangeAtkMalus=skillData.atkMalus;
+					skillData.rangeAtkFailure=skillData.atkFailure;
+					skillData.rangeAtkSuccess=skillData.atkSuccess;
+					skillData.rangeAtkMaxStr=skillData.atkMaxStr;
+					skillData.rangeAtkTargets=skillData.atkTargets;
+				}
+				skillStats[lvl].push(skillData);
+			});
+
+		});
+
+		// LVL 1
+		addStats(skillStats[0][0],[skillStats[0][0]]);
+		addStats(skillStats[0][0],[skillStats[0][1]]);
+
+		// LVL 2
+		addStats(skillStats[1][0],[skillStats[0][0]]);
+		addStats(skillStats[1][0],[skillStats[0][1]]);
+		addStats(skillStats[1][0],[skillStats[0][0],skillStats[1][1]]);
+		addStats(skillStats[1][0],[skillStats[0][1],skillStats[1][0]]);
+
+		// LVL 3
+		addStats(skillStats[2][0],[skillStats[0][0]]);
+		addStats(skillStats[2][0],[skillStats[0][1]]);
+		addStats(skillStats[2][0],[skillStats[0][0],skillStats[1][1]]); // 1 + 2
+		addStats(skillStats[2][0],[skillStats[0][1],skillStats[1][0]]); // 1 + 2
+		addStats(skillStats[2][0],[skillStats[0][0],skillStats[2][1]]); // 1 + 3
+		addStats(skillStats[2][0],[skillStats[0][1],skillStats[2][0]]); // 1 + 3
+		addStats(skillStats[2][0],[skillStats[1][0],skillStats[2][1]]); // 2 + 3
+		addStats(skillStats[2][0],[skillStats[1][1],skillStats[2][0]]); // 2 + 3
+
+		// LVL 4
+		addStats(skillStats[3][0],[skillStats[0][0]]);
+		addStats(skillStats[3][0],[skillStats[0][1]]);
+		addStats(skillStats[3][0],[skillStats[0][0],skillStats[1][1]]); // 1 + 2
+		addStats(skillStats[3][0],[skillStats[0][1],skillStats[1][0]]); // 1 + 2
+		addStats(skillStats[3][0],[skillStats[0][0],skillStats[2][1]]); // 1 + 3
+		addStats(skillStats[3][0],[skillStats[0][1],skillStats[2][0]]); // 1 + 3
+		addStats(skillStats[3][0],[skillStats[0][0],skillStats[3][1]]); // 1 + 4
+		addStats(skillStats[3][0],[skillStats[0][1],skillStats[3][0]]); // 1 + 4
+		addStats(skillStats[3][0],[skillStats[1][0],skillStats[2][1]]); // 2 + 3
+		addStats(skillStats[3][0],[skillStats[1][1],skillStats[2][0]]); // 2 + 3
+		addStats(skillStats[3][0],[skillStats[1][0],skillStats[3][1]]); // 2 + 4
+		addStats(skillStats[3][0],[skillStats[1][1],skillStats[3][0]]); // 2 + 4
+
+		html+="<div class=toggle>Growth</div><div style='display:none'>"
+		html+="<table border=1><tr><td>Level</td>";
+		cols.forEach(col=>html+="<td>"+col.id+"</td>");
+		html+="</tr>";
+
+		for (let id=0;id<skillStats.length;id++) {
+			html+="</tr><td>"+(id+1)+"</td>";
+			var mix={};
+			for (var i=0;i<=id;i++) {
+				skillStats[i].forEach(lvl=>{
+					for (let k in lvl) {
+						if (mix[k]==undefined) mix[k]=lvl[k];
+						else {
+							mix[k]=Math.max(mix[k],lvl[k]);
+						}
+					}
+				})
+			}
+			classMixes.push(mix);
+			cols.forEach(col=>{
+				html+=printCell(col,mix);
+			});
+			html+="</tr>";
+		}
+		html+="</table></div>";
+		mixes.push(classMixes);
+
+		html+="<div class=toggle>Moveset</div><div style='display:none'>"
+
+		html+="<h2>Level 1</h2><ul>";
+		html+="<li>"+process([c.skills[0][0]],database)+"</li>";
+		html+="<li>"+process([c.skills[0][1]],database)+"</li>";
+		html+="</ul>";
+
+		html+="<h2>Level 2</h2><ul>";
+		html+="<li>"+process([c.skills[0][0],c.skills[1][1]],database)+"</li>";
+		html+="<li>"+process([c.skills[0][1],c.skills[1][0]],database)+"</li>";
+		html+="</ul>";
+
+		html+="<h2>Level 3</h2><ul>";
+		html+="<li>"+process([c.skills[0][0],c.skills[2][1]],database)+"</li>";
+		html+="<li>"+process([c.skills[0][1],c.skills[2][0]],database)+"</li>";
+		html+="<li>"+process([c.skills[1][0],c.skills[2][1]],database)+"</li>";
+		html+="<li>"+process([c.skills[1][1],c.skills[2][0]],database)+"</li>";
+		html+="</ul>";
+
+		html+="<h2>Level 4</h2><ul>";
+		html+="<li>"+process([c.skills[0][0],c.skills[3][1]],database)+"</li>";
+		html+="<li>"+process([c.skills[0][1],c.skills[3][0]],database)+"</li>";
+		html+="<li>"+process([c.skills[1][0],c.skills[3][1]],database)+"</li>";
+		html+="<li>"+process([c.skills[1][1],c.skills[3][0]],database)+"</li>";
+		html+="<li>"+process([c.skills[2][0],c.skills[3][1]],database)+"</li>";
+		html+="<li>"+process([c.skills[2][1],c.skills[3][0]],database)+"</li>";
+		html+="</ul>";
+		html+="</div>"
+
+		let cache={};
+		for (let k in database) {
+			if (!cache[k]) {
+				cache[k]=1;
+				if (!moves[k]) moves[k]=0;
+				moves[k]++;
+			}
+		}
+
+		stats.push({
+			heroClass:c.heroClass,
+			database:database
+		});
+		
+		html+="</div>";
+
+	});
+
+html+="<h1>By level</h1>";
+
+for (let i=0;i<mixes[0].length;i++) {
+	html+="<hr><h2>Level "+(i+1)+"</h2><div class=toggle>Comparison</div><div style='display:none'>";
+	html+="<table border=1><tr><td>Class</td>";
+	cols.forEach(col=>html+="<td>"+col.id+"</td>");
+	html+="</tr>";
+	mixes.forEach((mix,id)=>{
+		html+="<tr class='"+CLASSES[id].id+"'>";
+		html+="<td>"+CLASSES[id].heroClass+"</td>";
+		cols.forEach(col=>{
+			html+=printCell(col,mix[i]);
+		});
+		html+="</tr>";
+	});
+	html+="</table></div>";
+}
+
+	head="";
+
+	/*
+	head+="<h1>Overall</h1>";
+	stats.forEach(c=>{
+		head+="<hr><h1>"+c.heroClass+"</h1>";
+		for (let k in c.database) {
+			let unique=moves[k]==1;
+			head+="<li>"+(unique?"<b>":"")+k+(unique?"</b>":"")+" ("+c.database[k]+")</li>";
+		}
+		head+="</ul>";
+	})
+*/	
+
+	document.body.innerHTML=html+head;
+
+	let toggles=document.getElementsByClassName("toggle");
+	for (let i=0;i<toggles.length;i++) {
+		toggles[i].onclick=function() {
+			let panel=this.nextSibling;
+			this._open=!this._open;
+			if (this._open) panel.style.display="block";
+			else panel.style.display="none";
+		}
+	}
+
+}
+
+
+</script>
