@@ -90,7 +90,7 @@ function loadHeroModels() {
 			tags:["weak"],
 			skills:[
 				["ATK -2\nRNG 2","Move\n-3"],
-				["Move\n-2","Move\n-3"],
+				["Move\n-1","Move\n-3"],
 				["DEF\n-2","ATK -1\nRNG 3"],
 				["(pay 1G)\nGain HP\n-5","ATK\nRNG 1"]
 			],
@@ -149,7 +149,7 @@ function loadHeroModels() {
 				["ATK -1\nRNG 1","Move\n-4"],
 				["DEF -2","Move\n-3"],
 				["(pay 1G)\nATK -2\nALL 2","DEF -3"],
-				["ATK -1\nRNG 1","(pay 2G)\nATK\nRNG 1"]
+				["(pay 2G)\nATK -1\nRNG 2","(pay 2G)\nATK\nRNG 1"]
 			],
 			defense:[1,1,1,1],
 			xpRamp:[
