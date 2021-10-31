@@ -21,6 +21,7 @@
 function process(skills,database) {
 	let map={},label="",tags={};
 	skills.forEach((skill,id)=>{
+		skill=skill.skill;
 		if ((skill.indexOf("Move")!=-1)&&(id==0)) tags.dash=1;
 		if ((skill.indexOf("Move")!=-1)&&(id==1)) tags.escape=1;
 
@@ -80,7 +81,7 @@ function process(skills,database) {
 }
 
 function parseSkill(skill) {
-	return skill.replace(/\n/g," ").replace(/\([^)]+\)/g,"").replace(/Gain /g,"Gain").trim();
+	return skill.skill.replace(/\n/g," ").replace(/\([^)]+\)/g,"").replace(/Gain /g,"Gain").trim();
 }
 
 function prc(v) {
