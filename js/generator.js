@@ -1826,7 +1826,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				default:{ xp=Math.ceil(xp); }
 			}
 			hero.skills[index].xp=xp;
-			hero.skills[index].levelHp=levelHp;
+			hero.skills[index].hp=levelHp;
 			hero.maxHp+=levelHp;
 		});
 
