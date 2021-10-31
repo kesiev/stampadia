@@ -36,6 +36,7 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
+  - [ ] Main - Customize the boss battle via empty Enemy Sheet cells
 
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
@@ -69,7 +70,6 @@ A daily print-and-play roguelike adventure you can play offline.
     - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
-  - [ ] Rookie: most of the skills are copied to empty Hero Sheet cells from enemies
 
 - [ ] NPC
   - [ ] The Corrupted
@@ -153,6 +153,8 @@ A daily print-and-play roguelike adventure you can play offline.
     - [x] Final form - Mini boss, then forced bigger boss
     - [x] Moral choices - Become the next ruler
     - [x] Main - The Curse: debuff on boss until you get an item / buff on boss when you get an item
+    - [x] The Missing Familiar
+      - [x] Rookie: most of the skills are copied to empty Hero Sheet cells from enemies *(Added to all classes)*
   - [x] Good/bad quests
     - [x] The Wildness: do something to get a buff on all encounters
     - [x] Sub - The Trader - Exchange xp/hp *(Added a darker version of the shopper)*
