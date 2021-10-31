@@ -60,6 +60,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				regex:/{drawItemAt:([^,]+),([^}]+)\}/g,
 				replace:"draw [{itemId:1}] in room {room:2}"
 			},
+			{
+				regex:/{regainSkill}/g,
+				replace:"gain hero ability \"{stealHeroSkill:1}\""
+			}
 		];
 
 	const originalSeed=seed=seed||Math.random();
@@ -583,6 +587,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						case "item":{
 							return 1;
 						}
+						case "stealHeroSkill":{
+							return "ATK -1 RNG 1";
+						}
 						default:{
 							return "[???]";
 						}
@@ -667,6 +674,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						}
 						case "itemId":{
 							return matches[value];
+						}
+						case "stealHeroSkill":{
+							return placeholders.stealHeroSkill;
 						}
 						default:{
 							return "[???]";
@@ -1102,6 +1112,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Room must fit the required amount of items
 		success&=!step.items||(room.freeSpaces.length>=step.items.length);
 
+		// If a room requires a hero skill to steal, it must be available
+		success&=!step.stealHeroSkill||hasHeroSkillTag(step.stealHeroSkill);
+
 		// Room must fit the required amount of description
 		success&=!step.roomDescriptions||(room.room.description.length+step.roomDescriptions[0].length<=MAX_DESCRIPTION);
 
@@ -1479,6 +1492,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					line:step.globalModifier,
 					placeholders:placeholders
 				}
+			if (step.stealHeroSkill) {
+				let skill=removeHeroSkillByTag(step.stealHeroSkill);
+				placeholders.stealHeroSkill=skill.text;
+			}
 		});
 
 		// Add room labels and required items
@@ -1732,6 +1749,33 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	// Hero
 
+	function hasHeroSkillTag(tag) {
+		return !!hero.tagsCount[tag];
+	}
+
+	function removeHeroSkillByTag(tag) {
+		let skills=[];
+		if (hasHeroSkillTag(tag)) {
+			hero.skills.forEach((col,colId)=>{
+				col.skills.forEach((skill,rowId)=>{
+					if (skill.tags&&(skill.tags.indexOf(tag)!=-1)) skills.push({
+						col:colId,
+						row:rowId,
+						text:skill.skill.replace(/\n/g," "),
+						skill:skill
+					});
+				})
+			})
+			let selected=getRandom(skills);
+			if (selected) {
+				selected.skill.tags.forEach(tag=>hero.tagsCount[tag]--);
+				hero.skills[selected.col].skills[selected.row].skill="";
+				hero.skills[selected.col].skills[selected.row].cost="";
+				return selected;
+			}
+		}
+	}
+
 	this.generateHero=function() {
 		let	dungeonEnemies=0;
 		const dungeonXp={
@@ -1739,14 +1783,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			high:0,
 			all:0
 		};
-			
-		hero={
-			maxHp:0,
-			model:heroModel,
-			skills:[],
-			defense:[]
-		};
-
+		
 		rooms.forEach(room=>{
 			room.items.forEach(item=>{
 				if (item.item.id=="enemy") {
@@ -1778,7 +1815,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		const maxHp=dungeonEnemies*heroModel.damageRatio;
 
-		// Generate skills
+		// Prepare growth
 		heroModel.skills.forEach((skill,index)=>{
 			const levelHp=Math.ceil(heroModel.hpRamp[index]*maxHp);
 			let xp=0;
@@ -1788,12 +1825,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				case "floor":{ xp=Math.floor(xp)||1; break; }
 				default:{ xp=Math.ceil(xp); }
 			}
-			hero.defense.push(heroModel.defense[index]);
-			hero.skills.push({
-				xp:xp,
-				hp:levelHp,
-				skills:skill
-			});
+			hero.skills[index].xp=xp;
+			hero.skills[index].levelHp=levelHp;
 			hero.maxHp+=levelHp;
 		});
 
@@ -1802,6 +1835,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	this.selectHeroModel=function() {
 
 		let models=[];
+
+		hero={
+			maxHp:0,
+			model:heroModel,
+			tagsCount:{},
+			skills:[],
+			defense:[]
+		};
 
 		heroModels.forEach(model=>{
 			if (!model.isBetaTesting) models.push(model);
@@ -1821,6 +1862,28 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			if (neededEquipment) addEquipment(services,neededEquipment,equip.isAvailable,equip.placeholder,globalPlaceholders);
 			else console.warn("Can't find hero equipment",equip);
 		});
+
+		// Add skills
+		heroModel.skills.forEach((skill,index)=>{			
+			skill.forEach((s,row)=>{
+				if (s.tags)
+					s.tags.forEach(tag=>{
+						if (!hero.tagsCount[tag]) hero.tagsCount[tag]=0;
+						hero.tagsCount[tag]++;
+					})
+			});
+			hero.defense.push(heroModel.defense[index]);
+			hero.skills.push({
+				xp:0,
+				hp:0,
+				skills:skill
+			});
+		});
+
+		// Prepare class placeholders
+		if (heroModel.placeholders)
+			for (var k in heroModel.placeholders)
+				globalPlaceholders[k]=getRandom(heroModel.placeholders[k]);
 	}
 
 	// Global placeholders
@@ -2526,8 +2589,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				let tierWidth=svg.getNum(svg.getById("heroBox"),"width");
 				hero.skills.forEach((tier,index)=>{
 					const skillTier=svg.cloneNodeBy("heroTier",0,tierWidth*index,0);
-					svg.setText(svg.getById("heroSkillUp",skillTier),tier.skills[0]||"");
-					svg.setText(svg.getById("heroSkillDown",skillTier),tier.skills[1]||"");
+					svg.setText(svg.getById("heroSkillUp",skillTier),(tier.skills[0].cost?"("+tier.skills[0].cost+")\n":"")+tier.skills[0].skill||"");
+					svg.setText(svg.getById("heroSkillDown",skillTier),(tier.skills[1].cost?"("+tier.skills[1].cost+")\n":"")+tier.skills[1].skill||"");
 					svg.setText(svg.getById("heroDefense",skillTier),hero.defense[index]?"+"+hero.defense[index]+" DEF":"-");
 					setCheckBox(svg,svg.getById("heroXp",skillTier),tier.xp);
 					setCheckBox(svg,svg.getById("heroHp",skillTier),tier.hp);
