@@ -40,6 +40,7 @@ var INDEX=[
 	"[CODEX-Events] Main quest - The Great Old Ones: Beat the boss before being corrupted by madness.",
 	"[CODEX-Events] Main quest - The Kidnapping: Fight the boss, free the kidnapped, and return it.",
 	"[CODEX-Events] Main quest - The Lost Item: Return an item to NPC and unlock the boss and fight.",
+	"[CODEX-Events] Main quest - The Missing Familiar: Find the familiar to get your missing skill back and kill the boss.",
 	"[CODEX-Events] Main quest - The Missing Key: Find the key and beat the boss.",
 	"[CODEX-Events] Main quest - The Moral Compass: Do good or bad things and trigger a different ending.",
 	"[CODEX-Events] Main quest - The Necromancer: Someone is trying to bring the evil back.",
