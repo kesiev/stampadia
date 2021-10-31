@@ -75,7 +75,6 @@ function loadQuestsMain(MODIFIERS) {
 				"The {goodGuyName} And The {villainName}",
 				"The Cursed {placeName}",
 				"The {villainName}'s {placeName}",
-
 			],
 			steps:[
 				[
@@ -897,6 +896,61 @@ function loadQuestsMain(MODIFIERS) {
 						[
 							"\"They said that the {villainName} have mystical powers. Let's check this out!\"",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
+						]
+					]
+				}
+			]
+		},
+
+			{
+			id:"[CODEX-Events] Main quest - The Missing Familiar: Find the familiar to get your missing skill back and kill the boss.",
+			minRooms:4,
+			adventureTitle:[
+				"The Lost {familiarName}",
+				"The Vengeful {heroClass}",
+				"The {villainName}'s {familiarName}",
+				"The Trapped {familiarName}",
+				"The Lost Power Of The {heroClass}",
+				"The {heroClass}'s {familiarName}",
+				"The {familiarName}",
+			],
+			steps:[
+				[
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:familiarRoom}{then}\"It's too late for your little friend, {heroClass}!\", {markRoom:familiarRoom}, {markRoom:bossRoom}",
+								"\"What a stupid reason to risk your life, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					},
+					{
+						id:"familiarRoom",
+						labels:["Familiar","Found","Friend"],
+						atPercentage:99,
+						stealHeroSkill:"losable",
+						items:[{genericItem:"familiar"},{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifNoFoes}{and}{ifRoomIsNotMarked:familiarRoom}{then}You saved your {familiarName}!",
+								"{ifNoFoes}{and}{ifRoomIsNotMarked:familiarRoom}{then}{regainSkill}, {markRoom:familiarRoom}, {markItem:familiar}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}The {villainName} paid for kidnapping your familiar.",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:bossRoom}{then}{hide}But your beloved familiar is lost forever."
 						]
 					]
 				}
