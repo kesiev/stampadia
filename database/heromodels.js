@@ -11,11 +11,18 @@ function loadHeroModels() {
 			heroClass:"Warrior",
 			tags:["importantStartingItem"],
 			skills:[
-				["ATK -1\nRNG 1","Move\n-3"],
-				["DEF -3","Move\n-2"],
-				["(pay 1G)\nGain HP\n-5","ATK -3\nRNG 1"],
-				["ATK\nRNG 2","Move"]
+				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-3"} ],
+				[ {skill:"DEF -3"}, {skill:"Move\n-2", tags:["losable"]} ],
+				[ {skill:"Gain HP\n-5", cost:"pay 1G", tags:["losable"] }, {skill:"ATK -3\nRNG 1", tags:["losable"] } ],
+				[ {skill:"ATK\nRNG 2", tags:["losable"]}, {skill:"Move"} ]
 			],
+			placeholders:{
+				familiarName:[
+					"Dog",
+					"Wolf",
+					"Bear"
+				]
+			},
 			defense:[1,1,1,1],
 			xpRamp:[
 				{
@@ -89,11 +96,18 @@ function loadHeroModels() {
 			heroClass:"Wizard",
 			tags:["weak"],
 			skills:[
-				["ATK -2\nRNG 2","Move\n-3"],
-				["Move\n-1","Move\n-3"],
-				["DEF\n-2","ATK -1\nRNG 3"],
-				["(pay 1G)\nGain HP\n-5","ATK\nRNG 1"]
+				[ {skill:"ATK -2\nRNG 2"}, {skill:"Move\n-3"} ],
+				[ {skill:"Move\n-1"}, {skill:"Move\n-3", tags:["losable"]} ],
+				[ {skill:"DEF\n-2", tags:["losable"]}, {skill:"ATK -1\nRNG 3"} ],
+				[ {skill:"Gain HP\n-5", cost:"pay 1G"}, {skill:"ATK\nRNG 1", tags:["losable"]} ]
 			],
+			placeholders:{
+				familiarName:[
+					"Owl",
+					"Cat",
+					"Lizard"
+				]
+			},
 			defense:[1,1,1,1],
 			xpRamp:[
 				{
@@ -146,11 +160,18 @@ function loadHeroModels() {
 			id:"dwarf",
 			heroClass:"Dwarf",
 			skills:[
-				["ATK -1\nRNG 1","Move\n-4"],
-				["DEF -2","Move\n-3"],
-				["(pay 1G)\nATK -2\nALL 2","DEF -3"],
-				["(pay 2G)\nATK -1\nRNG 2","(pay 2G)\nATK\nRNG 1"]
+				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-4"} ],
+				[ {skill:"DEF -2"}, {skill:"Move\n-3", tags:["losable"]} ],
+				[ {skill:"ATK -2\nALL 2", cost:"pay 1G", tags:["losable"]}, {skill:"DEF -3"} ],
+				[ {skill:"ATK -1\nRNG 2", cost:"pay 2G", tags:["losable"] }, {skill:"ATK\nRNG 1", cost:"pay 2G", tags:["losable"]} ]
 			],
+			placeholders:{
+				familiarName:[
+					"Mouse",
+					"Mole",
+					"Hedgehog"
+				]
+			},
 			defense:[1,1,1,1],
 			xpRamp:[
 				{
@@ -195,15 +216,21 @@ function loadHeroModels() {
 
 		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow, and a Focus item.
 		{
-			isBetaTesting:true,
 			id:"ranger",
 			heroClass:"Ranger",
 			skills:[
-				["ATK -1\nRNG 1","Move\n-3"],
-				["ATK -1\nRNG =2","Copy\n-1"],
-				["Copy\n-1","DEF -2"],
-				["ATK\nRNG 3","Move"]
+				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-3"} ],
+				[ {skill:"ATK -1\nRNG =2", tags:["losable"]}, {skill:"Copy\n-1", tags:["losable"]} ],
+				[ {skill:"Copy\n-1", tags:["losable"]}, {skill:"DEF -2"} ],
+				[ {skill:"ATK\nRNG 3", tags:["losable"]}, {skill:"Move", tags:["losable"]} ]
 			],
+			placeholders:{
+				familiarName:[
+					"Falcon",
+					"Pidgeon",
+					"Snake"
+				]
+			},
 			defense:[1,1,1,1],
 			xpRamp:[
 				{
