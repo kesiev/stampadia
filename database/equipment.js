@@ -140,6 +140,12 @@ function loadEquipment() {
 			label:"Sonic",
 			action:"{ifAfterHeroRollInFight}{then}{performByRoomSize:DEF}"
 		},
+		// [CODEX-Stuff] Equipment - Frag: A fragmentation bomb that damages 2 nearby enemies when getting damage.
+		{
+			id:"frag",
+			label:"Frag",
+			action:"{ifAfterHeroLoseHp}{then}{fightingEnemyLoseHp:1,2,3}"
+		},
 		
 	];
 }

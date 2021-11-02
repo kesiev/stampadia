@@ -167,7 +167,7 @@ function loadHeroModels() {
 			],
 			placeholders:{
 				familiarName:[
-					"Mouse",
+					"Beaver",
 					"Mole",
 					"Hedgehog"
 				]
@@ -214,7 +214,7 @@ function loadHeroModels() {
 			]
 		},
 
-		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow, and a Focus item.
+		// [CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow and a Focus item.
 		{
 			id:"ranger",
 			heroClass:"Ranger",
@@ -255,6 +255,70 @@ function loadHeroModels() {
 				{
 					placeholder:"heroItem",
 					id:"focus",
+					isAvailable:true
+				}
+			],
+			enemyModels:[
+				// Level 0
+				{ skills:[] },
+				// Level 1
+				{ skills:[] },
+				// Level 2
+				{
+					skills:[
+						["DEF -3","ATK -3\nRNG 2"]
+					]
+				},
+				// Level 3
+				{ skills:[] },
+				// Level 4 - Zombies
+				{ skills:[] }
+			]
+		},
+
+		// [CODEX-Heroes] Class - The Rogue: An agile thief that tricks enemies. It's equipped with a lazzo, a throwing knife, and a Frag bomb item.
+		{
+			isBetaTesting:true,
+			id:"rogue",
+			heroClass:"Rogue",
+			skills:[
+				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-2"} ],
+				[ {skill:"DEF -2"}, {skill:"Lock\n-3", tags:["losable"]} ],
+				[ {skill:"DEF -3", tags:["losable"] }, {skill:"ATK -1\nRNG 2", tags:["losable"] } ],
+				[ {skill:"Lock\n-2", tags:["losable"]}, {skill:"Move", tags:["losable"]} ]
+			],
+			placeholders:{
+				familiarName:[
+					"Mouse",
+					"Crow",
+					"Raccoon"
+				]
+			},
+			defense:[1,1,1,1],
+			xpRamp:[
+				{
+					value:0
+				},{
+					xpGroup:"low",
+					round:"floor",
+					percentage:1
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.35
+				},{
+					xpGroup:"high",
+					round:"floor",
+					percentage:0.65
+				}
+			],
+			
+			hpRamp:[0.5,0.15,0.25,0.1],
+			damageRatio:0.7,
+			equipment:[
+				{
+					placeholder:"heroItem",
+					id:"frag",
 					isAvailable:true
 				}
 			],
