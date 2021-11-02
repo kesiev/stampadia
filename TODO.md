@@ -36,6 +36,10 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] !!!
   - [ ] mixMode ready to be tested after the Rogue: setMixMode:true
 
+- [ ] Items
+  - [ ] Activate a power by xxx
+  - [ ] Prevent a specific enemy action
+
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
@@ -68,9 +72,6 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] ???: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
-
-- [ ] NPC
-  - [ ] The Corrupted
 
 ### Ideas - Gameplay (questions)
 
@@ -187,6 +188,7 @@ A daily print-and-play roguelike adventure you can play offline.
     - [x] Sub - The Landslide - Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
   - [x] Story
     - [x] The rests - collectable lore items around as narrative items *(It may spawn on already busy rooms, so it helps obfuscating 2-items rooms)*
+      - [x] The Corrupted (used for one scroll)
 
 - [x] Classes balances
   - [x] Lower damageRatio for all classes
