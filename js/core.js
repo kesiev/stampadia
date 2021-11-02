@@ -54,6 +54,7 @@ const Core=function(settings) {
 		QUESTS_STORY,
 		QUESTS_HELPERS,
 		QUESTS_ANOMALIES,
+		QUESTS_SCROLLS,
 		MODIFIERS,
 		KEYWORDS,
 		TRUTHMAP,
@@ -113,6 +114,7 @@ const Core=function(settings) {
 				QUESTS_STORY=loadQuestsStory();
 				QUESTS_HELPERS=loadQuestsHelpers();
 				QUESTS_ANOMALIES=loadQuestsAnomalies();
+				QUESTS_SCROLLS=loadQuestsScrolls();
 				cb();
 			}
 		}
@@ -148,12 +150,10 @@ const Core=function(settings) {
 		// Set dungeon size
 		const dunggen=new DungeonGenerator(settings.root,20,20,seed,debug);
 
-		const room=dunggen.addRoom("startingRoom",0,0,3,3,false,true);
-		room.addItem(1,1,{id:"stairs"});
-
 		dunggen.setRoomsModels([
 			[
 				// [CODEX-Generator] Roomset - The Stampadian: A set of multiple sized rooms.
+				{ times:1, type:"startingRoom", width:3, height: 3, isStarting:true },
 				{ times:4, type:"largeRooms", width:4, height: 4 },
 				{ times:4, type:"midRooms", width:3, height: 5 },
 				{ times:4, type:"midRooms", width:5, height: 3 },
@@ -162,6 +162,7 @@ const Core=function(settings) {
 			],
 			[
 				// [CODEX-Generator] Roomset - The Towers: A set of small squared rooms and corridors.
+				{ times:1, type:"startingRoom", width:3, height: 3, isStarting:true },
 				{ times:2, type:"largeRooms", width:4, height: 4 },
 				{ times:10, type:"midRooms", width:3, height: 3 },
 				{ times:3, type:"corridors", width:[2,3,4], height: 1, isCorridor:true },
@@ -169,6 +170,7 @@ const Core=function(settings) {
 			],
 			[
 				// [CODEX-Generator] Roomset - The Sewers: A set of small rectangular rooms with 2 huge halls.
+				{ times:1, type:"startingRoom", width:3, height: 3, isStarting:true },
 				{ times:1, type:"largeRooms", width:5, height: 4 },
 				{ times:1, type:"largeRooms", width:4, height: 5 },
 				{ times:5, type:"midRooms", width:2, height: 3 },
@@ -178,6 +180,7 @@ const Core=function(settings) {
 			],
 			[
 				// [CODEX-Generator] Roomset - The Sewers: A set of small rectangular rooms with 2 huge halls.
+				{ times:1, type:"startingRoom", width:3, height: 3, isStarting:true },
 				{ times:1, type:"largeRooms", width:6, height: 6 },
 				{ times:6, type:"midRooms", width:4, height: 2 },
 				{ times:7, type:"midRooms", width:2, height: 4 },
@@ -229,22 +232,9 @@ const Core=function(settings) {
 			}
 		]);
 
-		// 1 room
-		/*
-		for (let i=0;i<18;i++)
-			dunggen.addRoom("largeRooms",0,0,3,3);
-		*/
-		/*
-		for (let i=0;i<4;i++) { // 12 rooms
-			dunggen.addRoom("largeRooms",0,0,4,4); // 4 empty
-			dunggen.addRoom("midRooms",0,0,3,5); // 3 empty
-			dunggen.addRoom("midRooms",0,0,5,3); // 3 empty
-		}
-		for (let i=0;i<3;i++) { // 6 random corridors
-			dunggen.addRoom("corridors",0,0,[2,3,4],1,true);
-			dunggen.addRoom("corridors",0,0,1,[2,3,4],true);
-		}
-		*/
+		// Set mix mode
+		if (debug&&(debug.setMixMode!=undefined)) dunggen.setMixMode(debug.setMixMode);
+		else dunggen.setMixMode(false);
 
 		// Set rooms base ID
 		dunggen.setRoomIds(30);
@@ -285,7 +275,9 @@ const Core=function(settings) {
 			// Filling
 			{questType:"sub",count:1,distance:"farthest"},
 			{questType:"mediumFiller",count:1,distance:"random"},
-			
+
+			// Scroll
+			{questType:"scrolls",count:1,distance:"random"},
 
 		]);
 		dunggen.setModifiers(MODIFIERS);
@@ -349,6 +341,7 @@ const Core=function(settings) {
 				story:QUESTS_STORY,
 				helpers:QUESTS_HELPERS,
 				anomaly:QUESTS_ANOMALIES,
+				scrolls:QUESTS_SCROLLS,
 			}
 		);
 
