@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (75 items)
+## Events (76 items)
 
 - Anomaly
   - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
@@ -68,6 +68,7 @@
   - **The Witch**: Pay her or she will curse you!
 - Storyline
   - **The End Of Stampadia**: Discover how Stampadia ended.
+  - **The Rests**: Finds from the world of stampadia.
 - Subquest
   - **The Altar**: Sacrify important resources for other advantages.
   - **The Barman**: Pay gold for health or a short mission.
@@ -109,15 +110,16 @@
   - **Mud**: Everybody moves -1.
   - **Tall grass**: Everybody -1 a die of choice.
 
-## Heroes (4 items)
+## Heroes (5 items)
 
 - Class
   - **The Dwarf**: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.
-  - **The Ranger**: An archer that learns from the beasts. It's equipped with a bow, and a Focus item.
+  - **The Ranger**: An archer that learns from the beasts. It's equipped with a bow and a Focus item.
+  - **The Rogue**: An agile thief that tricks enemies. It's equipped with a lazzo, a throwing knife, and a Frag bomb item.
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (57 items)
+## Stuff (58 items)
 
 - Beast
   - **The Bat**: It can scare you permanently.
@@ -136,6 +138,7 @@
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
   - **Focus**: Pay 2G and sum 2 dice values.
+  - **Frag**: A fragmentation bomb that damages 2 nearby enemies when getting damage.
   - **Grenade**: Perform an ATK action by the current room size.
   - **Invisibility**: For the next 3 enemy turns, discard all dice less than 6.
   - **Lunge**: Place dice on the same column.
