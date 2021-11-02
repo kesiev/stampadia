@@ -93,7 +93,7 @@ var INDEX=[
 	"[CODEX-Modifiers] Terrain - Tall grass: Everybody -1 a die of choice.",
 	"[CODEX-Heroes] Class - The Dwarf: A strong fighter trained on swinging a huge war hammer. It's equipped with a war hammer, leather armor, and a Mead item.",
 	"[CODEX-Heroes] Class - The Ranger: An archer that learns from the beasts. It's equipped with a bow and a Focus item.",
-	"[CODEX-Heroes] Class - The Rogue: An agile thief that tricks enemies. It's equipped with a lazzo, a throwing knife, and a Frag bomb item.",
+	"[CODEX-Heroes] Class - The Rogue: An agile thief that tricks enemies. It's equipped with a lasso, a throwing knife, and a Frag bomb item.",
 	"[CODEX-Heroes] Class - The Warrior: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.",
 	"[CODEX-Heroes] Class - The Wizard: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.",
 	"[CODEX-Stuff] Beast - The Bat: It can scare you permanently.",

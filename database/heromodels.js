@@ -276,7 +276,7 @@ function loadHeroModels() {
 			]
 		},
 
-		// [CODEX-Heroes] Class - The Rogue: An agile thief that tricks enemies. It's equipped with a lazzo, a throwing knife, and a Frag bomb item.
+		// [CODEX-Heroes] Class - The Rogue: An agile thief that tricks enemies. It's equipped with a lasso, a throwing knife, and a Frag bomb item.
 		{
 			isBetaTesting:true,
 			id:"rogue",
