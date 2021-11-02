@@ -199,7 +199,7 @@ function loadQuestsScrolls() {
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"News: Another Murder Case In Stampadia\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Once The Nothing is opened, there is no way back...\"" ],
 							[ "{ifMoveOn:storylineRest}{then}There are some scribbled shapes and numbers on this scroll." ],
-							[ "{ifMoveOn:storylineRest}{then}There is a book titled: \"Hard Riddles For Heroes\"" ],
+							[ "{ifMoveOn:storylineRest}{then}There is a book titled: \"Hard Riddles For Smart Heroes\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"That... monster... is eating the entire room!\"" ],
 							[ "{ifMoveOn:storylineRest}{then}There is a book titled: \"Good Training For Good Heroes\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Letter: \"I'm sick of this place... I'll leave soon. - Enemy\"" ],
@@ -209,7 +209,7 @@ function loadQuestsScrolls() {
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Remember to fill your healing flask - Warrior\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Keep your eyes on the enemy and learn from him - Ranger\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Hammer, leather, and mead makes a good day! - Dwarf\"" ],
-							
+
 						]
 					}
 				]
