@@ -283,9 +283,9 @@ function loadHeroModels() {
 			heroClass:"Rogue",
 			skills:[
 				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-2"} ],
-				[ {skill:"DEF -2"}, {skill:"Lock\n-3", tags:["losable"]} ],
-				[ {skill:"DEF -3", tags:["losable"] }, {skill:"ATK -1\nRNG 2", tags:["losable"] } ],
-				[ {skill:"Lock\n-2", tags:["losable"]}, {skill:"Move", tags:["losable"]} ]
+				[ {skill:"DEF -3"}, {skill:"Lock\n-3", tags:["losable"]} ],
+				[ {skill:"DEF -2", tags:["losable"] }, {skill:"Move", tags:["losable"] } ],
+				[ {skill:"Lock\n-2", tags:["losable"]}, {skill:"ATK\nRNG 2", tags:["losable"]} ]
 			],
 			placeholders:{
 				familiarName:[
