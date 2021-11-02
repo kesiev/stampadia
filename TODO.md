@@ -33,6 +33,9 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
+- [ ] !!!
+  - [ ] mixMode ready to be tested after the Rogue: setMixMode:true
+
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
@@ -59,15 +62,10 @@ A daily print-and-play roguelike adventure you can play offline.
     - [ ] Some room descriptions give pointers to mobs behavior; maybe add a code for each room describing combat strategy for mobs: berserk, cautious, daring, defensive ...
   - [ ] Arcade variant: damage = atk - defense
 
-- [ ] Skills & Items
-  - [ ] Hero/Enemy - Damage reflection
-
 - [ ] New classes
-  - [ ] A defense based class
   - [ ] A class with ignore enemy movement to stay in range
   - [ ] A class with more attack/move
-  - [ ] Rogue: Get gold by fights/lock dice
-    - [ ] Hero - Dice roll skill: the hero locks a die for other enemies
+  - [ ] ???: Get gold by fights/lock dice
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
 
@@ -75,6 +73,10 @@ A daily print-and-play roguelike adventure you can play offline.
   - [ ] The Corrupted
 
 ### Ideas - Gameplay (questions)
+
+- [ ] Rooms Table
+  - [ ] Circles for HP in hero sheet?
+    - Circles are used more to add some *narrative* to the adventure sheet *way too minimal graphics* than for coherence: they are used in the Gold Track (they looks like tiny coins), and as the enemies HP (some players have fun on hitting enemies *in the eyes* or *in the mouth* even if all checkboxes have the same meaning - *is there a hint for for some mechanic? ;)*). The Hero and Enemy Sheets have some space issues and there is not enough space to add circles. So, for now, the Sheets will use squared boxes instead of other shapes.
 
 - [ ] New actions
   - [ ] Resting: when not in combat, 5G to get 1HP
@@ -87,6 +89,10 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Mechanics
   - [ ] Excess XP/HP to gold
     - Is this a way to buy too much time?
+  - [ ] Movement used as "points" and distribute during the turn (i.e. move -> attack -> move)
+    - It may make characters more agile and add more decisions but the actual *timeline* battle system, with self-contained coherent actions executed one by one from left to right, it's be easier to understand for non-boardgamers.
+  - [ ] Use symbols instead of numbers for interactive elements? [(spades)] instead of [1]?
+    - While there is a limited number of interactive elements in rooms ATM and a set of symbols instead of numbers may help players on learning the game, numbers are less narrative (a diamond is not going to be an *ingame valuable*, hearts are not *healing items* and so on), easier to share in chats and forums (you may need an emoji/symbols keyboard), and their *mathematical nature* can be used for some unexplored mechanic (i.e. lifts that brings you on current room + grayed cell value)
 
 - [ ] Enemy abilities
   - [ ] PUSH: pushes the hero away, for ranged enemies
@@ -107,10 +113,12 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### In progress
 
-- [ ] New classes
-  - [ ] new class: ranger
-    - [ ] can use monster moves
-    - [ ] Powerful skills with exact range like "RNG =2". Explain on manual.
+- [x] Skills & Items
+  - [x] Hero/Enemy - Damage reflection
+
+- [x] New classes: Rogue
+  - [x] A defense based class
+  - [x] Hero - Dice roll skill: the hero locks a die for other enemies
 
 ### Done
 
@@ -132,8 +140,11 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [x] New class
   - [x] Tank/Dwarf
-      - Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
-      - lower movement
+      - [x] Instead of having a Move action in the first column, make it DEF -2. In other words, instead of running away to get away from attacks, the character just takes the attacks, but defends against them.
+      - [x] lower movement
+  - [x] Ranger
+    - [x] can use monster moves
+    - [x] Powerful skills with exact range like "RNG =2". Explain on manual.
 
 - [x] Equipment
   - [x] Flip - Complementary dice values (upside down dice)
@@ -174,6 +185,8 @@ A daily print-and-play roguelike adventure you can play offline.
     - [x] Teleports enabled only on conditions
     - [x] Sub - The Traitor: reveal where the boss room is on death
     - [x] Sub - The Landslide - Optional rooms can be "closed" due to player decisions (falling bridges, closed caves, etc.)
+  - [x] Story
+    - [x] The rests - collectable lore items around as narrative items *(It may spawn on already busy rooms, so it helps obfuscating 2-items rooms)*
 
 - [x] Classes balances
   - [x] Lower damageRatio for all classes
