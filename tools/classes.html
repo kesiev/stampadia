@@ -60,9 +60,12 @@ function process(skills,database) {
 
 
 	if (map["GainHP"]==1) label+="Healing ";
+	if (map["Lock"]==1) label+="Locking ";
 
 	if (map["ATK"]==2) label+="Double "+attackType+" Attack "; else
+	if (map["Lock"]==2) label+="Double Lock ";
 	if (map["ATK"]==1) label+=attackType+"Attack "; else
+	if (map["DEF"]==2) label+="Defense ";
 	if (map["DEF"]==1) label+=(moveType?moveType+"Moving Defense ":"Defense"); else {
 
 		if (map["Move"]==2) label+=moveType+"Run ";
@@ -77,7 +80,10 @@ function process(skills,database) {
 	if (!database[label]) database[label]=0;
 	database[label]++;
 
-	return "<b>"+label+"</b> <i>"+skills.join(" -&gt; ")+"</i>";
+	let combo="";
+	skills.forEach(skill=>combo+=skill.skill+" -&gt; ");
+
+	return "<b>"+label+"</b> <i>"+combo.substr(0,combo.length-7)+"</i>";
 }
 
 function parseSkill(skill) {
@@ -129,14 +135,18 @@ function printCell(col,mix) {
 function addStats(mix,list) {
 	if (!mix.attackMove) mix.attackMove=0;
 	if (!mix.moveAttack) mix.moveAttack=0;
+	if (!mix.doubleAttack) mix.doubleAttack=0;
 	if (!mix.doubleMove) mix.doubleMove=0;
 	if (!mix.doubleCopy) mix.doubleCopy=0;
+	if (!mix.doubleLock) mix.doubleLock=0;
 	if (!mix.maxMovement) mix.maxMovement=0;
 	if (list.length>1) {
 		if (list[0].moveMax&&list[1].atkSuccess) mix.moveAttack++;
 		if (list[0].atkSuccess&&list[1].moveMax) mix.attackMove++;
+		if (list[0].atkSuccess&&list[1].atkSuccess) mix.doubleAttack++;
 		if (list[0].moveMax&&list[1].moveMax) mix.doubleMove++;
 		if (list[0].copySuccess&&list[1].copySuccess) mix.doubleCopy++;
+		if (list[0].lockSuccess&&list[1].lockSuccess) mix.doubleLock++;
 		let move=0;
 		if (list[0].moveMax) move+=list[0].moveMax;
 		if (list[1].moveMax) move+=list[1].moveMax;
@@ -173,6 +183,9 @@ function onl() {
 		{id:"gainHpSuccess",type:"prc"},
 		{id:"copySuccess",type:"prc"},
 		{id:"doubleCopy",type:"skill"},
+		{id:"lockSuccess",type:"prc"},
+		{id:"doubleLock",type:"skill"},
+		{id:"doubleAttack",type:"skill"},
 		{id:"attackMove",type:"skill"},
 		{id:"moveAttack",type:"skill"},
 		{id:"doubleMove",type:"skill"},
@@ -265,6 +278,16 @@ function onl() {
 							skillData.copyMax=6+str;
 							break;
 						}
+						case "Lock":{
+							let str=pcs[++id];
+							if (!str) str=0;
+							str*=1;
+							skillData.lockMalus=str;
+							skillData.lockFailure=prc(-str/6);
+							skillData.lockSuccess=prc((6+str)/6);
+							skillData.lockMax=6+str;
+							break;
+						}
 						case "Move":{
 							let str=pcs[id+1];
 							if (str*1==str) {
@@ -339,6 +362,8 @@ function onl() {
 		addStats(skillStats[3][0],[skillStats[1][1],skillStats[2][0]]); // 2 + 3
 		addStats(skillStats[3][0],[skillStats[1][0],skillStats[3][1]]); // 2 + 4
 		addStats(skillStats[3][0],[skillStats[1][1],skillStats[3][0]]); // 2 + 4
+		addStats(skillStats[3][0],[skillStats[2][0],skillStats[3][1]]); // 3 + 4
+		addStats(skillStats[3][0],[skillStats[2][1],skillStats[3][0]]); // 3 + 4
 
 		html+="<div class=toggle>Growth</div><div style='display:none'>"
 		html+="<table border=1><tr><td>Level</td>";
