@@ -81,7 +81,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		modifiersByType=[],
 		modifiersById=[],
 		modifiersModel=0,
+		mixMode=false,
 		roomsModels=0,
+		startingRoom=0,
 		globalModifier=0,
 		enemies=[],		
 		noise=[],
@@ -113,6 +115,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	this.prepared=false;
 
+	this.setMixMode=(v)=>mixMode=v;
 	this.setRoomsModels=(roomsmodelsdata)=>roomsModels=roomsmodelsdata;
 	this.setComplexityEvaluation=(v)=>complexityEnabled=v;
 	this.setShredderMode=(v)=>shredderMode=v; // Shredder mode uses starting room distance instead of shortest paths.
@@ -443,6 +446,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{ifAfterEnemyRollInFight}","enemy turn roll");
 		line=line.replaceAll("{ifAfterHeroRollInFight}","hero turn roll");
 		line=line.replaceAll("{ifAfterRollInFight}","any battle turn roll");
+		line=line.replaceAll("{ifAfterHeroLoseHp}","hero loses HP");
 		line=line.replace(/\{ifHeroPerformAction:([^}]+)\}/g,(m,act)=>"hero activates "+act);
 		line=line.replace(/\{ifEnemyPerformAction:([^}]+)\}/g,(m,act)=>"enemy activates "+act);
 		line=line.replace(/\{ifPerformAction:([^}]+)\}/g,(m,act)=>"any "+act+" activation");
@@ -754,6 +758,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		this.height=height;
 		this.isCorridor=!!isCorridor;
 		this.isStartingRoom=!!isStartingRoom;
+		this.isMarkable=this.isStartingRoom;
+		this.hasEnemies=false;
+		this.isExclusive=false;
 		this.itemsIndex=[];
 		this.items=[];
 		this.entrancesIndex=[];
@@ -761,6 +768,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		this.exits=[];
 		this.description=[];
 		this.isOptionalRoom=false;
+		this.genericItemId=0;
 
 		this.addItem=function(x,y,item) {
 			if (this.entrancesIndex[y]&&this.entrancesIndex[y][x])
@@ -1091,8 +1099,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		success=true;
 
 		// Room must be not busy
-		success&=!room.room.isBusy;
-
+		if (mixMode) {
+			success&=!room.room.isExclusive;
+			success&=!step.isExclusive||!room.room.isBusy;
+			success&=!step.hasEnemies||!room.room.hasEnemies;
+			success&=!step.isMarkable||!room.room.isMarkable;
+		} else {
+			success&=step.allowBusyRooms||!room.room.isBusy;
+		}
+		
 		// Room may host a hidden room
 		if (success&&(step.isOptionalRoom||step.isHiddenRoom||step.isDeadEndRoom)) {
 			var avoidRooms=[room.room.id];
@@ -1410,6 +1425,39 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	}
 
+	this.addQuestsMetadata=function() {
+		for (let k in quests) {
+			quests[k].forEach(quest=>{
+				quest.steps.forEach(step=>{
+					let
+						roomsIndex={
+							startingRoom:startingRoom
+						},
+						referenced={};
+					step.forEach(event=>{
+						roomsIndex[event.id]=event;
+						if (event.isHiddenRoom||event.isDeadEndRoom||event.isOptionalRoom)
+							event.isExclusive=true;
+						if (event.roomDescriptions)
+							event.roomDescriptions.forEach(description=>{
+								description.forEach(line=>{
+									line.replace(/{markRoom:([^}]*)}/g,(m,id)=>referenced[id]=1);
+								})
+							});
+						if (event.items)
+							event.items.forEach(item=>{
+								if (item.id=="enemy") event.hasEnemies=true;
+							});
+					})
+					for (let w in referenced) {
+						if (roomsIndex[w]) roomsIndex[w].isMarkable=true;
+						else console.warn("Missing room reference in",quest,"step",step);
+					}
+				})
+			})
+		}
+	}
+
 	this.addQuests=function() {
 
 		let
@@ -1475,16 +1523,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Add items and prepare item labels
 		steps.forEach((step,index)=>{
 			const room=subroute[index];
-			let genericItemId=0;
 			room.room.isBusy=true;
 			if (step.items)
 				step.items.forEach(item=>{
 					const freeSpace=getRandomId(room.freeSpaces),
 						pos=room.freeSpaces.splice(freeSpace,1)[0];
 					if (item.genericItem) {
-						genericItemId++;
-						room.room.addItem(pos.x,pos.y,{id:"genericItem",itemId:genericItemId,isHidden:item.isHidden});
-						placeholders.itemIds[item.genericItem]=genericItemId;
+						room.room.genericItemId++;
+						room.room.addItem(pos.x,pos.y,{id:"genericItem",itemId:room.room.genericItemId,isHidden:item.isHidden});
+						placeholders.itemIds[item.genericItem]=room.room.genericItemId;
 					} else room.room.addItem(pos.x,pos.y,item);
 				});
 			if (step.globalModifier)
@@ -1510,6 +1557,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						placeholders:placeholders
 					});
 				});
+				if (step.isMarkable) room.isMarkable=true;
+				if (step.hasEnemies) room.hasEnemies=true;
+				if (step.isExclusive) room.isExclusive=true;
 				if (step.shuffleRoomDescriptions) shuffleArray(room.description);
 				if (step.equipment) {
 					step.equipment.forEach(equip=>{
@@ -2067,13 +2117,20 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	this.selectRoomsModel=function() {
 		
-		let model=getRandom(roomsModels);
+		let
+			model=getRandom(roomsModels),
+			room;
 
 		model.forEach(entry=>{
 			let times=entry.times||1;
 
-			for (let i=0;i<times;i++)
-				this.addRoom(entry.type,0,0,entry.width,entry.height,entry.isCorridor);
+			for (let i=0;i<times;i++) {
+				room=this.addRoom(entry.type,0,0,entry.width,entry.height,entry.isCorridor,entry.isStarting);
+				if (entry.isStarting) {
+					room.addItem(1,1,{id:"stairs"});
+					startingRoom=room;
+				}
+			}
 		})
 
 	}
@@ -2095,6 +2152,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			// Initialize
 			this.selectRoomsModel();
 			this.indexModifiers();
+			this.addQuestsMetadata();
 			this.evaluateQuestsComplexity();
 			this.setupMetadata();
 			this.prepareGlobalPlaceholders();
@@ -2567,7 +2625,13 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						svg.setText(svg.getById("roomPosition",roomData),(room.x+1)+","+(room.y+1));
 						svg.setText(svg.getById("roomSize",roomData),room.width+"x"+room.height);
 					}
-					svg.setText(svg.getById("roomId",roomData),room.id);
+					if (debug&&debug.showRoomAttributes) {
+						let label=svg.getById("roomId",roomData);
+						svg.delete(svg.getById("roomCheckbox",roomData));
+						svg.moveNodeAt(svg.getById("roomId",roomData),svg.getNum(label,"x")-2,svg.getNum(label,"y"));
+						svg.setText(label,(room.isMarkable?"x":"")+(room.isExclusive?"E":"")+(room.hasEnemies?"!":"")+room.id);
+					} else
+						svg.setText(svg.getById("roomId",roomData),room.id);
 
 					if (room.description[0]) {
 						lineParts=room.description[0].split("^*v");
