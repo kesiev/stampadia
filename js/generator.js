@@ -80,6 +80,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		modifiers=0,
 		modifiersByType=[],
 		modifiersById=[],
+		modifiersIds=[],
 		modifiersModel=0,
 		mixMode=false,
 		roomsModels=0,
@@ -102,6 +103,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			byRoomId:{},
 			rooms:[]
 		},
+		questGeneratorInterface={},
 		allRooms=[],
 		flavorTexts,
 		quests,
@@ -111,6 +113,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		roomPriorities,
 		shredderMode,
 		complexityEnabled,
+		fakeDescriptions=[],
 		svg;
 
 	this.prepared=false;
@@ -467,6 +470,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{activateOnly:([-0-9]+)\}/g,(m,num)=>"can activate "+num+" "+(num==1?"ability":"abilities")+" only");
 		line=line.replace(/\{reroll:([0-9]+)\}/g,(m,num)=>"reroll all "+num+" once");
 		line=line.replace(/\{performByRoomSize:([^}]+)\}/g,(m,skill)=>skill+" by current room cells count");
+		line=line.replace(/\{performFreeActionWithPower:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"activate 1 "+(num==1?"ability":"abilities")+" using value "+num2);
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter room");
@@ -489,6 +493,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// HP - Actions
 		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
 		line=line.replaceAll("{loseFullHp}","-"+hero.maxHp+"HP");
+		line=line.replace(/\{loseFullHp-:([0-9]+)\}/g,(m,num)=>"-"+(hero.maxHp-num)+"HP");
 		line=line.replaceAll("{gainHalfHp}","+"+Math.ceil(hero.maxHp/2)+"HP");
 		line=line.replaceAll("{loseHalfHp}","-"+Math.ceil(hero.maxHp/2)+"HP");
 		line=line.replace(/\{gainHp:([0-9]+)\}/g,(m,num)=>"+"+num+"HP");
@@ -543,11 +548,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			{regex:/\{payEquip:([^}]+)\}/g,verb:"pay"},
 			{regex:/\{loseEquip:([^}]+)\}/g,verb:"lose"},
 			{regex:/\{getEquip:([^}]+)\}/g,verb:"get"},
+			{regex:/\{nameEquip:([^}]+)\}/g},
 		].forEach((entry)=>{
 			line=line.replace(entry.regex,(m,id)=>{
 				let equipment=globalPlaceholders[id];
 				if (!equipment) equipment=getRandom(services).equipment.label;
-				return entry.verb+" "+equipment;
+				return (entry.verb?entry.verb+" ":"")+equipment;
 			});
 		});
 
@@ -594,8 +600,17 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						case "stealHeroSkill":{
 							return "ATK -1 RNG 1";
 						}
+						case "modifierCondition":{
+							return modifiersById[getRandom(modifiersIds)].condition;
+						}
+						case "modifierAction":{
+							return modifiersById[getRandom(modifiersIds)].action;
+						}
+						case "modifier":{
+							return modifiersById[getRandom(modifiersIds)].full;
+						}
 						default:{
-							return "[???]";
+							return line;
 						}
 					}
 				})
@@ -615,6 +630,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{payEquip:([^}]+)\}/g,(m,id)=>"pay "+globalPlaceholders[id]);
 		line=line.replace(/\{loseEquip:([^}]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
 		line=line.replace(/\{getEquip:([^}]+)\}/g,(m,id)=>"get "+globalPlaceholders[id]);
+		line=line.replace(/\{nameEquip:([^}]+)\}/g,(m,id)=>globalPlaceholders[id]);
 
 		// Keywords
 		[
@@ -660,6 +676,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 								if (marker=="roomRiddle") return generateRoomRiddle(room.id);
 								else return room.id;
 							} else {
+								debugger;
 								console.warn("can't find room",matches[value],"in line",line);
 								return "???";
 							}
@@ -683,7 +700,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							return placeholders.stealHeroSkill;
 						}
 						default:{
-							return "[???]";
+							return line;
 						}
 					}
 				})
@@ -695,10 +712,18 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		return line;
 	}
 
-	function solvePlaceholder(placeholder) {
+	function solvePlaceholder(placeholder,isfake,label) {
 		if (placeholder.text) return placeholder.text;
-		if (placeholder.fakeLine) return formatFakeDescriptionLine(placeholder.fakeLine);
-		else return formatDescriptionLine(placeholder.line,placeholder.placeholders);
+		if (isfake||placeholder.fakeLine) {
+			let text=placeholder.fakeLine||placeholder[label];
+			for (let i=0;i<3;i++) text=formatFakeDescriptionLine(text);
+			text=text.replace(/{[^}]*}/g,"\"...\"");
+			return text;
+		} else {
+			let text=placeholder.line||placeholder[label];
+			for (let i=0;i<3;i++) text=formatDescriptionLine(text,placeholder.placeholders);
+			return text;
+		}
 	}
 	
 	function solveRoomTemplateArgument(argument) {
@@ -1098,12 +1123,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		success=true;
 
-		// Room must be not busy
 		if (mixMode) {
-			success&=!room.room.isExclusive;
-			success&=!step.isExclusive||!room.room.isBusy;
-			success&=!step.hasEnemies||!room.room.hasEnemies;
-			success&=!step.isMarkable||!room.room.isMarkable;
+			success&=!room.room.isExclusive; // Never use rooms that are already marked by an exclusive event.
+			success&=!step.isExclusive||!room.room.isBusy; // Cannot mix exclusive events with busy rooms (i.e. they are already hosting an event)
+			success&=!step.hasEnemies||!room.room.hasEnemies; // Cannot mix multiple enemy rooms to avoid flooding.
+			success&=!step.isMarkable||!room.room.isMarkable; // Cannot mix multiple markable rooms to avoid checkmark conflicts.
 		} else {
 			success&=step.allowBusyRooms||!room.room.isBusy;
 		}
@@ -1412,7 +1436,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					let complexity=1;
 					quest.steps[0].forEach(step=>
 						complexity+=0.3+
-							(step.equipment?0.5:0)+
+							(step.equipment?0.3:0)+
 							(step.isHiddenRoom||step.isDeadEndRoom||step.isOptionalRoom?1:0)
 					);
 					complexity*=quest.probability?quest.probability/100:1;
@@ -1436,13 +1460,19 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						referenced={};
 					step.forEach(event=>{
 						roomsIndex[event.id]=event;
+						// Hidden rooms or dead end rooms are always exclusive.
 						if (event.isHiddenRoom||event.isDeadEndRoom||event.isOptionalRoom)
 							event.isExclusive=true;
 						if (event.roomDescriptions)
 							event.roomDescriptions.forEach(description=>{
 								description.forEach(line=>{
 									line.replace(/{markRoom:([^}]*)}/g,(m,id)=>referenced[id]=1);
-								})
+									// Rooms with conditions on enemies are always exclusive.
+									if (
+										line.match("{ifNoFoes}")||
+										line.match("{ifKilledLastFoe}")
+									) event.isExclusive=true;
+								});
 							});
 						if (event.items)
 							event.items.forEach(item=>{
@@ -1513,12 +1543,16 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		steps.forEach((step,index)=>{
 			placeholders.roomIds[step.id]=subroute[index].room;
 			globalPlaceholders.roomIds[step.id]=subroute[index].room;
+			if (step.generator) step.generator(questGeneratorInterface);
 		});
 
 		rooms.forEach(room=>{
 			placeholders.roomIds["id-"+room.id]=room;
 			if (room.isStartingRoom) placeholders.roomIds["startingRoom"]=room;
 		});
+
+		// Run the quest generator
+		if (quest.generator) quest.generator(questGeneratorInterface);
 
 		// Add items and prepare item labels
 		steps.forEach((step,index)=>{
@@ -1648,10 +1682,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			for (let target in modifiers[label]) {
 				let
 					modifier=modifiers[label][target],
-					descriptionParts=modifier.roomDescription.split("{then}");
+					descriptionParts=modifier.roomDescription.split("{then}"),
+					modId=label+"."+target;
 				if (!modifiersByType[modifier.type]) modifiersByType[modifier.type]=[];
 				modifiersByType[modifier.type].push(modifier);
-				modifiersById[label+"."+target]={
+				modifiersIds.push(modId);
+				modifiersById[modId]={
 					full:modifier.roomDescription,
 					condition:descriptionParts[0],
 					action:descriptionParts[1]
@@ -1744,8 +1780,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	}
 
 	this.addFakeRooms=function() {
-		const
-			fakeDescriptions=[];
 
 		for (const k in quests) {
 			quests[k].forEach(quest=>{
@@ -1947,6 +1981,19 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		this.metadata.header.line=globalPlaceholders.adventureHeader;
 	}
 
+	// Quest generator interface
+
+	this.prepareQuestGeneratorInterface=function() {
+		questGeneratorInterface={
+			shuffleArray:shuffleArray,
+			random:random,
+			getRandom:getRandom,
+			getRandomId:getRandomId,
+			globalPlaceholders:globalPlaceholders,
+			debug:debug
+		}
+	}
+
 	// Keywords index
 
 	this.prepareKeywordsIndex=function() {
@@ -1971,7 +2018,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		// Solve room descriptions
 		rooms.forEach(room=>{
-			room.description=room.description.map(descriptionLine=>solvePlaceholder(descriptionLine))
+			room.description=room.description.map(descriptionLine=>
+				solvePlaceholder(descriptionLine)
+			)
 		});
 
 		// Solve metadata
@@ -2145,11 +2194,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 			if (debug&&debug.dumpSentences)
 				debugBackup={
-					quests:clone(quests),
 					equipment:clone(equipment)
 				};
 
 			// Initialize
+			this.prepareQuestGeneratorInterface();
 			this.selectRoomsModel();
 			this.indexModifiers();
 			this.addQuestsMetadata();
@@ -2189,21 +2238,13 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			// Debug
 			if (debug&&debug.dumpSentences) {
 				debugBackup.equipment.forEach(equip=>{
-					console.warn("[E]",formatFakeDescriptionLine(equip.action));	
+					console.warn("[E] "+solvePlaceholder(equip,true,"label")+": "+solvePlaceholder(equip,true,"action"));
 				});
-				for (const k in debugBackup.quests) {
-					debugBackup.quests[k].forEach(quest=>{
-						quest.steps.forEach(steps=>{
-							steps.forEach(step=>{
-								step.roomDescriptions.forEach(description=>{
-									description.forEach(line=>{
-										console.warn("[Q]",formatFakeDescriptionLine(line));	
-									})
-								})
-							})
-						})
-					})
-				}
+				fakeDescriptions.forEach(description=>
+					description.forEach(line=>
+						console.warn("[Q] "+solvePlaceholder({fakeLine:line}))
+					)
+				);
 			}
 
 			// Solve placeholders
@@ -2719,8 +2760,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				services.forEach((service,index)=>{
 					const
 						line=svg.cloneNodeBy("serviceBox",0,0,index*serviceHeight),
-						label=service.isFake?formatFakeDescriptionLine(service.equipment.label):formatDescriptionLine(service.equipment.label),
-						description=service.isFake?formatFakeDescriptionLine(service.equipment.action):formatDescriptionLine(service.equipment.action);
+						label=solvePlaceholder(service.equipment,service.isFake,"label"),
+						description=solvePlaceholder(service.equipment,service.isFake,"action");
 					svg.setText(svg.getById("serviceName",line),(service.isFake&&debug&&debug.showFake?"[FAKE] ":"")+label+" ("+description+")");
 					if (!service.isAvailable) svg.delete(svg.getById("serviceCheckbox",line));
 				});
