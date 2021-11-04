@@ -1467,10 +1467,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							event.roomDescriptions.forEach(description=>{
 								description.forEach(line=>{
 									line.replace(/{markRoom:([^}]*)}/g,(m,id)=>referenced[id]=1);
-									// Rooms with conditions on enemies are always exclusive.
+									// Rooms with conditions and actions on enemies are always exclusive.
 									if (
 										line.match("{ifNoFoes}")||
-										line.match("{ifKilledLastFoe}")
+										line.match("{ifKilledLastFoe}")||
+										line.match("{roomIsEmpty}")
 									) event.isExclusive=true;
 								});
 							});
