@@ -34,16 +34,17 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] !!!
+  - [ ] Main - A quest that changes ending if not using the class item
   - [ ] mixMode ready to be tested after the Rogue: setMixMode:true
 
 - [ ] Items
-  - [ ] Activate a power by xxx
   - [ ] Prevent a specific enemy action
 
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
   - [ ] Main - Customize the boss battle via empty Enemy Sheet cells
+  - [ ] Main - A quest with an item (to use, spend, etc. to get multiple endings)
 
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
@@ -138,6 +139,7 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] Fireball item that damages all enemies in the room.
   - [x] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
   - [x] Item - Grenade: ATK by the number of cells of the current room
+  - [x] Items that gives free action
 
 - [x] New class
   - [x] Tank/Dwarf
@@ -167,6 +169,7 @@ A daily print-and-play roguelike adventure you can play offline.
     - [x] Main - The Curse: debuff on boss until you get an item / buff on boss when you get an item
     - [x] The Missing Familiar
       - [x] Rookie: most of the skills are copied to empty Hero Sheet cells from enemies *(Added to all classes)*
+    - [x] The Test - Don't lose the class item
   - [x] Good/bad quests
     - [x] The Wildness: do something to get a buff on all encounters
     - [x] Sub - The Trader - Exchange xp/hp *(Added a darker version of the shopper)*
