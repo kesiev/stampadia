@@ -284,6 +284,35 @@ function loadRandomizers() {
 			"There is a secret room teleport that doesn't work well.",
 			"Someone teared down this secret room teleport."
 		],
+		randomArchitectEntrance:[
+			"\"This is not the time, {heroClass}! Go away!\"",
+			"\"How you dare to challenge The Architect?\"",
+			"\"It's too soon, {heroClass}!\"",
+			"\"I'm everywhere! You can't kill me!\"",
+			"\"It's the {heroClass}! I have to hurry!\"",
+			"\"You can't have my tools, {heroClass}!\"",
+			"\"Damn! You found me!\"",
+		],
+		randomArchitectLoseDie:[
+			"\"Using my magic dice is not fair, {heroClass}!\"",
+			"\"Y... you can't have that magic die! No!\"",
+			"\"You... can't take one of my magic dies! Stop!\"",
+			"\"My... my precious magic dice!\"",
+		],
+		randomCurseJoke:[
+			"\"I see you're struggling with my little gift, {heroClass}!\"",
+			"\"You liked my gift, {heroClass}?\"",
+			"\"Are you having fun with my curse, {heroClass}?\"",
+			"\"I see my curse is still on you, {heroClass}!\"",
+		],
+		randomCursedEnding:[
+			"...but you'll never see the sunrise again.",
+			"...but long hairs are appearing on your body.",
+			"...but your body has aged suddenly.",
+			"...but long roots are sprouting from your legs.",
+			"...but your hands are slowly turning to stone.",
+			"...but you have just a few days left to live.",
+		],
 		/*
 		randomRightGuess:[
 			"You have the feeling that everything has gone well.",
