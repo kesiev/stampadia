@@ -13,7 +13,7 @@
 
 var	
 	day=0,
-	dayLimit=60,
+	dayLimit=120,
 	stats={},
 	complexityMap={};
 
@@ -23,72 +23,78 @@ function createDungeon() {
 		root:"../"
 	});
 	core.initialize(()=>{
-		console.log("Day",day);
 		var dungen=core.generateAdventureDaily(day,{
 			dumpSelection:true
 		});
 		dungen.prepare();
-		dungen.metadata.selection.forEach(selection=>{
-			if (selection.modifier&&selection.modifier.id) {
-				stats[selection.modifier.id].count++;
-				stats[selection.modifier.id].days.push(day);
+		console.log("Day",day,"("+dungen.metadata.seed+")",dungen.metadata.title)
+		dungen.createSVG(svg=>{
+			if (svg.getSVG().match(/{/g)) {
+				console.warn("Found an unsolved placeholder");
+				debugger;
 			}
-			if (selection.quest)
-				if (!selection.quest.id) {
-					if (!selection.quest||!selection.quest.steps||!selection.quest.steps.length)
-						console.log(selection);
-				} else {
-					complexityMap[selection.quest.id]=selection.quest.complexity;
-					stats[selection.quest.id].count++;
-					stats[selection.quest.id].days.push(day);
+			dungen.metadata.selection.forEach(selection=>{
+				if (selection.modifier&&selection.modifier.id) {
+					stats[selection.modifier.id].count++;
+					stats[selection.modifier.id].days.push(day);
 				}
-		})
-		if (day<dayLimit) {
-			day++;
-			setTimeout(createDungeon,1);
-		} else {
-			var rank=[];
-			for (var k in stats) {
-				var label=k.split("]")[1].trim().split(" - ");
-				rank.push({orgid:k,cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
+				if (selection.quest)
+					if (!selection.quest.id) {
+						if (!selection.quest||!selection.quest.steps||!selection.quest.steps.length)
+							console.log(selection);
+					} else {
+						complexityMap[selection.quest.id]=selection.quest.complexity;
+						stats[selection.quest.id].count++;
+						stats[selection.quest.id].days.push(day);
+					}
+			})
+			if (day<dayLimit) {
+				day++;
+				setTimeout(createDungeon,1);
+			} else {
+				var rank=[];
+				for (var k in stats) {
+					var label=k.split("]")[1].trim().split(" - ");
+					rank.push({orgid:k,cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
+				}
+				rank.sort((a,b)=>{
+					if (a.cat>b.cat) return 1;
+					else if (a.cat<b.cat) return -1;
+					if (a.count>b.count) return -1;
+					else if (a.count<b.count) return 1;
+					else return 0;
+				});
+				var cat="";
+				var html="<table border=1>";
+				var tot=1;
+				var complexities={};
+				rank.forEach(row=>{
+					if (cat!=row.cat) {
+						html+="</table><br><table border=1>";
+						for (var k in complexities)
+							html+="<tr><td>complexity "+k+"</td><td>"+Math.floor(complexities[k]/tot*100)+"%</td><tr>";
+						html+="</table><br>Total: "+tot+"<hr><table border=1>";
+						complexities={};
+						tot=0;
+						count=0;
+						cat=row.cat;
+					}
+					var complexity=complexityMap[row.orgid];
+					if (complexity) {
+						if (!complexities[complexity]) complexities[complexity]=0;
+						complexities[complexity]+=row.count;
+					}
+					if (row.count) {
+						html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>"+row.count+"</td></tr>";
+						tot+=row.count;
+					} else
+						html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>0</td></tr>";
+				});
+				html+="Total: "+tot;
+				document.body.innerHTML=html;
+				console.log("done");
 			}
-			rank.sort((a,b)=>{
-				if (a.cat>b.cat) return 1;
-				else if (a.cat<b.cat) return -1;
-				if (a.count>b.count) return -1;
-				else if (a.count<b.count) return 1;
-				else return 0;
-			});
-			var cat="";
-			var html="<table border=1>";
-			var tot=1;
-			var complexities={};
-			rank.forEach(row=>{
-				if (cat!=row.cat) {
-					html+="</table><br><table border=1>";
-					for (var k in complexities)
-						html+="<tr><td>complexity "+k+"</td><td>"+Math.floor(complexities[k]/tot*100)+"%</td><tr>";
-					html+="</table><br>Total: "+tot+"<hr><table border=1>";
-					complexities={};
-					tot=0;
-					count=0;
-					cat=row.cat;
-				}
-				var complexity=complexityMap[row.orgid];
-				if (complexity) {
-					if (!complexities[complexity]) complexities[complexity]=0;
-					complexities[complexity]+=row.count;
-				}
-				if (row.count) {
-					html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>"+row.count+"</td></tr>";
-					tot+=row.count;
-				} else
-					html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>0</td></tr>";
-			});
-			html+="Total: "+tot;
-			document.body.innerHTML=html;
-			console.log("done");
-		}
+		});
 	});
 }
 
