@@ -141,6 +141,15 @@ function loadPlaceholders() {
 			"Necromancer",
 			"Scientist",
 			"Doctor",
-		]
+		],
+		lowerSoldierName:[
+			"Private",
+			"Captain",
+			"Spy",
+		],
+		higherSoldierName:[
+			"Sergeant",
+			"Major",
+		],
 	};
 }
