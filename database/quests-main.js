@@ -37,6 +37,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:keyRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -62,7 +63,7 @@ function loadQuestsMain(MODIFIERS) {
 
 		{
 			id:"[CODEX-Events] Main quest - The Boss Battle: Beat the boss.",
-			minRooms:4,
+			minRooms:1,
 			adventureTitle:[
 				"The End Of The {villainName}",
 				"The {villainName}'s Bounty",
@@ -83,6 +84,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[ "\"The {goodGuyName} will die... and so will you!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
 						]
@@ -104,7 +106,7 @@ function loadQuestsMain(MODIFIERS) {
 		},
 		
 		{
-			id:"[CODEX-Events] Main quest - The Gang: beat a sequence of enemies.",
+			id:"[CODEX-Events] Main quest - The Gang: Beat a sequence of enemies.",
 			minRooms:3,
 			adventureTitle:[
 				"The {placeName}'s {villainName} Gang",
@@ -146,6 +148,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:["Third Encounter","Three"],
 						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:enemy2room}{then}{roomIsEmpty}, {stopReading}",
@@ -170,11 +173,10 @@ function loadQuestsMain(MODIFIERS) {
 		},
 
 		{
-			id:"[CODEX-Events] Main quest - The Curse: Break the spell and kill the bad guy.",
+			id:"[CODEX-Events] Main quest - The Spell: Break the spell and kill the bad guy.",
 			minRooms:4,
 			adventureTitle:[
 				"The {villainName} Deception",
-				"The {goodGuyName}'s Curse",
 				"The {heroClass}'s Dilemma",
 				"The {placeName} Ritual",
 				"The Cursed {placeName}",
@@ -203,6 +205,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"\"I'm the {goodGuyName}. Can't control... Help, {heroClass}!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
@@ -272,6 +275,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:keyRoom1}{or}{ifRoomIsNotMarked:keyRoom2}{or}{ifRoomIsNotMarked:keyRoom3}{then}{roomIsEmpty}, {stopReading}",
@@ -333,6 +337,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:npcRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -386,6 +391,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{randomBossRevenge}, {noEscape}",
@@ -465,6 +471,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:bossRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -546,6 +553,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[ // Mark is good.
 							[
 								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}",
@@ -587,6 +595,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:[],
 						atPercentage:99,
 						items:[{id:"enemy",level:1},{id:"enemy",level:1}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{randomTwinBossEntrance}, {noEscape}",
@@ -599,6 +608,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:bossRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -677,6 +687,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true},{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{randomFear}",
@@ -758,6 +769,7 @@ function loadQuestsMain(MODIFIERS) {
 						isHiddenRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifEveryBattleRoundStarts}{then}{rollDie}{range:1-1} {loseXp:2}, {range:2-5} {nothing}, {range:6-6} {gainHp:1}",
@@ -811,6 +823,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:99,
 						items:[{id:"enemy",level:4,ignoreXp:true},{id:"enemy",level:4,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:bossRoom}{then}{roomIsEmpty}, {stopReading}",
@@ -880,6 +893,7 @@ function loadQuestsMain(MODIFIERS) {
 					labels:BOSSROOMLABELS,
 					atPercentage:100,
 					items:[{id:"enemy",level:3,ignoreXp:true}],
+					isExclusive:true,
 					roomDescriptions:[
 						[
 							enchantment.effect,
@@ -902,7 +916,7 @@ function loadQuestsMain(MODIFIERS) {
 			]
 		},
 
-			{
+		{
 			id:"[CODEX-Events] Main quest - The Missing Familiar: Find the familiar to get your missing skill back and kill the boss.",
 			minRooms:4,
 			adventureTitle:[
@@ -921,6 +935,7 @@ function loadQuestsMain(MODIFIERS) {
 						labels:BOSSROOMLABELS,
 						atPercentage:100,
 						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
 						roomDescriptions:[
 							[
 								"{ifRoomIsNotMarked:familiarRoom}{then}\"It's too late for your little friend, {heroClass}!\", {markRoom:familiarRoom}, {markRoom:bossRoom}",
@@ -951,6 +966,380 @@ function loadQuestsMain(MODIFIERS) {
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}The {villainName} paid for kidnapping your familiar.",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:bossRoom}{then}{hide}But your beloved familiar is lost forever."
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Test: Beat the boss and get a better ending if you don't use your class item.",
+			minRooms:4,
+			adventureTitle:[
+				"The {heroClass}'s Bet",
+				"The {heroClass}'s Challenge",
+				"The {heroClass}'s {nameEquip:equip-heroItem}",
+				"The {nameEquip:equip-heroItem} Challenge",
+				"The {nameEquip:equip-heroItem} Trial",
+				"The {heroClass} Trial",
+				"The {heroClass} And The {nameEquip:equip-heroItem}",
+			],
+			steps:[
+				[
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
+						roomDescriptions:[
+							[ "{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}" ]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}You proved to be the best {heroClass}...",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{payEquip:equip-heroItem}{then}{hide}...of the world!, {gainGold:5}",
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Curse: Beat the boss and try to get rid of your curse.",
+			minRooms:4,
+			adventureTitle:[
+				"The Curse Of The {villainName}",
+				"The Cursed {heroClass}",
+				"The {heroClass}'s Curse",
+				"The {heroClass}'s Last Day",
+				"The {heroClass}'s Burden",
+				"The {heroClass}'s Sickness",
+				"The {villainName}'s Gift",
+				"The {villainName}'s Reward",
+				"The {villainName}'s Last Day",
+			],
+			steps:[
+				[
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
+						equipment:[{id:"curse",isAvailable:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:bossRoom}{then}{randomCurseJoke}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labels:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}You made the {villainName} pay for it",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsNotMarked:bossRoom}{then}{hide}{randomCursedEnding}",
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The War: Conquer the dungeon and beat the leader.",
+			minRooms:4,
+			adventureTitle:[
+				"The Conquered {placeName}",
+				"The {placeName} Conflict",
+				"The Battle Of The {heroClass}",
+				"The {villainName}'s Generals",
+				"The Conquering {villainName}",
+				"The {heroClass}'s War",
+				"The Battle Of The {placeName}",
+				"The War Of The {placeName}",
+			],
+			steps:[
+				[
+					{
+						id:"general1room",
+						labels:["Weak General","First Camp"],
+						atPercentage:{from:30,to:50},
+						items:[{id:"enemy",level:0}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}General: \"Forgive me, {villainName}!\", {markRoom:general1room}"
+							]
+						]
+					},
+					{
+						id:"general2room",
+						labels:["Brave General","Second Camp"],
+						atPercentage:{from:50,to:70},
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}General: \"Ugh... Hold on, {villainName} generals!\", {markRoom:general2room}"
+							]
+						]
+					},
+					{
+						id:"general3room",
+						labels:["Strong General","Third Camp"],
+						atPercentage:{from:70,to:90},
+						items:[{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"\"We will stop you at any cost!\"",
+								"{ifKilledLastFoe}{then}General: \"Argh! You can't beat us all, {heroClass}!\", {markRoom:general3room}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
+						isDeadEndRoom:true,
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:general1room}{or}{ifRoomIsNotMarked:general2room}{or}{ifRoomIsNotMarked:general3room}{then}\"I see my generals are holding on! Very well!\"",
+								"\"You will never take the {placeName} back!\", {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labes:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}The {villainName} leader has been defeated",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsMarked:general1room}{and}{ifRoomIsMarked:general2room}{and}{ifRoomIsMarked:general3room}{then}{hide}...and the {placeName} is free again.",
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Investigation: Investigate who the impostor may be and eliminate him.",
+			minRooms:4,
+			adventureTitle:[
+				"The {heroClass}'s Investigation",
+				"The {goodGuyName}'s Alibi",
+				"The {placeName} Case",
+				"The {heroClass}'s Interrogations",
+				"The {lowerSoldierName}'s Testimony",
+				"The {higherSoldierName}'s Testimony",
+				"The {lowerSoldierName} And The {higherSoldierName}",
+				"The {placeName}'s Culprit",
+				"The {villainName}'s Alibi",
+				"The {placeName}'s Murder",
+			],
+			generator:(G)=>{
+				const
+					SENTENCES={
+						isCulpritSelf:[
+							"\"I'm the culprit!\"",
+							"\"I'm behind all this!\"",
+							"\"It was me, {heroClass}!\"",
+							"\"Come on, it was me!\"",
+						],
+						isCulpritShort:[
+							"\"The {name} did it!\"",
+							"\"The {name} is the culprit!\"",
+							"\"Punish the {name}!\"",
+						],
+						isCulpritLong:[
+							"\"The one to be punished is the {name}!\"",
+							"\"There is the {name} behind all this!\"",
+							"\"The {name} is the person you are looking for\"",
+							"\"I've the name you want: the {name}\""
+						],
+
+						isInnocentSelf:[
+							"\"I'm innocent!\"",
+							"\"It's not my fault!\"",
+							"\"I'm innocent, {heroClass}!\"",
+							"\"I'm not the culprit!\""
+						],
+						isInnocentShort:[
+							"\"The {name} is innocent!\"",
+							"\"It wasn't the {name}!\"",
+						],
+						isInnocentLong:[
+							"\"The {name} is not guilty!\"",
+							"\"The {name} is not at fault\"",
+							"\"The {name} is not your target\"",
+							"\"It couldn't have been the {name}\"",
+							"\"I'd keep an eye on the {name}\""
+						],
+
+						isLyingShort:[
+							"\"The {name} is lying!\"",
+							"\"The {name} is a liar!\"",
+							"\"Dont' trust the {name}!\"",
+						],
+						isLyingLong:[
+							"\"The {name} is lying!\"",
+							"\"The {name} is a dirty liar!\"",
+							"\"Don't trust the {name}...\"",
+							"\"The {name} tells lies...\""
+						],
+
+						isTrueShort:[
+							"\"The {name} is true!\"",
+							"\"The {name} is right!\""
+						],
+						isTrueLong:[
+							"\"The {name} is telling the truth\"",
+							"\"The {name} is sincere\"",
+							"\"The {name} is not telling lies\""
+						],
+
+						goodEnding:[
+							"...and justice is served.",
+							"...and you did a great job.",
+							"...and the truth triumphed."
+						],
+						badEnding:[
+							"...but something feels wrong.",
+							"...or not?",
+							"...but have you made the right decision?"
+						],
+					}
+				let
+					rooms=[
+						{mark:"{markRoom:goodGuyRoom}",check:["{ifRoomIsMarked:goodGuyRoom}","{ifRoomIsNotMarked:bossRoom}"]},
+						{mark:"{markRoom:bossRoom}",check:["{ifRoomIsMarked:bossRoom}","{ifRoomIsNotMarked:goodGuyRoom}"]}
+					],
+					culprits=[
+						{ name:"{goodGuyName}", placeholder:"goodGuySentence", killId:"killGoodGuyId", length:"Short", isId:1 },
+						{ name:"{villainName}", placeholder:"villainSentence", killId:"killVillainId", length:"Short", isId:0 },
+					],
+					characters=[
+						culprits[0],
+						culprits[1],
+						{ name:"{lowerSoldierName}", placeholder:"lowerSoldierSentence", length:"Long", isId:-1 },
+						{ name:"{higherSoldierName}", placeholder:"higherSoldierSentence", length:"Long", isId:-1 }
+					];
+					sentences=[],
+					isTruth=G.random(1)>0.5;
+
+				G.shuffleArray(culprits);
+				G.shuffleArray(characters);
+				G.shuffleArray(rooms);
+				sentences.push({character:characters[0],who:culprits[0],type:isTruth?"isCulprit":"isInnocent"});
+
+				for (var i=0;i<characters.length-2;i++) {
+					if (G.random(1)>0.5)
+						sentences.push({character:characters[i+1],who:characters[i],type:"isTrue"});
+					else {
+						isTruth=!isTruth;
+						sentences.push({character:characters[i+1],who:characters[i],type:"isLying"});
+					}		
+				}
+				sentences.push({character:characters[i+1],who:characters[i],type:isTruth?"isTrue":"isLying"});
+
+				// Prepare placeholders
+				sentences.forEach(sentence=>{
+					G.globalPlaceholders[sentence.character.placeholder]=G.getRandom(SENTENCES[sentence.type+(sentence.who===sentence.character?"Self":sentence.character.length)]).replace(/{name}/g,sentence.who.name);
+				});
+				culprits.forEach((culprit,id)=>{
+					G.globalPlaceholders[culprit.killId]=rooms[id].mark;
+				});
+				if (G.random()>0.5) {
+					// Good ending
+					G.globalPlaceholders.caseEndId=G.getRandom(rooms[0].check);
+					G.globalPlaceholders.caseEndText=G.getRandom(SENTENCES.goodEnding);
+				} else {
+					// Bad ending
+					G.globalPlaceholders.caseEndId=G.getRandom(rooms[1].check);
+					G.globalPlaceholders.caseEndText=G.getRandom(SENTENCES.badEnding);
+				}
+				
+				// TODO togli
+				if (G.debug&&G.debug.logCase)
+					console.log("Case",{
+						sentences:sentences,
+						solution:culprits[0]
+					});
+
+			},
+			steps:[
+				[
+					{
+						id:"lowerSoldierRoom",
+						labels:["Weak General","First Camp"],
+						atPercentage:{from:30,to:50},
+						items:[{id:"enemy",level:0}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}{lowerSoldierName}:{hide}{lowerSoldierSentence}"
+							]
+						]
+					},
+					{
+						id:"higherSoldierRoom",
+						labels:["Brave General","Second Camp"],
+						atPercentage:{from:50,to:70},
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}{higherSoldierName}:{hide}{higherSoldierSentence}"
+							]
+						]
+					},
+					{
+						id:"goodGuyRoom",
+						labels:["Good"],
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:3}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:startingRoom}{and}\"Speak!\"{then}{goodGuyName}:{hide}{goodGuySentence}, {roomIsEmpty}",
+								"{ifRoomIsMarked:startingRoom}{then}The {goodGuyName} is gone, {roomIsEmpty}{newRule}{ifKilledLastFoe}{then}{killGoodGuyId}, {markRoom:startingRoom}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:startingRoom}{and}\"Speak!\"{then}{villainName}:{hide}{villainSentence}, {roomIsEmpty}",
+								"{ifRoomIsMarked:startingRoom}{then}The {villainName} is gone, {roomIsEmpty}{newRule}{ifKilledLastFoe}{then}{killVillainId}, {markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labes:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}The culprit has been punished, the case is closed",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{caseEndId}{then}{hide}{caseEndText}",
 						]
 					]
 				}
