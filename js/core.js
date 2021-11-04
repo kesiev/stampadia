@@ -254,7 +254,7 @@ const Core=function(settings) {
 			{questType:"story",count:1,distance:"farthest"},
 
 			// Anomaly
-			{questType:"anomaly",count:1, probability:60},
+			{questType:"anomaly",count:1, probability:40},
 
 			// Initial area
 			{questType:"easyFiller",count:2,distance:"nearest"},
