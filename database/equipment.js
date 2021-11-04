@@ -164,7 +164,7 @@ function loadEquipment() {
 			label:"Huge die",
 			action:"{ifAfterHeroRollInFight}{then}{performFreeActionWithPower:1,6}"
 		},
-		// [CODEX-Stuff] Equipment - Curse: Lose max HP -1, does nothing.
+		// [CODEX-Stuff] Equipment - Curse: Lose max HP -2, does nothing.
 		{
 			id:"curse",
 			label:"Curse",
