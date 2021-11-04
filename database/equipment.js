@@ -168,7 +168,7 @@ function loadEquipment() {
 		{
 			id:"curse",
 			label:"Curse",
-			action:"{loseFullHp-:1}{then}You lifted your curse, {markRoom:bossRoom}"
+			action:"{loseFullHp-:2}{then}You lifted your curse, {markRoom:bossRoom}"
 		},
 		
 	];
