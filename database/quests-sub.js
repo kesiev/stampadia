@@ -631,10 +631,10 @@ function loadQuestsSub() {
 						atPercentage:{from:1,to:99},
 						items:[{genericItem:"item"}],
 						roomDescriptions:[
-							// [CODEX-Stuff] Item - Red Die: Gives you a random good reward.
-							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Red Die, {randomGoodReward}, {teleportToRoom:teleportRoom}" ],
-							// [CODEX-Stuff] Item - Blue Die: Gives you a random bad reward.
-							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Blue Die, {randomBadReward}, {teleportToRoom:teleportRoom}" ],
+							// [CODEX-Stuff] Item - Red Coin: Gives you a random good reward.
+							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Red Coin, {randomGoodReward}, {teleportToRoom:teleportRoom}" ],
+							// [CODEX-Stuff] Item - Blue Coin: Gives you a random bad reward.
+							[ "{randomConfusion}", "{ifMoveOn:item}{then}You found the Blue Coin, {randomBadReward}, {teleportToRoom:teleportRoom}" ],
 						]
 					}
 				],
@@ -690,7 +690,7 @@ function loadQuestsSub() {
 			].map(room=>[
 					{
 						id:"teleportRoom",
-						labels:["Broken"],
+						labels:["Damaged"],
 						atPercentage:10,
 						items:[{genericItem:"teleport"}],
 						roomDescriptions:[
@@ -847,7 +847,59 @@ function loadQuestsSub() {
 					}
 				]
 			]
-		}
+		},
+
+		{
+			id:"[CODEX-Events] Subquest - The Architect: Beat him to get one of his items.",
+			minRooms:1,
+			steps:[
+				[
+					{
+						id:"architectRoom",
+						labels:["Architect","Construction","Die","Dice"],
+						atPercentage:{from:50,to:70},
+						items:[{id:"enemy",level:1}],
+						equipment:[{id:"smallDie"}],
+						roomDescriptions:[
+							[
+								"Architect: {randomArchitectEntrance}",
+								"{ifKilledLastFoe}{then}{randomArchitectLoseDie}, {getEquip:equip-smallDie}"
+							]
+						]
+					}
+				],
+				[
+					{
+						id:"architectRoom",
+						labels:["Architect","Construction","Die","Dice"],
+						atPercentage:{from:70,to:80},
+						items:[{id:"enemy",level:1}],
+						equipment:[{id:"bigDie"}],
+						roomDescriptions:[
+							[
+								"Architect: {randomArchitectEntrance}",
+								"{ifKilledLastFoe}{then}{randomArchitectLoseDie}, {getEquip:equip-bigDie}"
+							]
+						]
+					}
+				],
+				[
+					{
+						id:"architectRoom",
+						labels:["Architect","Construction","Die","Dice"],
+						atPercentage:99,
+						items:[{id:"enemy",level:2}],
+						equipment:[{id:"hugeDie"}],
+						roomDescriptions:[
+							[
+								"Architect: {randomArchitectEntrance}",
+								"{ifKilledLastFoe}{then}{randomArchitectLoseDie}, {getEquip:equip-hugeDie}"
+							]
+						]
+					}
+				]
+			]
+		},
 
 	]
 
@@ -902,26 +954,27 @@ function loadQuestsVeryHardSub() {
 function loadQuestsAnomalies() {
 	return [
 		{
+			id:"[CODEX-Events] Anomaly - The Lost Privacy: A level 2 enemy in an optional room.",
+			distance:"nearest",
+			steps:[[{id:"spawn",atPercentage:{from:1,to:99},isOptionalRoom:true,roomDescriptions:[
+				[ "\"I'm getting ready! Go away!\"" ],
+				[ "\"I'm preparing for you, {heroClass}!\"" ],
+				[ "\"Hey, go away!\"" ],
+			],items:[{id:"enemy",level:2,ignoreXp:true}]}]]
+		},
+		{
 			id:"[CODEX-Events] Anomaly - The Little Lost One: A level 0 enemy lost in the depth of the dungeon.",
 			distance:"farthest",
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "\"Hey! I lost my way! Please, stop!\"" ],
 				[ "\"Wh... where am I?\"" ],
 				[ "\"Why I'm here!\"" ],
 			],items:[{id:"enemy",level:0}]}]]
 		},
 		{
-			id:"[CODEX-Events] Anomaly - The Lost Privacy: A level 1 in an optional room.",
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
-				[ "\"I'm getting ready! Go away!\"" ],
-				[ "\"I'm preparing for you, {heroClass}!\"" ],
-				[ "\"Hey, go away!\"" ],
-			],items:[{id:"enemy",level:1,ignoreXp:true}]}]]
-		},
-		{
 			id:"[CODEX-Events] Anomaly - The Couple: 2 level 0 enemy in the depth of the dungeon.",
 			distance:"farthest",
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "\"My love... We have to defend ourselves!\"" ],
 				[ "\"Hey, stop talking! That {heroClass} is spying!\"" ],
 				[ "\"Hey! Are you that {heroClass} they are talking about?\"" ],
@@ -930,7 +983,7 @@ function loadQuestsAnomalies() {
 		{
 			id:"[CODEX-Events] Anomaly - The One In Late: A level 1 enemy lost in the depth of the dungeon.",
 			distance:"farthest",
-			steps:[[{id:"spawn",atPercentage:100,roomDescriptions:[
+			steps:[[{id:"spawn",atPercentage:99,roomDescriptions:[
 				[ "\"Hey! You're here too early!\"" ],
 				[ "\"Y... you woke me up, {heroClass}!\"" ],
 				[ "\"What time is it? Oww...\"" ],
