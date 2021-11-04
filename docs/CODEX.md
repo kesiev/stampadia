@@ -2,12 +2,12 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (76 items)
+## Events (81 items)
 
 - Anomaly
   - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
   - **The Little Lost One**: A level 0 enemy lost in the depth of the dungeon.
-  - **The Lost Privacy**: A level 1 in an optional room.
+  - **The Lost Privacy**: A level 2 enemy in an optional room.
   - **The One In Late**: A level 1 enemy lost in the depth of the dungeon.
 - Bonus
   - **The Clover**: It may bring good luck in your future adventures...
@@ -43,19 +43,23 @@
 - Main quest
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
-  - **The Curse**: Break the spell and kill the bad guy.
+  - **The Curse**: Beat the boss and try to get rid of your curse.
   - **The Enchantment**: Find an NPC lost in the dungeons to make your final battle easier.
   - **The Escort**: Escort the good guy near the boss and fight.
-  - **The Gang**: beat a sequence of enemies.
+  - **The Gang**: Beat a sequence of enemies.
   - **The Great Old Ones**: Beat the boss before being corrupted by madness.
+  - **The Investigation**: Investigate who the impostor may be and eliminate him.
   - **The Kidnapping**: Fight the boss, free the kidnapped, and return it.
   - **The Lost Item**: Return an item to NPC and unlock the boss and fight.
   - **The Missing Familiar**: Find the familiar to get your missing skill back and kill the boss.
   - **The Missing Key**: Find the key and beat the boss.
   - **The Moral Compass**: Do good or bad things and trigger a different ending.
   - **The Necromancer**: Someone is trying to bring the evil back.
+  - **The Spell**: Break the spell and kill the bad guy.
   - **The Suicide Mission**: Fight 2 bosses at once, or...
+  - **The Test**: Beat the boss and get a better ending if you don't use your class item.
   - **The Twins**: Fight a 2-stages boss.
+  - **The War**: Conquer the dungeon and beat the leader.
 - Malus
   - **The Last Fight**: An enemy will challenge you on your way back.
   - **The Loop Rooms**: It will teleport you to the starting room.
@@ -71,6 +75,7 @@
   - **The Rests**: Finds from the world of stampadia.
 - Subquest
   - **The Altar**: Sacrify important resources for other advantages.
+  - **The Architect**: Beat him to get one of his items.
   - **The Barman**: Pay gold for health or a short mission.
   - **The Beastcrafters**: A simple trading card game Stampadians used to play. Buy or find new cards and play.
   - **The Bloody Gambler**: Bet HP, roll a die and you may win more HP.
@@ -119,7 +124,7 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (58 items)
+## Stuff (62 items)
 
 - Beast
   - **The Bat**: It can scare you permanently.
@@ -133,7 +138,9 @@
 - Equipment
   - **Apple**: Gain 1/2 max HP.
   - **Backflip**: Flip a dice upside down.
+  - **Big die**: Perform 1 free action with activation power 5.
   - **Book**: Lose 1 HP, deal 1 damage.
+  - **Curse**: Lose max HP -1, does nothing.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
@@ -141,11 +148,13 @@
   - **Frag**: A fragmentation bomb that damages 2 nearby enemies when getting damage.
   - **Grenade**: Perform an ATK action by the current room size.
   - **Invisibility**: For the next 3 enemy turns, discard all dice less than 6.
+  - **Large die**: Perform 1 free action with activation power 5.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.
   - **Mirror**: Teleport back to the mirror room.
   - **Rage**: Sacrifice XPs to strike a critical hit.
   - **Resurrection**: Pay gold to resurrect once.
+  - **Small die**: Perform 1 free action with activation power 4.
   - **Smoke**: Perform a MOVE action by the current room size.
   - **Sonic**: Perform a DEF action by the current room size.
   - **Spin**: Play dices in reverse order.
@@ -159,14 +168,14 @@
   - **The Muddy Fountain**: Lose 1 HP.
 - Item
   - **Belt**: Prevents the boss fear effect.
-  - **Blue Die**: Gives you a random bad reward.
+  - **Blue Coin**: Gives you a random bad reward.
   - **Boots**: Can slow down a boss.
   - **Diamond**: Can blind a boss.
   - **Goggles**: Prevents the boss blind effect.
   - **Helmet**: Prevents the boss stun effect.
   - **Necklace**: Can stun a boss.
   - **Pendant**: Scares a boss.
-  - **Red Die**: Gives you a random good reward.
+  - **Red Coin**: Gives you a random good reward.
   - **Shawl**: Prevents the boss crippled effect.
   - **The Bag Of Gold**: Gain 3 gold.
   - **The Heart Shard**: Gain 1 HP.
