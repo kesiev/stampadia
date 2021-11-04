@@ -78,10 +78,11 @@ function loadQuestsBonus() {
 			id:"[CODEX-Events] Bonus - The Teleports: Teleport from a room to another.",
 			minRooms:4,
 			steps:[[
-				{id:"roomA",labels:["Near Teleport","First Teleport"],atPercentage:1,roomDescriptions:[
+				// isExclusive reason: Enemies behind one of the two teleports may lock the player.
+				{id:"roomA",isExclusive:true,labels:["Near Teleport","First Teleport"],atPercentage:1,roomDescriptions:[
 					[ "{ifMoveOn:item1}{then}{randomTeleportation}{hide}{teleportToRoom:roomB}" ]
 				],items:[{genericItem:"item1"}]},
-				{id:"roomB",labels:["Far Teleport","Last Teleport"],atPercentage:99,roomDescriptions:[
+				{id:"roomB",isExclusive:true,labels:["Far Teleport","Last Teleport"],atPercentage:99,roomDescriptions:[
 					[ "{ifMoveOn:item2}{then}{randomTeleportation}{hide}{teleportToRoom:roomA}" ]
 				],items:[{genericItem:"item2"}]}
 			]]
