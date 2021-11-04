@@ -146,6 +146,30 @@ function loadEquipment() {
 			label:"Frag",
 			action:"{ifAfterHeroLoseHp}{then}{fightingEnemyLoseHp:1,2,3}"
 		},
+		// [CODEX-Stuff] Equipment - Small die: Perform 1 free action with activation power 4.
+		{
+			id:"smallDie",
+			label:"Small die",
+			action:"{ifAfterHeroRollInFight}{then}{performFreeActionWithPower:1,4}"
+		},
+		// [CODEX-Stuff] Equipment - Big die: Perform 1 free action with activation power 5.
+		{
+			id:"bigDie",
+			label:"Big die",
+			action:"{ifAfterHeroRollInFight}{then}{performFreeActionWithPower:1,5}"
+		},
+		// [CODEX-Stuff] Equipment - Large die: Perform 1 free action with activation power 5.
+		{
+			id:"hugeDie",
+			label:"Huge die",
+			action:"{ifAfterHeroRollInFight}{then}{performFreeActionWithPower:1,6}"
+		},
+		// [CODEX-Stuff] Equipment - Curse: Lose max HP -1, does nothing.
+		{
+			id:"curse",
+			label:"Curse",
+			action:"{loseFullHp-:1}{then}You lifted your curse, {markRoom:bossRoom}"
+		},
 		
 	];
 }
