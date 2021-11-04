@@ -113,7 +113,7 @@ var INDEX=[
 	"[CODEX-Stuff] Equipment - Backflip: Flip a dice upside down.",
 	"[CODEX-Stuff] Equipment - Big die: Perform 1 free action with activation power 5.",
 	"[CODEX-Stuff] Equipment - Book: Lose 1 HP, deal 1 damage.",
-	"[CODEX-Stuff] Equipment - Curse: Lose max HP -1, does nothing.",
+	"[CODEX-Stuff] Equipment - Curse: Lose max HP -2, does nothing.",
 	"[CODEX-Stuff] Equipment - Dash: Sacrifice XPs to skip the enemy turn.",
 	"[CODEX-Stuff] Equipment - Epic Weapon: A weapon with many names. Deal 2 damage to all enemies in range 4.",
 	"[CODEX-Stuff] Equipment - Fireball: Inflict 2 damage.",

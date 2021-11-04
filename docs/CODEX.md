@@ -140,7 +140,7 @@
   - **Backflip**: Flip a dice upside down.
   - **Big die**: Perform 1 free action with activation power 5.
   - **Book**: Lose 1 HP, deal 1 damage.
-  - **Curse**: Lose max HP -1, does nothing.
+  - **Curse**: Lose max HP -2, does nothing.
   - **Dash**: Sacrifice XPs to skip the enemy turn.
   - **Epic Weapon**: A weapon with many names. Deal 2 damage to all enemies in range 4.
   - **Fireball**: Inflict 2 damage.
