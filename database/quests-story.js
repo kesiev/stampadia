@@ -118,6 +118,7 @@ function loadQuestsScrolls() {
 						atPercentage:{from:50,to:70},
 						allowBusyRooms:true,
 						items:[{genericItem:"storylineRest"}],
+						labels:["Rests"],
 						roomDescriptions:[
 
 							// Based on NPCs
@@ -170,6 +171,10 @@ function loadQuestsScrolls() {
 							[ "{ifMoveOn:storylineRest}{then}There is a necromancy book full of notes." ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"News: Two Evil Colossus Found In Stampadia\"" ],
 							[ "{ifMoveOn:storylineRest}{then}There is a book titled: \"Becoming One\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Scroll: \"News: The War Goes On\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Letter: \"This curse is consuming me. I have to move.\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Are you the best {heroClass}? Join the challenge! Win Gold!\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Letter: \"Lie and your life will be spared - Enemy\"" ],
 
 							// Based on malus
 							[ "{ifMoveOn:storylineRest}{then}Letter: \"You won't get away that easily, {heroClass} - Enemy\"" ],
@@ -186,11 +191,11 @@ function loadQuestsScrolls() {
 							[ "{ifMoveOn:storylineRest}{then}There is a small prayer book." ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Root Beer, Snacks, Water, Orange Juice, ... - Barman\"" ],
 							[ "{ifMoveOn:storylineRest}{then}On this scroll there are two kids throwing Beastcrafters cards!" ],
-							[ "{ifMoveOn:storylineRest}{then}Scroll: \"You've to bet your life to win! - The Bloody Gambler\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Scroll: \"You've to bet your life to win! - Bloody Gambler\"" ],
 							[ "{ifMoveOn:storylineRest}{then}There is a book titled: \"How To Fix A Teleport\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Why does only one fountain work at a time? - Enemy\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"That chest is too intimidating... I'm leaving! - Enemy\"" ],
-							[ "{ifMoveOn:storylineRest}{then}Scroll: \"You've to bet your gold to win! - The Gambler\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Scroll: \"You've to bet your gold to win! - Gambler\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Just say: We are the Guardian Twins, we cannot let you pass.\"" ],
 							[ "{ifMoveOn:storylineRest}{then}There is a map with a small key in one corner." ],
 							[ "{ifMoveOn:storylineRest}{then}There is a stack of signs that say: \"Room closed due to a landslide\"." ],
@@ -203,6 +208,7 @@ function loadQuestsScrolls() {
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"That... monster... is eating the entire room!\"" ],
 							[ "{ifMoveOn:storylineRest}{then}There is a book titled: \"Good Training For Good Heroes\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Letter: \"I'm sick of this place... I'll leave soon. - Enemy\"" ],
+							[ "{ifMoveOn:storylineRest}{then}There are two dice and dozens of annotated scrolls with grids." ],
 
 							// Based on classes
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Fire and bolts, but nothing beats a good teleport - Wizard\"" ],
