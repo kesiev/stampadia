@@ -199,7 +199,7 @@ function loadRandomizers() {
 		],
 		randomGoodGuyLongFollowMe:[
 			"\"Hurry! Let's go!\"",
-			"\"We've to find the {villainName}! This way!\"",
+			"\"Let's find the {villainName}! This way!\"",
 			"\"There is no time to waste! Follow me!\"",
 		],
 		randomFollowMe:[
@@ -224,13 +224,13 @@ function loadRandomizers() {
 			"\"Thanks from the {villainName}!\"",
 			"\"You serve the {villainName} well!\"",
 			"\"Hail to the {villainName}!\"",
-			"\"The {villainName} will be pleased!\"",
+			"\"The {villainName} will be glad!\"",
 		],
 		randomGoodDying:[
 			"\"So... rry...\"",
 			"\"Fare... well...\"",
 			"\"I... can't...\"",
-			"\"I can't... Thank... you.\"",
+			"\"I... Thank... you.\"",
 		],
 		randomBadDying:[
 			"\"Why... You... Ugh!\"",
@@ -267,7 +267,7 @@ function loadRandomizers() {
 		randomResurrection:[
 			"\"The {villainName}... is BACK!\"",
 			"\"Take my life, {villainName}! Gwaah!\"",
-			"\"Too late, {heroClass}! I revived the {villainName}!\"",
+			"\"Sorry, {heroClass}! I revived the {villainName}!\"",
 			"\"The final step of my plan... is over!\"",
 			"\"I... I improved the {villainName}!\""
 		],
