@@ -34,17 +34,17 @@ A daily print-and-play roguelike adventure you can play offline.
 ### Ideas - Gameplay
 
 - [ ] !!!
-  - [ ] Main - A quest that changes ending if not using the class item
   - [ ] mixMode ready to be tested after the Rogue: setMixMode:true
 
 - [ ] Items
   - [ ] Prevent a specific enemy action
+  - [ ] Door Slam: enter new room -> damage all enemies in range 1
 
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
   - [ ] Main - Customize the boss battle via empty Enemy Sheet cells
-  - [ ] Main - A quest with an item (to use, spend, etc. to get multiple endings)
+  - [ ] Main - Find the boss room in broken teleport style/math quiz
 
 - [ ] Enemies with special rules
   - [ ] New monstr/trap idea: mimic, can use player moves
@@ -164,6 +164,7 @@ A daily print-and-play roguelike adventure you can play offline.
     - [x] The Risky Sip - 1/6 probability to gain health full, 1/6 probability to die
     - [x] The Swarm - A lot of LVL0 enemies!
   - [x] Main Quests
+    - [x] The Curse - A quest with an item (to use, spend, etc. to get multiple endings)
     - [x] Final form - Mini boss, then forced bigger boss
     - [x] Moral choices - Become the next ruler
     - [x] Main - The Curse: debuff on boss until you get an item / buff on boss when you get an item
