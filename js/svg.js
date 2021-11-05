@@ -128,6 +128,8 @@ function SVG(template) {
 
     this.setId = (node,id) => node.id=id;
 
+    this.setClassName = (node,v) => node.setAttribute("class",v);
+
     this.setImage = (id, image) => this.getById(id).setAttribute("xlink:href", image);
 
     this.delete = (node) => {
@@ -176,24 +178,34 @@ function SVG(template) {
         a.download = filename;
     }
 
-    this.assignPDFDownloadToAnchor = (a,filename) => {
+    this.assignSVGDownloadToAnchor = (a,filename) => {
+        this.assignDownloadToAnchor(a,"image/svg+xml",this.getSVG(),filename);
+    }
+
+     this.assignPDFDownloadToAnchor = (a,filename) => {
         this.getPDF((data)=>{
             this.assignDownloadToAnchor(a,"application/pdf",data,filename);
         })
     }
 
-     this.assignSVGDownloadToAnchor = (a,filename) => {
-        this.assignDownloadToAnchor(a,"image/svg+xml",this.getSVG(),filename);
-    }
-
-    this.download = (filename) => {
+    this.downloadSVG = (filename) => {
         const a = document.createElement("a");
         document.body.appendChild(a);
         a.style.display = "none";
         this.assignSVGDownloadToAnchor(a,filename);
         a.click();
-        window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
+    }
+
+    this.downloadPDF = (filename) => {
+        this.getPDF((data)=>{
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style.display = "none";
+            this.assignDownloadToAnchor(a,"application/pdf",data,filename);
+            a.click();
+            document.body.removeChild(a);
+        })
     }
 
     this.getSVG = () => node.innerHTML;
