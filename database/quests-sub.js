@@ -245,14 +245,14 @@ function loadQuestsSub() {
 			id:"[CODEX-Events] Subquest - The Elemental Chest: Find the 2 elemental keys and open a chest containing equipment.",
 			minRooms:3,
 			steps:[
-				{key:"Water Droplet",name:"Flaming Chest",content:"rage"},
-				{key:"Cloud Curl",name:"Rock Chest",content:"taunt"},
-				{key:"Bright Spark",name:"Windy Chest",content:"dash"},
-				{key:"Small Rock",name:"Wet Chest",content:"tactic"},
+				{key:"Water Droplet",shortKey:"Droplet",name:"Flaming Chest",content:"rage"},
+				{key:"Cloud Curl",shortKey:"Curl",name:"Rock Chest",content:"taunt"},
+				{key:"Bright Spark",shortKey:"Spark",name:"Windy Chest",content:"dash"},
+				{key:"Small Rock",shortKey:"Rock",name:"Wet Chest",content:"tactic"},
 			].map(chest=>[
 				{
 					id:"keyRoom1",
-					labels:["First "+chest.key],
+					labels:["First "+chest.shortKey],
 					atPercentage:20,
 					items:[{genericItem:"key"},{id:"enemy",level:0}],
 					roomDescriptions:[
@@ -261,7 +261,7 @@ function loadQuestsSub() {
 				},
 				{
 					id:"keyRoom2",
-					labels:["Last "+chest.key],
+					labels:["Last "+chest.shortKey],
 					atPercentage:60,
 					items:[{genericItem:"key"},{id:"enemy",level:1}],
 					roomDescriptions:[
