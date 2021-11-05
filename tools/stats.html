@@ -8,14 +8,20 @@
 	<script src="../js/core.js"></script>
 	<script src="index.js"></script>
 </head>
-<body onload="onl()">	
+<body onload="onl()"><div id="preview"></div>
 </body><script>
 
 var	
 	day=0,
-	dayLimit=120,
+	dayLimit=90,
 	stats={},
-	complexityMap={};
+	complexityMap={},
+	layoutStats={
+		lineMax:{len:0,quest:0},
+		titleMax:{len:0,quest:0},
+		serviceMax:{len:0,quest:0},
+		spacingMin:{len:10000,quest:0},
+	};
 
 function createDungeon() {
 
@@ -33,7 +39,69 @@ function createDungeon() {
 				console.warn("Found an unsolved placeholder");
 				debugger;
 			}
-			dungen.metadata.selection.forEach(selection=>{
+			document.getElementById("preview").innerHTML=svg.getSVG();
+			setTimeout(cb=>{
+
+				let
+					LINE_MAXLEN=316.95,
+					TITLE_MAXLEN=396.32,
+					SERVICE_MAXLEN=236.99,
+					UPSIDEDOWN_SPACING=1.24,
+					g=document.getElementsByTagName("text"),
+					pairs={},
+					lineMax={len:0},
+					titleMax={len:0},
+					serviceMax={len:0},
+					spacingMin={};
+				for (let i=0;i<g.length;i++) {
+					let
+						itm=g[i],
+						text=itm.textContent,
+						className=itm.getAttribute("class"),
+						rect=itm.getBoundingClientRect(),
+						cn=className?className.split("-"):[];
+					if (cn[0]=="room") {
+						if (lineMax.len<rect.width) lineMax={node:itm,len:rect.width,text:text};
+					}
+					if ((itm.id=="adventureTitle")) {
+						if (titleMax.len<rect.width) titleMax={node:itm,len:rect.width,text:text};
+					}
+					if ((itm.id=="serviceName")) {
+						if (serviceMax.len<rect.width) serviceMax={node:itm,len:rect.width,text:text};
+					}
+					if (cn[0]=="room") {
+						let row=cn[1]+"-"+cn[2];
+						if (!pairs[row]) pairs[row]={l:0,r:0};
+						pairs[row][cn[3]]={node:itm,size:rect,text:text};
+					}
+				}
+
+				for (var k in pairs) {
+					if (pairs[k].l&&pairs[k].r) {
+						if (pairs[k].r.node.innerHTML.match(/Yes We Are Back For/)) {
+							// This is the only sentence allowed to overlap
+						} else {
+							let spacing=LINE_MAXLEN-pairs[k].r.size.width-pairs[k].l.size.width;
+							if ((!spacingMin.pair)||(spacing<spacingMin.spacing)) spacingMin={pair:pairs[k],len:spacing};
+						}
+					}
+				}
+
+				if (lineMax.len>LINE_MAXLEN) console.warn("Layout error: Line too long ("+lineMax.len+") : "+lineMax.text);
+				if (titleMax.len>TITLE_MAXLEN) console.warn("Layout error: Title too long ("+titleMax.len+") : "+titleMax.text);
+				if (serviceMax.len>SERVICE_MAXLEN) console.warn("Layout error: Item too long ("+serviceMax.len+") : "+serviceMax.text);
+				if (spacingMin.pair)
+					if (spacingMin.len<UPSIDEDOWN_SPACING) console.warn("Layout error: Upside-down spacing too low ("+spacingMin.len+") : "+spacingMin.pair.l.text+" / "+spacingMin.pair.r.text);
+
+				if (lineMax.len>layoutStats.lineMax.len) layoutStats.lineMax={len:lineMax.len,quest:{day:day,seed:dungen.metadata.seed},text:lineMax.text}
+				if (titleMax.len>layoutStats.titleMax.len) layoutStats.titleMax={len:titleMax.len,quest:{day:day,seed:dungen.metadata.seed},text:titleMax.text}
+				if (serviceMax.len>layoutStats.serviceMax.len) layoutStats.serviceMax={len:serviceMax.len,quest:{day:day,seed:dungen.metadata.seed},text:serviceMax.text}
+				if (spacingMin.pair)
+					if (spacingMin.len<layoutStats.spacingMin.len) layoutStats.spacingMin={len:spacingMin.len,quest:{day:day,seed:dungen.metadata.seed},text:spacingMin.pair.l.text+" / "+spacingMin.pair.r.text}
+
+				// Stats
+
+				dungen.metadata.selection.forEach(selection=>{
 				if (selection.modifier&&selection.modifier.id) {
 					stats[selection.modifier.id].count++;
 					stats[selection.modifier.id].days.push(day);
@@ -47,53 +115,62 @@ function createDungeon() {
 						stats[selection.quest.id].count++;
 						stats[selection.quest.id].days.push(day);
 					}
-			})
-			if (day<dayLimit) {
-				day++;
-				setTimeout(createDungeon,1);
-			} else {
-				var rank=[];
-				for (var k in stats) {
-					var label=k.split("]")[1].trim().split(" - ");
-					rank.push({orgid:k,cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
+				})
+				if (day<dayLimit) {
+					day++;
+					setTimeout(createDungeon,1);
+				} else {
+					var rank=[];
+					for (var k in stats) {
+						var label=k.split("]")[1].trim().split(" - ");
+						rank.push({orgid:k,cat:label[0],id:label[1],count:stats[k].count,days:stats[k].days});
+					}
+					rank.sort((a,b)=>{
+						if (a.cat>b.cat) return 1;
+						else if (a.cat<b.cat) return -1;
+						if (a.count>b.count) return -1;
+						else if (a.count<b.count) return 1;
+						else return 0;
+					});
+					var cat="";
+					var html="<table border=1>";
+					var tot=1;
+					var complexities={};
+					rank.forEach(row=>{
+						if (cat!=row.cat) {
+							html+="</table><br><table border=1>";
+							for (var k in complexities)
+								html+="<tr><td>complexity "+k+"</td><td>"+Math.floor(complexities[k]/tot*100)+"%</td><tr>";
+							html+="</table><br>Total: "+tot+"<hr><table border=1>";
+							complexities={};
+							tot=0;
+							count=0;
+							cat=row.cat;
+						}
+						var complexity=complexityMap[row.orgid];
+						if (complexity) {
+							if (!complexities[complexity]) complexities[complexity]=0;
+							complexities[complexity]+=row.count;
+						}
+						if (row.count) {
+							html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>"+row.count+"</td></tr>";
+							tot+=row.count;
+						} else
+							html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>0</td></tr>";
+					});
+					html+="</table><br>Total: "+tot;
+					html+="<hr><h1>Layout stats</h1><ul>";
+					html+="<li>Longest line: "+layoutStats.lineMax.len+" (Day "+layoutStats.lineMax.quest.day+" - Seed: "+layoutStats.lineMax.quest.seed+") <ul><li><tt>"+layoutStats.lineMax.text+"</tt></li></ul></li>";
+					html+="<li>Longest title: "+layoutStats.titleMax.len+" (Day "+layoutStats.titleMax.quest.day+" - Seed: "+layoutStats.titleMax.quest.seed+") <ul><li><tt>"+layoutStats.titleMax.text+"</tt></li></ul></li>";
+					html+="<li>Longest item name: "+layoutStats.serviceMax.len+" (Day "+layoutStats.serviceMax.quest.day+" - Seed: "+layoutStats.serviceMax.quest.seed+") <ul><li><tt>"+layoutStats.serviceMax.text+"</tt></li></ul></li>";
+					html+="<li>Shortest upside-down spacing: "+layoutStats.spacingMin.len+" (Day "+layoutStats.spacingMin.quest.day+" - Seed: "+layoutStats.spacingMin.quest.seed+") <ul><li><tt>"+layoutStats.spacingMin.text+"</tt></li></ul></li>";
+					html+="</ul>";
+					document.body.innerHTML=html;
+					console.log("done");
+					console.log(layoutStats);
 				}
-				rank.sort((a,b)=>{
-					if (a.cat>b.cat) return 1;
-					else if (a.cat<b.cat) return -1;
-					if (a.count>b.count) return -1;
-					else if (a.count<b.count) return 1;
-					else return 0;
-				});
-				var cat="";
-				var html="<table border=1>";
-				var tot=1;
-				var complexities={};
-				rank.forEach(row=>{
-					if (cat!=row.cat) {
-						html+="</table><br><table border=1>";
-						for (var k in complexities)
-							html+="<tr><td>complexity "+k+"</td><td>"+Math.floor(complexities[k]/tot*100)+"%</td><tr>";
-						html+="</table><br>Total: "+tot+"<hr><table border=1>";
-						complexities={};
-						tot=0;
-						count=0;
-						cat=row.cat;
-					}
-					var complexity=complexityMap[row.orgid];
-					if (complexity) {
-						if (!complexities[complexity]) complexities[complexity]=0;
-						complexities[complexity]+=row.count;
-					}
-					if (row.count) {
-						html+="<tr><td onclick=\"alert('"+row.days.join(",")+"')\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>"+row.count+"</td></tr>";
-						tot+=row.count;
-					} else
-						html+="<tr><td style=\"color:red\">"+row.cat+" - "+row.id+" "+(complexity?"("+complexity+")":"")+"</td><td>0</td></tr>";
-				});
-				html+="Total: "+tot;
-				document.body.innerHTML=html;
-				console.log("done");
-			}
+
+			},10);
 		});
 	});
 }
