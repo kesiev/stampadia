@@ -538,11 +538,47 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		return line;
 	}
 
+	function formatKeywords(line) {
+
+		// Keywords
+		[
+			{regex:/\{ifKeyword:([^}]+)\}/g,verb:"know"},
+			{regex:/\{ifNotKeyword:([^}]+)\}/g,verb:"don't know"},
+			{regex:/\{ifLoseKeyword:([^}]+)\}/g,verb:"forget"},
+			{regex:/\{loseKeyword:([^}]+)\}/g,verb:"forget"},
+			{regex:/\{getKeyword:([^}]+)\}/g,verb:"learn"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				let keyword=keywordsIndex[id];
+				if (!keyword) console.warn("Can't find keyword",id);
+				return entry.verb+" '"+(keyword?keyword.label+"'":"{missingKeyword}");
+			});
+		});
+
+		// Keywords sets
+		[
+			{regex:/\{ifKeywordSet:([^}]+)\}/g,verb:"know any"},
+			{regex:/\{ifNotKeywordSet:([^}]+)\}/g,verb:"don't know any"},
+			{regex:/\{ifLoseKeywordSet:([^}]+)\}/g,verb:"forget any"},
+			{regex:/\{loseKeywordSet:([^}]+)\}/g,verb:"forget any"},
+			{regex:/\{getKeywordSet:([^}]+)\}/g,verb:"learn any"},
+		].forEach((entry)=>{
+			line=line.replace(entry.regex,(m,id)=>{
+				let keyword=keywordsSetsIndex[id];
+				if (!keyword) console.warn("Can't find keyword",id);
+				return entry.verb+" '"+(keyword?keyword.label+"...'":"{missingKeywordSet}");
+			});
+		});
+
+		return line;
+	}
+
 	function formatFakeDescriptionLine(line) {
 
 		const placeholders={roomIds:{},itemIds:{}};
 
 		line=formatRandomizers(line);
+		line=formatKeywords(line);
 
 		[
 			{regex:/\{payEquip:([^}]+)\}/g,verb:"pay"},
@@ -557,31 +593,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			});
 		});
 
-		// Keywords
-		[
-			{regex:/\{ifKeyword:([^}]+)\}/g,verb:"know"},
-			{regex:/\{ifNotKeyword:([^}]+)\}/g,verb:"don't know"},
-			{regex:/\{ifLoseKeyword:([^}]+)\}/g,verb:"forget"},
-			{regex:/\{loseKeyword:([^}]+)\}/g,verb:"forget"},
-			{regex:/\{getKeyword:([^}]+)\}/g,verb:"learn"},
-		].forEach((entry)=>{
-			line=line.replace(entry.regex,(m,id)=>{
-				return entry.verb+" '"+getRandom(keywords.list).label+"'";
-			});
-		});
-
-		[
-			{regex:/\{ifKeywordSet:([^}]+)\}/g,verb:"know any"},
-			{regex:/\{ifNotKeywordSet:([^}]+)\}/g,verb:"don't know any"},
-			{regex:/\{ifLoseKeywordSet:([^}]+)\}/g,verb:"forget any"},
-			{regex:/\{loseKeywordSet:([^}]+)\}/g,verb:"forget any"},
-			{regex:/\{getKeywordSet:([^}]+)\}/g,verb:"learn any"},
-		].forEach((entry)=>{
-			line=line.replace(entry.regex,(m,id)=>{
-				return entry.verb+" '"+getRandom(keywords.sets).label+"...'";
-			});
-		})
-		
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
 				const matches=arguments;
@@ -615,7 +626,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					}
 				})
 			})
-		})
+		});
 
 		line=formatGlobalPlaceholders(line);
 
@@ -626,41 +637,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	function formatDescriptionLine(line,placeholders) {
 
 		line=formatRandomizers(line);
+		line=formatKeywords(line);
 
 		line=line.replace(/\{payEquip:([^}]+)\}/g,(m,id)=>"pay "+globalPlaceholders[id]);
 		line=line.replace(/\{loseEquip:([^}]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
 		line=line.replace(/\{getEquip:([^}]+)\}/g,(m,id)=>"get "+globalPlaceholders[id]);
 		line=line.replace(/\{nameEquip:([^}]+)\}/g,(m,id)=>globalPlaceholders[id]);
-
-		// Keywords
-		[
-			{regex:/\{ifKeyword:([^}]+)\}/g,verb:"know"},
-			{regex:/\{ifNotKeyword:([^}]+)\}/g,verb:"don't know"},
-			{regex:/\{ifLoseKeyword:([^}]+)\}/g,verb:"forget"},
-			{regex:/\{loseKeyword:([^}]+)\}/g,verb:"forget"},
-			{regex:/\{getKeyword:([^}]+)\}/g,verb:"learn"},
-		].forEach((entry)=>{
-			line=line.replace(entry.regex,(m,id)=>{
-				let keyword=keywordsIndex[id];
-				if (!keyword) console.warn("Can't find keyword",id);
-				return entry.verb+" '"+(keyword?keyword.label+"'":"???");
-			});
-		});
-
-		// Keywords
-		[
-			{regex:/\{ifKeywordSet:([^}]+)\}/g,verb:"know any"},
-			{regex:/\{ifNotKeywordSet:([^}]+)\}/g,verb:"don't know any"},
-			{regex:/\{ifLoseKeywordSet:([^}]+)\}/g,verb:"forget any"},
-			{regex:/\{loseKeywordSet:([^}]+)\}/g,verb:"forget any"},
-			{regex:/\{getKeywordSet:([^}]+)\}/g,verb:"learn any"},
-		].forEach((entry)=>{
-			line=line.replace(entry.regex,(m,id)=>{
-				let keyword=keywordsSetsIndex[id];
-				if (!keyword) console.warn("Can't find keyword",id);
-				return entry.verb+" '"+(keyword?keyword.label+"...'":"???");
-			});
-		})
 
 		ROOMPLACEHOLDERS.forEach(placeholder=>{
 			line=line.replace(placeholder.regex,function (){
@@ -678,7 +660,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							} else {
 								debugger;
 								console.warn("can't find room",matches[value],"in line",line);
-								return "???";
+								return "{missingRoom}";
 							}
 						}
 						case "modifierCondition":{
@@ -707,6 +689,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			})
 		});
 
+		// Local placeholders
+		for (const k in placeholders)
+			line=line.replaceAll("{"+k+"}",placeholders[k]);
+
 		line=formatGlobalPlaceholders(line);
 
 		return line;
@@ -717,7 +703,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		if (isfake||placeholder.fakeLine) {
 			let text=placeholder.fakeLine||placeholder[label];
 			for (let i=0;i<3;i++) text=formatFakeDescriptionLine(text);
-			text=text.replace(/{[^}]*}/g,"\"...\"");
+			text=text.replace(/{[^}]*}/g,"\"...\""); // Solve unknown local placeholders with ellipsis
 			return text;
 		} else {
 			let text=placeholder.line||placeholder[label];
@@ -1544,7 +1530,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		steps.forEach((step,index)=>{
 			placeholders.roomIds[step.id]=subroute[index].room;
 			globalPlaceholders.roomIds[step.id]=subroute[index].room;
-			if (step.generator) step.generator(questGeneratorInterface);
 		});
 
 		rooms.forEach(room=>{
@@ -1553,7 +1538,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		});
 
 		// Run the quest generator
-		if (quest.generator) quest.generator(questGeneratorInterface);
+		if (quest.generator) quest.generator(questGeneratorInterface,placeholders);
 
 		// Add items and prepare item labels
 		steps.forEach((step,index)=>{
@@ -1990,7 +1975,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			random:random,
 			getRandom:getRandom,
 			getRandomId:getRandomId,
-			globalPlaceholders:globalPlaceholders,
 			debug:debug
 		}
 	}
@@ -2007,8 +1991,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 	this.setupMetadata=function() {
 		this.metadata={
 			seed:originalSeed,
-			title:{line:"N/A"},
-			header:{line:"N/A"},
+			title:{line:"{blankTitle}"},
+			header:{line:"{blankHeader}"},
 			selection:[]
 		}
 	}
@@ -2227,7 +2211,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			this.generateModifiers();
 
 			// Add noise and tidy up
-			if (!debug||!debug.skipNoise) this.addNoise();
+			this.addNoise();
 			this.addFakeRooms();
 			this.addFlavorTexts();
 			this.sortRooms();
@@ -2482,13 +2466,13 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 	this.downloadPDF=function(filename) {
 		this.createSVG(svg=>{
-			svg.getPDF(filename);
+			svg.downloadPDF(filename);
 		})
 	}
 
 	this.downloadSVG=function(filename) {
 		this.createSVG(svg=>{
-			svg.download(filename);
+			svg.downloadSVG(filename);
 		})
 	}
 
@@ -2676,17 +2660,27 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						svg.setText(svg.getById("roomId",roomData),room.id);
 
 					if (room.description[0]) {
+						let svgLine=svg.getById("roomLine1",roomData);
 						lineParts=room.description[0].split("^*v");
-						svg.setText(svg.getById("roomLine1",roomData),lineParts[0]||"");
-						if (lineParts[1])
-							svg.setText(svg.cloneNodeBy("roomLine1UpsideDown",0,0,-boxY),lineParts[1]);
+						svg.setText(svgLine,lineParts[0]||"");
+						svg.setClassName(svgLine,"room-"+index+"-0-l");
+						if (lineParts[1]) {
+							let svgUpsiddownLine=svg.cloneNodeBy("roomLine1UpsideDown",0,0,-boxY);
+							svg.setText(svgUpsiddownLine,lineParts[1]);
+							svg.setClassName(svgUpsiddownLine,"room-"+index+"-0-r");
+						}
 					} else svg.delete(svg.getById("roomLine1",roomData));
 
 					if (room.description[1]) {
+						let svgLine=svg.getById("roomLine2",roomData);
 						lineParts=room.description[1].split("^*v");
-						svg.setText(svg.getById("roomLine2",roomData),lineParts[0]||"");
-						if (lineParts[1])
-							svg.setText(svg.cloneNodeBy("roomLine2UpsideDown",0,0,-boxY),lineParts[1]);
+						svg.setText(svgLine,lineParts[0]||"");
+						svg.setClassName(svgLine,"room-"+index+"-1-l");
+						if (lineParts[1]) {
+							let svgUpsiddownLine=svg.cloneNodeBy("roomLine2UpsideDown",0,0,-boxY);
+							svg.setText(svgUpsiddownLine,lineParts[1]);
+							svg.setClassName(svgUpsiddownLine,"room-"+index+"-1-r");
+						}
 					} else svg.delete(svg.getById("roomLine2",roomData));
 
 				});
@@ -2718,37 +2712,38 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				});
 
 				// Render noise
-				noise.forEach(item=>{
-					const
-						x=item.x,
-						y=item.y,
-						px=x*cellWidth,
-						py=y*cellHeight;
-					switch (item.id) {
-						case "fakeEntrance":{
-							svg.setText(svg.cloneNodeBy("gridNumber",0,px,py),Math.abs(getCellValue(x,y,getRandom(rooms))));
-							break;
+				if (!debug||!debug.skipNoise)
+					noise.forEach(item=>{
+						const
+							x=item.x,
+							y=item.y,
+							px=x*cellWidth,
+							py=y*cellHeight;
+						switch (item.id) {
+							case "fakeEntrance":{
+								svg.setText(svg.cloneNodeBy("gridNumber",0,px,py),Math.abs(getCellValue(x,y,getRandom(rooms))));
+								break;
+							}
+							case "fakeEnemy":{
+								const enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
+								setCheckBox(svg,svg.getById("gridEnemyLevel",enemy),item.level);
+								break;
+							}
+							case "fakeGenericItem":{
+								const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
+								svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
+								break;
+							}
+							case "fakeDoorDown":{
+								svg.cloneNodeBy("doorDown",0,item.x*cellWidth,item.y*cellHeight);
+								break;
+							}
+							case "fakeDoorRight":{
+								svg.cloneNodeBy("doorRight",0,item.x*cellWidth,item.y*cellHeight);
+								break;
+							}
 						}
-						case "fakeEnemy":{
-							const enemy=svg.cloneNodeBy("gridEnemy",0,px,py);
-							setCheckBox(svg,svg.getById("gridEnemyLevel",enemy),item.level);
-							break;
-						}
-						case "fakeGenericItem":{
-							const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
-							svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
-							break;
-						}
-						case "fakeDoorDown":{
-							svg.cloneNodeBy("doorDown",0,item.x*cellWidth,item.y*cellHeight);
-							break;
-						}
-						case "fakeDoorRight":{
-							svg.cloneNodeBy("doorRight",0,item.x*cellWidth,item.y*cellHeight);
-							break;
-						}
-					}
-				});
+					});
 
 				// Render gold
 				const goldSize=svg.getNum(svg.getById("goldLeft"),"width")+0.56;
