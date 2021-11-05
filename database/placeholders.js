@@ -7,10 +7,10 @@ function loadPlaceholders() {
 			"The {heroClass} {nameLine} in"
 		],
 		villainName:[
+			"Bloody Dragon", // Longest
 			"Dark Lord",
 			"Hydra",
 			"Chimera",
-			"Bloody Dragon",
 			"Basilisk",
 			"Minotaur",
 			"King Goblin",
@@ -31,18 +31,18 @@ function loadPlaceholders() {
 			"Usurper",
 		],
 		winningScene:[
+			"You are carried in triumph to the capital!", // Longest
 			"You did it!",
-			"You are carried in triumph to the capital!",
 			"You won!",
 			"You are a legend!",
 			"You are a hero!",
 			"You will always be remembered!",
 		],
 		goodGuyName:[
+			"Great Saviour", // Longest
 			"King",
 			"Prince",
 			"Princess",
-			"Great Saviour",
 			"Sarge",
 			"Queen",
 			"Old Sage",
@@ -52,13 +52,14 @@ function loadPlaceholders() {
 			"Hermit",
 		],
 		goodGuyRelativeName:[
-			"Friend",
+			"Friend", // Longest
 			"Wife",
 			"Son",
 			"Child",
 			"Lover",
 		],
 		bossKey:[
+			"Diamond Rhombus", // Longest
 			"Skull Key",
 			"Bloody Key",
 			"Invisibility Orb",
@@ -66,7 +67,6 @@ function loadPlaceholders() {
 			"Discovery Scroll",
 			"Flaming Gem",
 			"Lost Key",
-			"Diamond Rhombus",
 			"Rupture Seal",
 			"Recall Seal",
 			"Trauma Orb",
@@ -75,13 +75,13 @@ function loadPlaceholders() {
 			"Forgotten Stamp",
 		],
 		placeName:[
+			"Mountain", // Longest
 			"Island",
 			"Valley",
 			"Temple",
 			"Land",
 			"City",
 			"Capital",
-			"Mountain",
 			"Lake",
 			"Forest",
 			"Abbey",
@@ -98,7 +98,7 @@ function loadPlaceholders() {
 			"Cliff",
 		],
 		explorerName:[
-			"Archaeologist",
+			"Archaeologist", // Longest
 			"Explorer",
 			"Spy",
 			"Hunter",
@@ -110,16 +110,16 @@ function loadPlaceholders() {
 			"Chronicler",
 		],
 		documentName:[
+			"Inscription", // Longest
 			"Scroll",
-			"Inscription",
 			"Document",
 			"Message",
 			"Register",
 			"Engraving",
 		],
 		victimName:[
+			"Adventurer", // Longest
 			"Kid",
-			"Adventurer",
 			"Girl",
 			"Boy",
 			"Man",
@@ -127,28 +127,28 @@ function loadPlaceholders() {
 			"Elder"
 		],
 		epicWeapon:[
+			"Black Shythe", // Longest
 			"Void Cutter",
-			"Black Shythe",
 			"Bloody Claw",
 			"Black Blade"
 		],
 		epicWeaponPart:[
-			"Shard",
+			"Shard", // Longest
 			"Part",
 			"Piece"
 		],
 		madScientistName:[
-			"Necromancer",
+			"Necromancer", // Longest
 			"Scientist",
 			"Doctor",
 		],
 		lowerSoldierName:[
+			"Captain", // Longest
 			"Private",
-			"Captain",
 			"Spy",
 		],
 		higherSoldierName:[
-			"Sergeant",
+			"Sergeant",  // Longest
 			"Major",
 		],
 	};
