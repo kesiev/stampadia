@@ -72,8 +72,8 @@ function loadQuestsMain(MODIFIERS) {
 				"The Battle Of The {villainName}",
 				"To The Rescue Of The {goodGuyName}",
 				"The {heroClass}'s Final Battle",
-				"The {villainName} And The {goodGuyName}",
-				"The {goodGuyName} And The {villainName}",
+				"The {villainName} &amp; The {goodGuyName}",
+				"The {goodGuyName} &amp; The {villainName}",
 				"The Cursed {placeName}",
 				"The {villainName}'s {placeName}",
 			],
@@ -121,7 +121,7 @@ function loadQuestsMain(MODIFIERS) {
 				[
 					{
 						id:"enemy1room",
-						labels:["First Encounter","One"],
+						labels:["1st Encounter","One"],
 						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -133,7 +133,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"enemy2room",
-						labels:["Second Encounter","Two"],
+						labels:["2nd Encounter","Two"],
 						atPercentage:100,
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -145,7 +145,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"bossRoom",
-						labels:["Third Encounter","Three"],
+						labels:["3rd Encounter","Three"],
 						atPercentage:{from:20,to:90},
 						items:[{id:"enemy",level:3,ignoreXp:true}],
 						isExclusive:true,
@@ -236,7 +236,7 @@ function loadQuestsMain(MODIFIERS) {
 				"The Shattered {bossKey}",
 				"The {bossKey}",
 				"The {bossKey} Of The {placeName}",
-				"The {bossKey} Of The {villainName}",
+				"The {villainName}'s {bossKey}",
 				"The Shattered {villainName}",
 				"The Quest For The {bossKey}",
 				"The {heroClass}'s {bossKey}",
@@ -432,7 +432,7 @@ function loadQuestsMain(MODIFIERS) {
 				[
 					{
 						id:"step1",
-						labels:["First Spot"],
+						labels:["1st Spot"],
 						atPercentage:20,
 						items:[{genericItem:"goodguy"},{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -444,7 +444,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"step2",
-						labels:["Second Spot"],
+						labels:["2nd Spot"],
 						atPercentage:40,
 						items:[{genericItem:"goodguy"},{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -456,7 +456,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"step3",
-						labels:["Third Spot","Last Spot"],
+						labels:["3rd Spot","Last Spot"],
 						atPercentage:60,
 						items:[{genericItem:"goodguy"}],
 						roomDescriptions:[
@@ -488,7 +488,7 @@ function loadQuestsMain(MODIFIERS) {
 					roomDescriptions:[
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}",
-							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsNotMarked:step3}{then}{hide}but the {goodGuyName} got lost in the {placeName}."
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{ifRoomIsNotMarked:step3}{then}{hide}but the {goodGuyName} is lost in the {placeName}."
 						]
 					]
 				}
@@ -557,7 +557,7 @@ function loadQuestsMain(MODIFIERS) {
 						roomDescriptions:[ // Mark is good.
 							[
 								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}",
-								"{ifNoFoes}{and}{ifRoomIsNotMarked:step1}{and}{ifRoomIsMarked:step2}{and}{ifRoomIsMarked:step3}{then}{hide}You sit on the {villainName} throne. The end."
+								"{ifNoFoes}{and}{ifRoomIsNotMarked:step1}{and}{ifRoomIsMarked:step2}{and}{ifRoomIsMarked:step3}{then}{hide}You sit on the {villainName} throne. End."
 							]
 						]
 					}
@@ -1075,7 +1075,7 @@ function loadQuestsMain(MODIFIERS) {
 				[
 					{
 						id:"general1room",
-						labels:["Weak General","First Camp"],
+						labels:["Weak General","1st Camp"],
 						atPercentage:{from:30,to:50},
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -1086,7 +1086,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"general2room",
-						labels:["Brave General","Second Camp"],
+						labels:["Brave General","2nd Camp"],
 						atPercentage:{from:50,to:70},
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -1152,7 +1152,7 @@ function loadQuestsMain(MODIFIERS) {
 				"The {villainName}'s Alibi",
 				"The {placeName}'s Murder",
 			],
-			generator:(G)=>{
+			generator:(G,P)=>{
 				const
 					SENTENCES={
 						isCulpritSelf:[
@@ -1259,19 +1259,19 @@ function loadQuestsMain(MODIFIERS) {
 
 				// Prepare placeholders
 				sentences.forEach(sentence=>{
-					G.globalPlaceholders[sentence.character.placeholder]=G.getRandom(SENTENCES[sentence.type+(sentence.who===sentence.character?"Self":sentence.character.length)]).replace(/{name}/g,sentence.who.name);
+					P[sentence.character.placeholder]=G.getRandom(SENTENCES[sentence.type+(sentence.who===sentence.character?"Self":sentence.character.length)]).replace(/{name}/g,sentence.who.name);
 				});
 				culprits.forEach((culprit,id)=>{
-					G.globalPlaceholders[culprit.killId]=rooms[id].mark;
+					P[culprit.killId]=rooms[id].mark;
 				});
 				if (G.random()>0.5) {
 					// Good ending
-					G.globalPlaceholders.caseEndId=G.getRandom(rooms[0].check);
-					G.globalPlaceholders.caseEndText=G.getRandom(SENTENCES.goodEnding);
+					P.caseEndId=G.getRandom(rooms[0].check);
+					P.caseEndText=G.getRandom(SENTENCES.goodEnding);
 				} else {
 					// Bad ending
-					G.globalPlaceholders.caseEndId=G.getRandom(rooms[1].check);
-					G.globalPlaceholders.caseEndText=G.getRandom(SENTENCES.badEnding);
+					P.caseEndId=G.getRandom(rooms[1].check);
+					P.caseEndText=G.getRandom(SENTENCES.badEnding);
 				}
 				
 				// TODO togli
@@ -1286,7 +1286,7 @@ function loadQuestsMain(MODIFIERS) {
 				[
 					{
 						id:"lowerSoldierRoom",
-						labels:["Weak General","First Camp"],
+						labels:["Weak General","1st Camp"],
 						atPercentage:{from:30,to:50},
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -1297,7 +1297,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"higherSoldierRoom",
-						labels:["Brave General","Second Camp"],
+						labels:["Brave General","2nd Camp"],
 						atPercentage:{from:50,to:70},
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
