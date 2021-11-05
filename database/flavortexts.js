@@ -63,7 +63,7 @@ function loadFlavorTexts() {
 			"A small stream runs from a crack in the wall.",
 			"This looks like a giant chessboard.",
 			"Echoes suggest a much bigger room.",
-			"Your mouth fills with the taste of... strawberry?.",
+			"Your mouth fills with the taste of... strawberry?",
 			"Above is a night sky with unknown constellations.",
 			"Oversize furniture make you feel insignificant.",
 			"You hear a strange hum from the ground.",
