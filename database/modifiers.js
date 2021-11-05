@@ -35,7 +35,7 @@ function loadModifiers() {
 			hero:{
 				id:"[CODEX-Modifiers] Hero - Blind: Hero plays just 1 die.",
 				type:"bad",
-				roomDescription:"{ifAfterHeroRollInFight}{then}Everything goes dark, {activateOnly:1}"
+				roomDescription:"{ifAfterHeroRollInFight}{then}You see nothing, {activateOnly:1}"
 			},
 		},
 		stunned:{
@@ -63,7 +63,7 @@ function loadModifiers() {
 			room:{
 				id:"[CODEX-Modifiers] Terrain - Tall grass: Everybody -1 a die of choice.",
 				type:"balanced",
-				roomDescription:"{ifAfterRollInFight}{then}The tall grass is a hindrance, {modifyDice:1,-1}"
+				roomDescription:"{ifAfterRollInFight}{then}The tall grass hinders, {modifyDice:1,-1}"
 			}
 		},
 		darkness:{
