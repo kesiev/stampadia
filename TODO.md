@@ -38,7 +38,6 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [ ] Items
   - [ ] Prevent a specific enemy action
-  - [ ] Door Slam: enter new room -> damage all enemies in range 1
 
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
@@ -70,7 +69,7 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] New classes
   - [ ] A class with ignore enemy movement to stay in range
   - [ ] A class with more attack/move
-  - [ ] ???: Get gold by fights/lock dice
+  - [ ] ???: Get gold in combat
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
 
@@ -152,6 +151,7 @@ A daily print-and-play roguelike adventure you can play offline.
 - [x] Equipment
   - [x] Flip - Complementary dice values (upside down dice)
   - [x] Turn - Use dice in reverse order (lower-higher)
+  - [x] Door Slam: enter new room -> damage all enemies in range 1
 
 - [x] New quests
   - [x] General  
