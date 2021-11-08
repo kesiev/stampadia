@@ -686,7 +686,8 @@ function loadQuestsSub() {
 			minRooms:2,
 			steps:[
 				{content:"apple"},
-				{content:"invisibility"}
+				{content:"invisibility"},
+				{content:"jacket"},
 			].map(room=>[
 					{
 						id:"teleportRoom",

@@ -170,6 +170,16 @@ function loadEquipment() {
 			label:"Curse",
 			action:"{loseFullHp-:2}{then}You lifted your curse, {markRoom:bossRoom}"
 		},
+		// [CODEX-Stuff] Equipment - Jacket: When entering a new room, damage 2 adjacent enemies.
+		// This game can be used as a framework for other small games that want to add some exploration,
+		// like tiny wargames, or more arcadey action games. I'm leaving this item here as a memento: it
+		// mimics the very common "door slamming" maneuver in the "Hotline Miami" videogame.
+		// You can find it in a broken teleport! - KesieV
+		{
+			id:"jacket",
+			label:"Jacket",
+			action:"{ifEnterRoom}{then}{fightingEnemyLoseHp:1,2,1}"
+		},
 		
 	];
 }
