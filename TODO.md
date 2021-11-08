@@ -69,7 +69,7 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] New classes
   - [ ] A class with ignore enemy movement to stay in range
   - [ ] A class with more attack/move
-  - [ ] ???: Get gold in combat
+  - [ ] Mercenary: Get gold in combat
   - [ ] Elf/Paladin: a better healing ability. Maybe a Paladin is better fitting instead of an elf here.
   - [ ] Druid: class item (haste spell/potion) to get a third roll once (and use 2 moves from player list and one from monster)
 
