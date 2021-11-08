@@ -124,7 +124,7 @@
   - **The Warrior**: A balanced fighter who prefers melee attacks. It's equipped with a short sword, warrior boots, a small flask of cure, a throwing knife, and a Resurrection item.
   - **The Wizard**: A powerful mage that fights from the distance. It's equipped with lightning spells, a teleport spell, a magic shield, a healing spell, and a Fireball item.
 
-## Stuff (62 items)
+## Stuff (63 items)
 
 - Beast
   - **The Bat**: It can scare you permanently.
@@ -148,6 +148,7 @@
   - **Frag**: A fragmentation bomb that damages 2 nearby enemies when getting damage.
   - **Grenade**: Perform an ATK action by the current room size.
   - **Invisibility**: For the next 3 enemy turns, discard all dice less than 6.
+  - **Jacket**: When entering a new room, damage 2 adjacent enemies.
   - **Large die**: Perform 1 free action with activation power 5.
   - **Lunge**: Place dice on the same column.
   - **Mead**: Discard one die, set the other one to 6.

@@ -121,6 +121,7 @@ var INDEX=[
 	"[CODEX-Stuff] Equipment - Frag: A fragmentation bomb that damages 2 nearby enemies when getting damage.",
 	"[CODEX-Stuff] Equipment - Grenade: Perform an ATK action by the current room size.",
 	"[CODEX-Stuff] Equipment - Invisibility: For the next 3 enemy turns, discard all dice less than 6.",
+	"[CODEX-Stuff] Equipment - Jacket: When entering a new room, damage 2 adjacent enemies.",
 	"[CODEX-Stuff] Equipment - Large die: Perform 1 free action with activation power 5.",
 	"[CODEX-Stuff] Equipment - Lunge: Place dice on the same column.",
 	"[CODEX-Stuff] Equipment - Mead: Discard one die, set the other one to 6.",
