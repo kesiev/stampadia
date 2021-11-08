@@ -29,9 +29,10 @@ function onl() {
 		
 		var player=new DungeonPlayer(
 			core.generateAdventureDaily(0,{
-			heroId:"rogue",
-			footer:"T"
-		}));
+				//heroId:"rogue",
+				setMixMode:true,
+				footer:"T"
+			}));
 		document.getElementById("credits").innerHTML=core.getWebFooter();
 		document.getElementById("table").innerHTML="";
 		player.play(document.getElementById("table"));
