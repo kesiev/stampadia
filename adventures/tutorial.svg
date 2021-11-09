@@ -17,7 +17,7 @@
    inkscape:version="1.0.2 (e86c8708, 2021-01-15)"><metadata
      id="metadata178"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs176"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath188"><path
@@ -36,13 +36,14 @@
      inkscape:window-height="772"
      id="namedview174"
      showgrid="false"
-     inkscape:zoom="0.71059522"
-     inkscape:cx="561.25983"
-     inkscape:cy="396.8504"
+     inkscape:zoom="1.4211904"
+     inkscape:cx="788.13963"
+     inkscape:cy="569.05536"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g180" /><g
+     inkscape:current-layer="g180"
+     inkscape:document-rotation="0" /><g
      id="g180"
      inkscape:groupmode="layer"
      inkscape:label="tutorial"
@@ -1282,7 +1283,6 @@
              transform="matrix(1,0,0,-1,604.602,567.864)"
              style="font-variant:normal;font-weight:normal;font-size:7.313px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text1160"><tspan
-              
                y="0"
                sodipodi:role="line"
                id="tspan1158">Move [1] » You got a Diamond Rhombus part, x28, x[1]</tspan></text></g><g
@@ -1963,10 +1963,10 @@
              transform="matrix(1,0,0,-1,604.602,369.864)"
              style="font-variant:normal;font-weight:normal;font-size:7.313px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text1712"><tspan
-               x="0 5.0094051 6.6036391 10.201635 12.007946 17.514635 19.10887 20.907867 22.714178 25.81489 29.412886 31.709167 33.303402 35.007332 37.603447 39.102612 43.205204 45.004204 47.300484 50.408508 52.704792 54.511101 58.116409 61.217121 62.811356 65.012573 68.610565 70.906845 74.307396 78.007774 81.108482 84.706482 86.300713 88.596992 92.194992 95.303017 96.802177 99.800514 103.60327 105.80448 108.10077 111.20879 113.0151 116.62041 119.21652"
-               y="0"
                sodipodi:role="line"
-               id="tspan1710">A dim light is fltering through the curtains.</tspan></text></g><path
+               id="tspan1710"
+               x="0"
+               y="0">A dim light is filtering through the curtains.</tspan></text></g><path
            d="m 565.483,355.351 h 34.13 v -23.046 h -34.13 z"
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
            id="path1714" /><g
@@ -2204,7 +2204,6 @@
              transform="matrix(1,0,0,-1,604.602,290.777)"
              style="font-variant:normal;font-weight:normal;font-size:7.313px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text1906"><tspan
-              
                y="0"
                sodipodi:role="line"
                id="tspan1904">Move [1] » You got a Diamond Rhombus part, x47, x[1]</tspan></text></g><g
@@ -2441,7 +2440,6 @@
              transform="matrix(1,0,0,-1,604.602,221.584)"
              style="font-variant:normal;font-weight:normal;font-size:7.313px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text2098"><tspan
-              
                y="0"
                sodipodi:role="line"
                id="tspan2096">Move [1] » You got a Diamond Rhombus part, x50, x[1]</tspan></text></g><g
@@ -2577,10 +2575,10 @@
              transform="matrix(1,0,0,-1,604.602,185.187)"
              style="font-variant:normal;font-weight:normal;font-size:7.313px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text2208"><tspan
-               x="0 6.2014241 10.004184 11.803182 14.004395 15.810706 19.408703 21.207701 24.403481 25.902645 28.396379 31.592159 34.590488 38.290867 40.089867 43.197891 45.494171 46.99334 52.595097 56.295475 59.893471 61.392635 64.990631 67.286911 69.093224 72.698532 74.994812 77.488548 79.082779 82.680779 85.788803 88.896828 92.494827 94.089058 96.385338 99.690819 101.28505 103.58133 107.17933 110.28735 111.78651 114.0828 117.19083 120.18916 123.38493 125.87867 128.37241 131.48042 135.07843 136.67265 139.78069 141.57968 143.87596 146.98399 149.28027"
-               y="0"
                sodipodi:role="line"
-               id="tspan2206">Multiple secular mud prints head to the recessed altar.</tspan></text></g><path
+               id="tspan2206"
+               x="0"
+               y="0">Multiple ancient mud prints head to the recessed altar.</tspan></text></g><path
            d="m 565.483,170.645 h 34.13 v -23.046 h -34.13 z"
            style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
            id="path2210" /><g
@@ -2692,7 +2690,7 @@
              transform="matrix(1,0,0,-1,23.613,559.077)"
              style="font-variant:normal;font-weight:normal;font-size:18px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus-Regular;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
              id="text2302"><tspan
-              sodipodi:role="line"
+               sodipodi:role="line"
                id="tspan2300">The Diamond Rhombus Of The City</tspan></text></g><g
            id="g2304"><text
              transform="matrix(1,0,0,-1,291.6,204.377)"
