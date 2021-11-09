@@ -1416,7 +1416,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				quest,
 				number=random(roll);
 			for (let i=0;i<slices.length;i++)
-				if (number>slices[i]) quest=quests[i];
+				if (number>=slices[i]) quest=quests[i];
 				else break;
 			this.applyQuest(quest.subroute,quest.quest,quest.steps);
 			return quest.quest;
