@@ -26,15 +26,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			},
 			{
 				regex:/{teleportToRoom:([^}]*)}/g,
-				replace:"move anywhere in {roomLabelSymbol}{room:1}"
+				replace:"{moveSymbol} anywhere in {roomLabelSymbol}{room:1}"
 			},
 			{
 				regex:/{teleportToRiddleRoom:([^}]*)}/g,
-				replace:"move anywhere in {roomRiddle:1}"
+				replace:"{moveSymbol} anywhere in {roomRiddle:1}"
 			},
 			{
 				regex:/{ifMoveOn:([^}]*)}/g,
-				replace:"move {item:1}"
+				replace:"{moveSymbol} {item:1}"
 			},
 			{
 				regex:/{markItem:([^}]*)}/g,
@@ -476,16 +476,16 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter {roomUnspacedLabelSymbol}");
-		line=line.replaceAll("{ifMoveOnStairs}","move on stairs");
+		line=line.replaceAll("{ifMoveOnStairs}","{moveSymbol} on stairs");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");
 		line=line.replaceAll("{goBack}","go back on previous room");
 
 		// Room - Actions
-		line=line.replaceAll("{moveOnStairs}","move on stairs");
+		line=line.replaceAll("{moveOnStairs}","{moveSymbol} on stairs");
 		line=line.replaceAll("{roomIsEmpty}","{roomUnspacedLabelSymbol} is empty");
 		line=line.replaceAll("{noEscape}","no escape");
-		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting {roomUnspacedLabelSymbol}");
+		line=line.replaceAll("{teleportToStartingRoom}","{moveSymbol} anywhere in starting {roomUnspacedLabelSymbol}");
 		line=line.replace(/\{discoverAnyRoom:([0-9]+)\}/g,(m,num)=>"select "+num+" "+(num==1?"room":"rooms")+", discover "+(num==1?"it":"them"));
 
 		// HP - Conditions
@@ -544,6 +544,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{roomSymbol}",symbolsMap.rooms.symbol);
 		line=line.replaceAll("{roomUnspacedLabelSymbol}",symbolsMap.rooms.unspacedLabel);
 		line=line.replaceAll("{roomLabelSymbol}",symbolsMap.rooms.label);
+		line=line.replaceAll("{moveSymbol}",symbolsMap.actions.move);
 
 		return line;
 	}
