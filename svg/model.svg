@@ -171,7 +171,7 @@
          y="31.807817" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="17.75433"
          y="34.979176"
          id="gridItemId"><tspan
@@ -179,7 +179,7 @@
            id="tspan16749-2"
            x="17.75433"
            y="34.979176"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
     </g>
     <g
        id="enemyTier">
@@ -192,7 +192,7 @@
          y="177.15059" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="252.69142"
          y="183.36035"
          id="enemySkillUp"><tspan
@@ -200,7 +200,7 @@
            id="tspan16303"
            x="252.69142"
            y="183.36035"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL1</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL1</tspan></text>
       <rect
          style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect16307"
@@ -210,7 +210,7 @@
          y="187.84534" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="252.65517"
          y="194.0551"
          id="enemySkillDown"><tspan
@@ -218,7 +218,7 @@
            id="tspan16309"
            x="252.65517"
            y="194.0551"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL2</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL2</tspan></text>
       <g
          id="enemySymbol"
          transform="translate(-3.6720677,0.52916667)">
@@ -251,7 +251,7 @@
          r="1.1845" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="252.62047"
          y="204.48405"
          id="enemyXp"><tspan
@@ -259,10 +259,10 @@
            id="tspan16611-9"
            x="252.62047"
            y="204.48405"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">XP</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">XP</tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="252.6024"
          y="166.48622"
          id="enemyDefense"><tspan
@@ -270,7 +270,7 @@
            id="tspan16619-8"
            x="252.6024"
            y="166.48622"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">DEF</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">DEF</tspan></text>
       <g
          id="enemyOutline"
          transform="translate(-3.6720677,0.52916667)">
@@ -280,7 +280,7 @@
            d="m 253.50928,168.38455 v 1.69551 a 3.1489311,3.1489311 0 0 0 -0.43615,1.59886 3.1489311,3.1489311 0 0 0 3.14917,3.14917 3.1489311,3.1489311 0 0 0 3.14864,-3.14917 3.1489311,3.1489311 0 0 0 -0.43615,-1.59886 v -1.69551 h -0.88831 v 0.72812 a 3.1489311,3.1489311 0 0 0 -1.82418,-0.58239 3.1489311,3.1489311 0 0 0 -1.82418,0.58188 v -0.72761 z" />
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#b3b3b3;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
            x="256.22321"
            y="172.32175"
            id="text1006"><tspan
@@ -288,12 +288,12 @@
              id="tspan1004"
              x="256.22321"
              y="172.32175"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">ALL</tspan></text>
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.11667px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">ALL</tspan></text>
       </g>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="191.85017"
        y="204.48405"
        id="text16613"><tspan
@@ -301,10 +301,10 @@
          id="tspan16611"
          x="191.85017"
          y="204.48405"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">XP</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">XP</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="191.38409"
        y="173.06425"
        id="text16617"><tspan
@@ -312,7 +312,7 @@
          id="tspan16615"
          x="191.38409"
          y="173.06425"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">HP</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">HP</tspan></text>
     <g
        id="heroTier">
       <rect
@@ -324,7 +324,7 @@
          y="177.15059" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="202.2173"
          y="183.36035"
          id="heroSkillUp"><tspan
@@ -332,7 +332,7 @@
            id="tspan16193"
            x="202.2173"
            y="183.36035"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL1</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL1</tspan></text>
       <rect
          style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect16199"
@@ -342,7 +342,7 @@
          y="187.84534" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="202.18105"
          y="194.0551"
          id="heroSkillDown"><tspan
@@ -350,7 +350,7 @@
            id="tspan16201"
            x="202.18105"
            y="194.0551"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL2</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">SKL2</tspan></text>
       <rect
          style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="heroXp"
@@ -360,7 +360,7 @@
          y="202.49583" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="202.1283"
          y="166.48622"
          id="heroDefense"><tspan
@@ -368,7 +368,7 @@
            id="tspan16619"
            x="202.1283"
            y="166.48622"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">DEF</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">DEF</tspan></text>
       <rect
          style="fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="heroHp"
@@ -424,7 +424,7 @@
          transform="translate(-4.1076901)">
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
            x="207.62897"
            y="9.9256239"
            id="roomSize"><tspan
@@ -432,10 +432,10 @@
              id="tspan7915"
              x="207.62897"
              y="9.9256239"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">##x##</tspan></text>
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">##x##</tspan></text>
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
            x="207.62897"
            y="6.2633014"
            id="roomPosition"><tspan
@@ -443,7 +443,7 @@
              id="tspan7919"
              x="207.62897"
              y="6.2633014"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">##,##</tspan></text>
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">##,##</tspan></text>
         <rect
            style="fill:none;fill-opacity:1;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:0.25, 0.25;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill"
            id="rect7925"
@@ -478,7 +478,7 @@
          transform="translate(-3.6930949)">
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
            x="198.78973"
            y="8.3698092"
            id="roomId"><tspan
@@ -486,7 +486,7 @@
              id="tspan7889"
              x="198.78973"
              y="8.3698092"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Seshat;-inkscape-font-specification:Seshat;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">20</tspan></text>
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">20</tspan></text>
         <rect
            style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            id="roomCheckbox"
@@ -497,7 +497,7 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="213.28682"
          y="6.2076621"
          id="roomLine1"><tspan
@@ -505,10 +505,10 @@
            id="tspan9577"
            x="213.28682"
            y="6.2076621"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="213.28682"
          y="9.680934"
          id="roomLine2"><tspan
@@ -516,7 +516,7 @@
            id="tspan15487"
            x="213.28682"
            y="9.680934"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -533,7 +533,7 @@
        id="path16372" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="8.3158512"
        y="5.2294226"
        id="adventureHeader"><tspan
@@ -541,10 +541,10 @@
          id="tspan7575"
          x="8.3158512"
          y="5.2294226"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">The legend of </tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">The legend of </tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="8.3211432"
        y="12.741782"
        id="adventureTitle"><tspan
@@ -552,10 +552,10 @@
          id="tspan7579"
          x="8.3211432"
          y="12.741782"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">The legend of </tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">The legend of </tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="17.754328"
        y="34.979179"
        id="gridNumber"><tspan
@@ -563,10 +563,10 @@
          id="tspan16749"
          x="17.754328"
          y="34.979179"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="17.995621"
        y="27.988066"
        id="gridCol"><tspan
@@ -574,10 +574,10 @@
          id="tspan16741"
          x="17.995621"
          y="27.988066"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:end;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="11.579646"
        y="35.49913"
        id="gridRow"><tspan
@@ -585,7 +585,7 @@
          id="tspan16745"
          x="11.579646"
          y="35.49913"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">99</tspan></text>
     <rect
        style="fill:none;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="gridGuide"
@@ -640,7 +640,7 @@
        transform="translate(0.52916663,-0.14419135)">
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="121.66388"
          y="7.0703306"
          id="serviceName"><tspan
@@ -648,7 +648,7 @@
            id="tspan908"
            x="121.66388"
            y="7.0703306"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Service</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Service</tspan></text>
       <rect
          style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="serviceCheckbox"
@@ -666,7 +666,7 @@
        y="15.445461" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="9.3287992"
        y="18.247232"
        id="text952"><tspan
@@ -674,7 +674,7 @@
          id="tspan950"
          x="9.3287992"
          y="18.247232"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (cross door » pay 1G)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (cross door » pay 1G)</tspan></text>
     <path
        style="fill:none;stroke:#b3b3b3;stroke-width:0.251203;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 116.20575,15.492869 v -2.108941 l 0.62615,-0.568403 -0.62615,-0.516728 V 8.8367106 l 0.52178,-0.5684021 -0.52178,-0.5167292 V 6.9764855 l 0.7305,-0.5684021 -0.7305,-0.7234209 V 3.2160093 h 68.77369 v 1.1768302 l -0.67832,0.5167292 0.67832,0.5167292 v 0.671748 l -0.52178,0.568402 0.52178,0.3100376 v 5.0122735 l -0.52178,0.723421 0.52178,0.516728 v 0.671749 l -0.56266,0.340776 0.56266,0.382645 v 1.161098"
@@ -700,7 +700,7 @@
        y="159.4982" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="262.35144"
        y="161.60464"
        id="enemyDefense-8"><tspan
@@ -708,7 +708,7 @@
          id="tspan16619-8-7"
          x="262.35144"
          y="161.60464"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Enemy Sheet</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Enemy Sheet</tspan></text>
     <rect
        style="fill:#ffffff;stroke-width:1"
        id="rect906"
@@ -718,7 +718,7 @@
        y="159.35277" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="210.5248"
        y="161.70395"
        id="text904"><tspan
@@ -726,7 +726,7 @@
          id="tspan902"
          x="210.5248"
          y="161.70395"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Hero Sheet</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Hero Sheet</tspan></text>
     <circle
        style="fill:#000000;stroke-width:0.999999"
        id="circle3323"
@@ -746,7 +746,7 @@
          transform="rotate(-90)" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="-157.8889"
          y="189.25923"
          id="text3329"
@@ -755,7 +755,7 @@
            id="tspan3327"
            x="-157.8889"
            y="189.25923"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Rooms Table</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Rooms Table</tspan></text>
     </g>
     <circle
        style="fill:#000000;stroke-width:0.999999"
@@ -776,7 +776,7 @@
          transform="rotate(90)" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="20.754295"
          y="-191.52559"
          id="text3370"
@@ -785,7 +785,7 @@
            id="tspan3368"
            x="20.754295"
            y="-191.52559"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Inventory</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:end;text-anchor:end;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Inventory</tspan></text>
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -805,7 +805,7 @@
          transform="rotate(90)" />
       <text
          xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
          x="20.291265"
          y="-191.23883"
          id="text3329-6"
@@ -814,11 +814,11 @@
            id="tspan3327-5"
            x="20.291265"
            y="-191.23883"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Map</tspan></text>
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Map</tspan></text>
     </g>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="13.136482"
        y="204.46982"
        id="footer"><tspan
@@ -826,10 +826,10 @@
          id="tspan37785"
          x="13.136482"
          y="204.46982"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Footer</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Footer</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="-292.19608"
        y="-4.9749269"
        id="roomLine1UpsideDown"
@@ -838,10 +838,10 @@
          id="tspan328"
          x="-292.19608"
          y="-4.9749269"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="-292.19608"
        y="-8.4481983"
        id="roomLine2UpsideDown"
@@ -850,7 +850,7 @@
          id="tspan332"
          x="-292.19608"
          y="-8.4481983"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:SeshatPlus;-inkscape-font-specification:SeshatPlus;text-align:start;text-anchor:start;fill:#000000;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </tspan></text>
     <circle
        style="display:inline;fill:#ffffff;stroke:#b3b3b3;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="goldLeft"
