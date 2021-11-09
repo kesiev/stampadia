@@ -10,23 +10,23 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		ROOMPLACEHOLDERS=[
 			{
 				regex:/{roomId:([^}]*)}/g,
-				replace:"{room:1}"
+				replace:"{roomSymbol}{room:1}"
 			},
 			{
 				regex:/{markRoom:([^}]*)}/g,
-				replace:"x{room:1}"
+				replace:"{markRoomSymbol}{room:1}"
 			},
 			{
 				regex:/{ifRoomIsMarked:([^}]*)}/g,
-				replace:"x{room:1}"
+				replace:"{markRoomSymbol}{room:1}"
 			},
 			{
 				regex:/{ifRoomIsNotMarked:([^}]*)}/g,
-				replace:"not x{room:1}"
+				replace:"not {markRoomSymbol}{room:1}"
 			},
 			{
 				regex:/{teleportToRoom:([^}]*)}/g,
-				replace:"move anywhere in room {room:1}"
+				replace:"move anywhere in {roomLabelSymbol}{room:1}"
 			},
 			{
 				regex:/{teleportToRiddleRoom:([^}]*)}/g,
@@ -34,19 +34,19 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			},
 			{
 				regex:/{ifMoveOn:([^}]*)}/g,
-				replace:"move [{item:1}]"
+				replace:"move {item:1}"
 			},
 			{
 				regex:/{markItem:([^}]*)}/g,
-				replace:"x[{item:1}]"
+				replace:"{itemMarkSymbol}{item:1}"
 			},
 			{
 				regex:/{applyModifierOnRoomMarked:([^,]+),([^}]+)\}/g,
-				replace:"x{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
+				replace:"{markRoomSymbol}{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
 			},
 			{
 				regex:/{applyModifierOnRoomNotMarked:([^,]+),([^}]+)\}/g,
-				replace:"not x{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
+				replace:"not {markRoomSymbol}{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
 			},
 			{
 				regex:/{applyModifier:([^}]+)}/g,
@@ -54,11 +54,11 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			},
 			{
 				regex:/{discoverRoom:([^}]*)}/g,
-				replace:"discover room {room:1}"
+				replace:"discover {roomLabelSymbol}{room:1}"
 			},
 			{
 				regex:/{drawItemAt:([^,]+),([^}]+)\}/g,
-				replace:"draw [{itemId:1}] in room {room:2}"
+				replace:"draw {itemId:1} in {roomLabelSymbol}{room:2}"
 			},
 			{
 				regex:/{regainSkill}/g,
@@ -114,10 +114,12 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		shredderMode,
 		complexityEnabled,
 		fakeDescriptions=[],
+		symbolsMap={},
 		svg;
 
 	this.prepared=false;
 
+	this.setSymbolsMap=(map)=>symbolsMap=map;
 	this.setMixMode=(v)=>mixMode=v;
 	this.setRoomsModels=(roomsmodelsdata)=>roomsModels=roomsmodelsdata;
 	this.setComplexityEvaluation=(v)=>complexityEnabled=v;
@@ -427,10 +429,10 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{heroClass}",heroModel.heroClass);
 
 		// Logic
-		line=line.replaceAll("{newRule}"," | ");
-		line=line.replaceAll("{and}"," &amp; ");
-		line=line.replaceAll("{or}"," or ");
-		line=line.replaceAll("{then}"," &raquo; ");
+		line=line.replaceAll("{newRule}",symbolsMap.actions.newRule);
+		line=line.replaceAll("{and}",symbolsMap.actions.and);
+		line=line.replaceAll("{or}",symbolsMap.actions.or);
+		line=line.replaceAll("{then}",symbolsMap.actions.then);
 
 		// Special - Actions
 		line=line.replaceAll("{rollDie}","roll a die: ");
@@ -473,7 +475,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{performFreeActionWithPower:([0-9]+),([0-9]+)\}/g,(m,num,num2)=>"activate 1 "+(num==1?"ability":"abilities")+" using value "+num2);
 		
 		// Room - Conditions
-		line=line.replaceAll("{ifEnterRoom}","enter room");
+		line=line.replaceAll("{ifEnterRoom}","enter {roomUnspacedLabelSymbol}");
 		line=line.replaceAll("{ifMoveOnStairs}","move on stairs");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");
@@ -481,9 +483,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		// Room - Actions
 		line=line.replaceAll("{moveOnStairs}","move on stairs");
-		line=line.replaceAll("{roomIsEmpty}","room is empty");
+		line=line.replaceAll("{roomIsEmpty}","{roomUnspacedLabelSymbol} is empty");
 		line=line.replaceAll("{noEscape}","no escape");
-		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting room");
+		line=line.replaceAll("{teleportToStartingRoom}","move anywhere in starting {roomUnspacedLabelSymbol}");
 		line=line.replace(/\{discoverAnyRoom:([0-9]+)\}/g,(m,num)=>"select "+num+" "+(num==1?"room":"rooms")+", discover "+(num==1?"it":"them"));
 
 		// HP - Conditions
@@ -534,6 +536,13 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Quest placeholders
 		for (const k in globalPlaceholders)
 			line=line.replaceAll("{"+k+"}",globalPlaceholders[k]);
+
+		// Symbols
+		line=line.replaceAll("{itemMarkSymbol}",symbolsMap.items.mark);
+		line=line.replaceAll("{markRoomSymbol}",symbolsMap.rooms.markRoom);
+		line=line.replaceAll("{roomSymbol}",symbolsMap.rooms.symbol);
+		line=line.replaceAll("{roomUnspacedLabelSymbol}",symbolsMap.rooms.unspacedLabel);
+		line=line.replaceAll("{roomLabelSymbol}",symbolsMap.rooms.label);
 
 		return line;
 	}
@@ -606,7 +615,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 						}
 						case "itemId":
 						case "item":{
-							return 1;
+							return symbolsMap.items.roomsTable[1];
 						}
 						case "stealHeroSkill":{
 							return "ATK -1 RNG 1";
@@ -673,7 +682,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							return modifiersById[matches[value]].full;
 						}
 						case "item":{
-							return placeholders.itemIds[matches[value]];
+							return symbolsMap.items.roomsTable[placeholders.itemIds[matches[value]]];
 						}
 						case "itemId":{
 							return matches[value];
@@ -2384,7 +2393,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					case "genericItem":{						
 						if (item.isHidden) ctx.fillStyle="#099";
 						else ctx.fillStyle="#0ff";
-						ctx.fillText("g"+item.itemId, px+HCELLSIZE, py+HCELLSIZE);						
+						ctx.fillText("g"+symbolsMap.items.map[item.itemId], px+HCELLSIZE, py+HCELLSIZE);						
 						break;
 					}
 					default:{
@@ -2607,7 +2616,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 									}
 									case "genericItem":{
 										const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
-										svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
+										svg.setText(svg.getById("gridItemId",genericItem),symbolsMap.items.map[item.itemId]);
 										break;
 									}
 									case "stairs":{
@@ -2731,7 +2740,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 							}
 							case "fakeGenericItem":{
 								const genericItem=svg.cloneNodeBy("gridItem",0,px,py);							
-								svg.setText(svg.getById("gridItemId",genericItem),item.itemId);
+								svg.setText(svg.getById("gridItemId",genericItem),symbolsMap.items.map[item.itemId]);
 								break;
 							}
 							case "fakeDoorDown":{

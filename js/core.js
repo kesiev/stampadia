@@ -150,6 +150,26 @@ const Core=function(settings) {
 		// Set dungeon size
 		const dunggen=new DungeonGenerator(settings.root,20,20,seed,debug);
 
+		dunggen.setSymbolsMap(debug&&debug.symbolsMap?debug.symbolsMap:{
+			items:{
+				mark:"x",
+				map:[0,1,2,3,4,5,6,7,8,9],
+				roomsTable:["[0]","[1]","[2]","[3]","[4]","[5]","[6]","[7]","[8]","[9]"]
+			},
+			rooms:{
+				label:"room ",
+				symbol:"",
+				markRoom:"x",
+				unspacedLabel:"room"
+			},
+			actions:{
+				then:" &raquo; ",
+				and:" &amp; ",
+				newRule:" | ",
+				or:" or ",
+			}
+		});
+
 		dunggen.setRoomsModels([
 			[
 				// [CODEX-Generator] Roomset - The Stampadian: A set of multiple sized rooms.
