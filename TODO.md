@@ -36,6 +36,9 @@ A daily print-and-play roguelike adventure you can play offline.
 - [ ] Items
   - [ ] Prevent a specific enemy action
 
+- [ ] Classes
+  - [ ] Lock activation power must reach/surpass the number of enemies in battle?
+
 - [ ] Quests
   - [ ] Sub - ??? - More luck/unluck uses
   - [ ] Sub - The Messenger - bring messages between adventures using keywords
