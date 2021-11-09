@@ -33,9 +33,6 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### Ideas - Gameplay
 
-- [ ] !!!
-  - [ ] mixMode ready to be tested after the Rogue: setMixMode:true
-
 - [ ] Items
   - [ ] Prevent a specific enemy action
 
@@ -94,6 +91,8 @@ A daily print-and-play roguelike adventure you can play offline.
     - It may make characters more agile and add more decisions but the actual *timeline* battle system, with self-contained coherent actions executed one by one from left to right, it's be easier to understand for non-boardgamers.
   - [ ] Use symbols instead of numbers for interactive elements? [(spades)] instead of [1]?
     - While there is a limited number of interactive elements in rooms ATM and a set of symbols instead of numbers may help players on learning the game, numbers are less narrative (a diamond is not going to be an *ingame valuable*, hearts are not *healing items* and so on), easier to share in chats and forums (you may need an emoji/symbols keyboard), and their *mathematical nature* can be used for some unexplored mechanic (i.e. lifts that brings you on current room + grayed cell value)
+    - ...in spite of everything I've merget the Seshat font with the Symbola font with FontForge (I've called it the SeshatPlus) and implemented the code that allow to customize symbols. I don't like the new hieroglyphic look of the lookup table but the main issue is that unicode symbols are larger than the original symbols, eating space on the rooms table and breaking some room descriptions.
+    - Anyway there is a *tools/playground.html* page, if you like to play a little with unicodes.
 
 - [ ] Enemy abilities
   - [ ] PUSH: pushes the hero away, for ranged enemies
@@ -114,12 +113,8 @@ A daily print-and-play roguelike adventure you can play offline.
 
 ### In progress
 
-- [x] Skills & Items
-  - [x] Hero/Enemy - Damage reflection
-
-- [x] New classes: Rogue
-  - [x] A defense based class
-  - [x] Hero - Dice roll skill: the hero locks a die for other enemies
+- [ ] !!!
+  - [ ] mixMode ready to be tested after the Rogue: setMixMode:true
 
 ### Done
 
@@ -139,6 +134,8 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] Debuff skills to subtract defense to an enemy for 1 round: with 1 round, you can go for die-2/die-3 debuffs; the idea is if you spend a 6 on it you can possibly land 2 hits on next round even with a secondary ATK-3 for example. May be applied to all enemies.
   - [x] Item - Grenade: ATK by the number of cells of the current room
   - [x] Items that gives free action
+  - [x] Hero Item - Damage reflection
+
 
 - [x] New class
   - [x] Tank/Dwarf
@@ -147,6 +144,10 @@ A daily print-and-play roguelike adventure you can play offline.
   - [x] Ranger
     - [x] can use monster moves
     - [x] Powerful skills with exact range like "RNG =2". Explain on manual.
+  - [x] New classes: Rogue
+    - [x] A defense based class
+    - [x] Hero - Dice roll skill: the hero locks a die for other enemies
+
 
 - [x] Equipment
   - [x] Flip - Complementary dice values (upside down dice)
