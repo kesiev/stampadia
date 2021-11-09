@@ -77,4 +77,4 @@ I hope you find the project as fun as it was for me to put it together!
 
 ### Font
 
-The game manual and the adventure sheets are using the excellent CC0 font [Seshat](http://dotcolon.net/font/seshat/) by Dot Colon. If you're going to have a look at the manual `assets/manual/manual.odt` and adventure sheet model `svg/model.svg` make sure you have got the font installed. A copy of the font is included in the `assets` directory.
+The game manual is using the excellent CC0 font [Seshat](http://dotcolon.net/font/seshat/) by Dot Colon and the site and the adventure sheets are using the custom-made font *SeshatPlus*, which merges the original Seshat with the symbols of the *Symbola*. If you're going to have a look at the manual `assets/manual/manual.odt` and adventure sheet model `svg/model.svg` make sure you have got these fonts installed. A copy of these font is included in the `assets` directory.
