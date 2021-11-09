@@ -2487,15 +2487,18 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		})
 	}
 
-	this.showSVG=function() {
+	this.showSVG=function(patcher) {
 		this.createSVG(svg=>{
+			let svgText=svg.getSVG();
+
+			if (patcher) svgText=patcher(svgText);
 
 			document.write("<body>");
 
 			// Print
 			const div=document.createElement("div");
 			div.style.display="inline-block";
-			div.innerHTML=svg.getSVG();
+			div.innerHTML=svgText;
 			document.body.appendChild(div);
 
 			// Buttons

@@ -49,7 +49,9 @@ function createDungeon() {
 		});
 		dungen.prepare();
 		dungen.createSVG(svg=>{			
-			dungen.showSVG();
+			dungen.showSVG((text)=>{
+				return text.replace(/Seshat/g,"SeshatPlus");
+			});
 		});
 	});
 }
