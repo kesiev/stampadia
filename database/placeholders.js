@@ -7,7 +7,7 @@ function loadPlaceholders() {
 			"The {heroClass} {nameLine} in"
 		],
 		villainName:[
-			"Bloody Dragon", // Longest
+			"Blood Dragon", // Longest
 			"Dark Lord",
 			"Hydra",
 			"Chimera",
