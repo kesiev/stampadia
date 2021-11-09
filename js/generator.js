@@ -2487,18 +2487,16 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		})
 	}
 
-	this.showSVG=function(patcher) {
+	this.showSVG=function() {
 		this.createSVG(svg=>{
 			let svgText=svg.getSVG();
-
-			if (patcher) svgText=patcher(svgText);
 
 			document.write("<body>");
 
 			// Print
 			const div=document.createElement("div");
 			div.style.display="inline-block";
-			div.innerHTML=svgText;
+			div.innerHTML=svg.getSVG();
 			document.body.appendChild(div);
 
 			// Buttons
@@ -2531,6 +2529,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			const template=new SVGTemplate(root+"svg/model.svg?"+Math.random());
 			template.load(()=>{
 				svg=new SVG(template);
+
+				if (debug&&debug.svgPatcher) svg.setPatcher(debug.svgPatcher);
 
 				// Draw & prepare empty grid
 				const

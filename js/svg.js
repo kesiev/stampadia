@@ -52,9 +52,12 @@ function SVG(template) {
 
     let
         pdfCache=0,
+        patcher=0,
         pdfQueue=[];
 
     node.innerHTML = template.getSVG();
+
+    this.setPatcher = (cb)=> patcher=cb;
 
     this.get = (node,attr) => {
         return node.getAttribute((SIZEMAP[node.tagName]||SIZEMAP.default)[attr]);
@@ -208,7 +211,7 @@ function SVG(template) {
         })
     }
 
-    this.getSVG = () => node.innerHTML;
+    this.getSVG = () => patcher ? patcher(node.innerHTML) : node.innerHTML;
 
     this.getPDF = (cb) => {
 
@@ -220,7 +223,10 @@ function SVG(template) {
 
                 pdfQueue.push(cb);
 
-                const svgElement = node.firstElementChild;
+                let pdfNode = document.createElement("div");
+                pdfNode.innerHTML=this.getSVG();
+
+                const svgElement = pdfNode.firstElementChild;
                 svgElement.getBoundingClientRect();
 
                 const doc = new jspdf.jsPDF({

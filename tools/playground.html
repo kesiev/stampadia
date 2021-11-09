@@ -16,8 +16,11 @@ function createDungeon() {
 		root:"../"
 	});
 	core.initialize(()=>{
-
 		var dungen=core.generateAdventureDaily(0,{
+			footer:"P",
+			svgPatcher:(svg)=>{
+				return svg.replace(/Seshat/g,"SeshatPlus");
+			},
 			symbolsMap:{
 				items:{
 
@@ -49,9 +52,7 @@ function createDungeon() {
 		});
 		dungen.prepare();
 		dungen.createSVG(svg=>{			
-			dungen.showSVG((text)=>{
-				return text.replace(/Seshat/g,"SeshatPlus");
-			});
+			dungen.showSVG();
 		});
 	});
 }
