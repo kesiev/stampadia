@@ -45,7 +45,7 @@ function loadFlavorTexts() {
 			"Your throat suddenly gets dry.",
 			"Eerie glows of torches are speckling the dark walls of the cellar.",
 			"On the gigantic apse in ruin, a purple bonfire is still burning.",
-			"Multiple secular mud prints head to the recessed altar.",
+			"Multiple ancient mud prints head to the recessed altar.",
 			"Only the faint shimmer of blades breaks through the dark armory.",
 			"A mysterious disturbing buzz fills the cave, invading your brain.",
 			"Weird machines and glyphs stamps are stocked in the workroom.",
