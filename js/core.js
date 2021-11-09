@@ -160,6 +160,7 @@ const Core=function(settings) {
 				label:"room ",
 				symbol:"",
 				markRoom:"x",
+				notMarkRoom:"not x",
 				unspacedLabel:"room"
 			},
 			actions:{

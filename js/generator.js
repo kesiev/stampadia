@@ -22,7 +22,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			},
 			{
 				regex:/{ifRoomIsNotMarked:([^}]*)}/g,
-				replace:"not {markRoomSymbol}{room:1}"
+				replace:"{notMarkRoomSymbol}{room:1}"
 			},
 			{
 				regex:/{teleportToRoom:([^}]*)}/g,
@@ -46,7 +46,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			},
 			{
 				regex:/{applyModifierOnRoomNotMarked:([^,]+),([^}]+)\}/g,
-				replace:"not {markRoomSymbol}{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
+				replace:"{notMarkRoomSymbol}{room:2}{and}{modifierCondition:1}{then}{modifierAction:1}"
 			},
 			{
 				regex:/{applyModifier:([^}]+)}/g,
@@ -540,6 +540,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// Symbols
 		line=line.replaceAll("{itemMarkSymbol}",symbolsMap.items.mark);
 		line=line.replaceAll("{markRoomSymbol}",symbolsMap.rooms.markRoom);
+		line=line.replaceAll("{notMarkRoomSymbol}",symbolsMap.rooms.notMarkRoom);
 		line=line.replaceAll("{roomSymbol}",symbolsMap.rooms.symbol);
 		line=line.replaceAll("{roomUnspacedLabelSymbol}",symbolsMap.rooms.unspacedLabel);
 		line=line.replaceAll("{roomLabelSymbol}",symbolsMap.rooms.label);
