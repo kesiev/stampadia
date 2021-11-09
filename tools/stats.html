@@ -30,7 +30,7 @@ function createDungeon() {
 	});
 	core.initialize(()=>{
 		var dungen=core.generateAdventureDaily(day,{
-			dumpSelection:true
+			dumpSelection:true,
 		});
 		dungen.prepare();
 		console.log("Day",day,"("+dungen.metadata.seed+")",dungen.metadata.title)
@@ -45,7 +45,7 @@ function createDungeon() {
 				let
 					LINE_MAXLEN=316.95,
 					TITLE_MAXLEN=396.32,
-					SERVICE_MAXLEN=236.99,
+					SERVICE_MAXLEN=237.40,
 					UPSIDEDOWN_SPACING=1.24,
 					g=document.getElementsByTagName("text"),
 					pairs={},
