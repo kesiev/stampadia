@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1468411"
-     inkscape:cx="577.90457"
-     inkscape:cy="568.3373"
+     inkscape:cx="-117.04785"
+     inkscape:cy="82.655369"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -669,12 +669,12 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;line-height:1.25;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;display:inline;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none"
        x="9.3287992"
        y="18.247232"
-       id="text952"><tspan
+       id="goldNotes"><tspan
          sodipodi:role="line"
          id="tspan950"
          x="9.3287992"
          y="18.247232"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">Gold (cross door » pay 1G)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.58978px;font-family:Seshat;-inkscape-font-specification:Seshat;text-align:start;text-anchor:start;fill:#ffffff;stroke-width:0.25;stroke-miterlimit:4;stroke-dasharray:none">goldNotes</tspan></text>
     <path
        style="fill:none;stroke:#b3b3b3;stroke-width:0.251203;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 116.20575,15.492869 v -2.108941 l 0.62615,-0.568403 -0.62615,-0.516728 V 8.8367106 l 0.52178,-0.5684021 -0.52178,-0.5167292 V 6.9764855 l 0.7305,-0.5684021 -0.7305,-0.7234209 V 3.2160093 h 68.77369 v 1.1768302 l -0.67832,0.5167292 0.67832,0.5167292 v 0.671748 l -0.52178,0.568402 0.52178,0.3100376 v 5.0122735 l -0.52178,0.723421 0.52178,0.516728 v 0.671749 l -0.56266,0.340776 0.56266,0.382645 v 1.161098"

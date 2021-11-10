@@ -9,6 +9,7 @@ function loadHeroModels() {
 		{
 			id:"warrior",
 			heroClass:"Warrior",
+			goldNotes:"Gold ({ifCrossDoor}{then}{ifPayGold:1})",
 			tags:["importantStartingItem"],
 			skills:[
 				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-3"} ],
@@ -94,6 +95,7 @@ function loadHeroModels() {
 		{
 			id:"wizard",
 			heroClass:"Wizard",
+			goldNotes:"Gold ({ifCrossDoor}{then}{ifPayGold:1})",
 			tags:["weak"],
 			skills:[
 				[ {skill:"ATK -2\nRNG 2"}, {skill:"Move\n-3"} ],
@@ -159,6 +161,7 @@ function loadHeroModels() {
 		{
 			id:"dwarf",
 			heroClass:"Dwarf",
+			goldNotes:"Gold ({ifCrossDoor}{then}{ifPayGold:1})",
 			skills:[
 				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-4"} ],
 				[ {skill:"DEF -2"}, {skill:"Move\n-3", tags:["losable"]} ],
@@ -218,6 +221,7 @@ function loadHeroModels() {
 		{
 			id:"ranger",
 			heroClass:"Ranger",
+			goldNotes:"Gold ({ifCrossDoor}{then}{ifPayGold:1})",
 			skills:[
 				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-3"} ],
 				[ {skill:"ATK -1\nRNG =2", tags:["losable"]}, {skill:"Copy\n-1", tags:["losable"]} ],
@@ -280,6 +284,7 @@ function loadHeroModels() {
 		{
 			id:"rogue",
 			heroClass:"Rogue",
+			goldNotes:"Gold ({ifCrossDoor}{then}{ifPayGold:1})",
 			skills:[
 				[ {skill:"ATK -1\nRNG 1"}, {skill:"Move\n-2"} ],
 				[ {skill:"DEF -3"}, {skill:"Lock\n-3", tags:["losable"]} ],

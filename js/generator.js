@@ -1919,14 +1919,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		let models=[];
 
-		hero={
-			maxHp:0,
-			model:heroModel,
-			tagsCount:{},
-			skills:[],
-			defense:[]
-		};
-
 		heroModels.forEach(model=>{
 			if (!model.isBetaTesting) models.push(model);
 		});
@@ -1938,6 +1930,18 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				if (model.id==debug.heroId) heroModel=model;
 			})
 		}
+
+		hero={
+			maxHp:0,
+			model:heroModel,
+			goldNotes:{
+				line:heroModel.goldNotes,
+				placeholders:{}
+			},
+			tagsCount:{},
+			skills:[],
+			defense:[]
+		};
 
 		// Add equipment
 		heroModel.equipment.forEach(equip=>{
@@ -2711,6 +2715,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 					setCheckBox(svg,svg.getById("heroXp",skillTier),tier.xp);
 					setCheckBox(svg,svg.getById("heroHp",skillTier),tier.hp);
 				});
+				svg.setText(svg.getById("goldNotes"),solvePlaceholder(hero.goldNotes));
 
 				// Render enemies
 				tierWidth=svg.getNum(svg.getById("enemyBox"),"width");
