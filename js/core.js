@@ -173,7 +173,8 @@ const Core=function(settings) {
 				and:" &amp; ",
 				newRule:" | ",
 				or:" or ",
-				move:"move"
+				move:"move",
+				pay:"pay "
 			}
 		});
 

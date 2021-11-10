@@ -16,7 +16,7 @@ function createDungeon() {
 		root:"../"
 	});
 	core.initialize(()=>{
-		var dungen=core.generateAdventureDaily(4,{
+		var dungen=core.generateAdventureDaily(0,{
 			footer:"P",
 			svgPatcher:(svg)=>{
 				return svg.replace(/Seshat/g,"SeshatPlus");
@@ -46,10 +46,11 @@ function createDungeon() {
 					and:" & ",
 					newRule:" &#124; ",
 					or:" or ",
-					move:"move"
+					move:"move",
+					pay:"&#9995; "
 				},
 				equipment:{
-					pay:"pay ",
+					pay:"&#9995; ",
 					lose:"&#9746; ",
 					get:"&#9744; "
 				}

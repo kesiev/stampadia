@@ -489,7 +489,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{discoverAnyRoom:([0-9]+)\}/g,(m,num)=>"select "+num+" "+(num==1?"room":"rooms")+", discover "+(num==1?"it":"them"));
 
 		// HP - Conditions
-		line=line.replace(/\{ifPayHp:([0-9]+)\}/g,(m,num)=>"pay "+num+"HP");
+		line=line.replace(/\{ifPayHp:([0-9]+)\}/g,(m,num)=>"{paySymbol}"+num+"HP");
 		line=line.replace(/\{ifHpLeft=:([0-9]+)\}/g,(m,num)=>"HP left ="+num);
 
 		// HP - Actions
@@ -502,14 +502,14 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replace(/\{loseHp:([0-9]+)\}/g,(m,num)=>"-"+num+"HP");
 
 		// XP - Conditions
-		line=line.replace(/\{ifPayXp:([0-9]+)\}/g,(m,num)=>"pay "+num+"XP");
+		line=line.replace(/\{ifPayXp:([0-9]+)\}/g,(m,num)=>"{paySymbol}"+num+"XP");
 
 		// XP - Actions		
 		line=line.replace(/\{gainXp:([0-9]+)\}/g,(m,num)=>"+"+num+"XP");
 		line=line.replace(/\{loseXp:([0-9]+)\}/g,(m,num)=>"-"+num+"XP");
 
 		// Gold - Conditions
-		line=line.replace(/\{ifPayGold:([0-9]+)\}/g,(m,num)=>"pay "+num+"G");
+		line=line.replace(/\{ifPayGold:([0-9]+)\}/g,(m,num)=>"{paySymbol}"+num+"G");
 		line=line.replace(/\{ifGoldLeft<half\}/g,(m,num)=>"<"+(Math.floor(gold/2)+1)+"G left");
 		line=line.replace(/\{ifGoldLeft>half\}/g,(m,num)=>">"+Math.floor(gold/2)+"G left");
 		line=line.replace(/\{ifGoldSpentInFifth:([0-9]+)-([0-9]+)\}/g,(m,num,num2)=>(Math.floor(gold/5)*(num-1)+(num==1?0:1))+"~"+(num2==5?gold:Math.floor(gold/5)*num2)+"G spent");
@@ -545,6 +545,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{roomUnspacedLabelSymbol}",symbolsMap.rooms.unspacedLabel);
 		line=line.replaceAll("{roomLabelSymbol}",symbolsMap.rooms.label);
 		line=line.replaceAll("{moveSymbol}",symbolsMap.actions.move);
+		line=line.replaceAll("{paySymbol}",symbolsMap.actions.pay);
 
 		return line;
 	}
