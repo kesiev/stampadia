@@ -476,6 +476,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		
 		// Room - Conditions
 		line=line.replaceAll("{ifEnterRoom}","enter {roomUnspacedLabelSymbol}");
+		line=line.replaceAll("{ifCrossDoor}","cross door");
 		line=line.replaceAll("{ifMoveOnStairs}","{moveSymbol} on stairs");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");

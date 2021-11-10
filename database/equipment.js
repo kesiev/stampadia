@@ -178,7 +178,7 @@ function loadEquipment() {
 		{
 			id:"jacket",
 			label:"Jacket",
-			action:"{ifEnterRoom}{then}{fightingEnemyLoseHp:1,2,1}"
+			action:"{ifCrossDoor}{then}{fightingEnemyLoseHp:1,2,1}"
 		},
 		
 	];
