@@ -163,6 +163,11 @@ const Core=function(settings) {
 				notMarkRoom:"not x",
 				unspacedLabel:"room"
 			},
+			equipment:{
+				pay:"pay ",
+				lose:"lose ",
+				get:"get "
+			},
 			actions:{
 				then:" &raquo; ",
 				and:" &amp; ",

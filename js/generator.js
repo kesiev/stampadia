@@ -592,15 +592,15 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=formatKeywords(line);
 
 		[
-			{regex:/\{payEquip:([^}]+)\}/g,verb:"pay"},
-			{regex:/\{loseEquip:([^}]+)\}/g,verb:"lose"},
-			{regex:/\{getEquip:([^}]+)\}/g,verb:"get"},
+			{regex:/\{payEquip:([^}]+)\}/g,verb:symbolsMap.equipment.pay},
+			{regex:/\{loseEquip:([^}]+)\}/g,verb:symbolsMap.equipment.lose},
+			{regex:/\{getEquip:([^}]+)\}/g,verb:symbolsMap.equipment.get},
 			{regex:/\{nameEquip:([^}]+)\}/g},
 		].forEach((entry)=>{
 			line=line.replace(entry.regex,(m,id)=>{
 				let equipment=globalPlaceholders[id];
 				if (!equipment) equipment=getRandom(services).equipment.label;
-				return (entry.verb?entry.verb+" ":"")+equipment;
+				return (entry.verb?entry.verb:"")+equipment;
 			});
 		});
 
@@ -650,9 +650,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=formatRandomizers(line);
 		line=formatKeywords(line);
 
-		line=line.replace(/\{payEquip:([^}]+)\}/g,(m,id)=>"pay "+globalPlaceholders[id]);
-		line=line.replace(/\{loseEquip:([^}]+)\}/g,(m,id)=>"lose "+globalPlaceholders[id]);
-		line=line.replace(/\{getEquip:([^}]+)\}/g,(m,id)=>"get "+globalPlaceholders[id]);
+		line=line.replace(/\{payEquip:([^}]+)\}/g,(m,id)=>symbolsMap.equipment.pay+globalPlaceholders[id]);
+		line=line.replace(/\{loseEquip:([^}]+)\}/g,(m,id)=>symbolsMap.equipment.lose+globalPlaceholders[id]);
+		line=line.replace(/\{getEquip:([^}]+)\}/g,(m,id)=>symbolsMap.equipment.get+globalPlaceholders[id]);
 		line=line.replace(/\{nameEquip:([^}]+)\}/g,(m,id)=>globalPlaceholders[id]);
 
 		ROOMPLACEHOLDERS.forEach(placeholder=>{

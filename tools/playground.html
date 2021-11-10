@@ -16,7 +16,7 @@ function createDungeon() {
 		root:"../"
 	});
 	core.initialize(()=>{
-		var dungen=core.generateAdventureDaily(0,{
+		var dungen=core.generateAdventureDaily(4,{
 			footer:"P",
 			svgPatcher:(svg)=>{
 				return svg.replace(/Seshat/g,"SeshatPlus");
@@ -30,9 +30,9 @@ function createDungeon() {
 					// roomsTable:["[0]","&#9824;","&#9829;","&#9827;","&#9830;","[1]","[2]","[3]","[4]","[5]"]
 					
 					// Capital letters version
-					mark:"&#10799; ",
+					mark:"&#10799;",
 					map:["0","A","B","C","D","E","F","G","H","I"],
-					roomsTable:["[0]","&#7424;&#8414; ","&#665;&#8414; ","&#7428;&#8414; ","&#7429;&#8414; ","&#7431;&#8414; ","&#1171;&#8414; ","&#610;&#8414; ","&#668;&#8414; ","&#618;&#8414; "]
+					roomsTable:["[0]"," &#7424;&#8414; "," &#665;&#8414; "," &#7428;&#8414; "," &#7429;&#8414; "," &#7431;&#8414; "," &#1171;&#8414; "," &#610;&#8414; "," &#668;&#8414; "," &#618;&#8414; "]
 				},
 				rooms:{
 					label:"",
@@ -47,6 +47,11 @@ function createDungeon() {
 					newRule:" &#124; ",
 					or:" or ",
 					move:"move"
+				},
+				equipment:{
+					pay:"pay ",
+					lose:"&#9746; ",
+					get:"&#9744; "
 				}
 			}
 		});
