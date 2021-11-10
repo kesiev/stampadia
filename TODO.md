@@ -103,6 +103,7 @@ A daily print-and-play roguelike adventure you can play offline.
 
 - [ ] Rooms & Dungeon generator
   - [ ] A room with missing [1] that's drawn by the player (and maybe be there)
+    - [ ] Decide to draw a [1] or a [2]. Or use a die roll to decide.
     - [ ] Quests can create the same effect with checkboxes conditions - that may be never checked
     - [ ] *Implemented but unused*
       - [ ] As {drawItemAt:itemId,roomId} (i.e. {drawItem:1,destinationRoom}). Add a {genericItem:"xxx", isHidden:true} to the destination room to reserve an empty cell.
