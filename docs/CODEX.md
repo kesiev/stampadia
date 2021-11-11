@@ -2,7 +2,7 @@
 
 <div align=center style='border:2px solid red;padding:5px'><b>Spoiler alert!</b> This codex contains a list and a description of all of the Chronicles of Stampadia contents. If you don't want to spoil the fun, <b>stop reading this now</b>.</div>
 
-## Events (81 items)
+## Events (83 items)
 
 - Anomaly
   - **The Couple**: 2 level 0 enemy in the depth of the dungeon.
@@ -44,11 +44,13 @@
   - **The Boss Battle**: Beat the boss.
   - **The Broken Key**: Collect the key parts and beat the boss.
   - **The Curse**: Beat the boss and try to get rid of your curse.
+  - **The Deadly Loop**: Break the time loop and kill the boss.
   - **The Enchantment**: Find an NPC lost in the dungeons to make your final battle easier.
   - **The Escort**: Escort the good guy near the boss and fight.
   - **The Gang**: Beat a sequence of enemies.
   - **The Great Old Ones**: Beat the boss before being corrupted by madness.
   - **The Investigation**: Investigate who the impostor may be and eliminate him.
+  - **The Items**: Find the items to explore more and fight the boss.
   - **The Kidnapping**: Fight the boss, free the kidnapped, and return it.
   - **The Lost Item**: Return an item to NPC and unlock the boss and fight.
   - **The Missing Familiar**: Find the familiar to get your missing skill back and kill the boss.
@@ -198,14 +200,16 @@
 - Trap
   - **The Mimic**: Lose 1 HP.
 
-## Keywords (12 items)
+## Keywords (14 items)
 
 - Keyword
+  - **Break**: It can help you to break a time loop...
   - **City**: Part of the The End Of Stampadia storyline.
   - **Computer**: Part of the The End Of Stampadia storyline.
   - **End**: Part of the The End Of Stampadia storyline.
   - **Ink**: Part of the The End Of Stampadia storyline.
   - **Irony**: Part of the The End Of Stampadia storyline.
+  - **Loop**: It can help you to break a time loop...
   - **Luck**: It may bring you good luck during your adventures...
   - **Press**: Part of the The End Of Stampadia storyline.
   - **Spaceship**: Part of the The End Of Stampadia storyline.
