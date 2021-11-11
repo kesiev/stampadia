@@ -313,7 +313,7 @@ function loadRandomizers() {
 			"...but you have just a few days left to live.",
 		],
 		randomGotItem:[
-			"You got the",
+			"You've got the",
 			"You found the"
 		],
 		randomDefendLoop:[
