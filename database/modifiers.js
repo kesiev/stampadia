@@ -77,7 +77,7 @@ function loadModifiers() {
 			room:{
 				id:"[CODEX-Modifiers] Terrain - Arena: Everybody rerolls his 1s.",
 				type:"balanced",
-				roomDescription:"{ifRolls:1}{then}It's a matter of life and death, {reroll:1}"
+				roomDescription:"{ifRolls:1}{then}It's a fight to the death, {reroll:1}"
 			}
 		}
 	};
