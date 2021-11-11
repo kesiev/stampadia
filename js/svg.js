@@ -1,24 +1,33 @@
 /* globals jspdf */
 /* exported SVGTemplate SVG */
 
-function SVGTemplate(file) {
+function SVGTemplate(file,breakCache) {
 
     let
         template;
 
+    if (!SVGTemplate.cache) SVGTemplate.cache={};
+
     this.load = (cb) => {
-        const xmlhttp = new XMLHttpRequest();
-        if (cb)
-            xmlhttp.onreadystatechange = function() {
-                if (xmlhttp.readyState == 4)
-                    if ((xmlhttp.status == 200) || (xmlhttp.status == 0)) {
-                        template = xmlhttp.responseText;
-                        cb();
-                    }
-                else cb();
-            };
-        xmlhttp.open("GET", file, true);
-        xmlhttp.send();
+        if (SVGTemplate.cache[file]) {
+            template = SVGTemplate.cache[file];
+            cb();
+        } else {
+             const xmlhttp = new XMLHttpRequest();
+            if (cb)
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4)
+                        if ((xmlhttp.status == 200) || (xmlhttp.status == 0)) {
+                            SVGTemplate.cache[file]= xmlhttp.responseText;
+                            template =SVGTemplate.cache[file];
+                            cb();
+                        }
+                    else cb();
+                };
+            xmlhttp.open("GET", file+(breakCache?"?"+Math.random():""), true);
+            xmlhttp.send();
+        }
+       
     }
 
     this.getSVG = () => template;

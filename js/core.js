@@ -85,13 +85,15 @@ const Core=function(settings) {
 				this.initialize(cb,0,Date.now());
 			}
 		} else {
-			if (DATABASES[pos]) {
+			if (!Core.loaded&&DATABASES[pos]) {
 				const tag = document.createElement('script');
 				tag.setAttribute("src",settings.root+DATABASES[pos]+"?"+ts);
 				tag.setAttribute("async", "false");
 				tag.onload =(_e)=>this.initialize(cb,pos+1,ts);
 				document.head.firstElementChild.appendChild(tag);
 			} else {
+				Core.loaded=true;
+
 				// Load databases
 				MODIFIERS=loadModifiers();
 				FLAVORTEXTS=loadFlavorTexts();
