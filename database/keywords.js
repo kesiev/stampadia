@@ -48,6 +48,16 @@ function loadKeywords() {
 				id:"unluck",
 				label:"Unluck"
 			},
+			{
+				// [CODEX-Keywords] Keyword - Break: It can help you to break a time loop...
+				id:"break",
+				label:"Break"
+			},
+			{
+				// [CODEX-Keywords] Keyword - Loop: It can help you to break a time loop...
+				id:"loop",
+				label:"Loop"
+			},
 			{ id:"golem-1", label:"Golem 1" },{ id:"golem-2", label:"Golem 2" },{ id:"golem-3", label:"Golem 3" },
 			{ id:"manticore-1", label:"Manticore 1" },{ id:"manticore-2", label:"Manticore 2" },{ id:"manticore-3", label:"Manticore 3" },
 			{ id:"hellhound-1", label:"Hellhound 1" },{ id:"hellhound-2", label:"Hellhound 2" },{ id:"hellhound-3", label:"Hellhound 3" },

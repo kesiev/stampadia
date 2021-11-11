@@ -175,6 +175,8 @@ function loadQuestsScrolls() {
 							[ "{ifMoveOn:storylineRest}{then}Letter: \"This curse is consuming me. I have to move.\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Scroll: \"Are you the best {heroClass}? Join the challenge! Win Gold!\"" ],
 							[ "{ifMoveOn:storylineRest}{then}Letter: \"Lie and your life will be spared - Enemy\"" ],
+							[ "{ifMoveOn:storylineRest}{then}Letter: \"In the loop you can't die. Please, come quickly.\"" ],
+							[ "{ifMoveOn:storylineRest}{then}On this scroll there is a list of items and some of them are dashed." ],
 
 							// Based on malus
 							[ "{ifMoveOn:storylineRest}{then}Letter: \"You won't get away that easily, {heroClass} - Enemy\"" ],

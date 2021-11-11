@@ -1286,7 +1286,7 @@ function loadQuestsMain(MODIFIERS) {
 				[
 					{
 						id:"lowerSoldierRoom",
-						labels:["Weak General","1st Camp"],
+						labels:["Weak General","1st Spy"],
 						atPercentage:{from:30,to:50},
 						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
@@ -1297,7 +1297,7 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						id:"higherSoldierRoom",
-						labels:["Brave General","2nd Camp"],
+						labels:["Brave General","2nd Spy"],
 						atPercentage:{from:50,to:70},
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -1340,6 +1340,192 @@ function loadQuestsMain(MODIFIERS) {
 						[
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}The culprit has been punished, the case is closed",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{and}{caseEndId}{then}{hide}{caseEndText}",
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Items: Find the items to explore more and fight the boss.",
+			minRooms:4,
+			adventureTitle:[
+				"The {questLastItem}",
+				"The Lost {questLastItem}",
+				"The {heroClass}'s {questLastItem}",
+				"The Elusive {villainName}",
+				"The Quest For The {questLastItem}",
+				"The Missing {questLastItem}",
+			],
+			generator:(G,P)=>{
+				const ITEMS=[
+					{
+						item:["Grappling Hook","Leap Stone","Gravity Boots"],
+						cantExplore:"There is a huge chasm in front of you",
+						cantFightBoss:"The {villainName} stares at you over the chasm"
+					},
+					{
+						item:["Boomerang","Knife"],
+						cantExplore:"A rope is keeping this room door closed",
+						cantFightBoss:"The bridge to the {villainName} is held up by a rope"
+					},
+					{
+						item:["Flute","Ocarina"],
+						cantExplore:"There is a score drawn on this closed door",
+						cantFightBoss:"The {villainName} is singing a creepy song"
+					},
+					{
+						item:["Bomb","Hammer"],
+						cantExplore:"A huge rock obstructs the passage",
+						cantFightBoss:"The {villainName} is behind a sturdy stone door"
+					},
+					{
+						item:["Flippers","Gills"],
+						cantExplore:"A large body of water separates you from the shore",
+						cantFightBoss:"The {villainName} is in the middle of a deep lake"
+					},
+				];
+
+				G.shuffleArray(ITEMS);
+				P.getItem1=G.getRandom(ITEMS[0].item);
+				P.cantExploreRoom2=ITEMS[0].cantExplore;
+				P.getItem2=G.getRandom(ITEMS[1].item);
+				P.cantExploreRoom3=ITEMS[1].cantExplore;
+				P.getItem3=G.getRandom(ITEMS[2].item);
+				P.cantFightBoss=ITEMS[2].cantFightBoss;
+				G.globalPlaceholders.questLastItem=P.getItem3;
+
+			},
+			steps:[
+				[
+					{
+						id:"itemRoom1",
+						labels:["1st Item"],
+						isDeadEndRoom:true,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifKilledLastFoe}{then}{randomGotItem} {getItem1}, {markRoom:itemRoom1}"
+							]
+						]
+					},
+					{
+						id:"itemRoom2",
+						labels:["2nd Item"],
+						isDeadEndRoom:true,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:itemRoom1}{then}{cantExploreRoom2}, {goBack}",
+								"{ifKilledLastFoe}{then}{randomGotItem} {getItem2}, {markRoom:itemRoom2}"
+							]
+						]
+					},
+					{
+						id:"itemRoom3",
+						labels:["3rd Item"],
+						atPercentage:{from:1,to:99},
+						isDeadEndRoom:true,
+						items:[{id:"enemy",level:3}],
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:itemRoom2}{then}{cantExploreRoom3}, {goBack}",
+								"{ifKilledLastFoe}{then}{randomGotItem} {getItem3}, {markRoom:itemRoom3}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
+						roomDescriptions:[
+							[
+								"{ifRoomIsNotMarked:itemRoom3}{then}{cantFightBoss}, {goBack}",
+								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labes:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"\"You won't be able to reach the {villainName} with your gear, {heroClass}!\"",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
+						]
+					]
+				}
+			]
+		},
+
+		{
+			id:"[CODEX-Events] Main quest - The Deadly Loop: Break the time loop and kill the boss.",
+			minRooms:4,
+			adventureTitle:[
+				"The Looping {heroClass}",
+				"The {placeName} Loop",
+				"The Looping {placeName}",
+				"The Tenacious {heroClass}",
+				"The Neverending {placeName}",
+				"The Immortal {heroClass}",
+				"The {placeName} Loop",
+				"The {heroClass} Lost In The Loop",
+			],
+			steps:[
+				[
+					{
+						id:"loop1room",
+						labels:["1st Cycle"],
+						isDeadEndRoom:true,
+						atPercentage:{from:1,to:99},
+						items:[{id:"enemy",level:1}],
+						roomDescriptions:[
+							[
+								"{ifNoFoes}{then}{randomDefendLoop}, {getKeyword:break}, {loseFullHp}"
+							]
+						]
+					},
+					{
+						id:"loop2room",
+						labels:["2nd Cycle"],
+						atPercentage:100,
+						items:[{id:"enemy",level:2}],
+						roomDescriptions:[
+							[
+								"{ifNoFoes}{and}{ifLoseKeyword:break}{then}{randomDefendLoop}, {getKeyword:loop}, {loseFullHp}"
+							]
+						]
+					},
+					{
+						id:"bossRoom",
+						labels:BOSSROOMLABELS,
+						atPercentage:100,
+						items:[{id:"enemy",level:3,ignoreXp:true}],
+						isExclusive:true,
+						roomDescriptions:[
+							[
+								"{ifNotKeyword:loop}{then}{roomIsEmpty}",
+								"{randomLoopBoss}, {noEscape}{newRule}{ifNoFoes}{then}{loseKeyword:loop}, {markRoom:startingRoom}"
+							]
+						]
+					}
+				]
+			],
+			otherDescriptions:[
+				{
+					at:"startingRoom",
+					labes:STARTINGROOMLABELS,
+					roomDescriptions:[
+						[
+							"\"You've to break this time loop, {heroClass}!\"",
+							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
 						]
 					]
 				}

@@ -126,7 +126,6 @@ function loadRandomizers() {
 			"Your eyes burn",
 			"You feel weak arms",
 		],
-
 		randomBossRevenge:[
 			"\"That's the right price for the {goodGuyName}'s indolence!\"",
 			"\"A simple {heroClass} can't save the {goodGuyName}'s {goodGuyRelativeName} life!\"",
@@ -312,6 +311,21 @@ function loadRandomizers() {
 			"...but long roots are sprouting from your legs.",
 			"...but your hands are slowly turning to stone.",
 			"...but you have just a few days left to live.",
+		],
+		randomGotItem:[
+			"You got the",
+			"You found the"
+		],
+		randomDefendLoop:[
+			"\"You've to protect the loop!\"",
+			"\"Stop breaking the loop!\"",
+			"\"I've to protect the loop!\"",
+			"\"The loop must be protected!\"",
+		],
+		randomLoopBoss:[
+			"\"So... the loop is going to end.\"",
+			"\"Will the loop really end?\"",
+			"\"I can't let you break the loop!\""
 		],
 		/*
 		randomRightGuess:[
