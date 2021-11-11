@@ -115,6 +115,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		complexityEnabled,
 		fakeDescriptions=[],
 		symbolsMap={},
+		optionalRoomsCache={},
 		svg;
 
 	this.prepared=false;
@@ -480,7 +481,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		line=line.replaceAll("{ifMoveOnStairs}","{moveSymbol} on stairs");
 		line=line.replaceAll("{ifNoFoes}","no foes");
 		line=line.replaceAll("{ifKilledLastFoe}","killed last foe");
-		line=line.replaceAll("{goBack}","go back on previous room");
+		line=line.replaceAll("{goBack}","move back");
 
 		// Room - Actions
 		line=line.replaceAll("{moveOnStairs}","{moveSymbol} on stairs");
@@ -769,6 +770,29 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			return ret;
 		}
 		return false;
+	}
+
+	function clearOptionaRoomsCache() {
+		optionalRoomsCache={};
+	}
+
+	function isOptionalRoom(id) {
+		if (optionalRoomsCache[id]===undefined) {
+			let avoidRooms=[id];
+			optionalRoomsCache[id]=true;
+			for (let j=0;j<rooms.length;j++)
+				if (
+						!rooms[j].isStartingRoom&&
+						(rooms[j].id!=id)
+				) {
+					var path=shortestPath(rooms[j],avoidRooms);
+					if (!path.length) {
+						optionalRoomsCache[id]=false;
+						break;
+					}
+				}
+		}
+		return optionalRoomsCache[id];
 	}
 
 	// Rooms
@@ -1132,20 +1156,8 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		}
 		
 		// Room may host a hidden room
-		if (success&&(step.isOptionalRoom||step.isHiddenRoom||step.isDeadEndRoom)) {
-			var avoidRooms=[room.room.id];
-			for (let j=0;j<rooms.length;j++)
-				if (
-						!rooms[j].isStartingRoom&&
-						(rooms[j].id!=room.room.id)
-				) {
-					var path=shortestPath(rooms[j],avoidRooms);
-					if (!path.length) {
-						success=false;
-						break;
-					}
-				}
-		}
+		if (success&&(step.isOptionalRoom||step.isHiddenRoom||step.isDeadEndRoom))
+			success=isOptionalRoom(room.room.id);
 
 		// Room must fit the required amount of items
 		success&=!step.items||(room.freeSpaces.length>=step.items.length);
@@ -1604,6 +1616,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				if (step.isHiddenRoom) room.makeHidden();
 				else if (step.isDeadEndRoom) room.makeDeadEnd();
 				else if (step.isOptionalRoom) room.makeOptional();
+				if (room.isOptionalRoom) clearOptionaRoomsCache();
 
 				updateRoomLabels(room.id,step.labels);
 			}
@@ -1992,6 +2005,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 			random:random,
 			getRandom:getRandom,
 			getRandomId:getRandomId,
+			globalPlaceholders:globalPlaceholders,
 			debug:debug
 		}
 	}
@@ -2497,8 +2511,6 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		this.createSVG(svg=>{
 			let svgText=svg.getSVG();
 
-			document.write("<body>");
-
 			// Print
 			const div=document.createElement("div");
 			div.style.display="inline-block";
@@ -2532,7 +2544,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 			this.prepare();
 
-			const template=new SVGTemplate(root+"svg/model.svg?"+Math.random());
+			const template=new SVGTemplate(root+"svg/model.svg",true);
 			template.load(()=>{
 				svg=new SVG(template);
 
