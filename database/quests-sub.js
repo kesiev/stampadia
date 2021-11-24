@@ -930,7 +930,7 @@ function loadQuestsVeryHardSub() {
 						roomDescriptions:[
 							[
 								"There is a bottle with a black liquid in a glass display case.",
-								"{ifMoveOn:glass}{and}\"Let's end this\"{then}{markItem:glass}, {rollDie}{range:1-3} {loseFullHp}, {range:4-6} {gainFullHp}"
+								"{ifMoveOn:glass}{and}\"Let's end this\"{then}{markItem:glass}, {rollDie}{range:1-3} {killHero}, {range:4-6} {gainFullHp}"
 							],
 						]
 					}

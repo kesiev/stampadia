@@ -1485,10 +1485,10 @@ function loadQuestsMain(MODIFIERS) {
 						labels:["1st Cycle"],
 						isDeadEndRoom:true,
 						atPercentage:{from:1,to:99},
-						items:[{id:"enemy",level:1}],
+						items:[{id:"enemy",level:0}],
 						roomDescriptions:[
 							[
-								"{ifNoFoes}{then}{randomDefendLoop}, {getKeyword:break}, {loseFullHp}"
+								"{ifNoFoes}{and}{ifNotKeyword:time}{then}\"Try again!\", {getKeyword:break}, {getKeyword:time}, {killHero}"
 							]
 						]
 					},
@@ -1496,10 +1496,10 @@ function loadQuestsMain(MODIFIERS) {
 						id:"loop2room",
 						labels:["2nd Cycle"],
 						atPercentage:100,
-						items:[{id:"enemy",level:2}],
+						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
 							[
-								"{ifNoFoes}{and}{ifLoseKeyword:break}{then}{randomDefendLoop}, {getKeyword:loop}, {loseFullHp}"
+								"{ifNoFoes}{and}{ifLoseKeyword:break}{then}{randomDefendLoop}, {getKeyword:loop}, {killHero}"
 							]
 						]
 					},
@@ -1512,7 +1512,7 @@ function loadQuestsMain(MODIFIERS) {
 						roomDescriptions:[
 							[
 								"{ifNotKeyword:loop}{then}{roomIsEmpty}",
-								"{randomLoopBoss}, {noEscape}{newRule}{ifNoFoes}{then}{loseKeyword:loop}, {markRoom:startingRoom}"
+								"{randomLoopBoss}, {noEscape}{newRule}{ifNoFoes}{then}{loseKeyword:time}, {loseKeyword:loop}, {markRoom:startingRoom}"
 							]
 						]
 					}
@@ -1524,7 +1524,7 @@ function loadQuestsMain(MODIFIERS) {
 					labes:STARTINGROOMLABELS,
 					roomDescriptions:[
 						[
-							"\"You've to break this time loop, {heroClass}!\"",
+							"You came here to break a time loop... but you remember dying in here before.",
 							"{ifMoveOnStairs}{and}{ifRoomIsMarked:startingRoom}{then}{winningScene}"
 						]
 					]

@@ -49,6 +49,11 @@ function loadKeywords() {
 				label:"Unluck"
 			},
 			{
+				// [CODEX-Keywords] Keyword - Time: It can help you to break a time loop...
+				id:"time",
+				label:"Time"
+			},
+			{
 				// [CODEX-Keywords] Keyword - Break: It can help you to break a time loop...
 				id:"break",
 				label:"Break"
