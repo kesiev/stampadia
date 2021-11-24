@@ -323,9 +323,9 @@ function loadRandomizers() {
 			"\"The loop must be protected!\"",
 		],
 		randomLoopBoss:[
-			"\"So... the loop is going to end.\"",
 			"\"Will the loop really end?\"",
-			"\"I can't let you break the loop!\""
+			"\"The loop must go on!\"",
+			"\"You can't stop it!\"",
 		],
 		/*
 		randomRightGuess:[
