@@ -1,3 +1,4 @@
 .DS_Store
 preview-markdown.html
 node_modules
+*.bak
