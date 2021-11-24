@@ -497,6 +497,7 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 		// HP - Actions
 		line=line.replaceAll("{gainFullHp}","+"+hero.maxHp+"HP");
 		line=line.replaceAll("{loseFullHp}","-"+hero.maxHp+"HP");
+		line=line.replaceAll("{killHero}","-"+(hero.maxHp+1)+"HP");
 		line=line.replace(/\{loseFullHp-:([0-9]+)\}/g,(m,num)=>"-"+(hero.maxHp-num)+"HP");
 		line=line.replaceAll("{gainHalfHp}","+"+Math.ceil(hero.maxHp/2)+"HP");
 		line=line.replaceAll("{loseHalfHp}","-"+Math.ceil(hero.maxHp/2)+"HP");
