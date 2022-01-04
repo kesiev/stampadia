@@ -33,7 +33,7 @@ const Core=function(settings) {
 			homepage:"kesiev.com/stampadia",
 			sourcesPage:"github.com/kesiev/stampadia"
 		},
-		PRINTFOOTER='{projectName} v{version} - Page #{seed} - (c) {rangeYear} by KesieV - Manual &amp; more adventures at {homepage} - Sources at {sourcesPage}',
+		PRINTFOOTER='{projectName} v{version} - Page #{seed} - (c) {rangeYear} by KesieV - Manual &amp; adventures at {homepage} - Code at {sourcesPage}',
 		WEBFOOTER='Best on Firefox/Chrome &dash; <a class=mark href="index.html">{projectName}</a> v{version} &dash; &copy; {rangeYear} by KesieV &dash; Sources at <a class=mark href="https://{sourcesPage}">{sourcesPage}</a>';
 
 	// Databases
