@@ -1401,7 +1401,6 @@ function loadQuestsMain(MODIFIERS) {
 					{
 						id:"itemRoom1",
 						labels:["1st Item"],
-						isDeadEndRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{id:"enemy",level:1}],
 						roomDescriptions:[
@@ -1413,12 +1412,11 @@ function loadQuestsMain(MODIFIERS) {
 					{
 						id:"itemRoom2",
 						labels:["2nd Item"],
-						isDeadEndRoom:true,
 						atPercentage:{from:1,to:99},
 						items:[{id:"enemy",level:2}],
 						roomDescriptions:[
 							[
-								"{ifRoomIsNotMarked:itemRoom1}{then}{cantExploreRoom2}, {goBack}",
+								"{ifRoomIsNotMarked:itemRoom1}{then}{cantExploreRoom2}, {roomIsEmpty}",
 								"{ifKilledLastFoe}{then}{randomGotItem} {getItem2}, {markRoom:itemRoom2}"
 							]
 						]
@@ -1427,11 +1425,10 @@ function loadQuestsMain(MODIFIERS) {
 						id:"itemRoom3",
 						labels:["3rd Item"],
 						atPercentage:{from:1,to:99},
-						isDeadEndRoom:true,
 						items:[{id:"enemy",level:3}],
 						roomDescriptions:[
 							[
-								"{ifRoomIsNotMarked:itemRoom2}{then}{cantExploreRoom3}, {goBack}",
+								"{ifRoomIsNotMarked:itemRoom2}{then}{cantExploreRoom3}, {roomIsEmpty}",
 								"{ifKilledLastFoe}{then}{randomGotItem} {getItem3}, {markRoom:itemRoom3}"
 							]
 						]
@@ -1444,7 +1441,7 @@ function loadQuestsMain(MODIFIERS) {
 						isExclusive:true,
 						roomDescriptions:[
 							[
-								"{ifRoomIsNotMarked:itemRoom3}{then}{cantFightBoss}, {goBack}",
+								"{ifRoomIsNotMarked:itemRoom3}{then}{cantFightBoss}, {roomIsEmpty}",
 								"{randomBossEntrance}, {noEscape}{newRule}{ifNoFoes}{then}{markRoom:startingRoom}"
 							]
 						]
