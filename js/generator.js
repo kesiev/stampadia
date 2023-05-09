@@ -953,7 +953,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 
 		this.makeDeadEnd=function() {
 			this.makeOptional();
-			var onlyExit=getRandom(this.exits);
+			var
+				validDoors=this.exits.filter(exit=>!exit.toRoom.isDeadEndRoom),
+				onlyExit=getRandom(validDoors);
 			this.exits.forEach(exit=>{
 				if (exit!==onlyExit) {
 					exit.toRoom.removeExit(exit.x,exit.y,this);
@@ -1589,6 +1591,9 @@ const DungeonGenerator=function(root,mapwidth,mapheight,seed,debug) {
 				let skill=removeHeroSkillByTag(step.stealHeroSkill);
 				placeholders.stealHeroSkill=skill.text;
 			}
+			// Mark the room as future dead end
+			if (step.isDeadEndRoom)
+				room.room.isDeadEndRoom=true;
 		});
 
 		// Add room labels and required items
