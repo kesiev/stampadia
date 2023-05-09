@@ -1366,12 +1366,12 @@ function loadQuestsMain(MODIFIERS) {
 					},
 					{
 						item:["Boomerang","Knife"],
-						cantExplore:"A rope is keeping this room door closed",
+						cantExplore:"A rope is keeping a bridge closed",
 						cantFightBoss:"The bridge to the {villainName} is held up by a rope"
 					},
 					{
 						item:["Flute","Ocarina"],
-						cantExplore:"There is a score drawn on this closed door",
+						cantExplore:"There is a score drawn on a closed door",
 						cantFightBoss:"The {villainName} is singing a creepy song"
 					},
 					{
@@ -1528,5 +1528,6 @@ function loadQuestsMain(MODIFIERS) {
 				}
 			]
 		},
+
 	]
 }
