@@ -2,3 +2,4 @@
 preview-markdown.html
 node_modules
 *.bak
+.vscode
